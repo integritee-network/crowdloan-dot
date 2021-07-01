@@ -1,26 +1,52 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Form, Dropdown, Input, Label } from 'semantic-ui-react';
 
+import formElement from './formElement.json';
+import ElementItem from './substrate-lib/components/ElementItem';
 import { useSubstrate } from './substrate-lib';
 import { TxButton, TxGroupButton } from './substrate-lib/components';
 
 const argIsOptional = (arg) =>
   arg.type.toString().startsWith('Option<');
 
-function Main (props) {
+function Main(props) {
   const { api, jsonrpc } = useSubstrate();
   const { accountPair } = props;
   const [status, setStatus] = useState(null);
 
-  const [interxType, setInterxType] = useState('EXTRINSIC');
+
+  const [elements, setElements] = useState(null);
+  useEffect(() => {
+    setElements(formElement)
+  }, [])
+
+  const { key, value } = elements ?? {}
+
+  const [interxType, setInterxType] = useState('QUERY');
   const [palletRPCs, setPalletRPCs] = useState([]);
   const [callables, setCallables] = useState([]);
   const [paramFields, setParamFields] = useState([]);
 
   const initFormState = {
-    palletRpc: '',
-    callable: '',
+    palletRpc: 'crowdloan',
+    callable: 'funds',
     inputParams: []
+  };
+
+
+  const queryResHandler = result => {
+    console.log(result.toString())
+    let resultAsString = ''
+    Object.keys(JSON.parse(result)).forEach(function (k) {
+      resultAsString += k + ' - ' + JSON.parse(result)[k];
+    });
+    result.isNone ? setStatus('None') : setStatus(resultAsString);
+  }
+
+  const query = async () => {
+    const transformed = ['2004'];
+    const unsub = await api.query[palletRpc][callable](...transformed, queryResHandler);
+    setUnsub(() => unsub);
   };
 
   const [formState, setFormState] = useState(initFormState);
@@ -63,26 +89,8 @@ function Main (props) {
     let paramFields = [];
 
     if (interxType === 'QUERY') {
-      const metaType = api.query[palletRpc][callable].meta.type;
-      if (metaType.isPlain) {
-        // Do nothing as `paramFields` is already set to []
-      } else if (metaType.isMap) {
-        paramFields = [{
-          name: metaType.asMap.key.toString(),
-          type: metaType.asMap.key.toString(),
-          optional: false
-        }];
-      } else if (metaType.isDoubleMap) {
-        paramFields = [{
-          name: metaType.asDoubleMap.key1.toString(),
-          type: metaType.asDoubleMap.key1.toString(),
-          optional: false
-        }, {
-          name: metaType.asDoubleMap.key2.toString(),
-          type: metaType.asDoubleMap.key2.toString(),
-          optional: false
-        }];
-      }
+      paramFields = getCrowdloanFundsQuery(paramFields);
+      console.log(paramFields);
     } else if (interxType === 'EXTRINSIC') {
       const metaArgs = api.tx[palletRpc][callable].meta.args;
 
@@ -110,7 +118,7 @@ function Main (props) {
     } else if (interxType === 'CONSTANT') {
       paramFields = [];
     }
-
+    console.log(paramFields);
     setParamFields(paramFields);
   };
 
@@ -150,7 +158,7 @@ function Main (props) {
 
   return (
     <Grid.Column width={8}>
-      <h1>Pallet Interactor</h1>
+      <h1>Crowdloan Fund</h1>
       <Form>
         <Form.Group style={{ overflowX: 'auto' }} inline>
           <label>Interaction Type</label>
@@ -217,15 +225,15 @@ function Main (props) {
               type='text'
               label={paramField.name}
               state={{ ind, paramField }}
-              value={ inputParams[ind] ? inputParams[ind].value : '' }
+              value={inputParams[ind] ? inputParams[ind].value : ''}
               onChange={onPalletCallableParamChange}
             />
-            { paramField.optional
+            {paramField.optional
               ? <Label
                 basic
                 pointing
                 color='teal'
-                content = { getOptionalMsg(interxType) }
+                content={getOptionalMsg(interxType)}
               />
               : null
             }
@@ -240,32 +248,61 @@ function Main (props) {
         </Form.Field>
         <div style={{ overflowWrap: 'break-word' }}>{status}</div>
       </Form>
+      <h3>{page_label}</h3>
+      <Form>
+        {fields ? fields.map((field, i) => <Element key={i} />)}
+        <div></div>
+      </Form>
     </Grid.Column>
   );
+
+  function getCrowdloanFundsQuery(paramFields) {
+    const metaType = api.query[palletRpc][callable].meta.type;
+    if (metaType.isPlain) {
+      // Do nothing as `paramFields` is already set to []
+    } else if (metaType.isMap) {
+      paramFields = [{
+        name: metaType.asMap.key.toString(),
+        type: metaType.asMap.key.toString(),
+        optional: false
+      }];
+    } else if (metaType.isDoubleMap) {
+      paramFields = [{
+        name: metaType.asDoubleMap.key1.toString(),
+        type: metaType.asDoubleMap.key1.toString(),
+        optional: false
+      }, {
+        name: metaType.asDoubleMap.key2.toString(),
+        type: metaType.asDoubleMap.key2.toString(),
+        optional: false
+      }];
+    }
+    return paramFields;
+  }
 }
 
-function InteractorSubmit (props) {
+function InteractorSubmit(props) {
   const { attrs: { interxType } } = props;
   if (interxType === 'QUERY') {
     return <TxButton
-      label = 'Query'
-      type = 'QUERY'
-      color = 'blue'
+      label='Query'
+      type='QUERY'
+      color='blue'
       {...props}
     />;
   } else if (interxType === 'EXTRINSIC') {
     return <TxGroupButton {...props} />;
   } else if (interxType === 'RPC' || interxType === 'CONSTANT') {
     return <TxButton
-      label = 'Submit'
-      type = {interxType}
-      color = 'blue'
+      label='Submit'
+      type={interxType}
+      color='blue'
       {...props}
     />;
   }
 }
 
-export default function Interactor (props) {
+export default function Interactor(props) {
   const { api } = useSubstrate();
   return api.tx ? <Main {...props} /> : null;
 }
