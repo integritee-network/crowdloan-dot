@@ -6,7 +6,7 @@ import { web3FromSource } from '@polkadot/extension-dapp';
 import { useSubstrate } from '../';
 import utils from '../utils';
 
-function TxButton ({
+function TxButton({
   accountPair = null,
   label,
   setStatus,
@@ -242,7 +242,7 @@ TxButton.propTypes = {
   }).isRequired
 };
 
-function TxGroupButton (props) {
+function TxGroupButton(props) {
   return (
     <Button.Group>
       <TxButton
