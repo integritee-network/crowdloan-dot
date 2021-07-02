@@ -118,12 +118,7 @@ function TxButton({
   };
 
   const queryResHandler = result => {
-    console.log(result.toString())
-    let resultAsString = ''
-    Object.keys(JSON.parse(result)).forEach(function (k) {
-      resultAsString += k + ' - ' + JSON.parse(result)[k];
-    });
-    result.isNone ? setStatus('None') : setStatus(resultAsString);
+    result.isNone ? setStatus('None') : setStatus(result.toString());
   }
   const query = async () => {
     const transformed = transformParams(paramFields, inputParams);
