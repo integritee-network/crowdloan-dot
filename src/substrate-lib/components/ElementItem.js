@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ElementItem = () => {
+const ElementItem = (props) => {
     return (
         <div>
-
+            {props}
         </div>
     )
 }

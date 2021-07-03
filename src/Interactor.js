@@ -1,4 +1,5 @@
 import { isNull } from '@polkadot/util';
+import { elementType } from 'prop-types';
 import React, { useEffect, useState } from 'react';
 // import { Grid, Form, Dropdown, Input, Label } from 'semantic-ui-react';
 
@@ -26,16 +27,16 @@ function Main(props) {
   const callable = 'funds';
 
   // const [Data, setData] = useState({
-  //   depositor: '',
-  //   verifier: '',
-  //   deposit: 0,
-  //   raised: '',
-  //   end: 0,
-  //   cap: '',
-  //   lastContribution: { ending: 0 },
-  //   firstPeriod: 0,
-  //   lastPeriod: 0,
-  //   trieIndex: 0,
+  // depositor: '',
+  // verifier: '',
+  // deposit: 0,
+  // raised: '',
+  // end: 0,
+  // cap: '',
+  // lastContribution: { ending: 0 },
+  // firstPeriod: 0,
+  // lastPeriod: 0,
+  // trieIndex: 0,
   // })
 
   const [Data, setData] = useState(null)
@@ -82,13 +83,19 @@ function Main(props) {
     }
   };
 
+  const FunctionalComponent = (props) => {
+    return <h1>Hello, {props.name}</h1>;
+  };
+
   return (
     <div className="AppContainer" >
       <h1>Crowdloan Fund</h1>
-      <p>"depositor": {Data.depositor}</p>
+      {/* <ElementItem depositor= Data.depositor /> */}
+
+      {/* <p>"depositor": {Data.depositor}</p> */}
       <p>"verifier": {responseForm.verifier}</p>
       <p>"deposit":: {responseForm.deposit}</p>
-      <p>"raised": {Data.raised}</p>
+      {/* <p>"raised": {Data.raised}</p> */}
       <p>"end": {responseForm.end}</p>
       <p>"cap": {responseForm.cap}</p>
       <p>"lastContribution.ending": {responseForm.lastContribution.ending}</p>
