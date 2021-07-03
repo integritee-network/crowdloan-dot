@@ -83,15 +83,10 @@ function Main(props) {
     }
   };
 
-  const FunctionalComponent = (props) => {
-    return <h1>Hello, {props.name}</h1>;
-  };
-
   return (
     <div className="AppContainer" >
       <h1>Crowdloan Fund</h1>
       {/* <ElementItem depositor= Data.depositor /> */}
-
       {/* <p>"depositor": {Data.depositor}</p> */}
       <p>"verifier": {responseForm.verifier}</p>
       <p>"deposit":: {responseForm.deposit}</p>
