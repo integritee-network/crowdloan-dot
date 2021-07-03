@@ -1,15 +1,13 @@
+import { isNull } from '@polkadot/util';
 import React, { useEffect, useState } from 'react';
-import { Grid, Form, Dropdown, Input, Label } from 'semantic-ui-react';
+// import { Grid, Form, Dropdown, Input, Label } from 'semantic-ui-react';
 
 import responseForm from './response.json';
-import ElementItem from './substrate-lib/components/ElementItem';
-import userform from './formElement.json'
+// import ElementItem from './substrate-lib/components/ElementItem';
+// import userform from './formElement.json'
 
 import { useSubstrate } from './substrate-lib';
-import { TxButton, TxGroupButton } from './substrate-lib/components';
-
-const argIsOptional = (arg) =>
-  arg.type.toString().startsWith('Option<');
+// import { TxButton, TxGroupButton } from './substrate-lib/components';
 
 function Main(props) {
   const { api, jsonrpc } = useSubstrate();
@@ -22,68 +20,82 @@ function Main(props) {
   // }, []);
   // const { depositor, page_label } = elements ?? {}
 
-  const [interxType, setInterxType] = useState('QUERY');
-  const [palletRPCs, setPalletRPCs] = useState([]);
-  const [callables, setCallables] = useState([]);
-  const [paramFields, setParamFields] = useState([]);
-
+  const [unsub, setUnsub] = useState(null);
   const transformed = ['2004'];
   const palletRpc = 'crowdloan';
-  const callable = 'fund';
+  const callable = 'funds';
 
-  const [Data, setData] = useState({
-    depositor: '',
-    verifier: '',
-    deposit: 0,
-    raised: '',
-    end: 0,
-    cap: '',
-    lastContribution: { "ending": 0 },
-    firstPeriod: 0,
-    lastPeriod: 0,
-    trieIndex: 0,
+  // const [Data, setData] = useState({
+  //   depositor: '',
+  //   verifier: '',
+  //   deposit: 0,
+  //   raised: '',
+  //   end: 0,
+  //   cap: '',
+  //   lastContribution: { ending: 0 },
+  //   firstPeriod: 0,
+  //   lastPeriod: 0,
+  //   trieIndex: 0,
+  // })
+
+  const [Data, setData] = useState(null)
+
+  useEffect(() => {
+    if (isNull(Data)) {
+      query();
+    }
   })
-
-  useEffect(result => {
-    query()
-  })
-
-  const queryResHandler = result => {
-    // console.log(result.toString())
-    // let resultAsString = ''
-    // Object.keys(JSON.parse(result)).forEach(function (k) {
-    //   resultAsString += k + ' - ' + JSON.parse(result)[k];
-    // });
-    result.isNone ? setStatus('None') : setStatus(result);
-  }
 
   const query = async () => {
     const unsub = await api.query[palletRpc][callable](...transformed, queryResHandler);
     setUnsub(() => unsub);
   };
 
+  const queryResHandler = result => {
+    console.log('Response from main API: ', result);
+    console.log('result.data: ', result.data);
+    let resultJson = JSON.parse(result);
+    if (isNull(Data)) {
+      setData(resultJson);
+    }
+    // setData({ depositor: resultdata.depositor, raised: resultJson.raised })
+    console.log(Data);
+    console.log(result.toString());
+    result.isNone ? setStatus('None') : setStatus(result);
+  }
+
+  // componentDidMount()
+  // {
+  //   const query = async () => {
+  //     const unsub = await api.query[palletRpc][callable](...transformed, queryResHandler);
+  //     // setUnsub(() => unsub);}
+
+  //   };
+  // }
+
   const sampleJSON = {
-    "object": {
-      "name": "Pluralsight",
-      "number": 1,
-      "address": "India",
-      "website": "https://www.pluralsight.com/"
+    object: {
+      name: "Pluralsight",
+      number: 1,
+      address: "India",
+      website: "https://www.pluralsight.com/"
     }
   };
 
   return (
     <div className="AppContainer" >
       <h1>Crowdloan Fund</h1>
-      <p>"depositor": {responseForm.depositor}</p>
+      <p>"depositor": {Data.depositor}</p>
       <p>"verifier": {responseForm.verifier}</p>
       <p>"deposit":: {responseForm.deposit}</p>
-      <p>"raised": {responseForm.raised}</p>
+      <p>"raised": {Data.raised}</p>
       <p>"end": {responseForm.end}</p>
       <p>"cap": {responseForm.cap}</p>
       <p>"lastContribution.ending": {responseForm.lastContribution.ending}</p>
       <p>"firstPeriod": {responseForm.firstPeriod}</p>
       <p>"lastPeriod": {responseForm.lastPeriod}</p>
       <p>"trieIndex": {responseForm.trieIndex}</p>
+
       {/* <h2>Array of Objects:</h2>
       <ul>
         {responseForm.map((item, i) => {
