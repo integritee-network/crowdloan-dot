@@ -22,13 +22,9 @@ class Crowdloan extends React.Component {
             'items': []
         }
     }
+
     async componentDidMount() {
         this.getItems();
-        // const query = async () => {
-        //     const unsub = await api.query[palletRpc][callable](...transformed, queryResHandler);
-        //     setUnsub(() => unsub);
-        // };
-
     }
 
     kMFormatter(num) {
@@ -50,26 +46,16 @@ class Crowdloan extends React.Component {
         const queryResHandler = result => {
             console.log('Response from main API: ', result.toString());
             let data = JSON.parse(result);
-            // setData({ depositor: resultdata.depositor, raised: resultJson.raised })
-            // console.log(result.toString());
-            // const data = result.json()
             this.setState({
                 depositor: data.depositor, verifier: data.verifier, deposit: data.deposit, raised: data.raised, end: data.end, cap: data.cap,
                 lastContribution: data.lastContribution, firstPeriod: data.firstPeriod, lastPeriod: data.lastPeriod, triePeriod: data.triePeriod, loading: false
             })
-            // re;sult.isNone ? setStatus('None') : setStatus(result);
         }
         let transformed = ['2004'];
         let palletRpc = 'crowdloan';
         let callable = 'funds';
         const response = await api.query[palletRpc][callable](...transformed, queryResHandler);
         let url = 'https://api.randomuser.me/';
-        // const response = await fetch(url);
-        // .then(results => results.json())
-        // .then(results => this.setState({ 'items': results }));
-        // const data = await response.json()
-        // this.setState({ person: data.results[0], loading: false })
-        // console.log(data.results[0])
     }
     render() {
         return (
