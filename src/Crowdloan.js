@@ -4,7 +4,6 @@ class Crowdloan extends React.Component {
         super();
         this.state = {
             loading: true,
-
             depositor: null,
             verifier: null,
             deposit: null,
@@ -15,9 +14,6 @@ class Crowdloan extends React.Component {
             firstPeriod: null,
             lastPeriod: null,
             trieIndex: null,
-
-            person: null,
-            'items': []
         }
     }
 
@@ -28,23 +24,11 @@ class Crowdloan extends React.Component {
     kMFormatter(num) {
         let decimals = api.registry.chainDecimals;
         let numAfterDecimalReduction = Math.abs(num) / (Math.pow(10, decimals));
-        // let x = formatBalance(
-        //     num,
-        //     { withSi: false, forceUnit: '-' },
-        //     chainDecimals
-        // );
-        // function toUnit(balance, decimals) {
-        //     base = new BN(10).pow(new BN(decimals));
-        //     dm = new BN(balance).divmod(base);
-        //     return parseFloat(dm.div.toString() + "." + dm.mod.toString())
-        // }
-        // console.log("formatBalance: " + x);
         if (Math.abs(numAfterDecimalReduction) > 999 && Math.abs(numAfterDecimalReduction) < 999999) {
             return Math.sign(numAfterDecimalReduction) * ((Math.abs(numAfterDecimalReduction) / 1000).toFixed(1)) + ' k';
         }
         else if (Math.abs(numAfterDecimalReduction) > 999999) {
             return Math.sign(numAfterDecimalReduction) * ((Math.abs(numAfterDecimalReduction) / 1000000).toFixed(1)) + ' M';
-            // console.log(result)
         }
         else {
             return Math.sign(num) * Math.abs(num)
@@ -53,7 +37,6 @@ class Crowdloan extends React.Component {
 
     async getItems() {
         const queryResHandler = result => {
-            // console.log('Response from main API: ', result.toString());
             let data = JSON.parse(result);
             this.setState({
                 depositor: data.depositor, verifier: data.verifier, deposit: data.deposit, raised: data.raised, end: data.end, cap: data.cap,
@@ -63,8 +46,7 @@ class Crowdloan extends React.Component {
         let transformed = ['2004'];
         let palletRpc = 'crowdloan';
         let callable = 'funds';
-        const response = await api.query[palletRpc][callable](...transformed, queryResHandler);
-        // let url = 'https://api.randomuser.me/';
+        await api.query[palletRpc][callable](...transformed, queryResHandler);
     }
     render() {
         return (
@@ -87,13 +69,6 @@ class Crowdloan extends React.Component {
                     </div>
                 )}
             </div >
-            //     < ul >
-            // {
-            //     this.state.items.map(function (item, index) {
-            //         return <h1>{person}</h1>
-            //     })
-            // }
-            //     </ul>
         );
     }
 }
