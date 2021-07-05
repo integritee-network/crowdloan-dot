@@ -201,6 +201,7 @@ function TxButton ({
       const param = inputParams[ind];
       if (paramField.optional) { return true; }
       if (param == null) { return false; }
+
       const value = typeof param === 'object' ? param.value : param;
       return value !== null && value !== '';
     });
