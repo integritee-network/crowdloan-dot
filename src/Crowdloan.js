@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDom from 'react-dom'
-
 class Crowdloan extends React.Component {
     constructor() {
         super();
@@ -28,14 +26,25 @@ class Crowdloan extends React.Component {
     }
 
     kMFormatter(num) {
-        if (Math.abs(num) > 999 && Math.abs(num) < 999999) {
-            let result = Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + ' k';
-            return result;
+        let decimals = api.registry.chainDecimals;
+        let numAfterDecimalReduction = Math.abs(num) / (Math.pow(10, decimals));
+        // let x = formatBalance(
+        //     num,
+        //     { withSi: false, forceUnit: '-' },
+        //     chainDecimals
+        // );
+        // function toUnit(balance, decimals) {
+        //     base = new BN(10).pow(new BN(decimals));
+        //     dm = new BN(balance).divmod(base);
+        //     return parseFloat(dm.div.toString() + "." + dm.mod.toString())
+        // }
+        // console.log("formatBalance: " + x);
+        if (Math.abs(numAfterDecimalReduction) > 999 && Math.abs(numAfterDecimalReduction) < 999999) {
+            return Math.sign(numAfterDecimalReduction) * ((Math.abs(numAfterDecimalReduction) / 1000).toFixed(1)) + ' k';
         }
-        else if (Math.abs(num) > 999999) {
-            let result = Math.sign(num) * ((Math.abs(num) / 1000000).toFixed(1)) + ' M';
-            console.log(result)
-            return result;
+        else if (Math.abs(numAfterDecimalReduction) > 999999) {
+            return Math.sign(numAfterDecimalReduction) * ((Math.abs(numAfterDecimalReduction) / 1000000).toFixed(1)) + ' M';
+            // console.log(result)
         }
         else {
             return Math.sign(num) * Math.abs(num)
@@ -44,7 +53,7 @@ class Crowdloan extends React.Component {
 
     async getItems() {
         const queryResHandler = result => {
-            console.log('Response from main API: ', result.toString());
+            // console.log('Response from main API: ', result.toString());
             let data = JSON.parse(result);
             this.setState({
                 depositor: data.depositor, verifier: data.verifier, deposit: data.deposit, raised: data.raised, end: data.end, cap: data.cap,
@@ -55,7 +64,7 @@ class Crowdloan extends React.Component {
         let palletRpc = 'crowdloan';
         let callable = 'funds';
         const response = await api.query[palletRpc][callable](...transformed, queryResHandler);
-        let url = 'https://api.randomuser.me/';
+        // let url = 'https://api.randomuser.me/';
     }
     render() {
         return (
