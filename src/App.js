@@ -17,7 +17,7 @@ import Transfer from './Transfer';
 import Upgrade from './Upgrade';
 import Crowdloan from './Crowdloan';
 
-function Main() {
+function Main () {
   const [accountAddress, setAccountAddress] = useState(null);
   const { apiState, keyring, keyringState, apiError } = useSubstrate();
   const accountPair =
@@ -84,7 +84,7 @@ function Main() {
   );
 }
 
-export default function App() {
+export default function App () {
   return (
     <SubstrateContextProvider>
       <Main />
