@@ -66,16 +66,12 @@ class Crowdloan extends React.Component {
                     )
                   : (
                     <div>
-                        <div>depositor: {this.state.depositor}</div>
-                        <div>verifier: {this.state.verifier}</div>
-                        <div>deposit: {this.state.deposit}</div>
                         <div>raised: {this.kMFormatter(parseInt(this.state.raised, 16))}KSM</div>
                         <div>end: {this.state.end}</div>
                         <div>cap: {this.kMFormatter(parseInt(this.state.cap, 16))}KSM</div>
                         <div>last_contribution.ending: {this.state.lastContribution.ending}</div>
                         <div>first_period: {this.state.firstPeriod}</div>
                         <div>last_period: {this.state.lastPeriod}</div>
-                        <div>trie_index: {this.state.trieIndex}</div>
                     </div>
                     )}
             </div >
