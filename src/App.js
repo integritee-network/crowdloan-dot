@@ -15,8 +15,9 @@ import NodeInfo from './NodeInfo';
 import TemplateModule from './TemplateModule';
 import Transfer from './Transfer';
 import Upgrade from './Upgrade';
+import Crowdloan from './Crowdloan';
 
-function Main () {
+function Main() {
   const [accountAddress, setAccountAddress] = useState(null);
   const { apiState, keyring, keyringState, apiError } = useSubstrate();
   const accountPair =
@@ -69,7 +70,8 @@ function Main () {
             <Upgrade accountPair={accountPair} />
           </Grid.Row>
           <Grid.Row>
-            <Interactor accountPair={accountPair} />
+            <Crowdloan> </Crowdloan>
+            {/* <Interactor accountPair={accountPair} /> */}
             <Events />
           </Grid.Row>
           <Grid.Row>
@@ -82,7 +84,7 @@ function Main () {
   );
 }
 
-export default function App () {
+export default function App() {
   return (
     <SubstrateContextProvider>
       <Main />

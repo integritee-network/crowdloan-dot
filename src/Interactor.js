@@ -7,7 +7,7 @@ import { TxButton, TxGroupButton } from './substrate-lib/components';
 const argIsOptional = (arg) =>
   arg.type.toString().startsWith('Option<');
 
-function Main (props) {
+function Main(props) {
   const { api, jsonrpc } = useSubstrate();
   const { accountPair } = props;
   const [status, setStatus] = useState(null);
@@ -217,15 +217,15 @@ function Main (props) {
               type='text'
               label={paramField.name}
               state={{ ind, paramField }}
-              value={ inputParams[ind] ? inputParams[ind].value : '' }
+              value={inputParams[ind] ? inputParams[ind].value : ''}
               onChange={onPalletCallableParamChange}
             />
-            { paramField.optional
+            {paramField.optional
               ? <Label
                 basic
                 pointing
                 color='teal'
-                content = { getOptionalMsg(interxType) }
+                content={getOptionalMsg(interxType)}
               />
               : null
             }
@@ -244,28 +244,28 @@ function Main (props) {
   );
 }
 
-function InteractorSubmit (props) {
+function InteractorSubmit(props) {
   const { attrs: { interxType } } = props;
   if (interxType === 'QUERY') {
     return <TxButton
-      label = 'Query'
-      type = 'QUERY'
-      color = 'blue'
+      label='Query'
+      type='QUERY'
+      color='blue'
       {...props}
     />;
   } else if (interxType === 'EXTRINSIC') {
     return <TxGroupButton {...props} />;
   } else if (interxType === 'RPC' || interxType === 'CONSTANT') {
     return <TxButton
-      label = 'Submit'
-      type = {interxType}
-      color = 'blue'
+      label='Submit'
+      type={interxType}
+      color='blue'
       {...props}
     />;
   }
 }
 
-export default function Interactor (props) {
+export default function Interactor(props) {
   const { api } = useSubstrate();
   return api.tx ? <Main {...props} /> : null;
 }
