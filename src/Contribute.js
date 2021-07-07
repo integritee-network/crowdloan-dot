@@ -30,7 +30,7 @@ export default function Main (props) {
         <Form.Field>
           <Input
             fluid
-            label='Amount'
+            label='Amount in KSM'
             type='number'
             state='amount'
             onChange={onChange}
@@ -45,7 +45,7 @@ export default function Main (props) {
             attrs={{
               palletRpc: 'crowdloan',
               callable: 'contribute',
-              inputParams: [paraId, amount, '0x00'],
+              inputParams: [paraId, amount * Math.pow(10, 12), '0x00'],
               paramFields: [true, true, false]
             }}
           />
