@@ -9,6 +9,7 @@ import BlockNumber from './BlockNumber';
 import NodeInfo from './NodeInfo';
 import Contribute from './Contribute';
 import Crowdloan from './Crowdloan';
+import CrowdloanFunction from './CrowdloanFunction';
 
 function Main () {
   const [accountAddress, setAccountAddress] = useState(null);
@@ -54,7 +55,8 @@ function Main () {
             <BlockNumber />
           </Grid.Row>
           <Grid.Row>
-            <Crowdloan />
+            {/* <Crowdloan /> */}
+            <CrowdloanFunction />
           </Grid.Row>
           <Grid.Row>
             <Contribute accountPair={accountPair} />
