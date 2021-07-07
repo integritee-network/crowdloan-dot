@@ -10,11 +10,12 @@ export default function Main (props) {
   const onChange = (_, data) =>
     setFormState(prev => ({ ...prev, [data.state]: data.value }));
 
-  const { addressTo, amount } = formState;
+  const { amount } = formState;
+  const paraId = '2015';
 
   return (
     <Grid.Column width={8}>
-      <h1>Transfer</h1>
+      <h1>Contribute</h1>
       <Form>
         <Form.Field>
           <Label basic color='teal'>
@@ -25,17 +26,6 @@ export default function Main (props) {
             <Icon name='hand point right' />
             Transfer more than the existential amount for account with 0 balance
           </Label>
-        </Form.Field>
-
-        <Form.Field>
-          <Input
-            fluid
-            label='To'
-            type='text'
-            placeholder='address'
-            state='addressTo'
-            onChange={onChange}
-          />
         </Form.Field>
         <Form.Field>
           <Input
@@ -49,14 +39,14 @@ export default function Main (props) {
         <Form.Field style={{ textAlign: 'center' }}>
           <TxButton
             accountPair={accountPair}
-            label='Submit'
+            label='Contribute'
             type='SIGNED-TX'
             setStatus={setStatus}
             attrs={{
-              palletRpc: 'balances',
-              callable: 'transfer',
-              inputParams: [addressTo, amount],
-              paramFields: [true, true]
+              palletRpc: 'crowdloan',
+              callable: 'contribute',
+              inputParams: [paraId, amount, '0x00'],
+              paramFields: [true, true, false]
             }}
           />
         </Form.Field>

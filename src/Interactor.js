@@ -217,15 +217,15 @@ function Main (props) {
               type='text'
               label={paramField.name}
               state={{ ind, paramField }}
-              value={ inputParams[ind] ? inputParams[ind].value : '' }
+              value={inputParams[ind] ? inputParams[ind].value : ''}
               onChange={onPalletCallableParamChange}
             />
-            { paramField.optional
+            {paramField.optional
               ? <Label
                 basic
                 pointing
                 color='teal'
-                content = { getOptionalMsg(interxType) }
+                content={getOptionalMsg(interxType)}
               />
               : null
             }
@@ -248,18 +248,18 @@ function InteractorSubmit (props) {
   const { attrs: { interxType } } = props;
   if (interxType === 'QUERY') {
     return <TxButton
-      label = 'Query'
-      type = 'QUERY'
-      color = 'blue'
+      label='Query'
+      type='QUERY'
+      color='blue'
       {...props}
     />;
   } else if (interxType === 'EXTRINSIC') {
     return <TxGroupButton {...props} />;
   } else if (interxType === 'RPC' || interxType === 'CONSTANT') {
     return <TxButton
-      label = 'Submit'
-      type = {interxType}
-      color = 'blue'
+      label='Submit'
+      type={interxType}
+      color='blue'
       {...props}
     />;
   }
