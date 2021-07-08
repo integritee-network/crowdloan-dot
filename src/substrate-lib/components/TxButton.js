@@ -21,7 +21,7 @@ function TxButton ({
   const [unsub, setUnsub] = useState(null);
   const [sudoKey, setSudoKey] = useState(null);
 
-  const { palletRpc, callable, inputParams, paramFields } = attrs;
+  const { palletRpc, callable, inputParams, paramFields, maxContribution } = attrs;
 
   const isQuery = () => type === 'QUERY';
   const isSudo = () => type === 'SUDO-TX';
@@ -200,8 +200,10 @@ function TxButton ({
     return paramFields.every((paramField, ind) => {
       const param = inputParams[ind];
       if (paramField.optional) { return true; }
-      if (param == null) { return false; }
-
+      if (param == null) { return true; }
+      if (typeof param === 'bigint') {
+        if (param < Math.pow(10, 11) || param > maxContribution) { return false; }
+      }
       const value = typeof param === 'object' ? param.value : param;
       return value !== null && value !== '';
     });
