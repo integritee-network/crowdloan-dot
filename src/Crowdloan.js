@@ -4,47 +4,44 @@ import { useSubstrate } from './substrate-lib';
 // var flatten = require('flat')
 
 export default function Main (props) {
-    const { api } = useSubstrate();
-    const [loading, setLoading] = useState(true);
-    let [crowdLoan, setCrowdLoan] = useState({
-        // raised: null,
-        // end: null,
-        // cap: null,
-        // lastContribution: { preEnding: null },
-        // firstPeriod: null,
-        // lastPeriod: null,
-    });
+  const { api } = useSubstrate();
+  const [loading, setLoading] = useState(true);
+  let [crowdLoan, setCrowdLoan] = useState({
+    // raised: null,
+    // end: null,
+    // cap: null,
+    // lastContribution: { preEnding: null },
+    // firstPeriod: null,
+    // lastPeriod: null,
+  });
 
+  const queryResHandler = result => {
+    const toHumanData = result.toHuman();
+    setCrowdLoan(crowdLoan = (toHumanData));
+    // to flatten nested JSON
+    // setcrowdLoan(crowdLoan = flatten(data));
+    setLoading(false);
+  };
+  const transformed = ['2004'];
+  const palletRpc = 'crowdloan';
+  const callable = 'funds';
 
-    const queryResHandler = result => {
-        const toHumanData = result.toHuman();
-        setCrowdLoan(crowdLoan = (toHumanData));
-        // to flatten nested JSON
-        // setcrowdLoan(crowdLoan = flatten(data));
-        setLoading(false);
-    };
-    const transformed = ['2004'];
-    const palletRpc = 'crowdloan';
-    const callable = 'funds';
+  const getCrowdLoanData = async () => {
+    await api.query[palletRpc][callable](...transformed, queryResHandler);
+  };
 
-    const getCrowdLoanData = async () => {
-        await api.query[palletRpc][callable](...transformed, queryResHandler);
-    };
+  if (Object.keys(crowdLoan).length === 0) {
+    getCrowdLoanData();
+  }
 
-
-
-    if (Object.keys(crowdLoan).length == 0) {
-        getCrowdLoanData();
-    }
-
-    return (
+  return (
         <div>
             <h1>Crowdloan Funds</h1>
             {loading
-                ? (
+              ? (
                     <div>loading...</div>
                 )
-                : (
+              : (
                     <div>
                         {/* dynamic rendering of key, value pair of json: needs to be flattened! */}
                         {/* {Object.keys(crowdLoan).map((key, i) => (
@@ -62,5 +59,5 @@ export default function Main (props) {
                     </div>
                 )}
         </div >
-    );
+  );
 }

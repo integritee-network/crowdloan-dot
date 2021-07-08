@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Grid, Label, Icon } from 'semantic-ui-react';
+import { Form, Input, Grid } from 'semantic-ui-react';
 import { TxButton } from './substrate-lib/components';
 
 export default function Main (props) {
@@ -18,16 +18,6 @@ export default function Main (props) {
       <h1>Contribute</h1>
       <Form>
         <Form.Field>
-          <Label basic color='teal'>
-            <Icon name='hand point right' />
-            1 Unit = 1000000000000&nbsp;
-          </Label>
-          <Label basic color='teal' style={{ marginLeft: 0, marginTop: '.5em' }}>
-            <Icon name='hand point right' />
-            Transfer more than the existential amount for account with 0 balance
-          </Label>
-        </Form.Field>
-        <Form.Field>
           <Input
             fluid
             label='Amount in KSM'
@@ -45,7 +35,7 @@ export default function Main (props) {
             attrs={{
               palletRpc: 'crowdloan',
               callable: 'contribute',
-              inputParams: [paraId, amount * Math.pow(10, 12), '0x00'],
+              inputParams: [paraId, amount * Math.pow(10, 12), null],
               paramFields: [true, true, false]
             }}
           />
