@@ -200,7 +200,7 @@ function TxButton ({
     return paramFields.every((paramField, ind) => {
       const param = inputParams[ind];
       if (paramField.optional) { return true; }
-      if (param == null) { return false; }
+      if (param == null) { return true; }
 
       const value = typeof param === 'object' ? param.value : param;
       return value !== null && value !== '';
