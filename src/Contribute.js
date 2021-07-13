@@ -27,7 +27,6 @@ export default function Main (props) {
   const queryResHandler = result => {
     const resultAsJSON = result.toJSON();
     if (resultAsJSON.end >= blockNumber && blockNumber > 0) {
-      // set disabled variable to true
       setDisableButton(true);
       setStatus('crowdloan has ended');
     }
