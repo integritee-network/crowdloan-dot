@@ -5,7 +5,6 @@ import { useSubstrate } from './substrate-lib';
 
 export default function Main (props) {
   const [status, setStatus] = useState(null);
-  const [unsub, setUnsub] = useState(null);
   const [formState, setFormState] = useState({ addressTo: null, amount: 0 });
   const { accountPair } = props;
   const [disableButton, setDisableButton] = useState(true);
@@ -25,6 +24,7 @@ export default function Main (props) {
   };
 
   const bestNumber = api.derive.chain.bestNumber;
+
   useEffect(() => {
     let unsubscribeAll = null;
     bestNumber(number => {
@@ -34,27 +34,29 @@ export default function Main (props) {
         unsubscribeAll = unsub;
       })
       .catch(console.error);
+
     return () => unsubscribeAll && unsubscribeAll();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bestNumber]);
 
   useEffect(() => {
-    if (crowdLoanData.end >= blockNumber && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length != 0) {
+    if (blockNumber >= crowdLoanData.end && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length !== 0) {
       setDisableButton(true);
       setStatus('crowdloan has ended');
     }
-  }, [blockNumber])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [blockNumber]);
 
   useEffect(() => {
     const queryResHandler = result => {
-      console.log(blockNumber);
       setCrowdLoanData(result.toJSON());
     };
     const crowdLoan = async () => {
-      const unsub = await api.query.crowdloan.funds(['2004'], queryResHandler);
-      setUnsub(() => unsub);
+      await api.query.crowdloan.funds(['2004'], queryResHandler);
     };
     crowdLoan();
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Grid.Column width={8}>
