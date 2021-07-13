@@ -35,29 +35,29 @@ export default function Main (props) {
   }
 
   return (
-        <div>
-            <h1>Crowdloan Funds</h1>
-            {loading
-              ? (
-                    <div>loading...</div>
-                )
-              : (
-                    <div>
-                        {/* dynamic rendering of key, value pair of json: needs to be flattened! */}
-                        {/* {Object.keys(crowdLoan).map((key, i) => (
+    <div>
+      <h1>Crowdloan Funds</h1>
+      {loading
+        ? (
+          <div>loading...</div>
+          )
+        : (
+          <div>
+            {/* dynamic rendering of key, value pair of json: needs to be flattened! */}
+            {/* {Object.keys(crowdLoan).map((key, i) => (
                             <p key={i}>
                                 <span>{key}: </span>
                                 <span>{crowdLoan[key]}</span>
                             </p>
                         ))} */}
-                        <div>raised: {(crowdLoan.raised)}</div>
-                        <div>end: {crowdLoan.end}</div>
-                        <div>cap: {(crowdLoan.cap)}</div>
-                        <div>last_contribution.preEnding: {crowdLoan.lastContribution.PreEnding}</div>
-                        <div>first_period: {crowdLoan.firstPeriod}</div>
-                        <div>last_period: {crowdLoan.lastPeriod}</div>
-                    </div>
-                )}
-        </div >
+            <div>raised: {(crowdLoan.raised)}</div>
+            <div>end: {crowdLoan.end}</div>
+            <div>cap: {(crowdLoan.cap)}</div>
+            <div>last_contribution.Ending: {crowdLoan.lastContribution.Ending}</div>
+            <div>first_period: {crowdLoan.firstPeriod}</div>
+            <div>last_period: {crowdLoan.lastPeriod}</div>
+          </div>
+          )}
+    </div >
   );
 }
