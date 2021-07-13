@@ -21,7 +21,7 @@ function TxButton ({
   const [unsub, setUnsub] = useState(null);
   const [sudoKey, setSudoKey] = useState(null);
 
-  const { palletRpc, callable, inputParams, paramFields } = attrs;
+  const { palletRpc, callable, inputParams, paramFields, disableButton } = attrs;
 
   const isQuery = () => type === 'QUERY';
   const isSudo = () => type === 'SUDO-TX';
@@ -219,7 +219,7 @@ function TxButton ({
       style={style}
       type='submit'
       onClick={transaction}
-      disabled={disabled || !palletRpc || !callable || !allParamsFilled() ||
+      disabled={disabled || !palletRpc || !callable || !allParamsFilled() || accountPair === '' || disableButton ||
         ((isSudo() || isUncheckedSudo()) && !isSudoer(accountPair))}
     >
       {label}
