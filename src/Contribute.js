@@ -33,12 +33,12 @@ export default function Main (props) {
   if (blockNumber === 0) {
     bestNumber(number => {
       setBlockNumber(number.toNumber());
-    })
+    });
   }
 
   const crowdLoan = async () => {
     await api.query['crowdloan']['funds'](['2004'], queryResHandler);
-  }
+  };
   crowdLoan();
 
   return (
