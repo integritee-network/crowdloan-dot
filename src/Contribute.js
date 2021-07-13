@@ -1,22 +1,62 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Input, Grid } from 'semantic-ui-react';
 import { TxButton } from './substrate-lib/components';
+import { useSubstrate } from './substrate-lib';
 
 export default function Main (props) {
   const [status, setStatus] = useState(null);
   const [formState, setFormState] = useState({ addressTo: null, amount: 0 });
   const { accountPair } = props;
   const [disableButton, setDisableButton] = useState(true);
-  const onChange = (_, data) => {
-    setFormState(prev => ({ ...prev, [data.state]: data.value }));
-    if (data.value === "" || data.value <= 0) {
-      setDisableButton(true);
-    }
-    else { setDisableButton(false); }
-  }
-
+  const { api } = useSubstrate();
+  const [blockNumber, setBlockNumber] = useState(0);
+  const [crowdLoanData, setCrowdLoanData] = useState({});
   const { amount } = formState;
   const paraId = '2015';
+
+  const onChange = (_, data) => {
+    setFormState(prev => ({ ...prev, [data.state]: data.value }));
+    if (data.value === '' || data.value <= 0) {
+      setDisableButton(true);
+    } else {
+      setDisableButton(false);
+    }
+  };
+
+  const bestNumber = api.derive.chain.bestNumber;
+
+  useEffect(() => {
+    let unsubscribeAll = null;
+    bestNumber(number => {
+      setBlockNumber(number.toNumber());
+    })
+      .then(unsub => {
+        unsubscribeAll = unsub;
+      })
+      .catch(console.error);
+
+    return () => unsubscribeAll && unsubscribeAll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bestNumber]);
+
+  useEffect(() => {
+    if (blockNumber >= crowdLoanData.end && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length !== 0) {
+      setDisableButton(true);
+      setStatus('crowdloan has ended');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [blockNumber]);
+
+  useEffect(() => {
+    const queryResHandler = result => {
+      setCrowdLoanData(result.toJSON());
+    };
+    const crowdLoan = async () => {
+      await api.query.crowdloan.funds(['2004'], queryResHandler);
+    };
+    crowdLoan();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Grid.Column width={8}>
