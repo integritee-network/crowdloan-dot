@@ -14,11 +14,13 @@ export default function Main (props) {
 
   const onChange = (_, data) => {
     setFormState(prev => ({ ...prev, [data.state]: data.value }));
-    if (data.value === "" || data.value <= 0) {
+    if (data.value === '' || data.value <= 0) {
       setDisableButton(true);
+    } else {
+      setDisableButton(false);
     }
-    else { setDisableButton(false); }
-  }
+  };
+
   const { amount } = formState;
   const paraId = '2015';
 
@@ -38,7 +40,7 @@ export default function Main (props) {
   }
 
   const crowdLoan = async () => {
-    await api.query['crowdloan']['funds'](['2004'], queryResHandler);
+    await api.query.crowdloan.funds(['2004'], queryResHandler);
   };
   crowdLoan();
 
