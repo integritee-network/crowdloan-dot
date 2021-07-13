@@ -9,8 +9,10 @@ import keyring from '@polkadot/ui-keyring';
 
 import config from '../config';
 
-const parsedQuery = queryString.parse(window.location.search);
-const connectedSocket = parsedQuery.rpc || config.PROVIDER_SOCKET;
+// disables the user to enter query parameter for socket endpoint
+// const parsedQuery = queryString.parse(window.location.search);
+// const connectedSocket = parsedQuery.rpc || config.PROVIDER_SOCKET;
+const connectedSocket = config.PROVIDER_SOCKET;
 console.log(`Connected socket: ${connectedSocket}`);
 
 ///
