@@ -1,7 +1,7 @@
 import React, { useReducer, useContext } from 'react';
 import PropTypes from 'prop-types';
 import jsonrpc from '@polkadot/types/interfaces/jsonrpc';
-import queryString from 'query-string';
+// import queryString from 'query-string';
 
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
