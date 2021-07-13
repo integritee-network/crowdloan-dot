@@ -10,6 +10,7 @@ export default function Main (props) {
   const [disableButton, setDisableButton] = useState(true);
   const { api } = useSubstrate();
   const [blockNumber, setBlockNumber] = useState(0);
+  const [disableButton, setDisableButton] = useState(true);
 
   const onChange = (_, data) => {
     setFormState(prev => ({ ...prev, [data.state]: data.value }));
@@ -25,7 +26,7 @@ export default function Main (props) {
     const resultAsJSON = result.toJSON();
     if (resultAsJSON.end >= blockNumber && blockNumber > 0) {
       // set disabled variable to true
-      // setDisabledButton(true);
+      setDisableButton(true);
       setStatus('crowdloan has ended');
     }
   };
