@@ -10,7 +10,6 @@ export default function Main (props) {
   const [disableButton, setDisableButton] = useState(true);
   const { api } = useSubstrate();
   const [blockNumber, setBlockNumber] = useState(0);
-  const [disableButton, setDisableButton] = useState(true);
 
   const onChange = (_, data) => {
     setFormState(prev => ({ ...prev, [data.state]: data.value }));
