@@ -11,6 +11,7 @@ export default function Main (props) {
   const [disableButton, setDisableButton] = useState(true);
   const { api } = useSubstrate();
   const [blockNumber, setBlockNumber] = useState(0);
+  const [crowdLoanData, setCrowdLoanData] = useState({});
   const { amount } = formState;
   const paraId = '2015';
 
@@ -37,27 +38,23 @@ export default function Main (props) {
   }, []);
 
   useEffect(() => {
+    if (crowdLoanData.end >= blockNumber && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length != 0) {
+      setDisableButton(true);
+      setStatus('crowdloan has ended');
+    }
+  }, [blockNumber])
+
+  useEffect(() => {
     const queryResHandler = result => {
       console.log(blockNumber);
-      const resultAsJSON = result.toJSON();
-      if (resultAsJSON.end >= blockNumber && blockNumber > 0) {
-        setDisableButton(true);
-        setStatus('crowdloan has ended');
-      }
+      setCrowdLoanData(result.toJSON());
     };
     const crowdLoan = async () => {
       const unsub = await api.query.crowdloan.funds(['2004'], queryResHandler);
       setUnsub(() => unsub);
     };
     crowdLoan();
-  }, [blockNumber])
-
-  // const bestNumber = api.derive.chain.bestNumber;
-  // if (blockNumber === 0) {
-  //   bestNumber(number => {
-  //     setBlockNumber(number.toNumber());
-  //   });
-  // }
+  }, [])
 
   return (
     <Grid.Column width={8}>
