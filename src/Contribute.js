@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Form, Input, Grid } from 'semantic-ui-react';
 import { TxButton } from './substrate-lib/components';
+import { useSubstrate } from './substrate-lib';
 
 export default function Main (props) {
   const [status, setStatus] = useState(null);
   const [formState, setFormState] = useState({ addressTo: null, amount: 0 });
   const { accountPair } = props;
   const [disableButton, setDisableButton] = useState(true);
+  const { api } = useSubstrate();
+  const [blockNumber, setBlockNumber] = useState(0);
+
   const onChange = (_, data) => {
     setFormState(prev => ({ ...prev, [data.state]: data.value }));
     if (data.value === "" || data.value <= 0) {
@@ -14,9 +18,28 @@ export default function Main (props) {
     }
     else { setDisableButton(false); }
   }
-
   const { amount } = formState;
   const paraId = '2015';
+
+  const queryResHandler = result => {
+    const resultAsJSON = result.toJSON();
+    if (resultAsJSON.end >= blockNumber && blockNumber > 0) {
+      // set disabled variable to true
+      // setDisabledButton(true);
+      setStatus('crowdloan has ended');
+    }
+  };
+  const bestNumber = api.derive.chain.bestNumber;
+  if (blockNumber === 0) {
+    bestNumber(number => {
+      setBlockNumber(number.toNumber());
+    })
+  }
+
+  const crowdLoan = async () => {
+    await api.query['crowdloan']['funds'](['2004'], queryResHandler);
+  }
+  crowdLoan();
 
   return (
     <Grid.Column width={8}>
