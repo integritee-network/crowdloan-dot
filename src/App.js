@@ -9,6 +9,7 @@ import BlockNumber from './BlockNumber';
 import NodeInfo from './NodeInfo';
 import Contribute from './Contribute';
 import Crowdloan from './Crowdloan';
+import Playground from './experimentAround';
 
 function Main () {
   const [accountAddress, setAccountAddress] = useState(null);
@@ -52,6 +53,9 @@ function Main () {
           <Grid.Row stretched>
             <NodeInfo />
             <BlockNumber />
+          </Grid.Row>
+          <Grid.Row>
+            <Playground />
           </Grid.Row>
           <Grid.Row>
             <Crowdloan />

@@ -23,6 +23,14 @@ export default function Main (props) {
     }
   };
 
+  // // get contributed value of person 
+  // console.log(accountPair);
+  // let contributed = contributes.some(item => {
+  //   if (item.who === accontPair) return item.contributed;
+  //   else { return false; }
+  // });
+  // if (contributed) return (<p>thank you for your contributions: {contributed}</p>)
+
   const bestNumber = api.derive.chain.bestNumber;
 
   useEffect(() => {
