@@ -23,7 +23,7 @@ export default function Main (props) {
     }
   };
 
-  // // get contributed value of person 
+  // // get contributed value of person
   // console.log(accountPair);
   // let contributed = contributes.some(item => {
   //   if (item.who === accontPair) return item.contributed;
