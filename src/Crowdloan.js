@@ -53,9 +53,9 @@ export default function Main (props) {
             <div>raised: {(crowdLoan.raised)}</div>
             <div>end: {crowdLoan.end}</div>
             <div>cap: {(crowdLoan.cap)}</div>
-            {crowdLoan.lastContribution.Ending ? (<div>last_contribution.Ending: {crowdLoan.lastContribution.Ending}</div>):null}
-            {crowdLoan.lastContribution.PreEnding ? (<div>last_contribution.PreEnding: {crowdLoan.lastContribution.PreEnding}</div>):null}
-            {crowdLoan.lastContribution.Never ? (<div>last_contribution.Never: {crowdLoan.lastContribution.Never}</div>):null}
+            {crowdLoan.lastContribution.Ending ? (<div>last_contribution.Ending: {crowdLoan.lastContribution.Ending}</div>) : null}
+            {crowdLoan.lastContribution.PreEnding ? (<div>last_contribution.PreEnding: {crowdLoan.lastContribution.PreEnding}</div>) : null}
+            {crowdLoan.lastContribution.Never ? (<div>last_contribution.Never: {crowdLoan.lastContribution.Never}</div>) : null}
             <div>first_period: {crowdLoan.firstPeriod}</div>
             <div>last_period: {crowdLoan.lastPeriod}</div>
           </div>

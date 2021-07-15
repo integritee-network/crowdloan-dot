@@ -18,9 +18,7 @@ export default function Main (props) {
     setFormState(prev => ({ ...prev, [data.state]: data.value }));
     if (data.value === '' || data.value <= 0) {
       setDisableButton(true);
-    } else {
-      setDisableButton(false);
-    }
+    } else { setDisableButton(false); }
   };
 
   const bestNumber = api.derive.chain.bestNumber;
