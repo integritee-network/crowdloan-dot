@@ -256,6 +256,7 @@ export default function Main (props) {
           </div>
          
         </div>
+        {/*
         <ul className="counter">
           <li>
             <span>KSM CONTRIBUTED</span>
@@ -270,6 +271,7 @@ export default function Main (props) {
               options={options}
             />
         </div>
+        */}
       </Container>
     </div>
   );
