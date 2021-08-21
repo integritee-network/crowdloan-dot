@@ -36,9 +36,9 @@ export default function How (props) {
                             The reason it is called a “crowdloan” is that backers retain full access
                             to their KSM once the lease period ends.
                             <div className="childnew">
-                                <a href="https://wiki.polkadot.network/docs/learn-auction"> 
+                                <a href="https://wiki.polkadot.network/docs/learn-crowdloans"> 
                                 
-                              Learn more about the auction
+                                Learn more about crowdloans
                                     
                                     </a>
                             </div>
@@ -47,9 +47,9 @@ export default function How (props) {
                             Integritee will begin bidding to secure its first Kusama parachain during the second batch of slot auctions.
                             We will be rewarding KSM holders who support Integritee bids with TEER.
                             <div className="childnew">
-                                <a href="https://wiki.polkadot.network/docs/learn-crowdloans"> 
+                                <a href="https://wiki.polkadot.network/docs/learn-auction"> 
                                 
-                                Learn more about crowdloans
+                              Learn more about the auction
                                     
                                     </a>
                             </div>
