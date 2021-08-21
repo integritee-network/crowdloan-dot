@@ -1,14 +1,25 @@
 import React, { useState, createRef } from 'react';
 import { Container, Dimmer, Loader, Grid, Sticky, Message } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-
 import { SubstrateContextProvider, useSubstrate } from './substrate-lib';
 
-import AccountSelector from './AccountSelector';
-import BlockNumber from './BlockNumber';
-import NodeInfo from './NodeInfo';
+import UpperMenu from './UpperMenu';
 import Contribute from './Contribute';
 import Crowdloan from './Crowdloan';
+import Why from './Why';
+import Faq from './Faq';
+import './css/App.css';
+import ThreeBox from './ThreeBox';
+import How from './How';
+import Participate from './Participate';
+import Value from './Value';
+import Rewards from './Rewards';
+import Roadmap from './Roadmap';
+import Clients from './clients';
+import Footer from './Footer';
+import Leaderboard from './Leaderboard';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Main () {
   const [accountAddress, setAccountAddress] = useState(null);
@@ -40,27 +51,38 @@ function Main () {
     return loader('Loading accounts (please review any extension\'s authorization)');
   }
 
+  // const anchor = document.querySelector('#some-id')
+  // anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
+
   const contextRef = createRef();
 
   return (
     <div ref={contextRef}>
-      <Sticky context={contextRef}>
-        <AccountSelector setAccountAddress={setAccountAddress} />
-      </Sticky>
-      <Container>
-        <Grid stackable columns='equal'>
-          <Grid.Row stretched>
-            <NodeInfo />
-            <BlockNumber />
-          </Grid.Row>
-          <Grid.Row>
-            <Crowdloan />
-          </Grid.Row>
-          <Grid.Row>
-            <Contribute accountPair={accountPair} />
-          </Grid.Row>
-        </Grid>
-      </Container>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+      />
+      <UpperMenu setAccountAddress={setAccountAddress} />
+      <Why />
+      <Leaderboard />
+        <ThreeBox />
+        <How />
+      <Participate />
+      {/* <Contribute id='#contribute' accountPair={accountPair} /> */}
+        <Rewards />
+        <Value />
+        <Roadmap />
+        <Faq />
+        <Clients />
+
+        <Footer />
     </div>
   );
 }

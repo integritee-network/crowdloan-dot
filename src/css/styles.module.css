@@ -1,0 +1,45 @@
+.standardBlue {
+    color: white;
+    background-color: rgb(0, 5, 99);
+    /* padding: 40px; */
+    font-family: Arial;
+    /* text-align: center; */
+}.standardWhite {
+    color: rgb(0, 5, 99);
+    background-color: white;
+    /* padding: 40px; */
+    font-family: Arial;
+    /* text-align: center; */
+}
+.leftHalf { 
+    /* position: absolute; */
+    left: 0px;
+    width: 50%;
+  }
+.container {
+    flex-flow: column wrap;
+  }
+
+ul {
+  list-style-type: none;
+}
+  
+/* .flex-container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+  }
+  
+  .row            { 
+    -webkit-flex-direction: row; 
+    flex-direction: row;
+  }
+   */

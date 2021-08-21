@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+// import { ReactComponent as Logo } from './css/IntegriteeLogoAndSlogan.svg';
+import logo from './css/IntegriteeLogoAndSlogan.svg';
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+
 
 import {
   Menu,
@@ -17,6 +21,7 @@ function Main (props) {
   const { keyring } = useSubstrate();
   const { setAccountAddress } = props;
   const [accountSelected, setAccountSelected] = useState('');
+  const [toggleMenuFun, setToggleMenuFun] = useState(false);
 
   // Get the list of accounts we possess the private key for
   const keyringOptions = keyring.getPairs().map(account => ({
@@ -33,6 +38,7 @@ function Main (props) {
   useEffect(() => {
     setAccountAddress(initialAddress);
     setAccountSelected(initialAddress);
+    scroll();
   }, [setAccountAddress, initialAddress]);
 
   const onChange = address => {
@@ -41,22 +47,26 @@ function Main (props) {
     setAccountSelected(address);
   };
 
+  const scroll = () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+          });
+      });
+    });
+  };
+
   return (
     <Menu
-      attached='top'
       tabular
-      style={{
-        backgroundColor: '#fff',
-        borderColor: '#fff',
-        paddingTop: '1em',
-        paddingBottom: '1em'
-      }}
+          className="main-menu"
+      id="main-nav"
     >
       <Container>
-        <Menu.Menu>
-          <Image src={`${process.env.PUBLIC_URL}/assets/substrate-logo.png`} size='mini' />
-        </Menu.Menu>
-        <Menu.Menu position='right' style={{ alignItems: 'center' }}>
+              <Menu.Menu position='right' style={{ alignItems: 'center' }}>
           { !accountSelected
             ? <span>
               Add your account with the{' '}
@@ -90,8 +100,11 @@ function Main (props) {
             value={accountSelected}
           />
           <BalanceAnnotation accountSelected={accountSelected} />
-        </Menu.Menu>
+              </Menu.Menu>
       </Container>
+      <div className='toggle-btn' onClick={() => setToggleMenuFun(!toggleMenuFun)}>
+        {toggleMenuFun ? <AiOutlineClose /> : <AiOutlineMenu />}
+      </div>
     </Menu>
   );
 }
@@ -120,8 +133,8 @@ function BalanceAnnotation (props) {
 
   return accountSelected
     ? <Label pointing='left'>
-        <Icon name='money' color='green' />
-        {accountBalance}
+          <Icon name='money' color='green' />
+          {accountBalance}
       </Label>
     : null;
 }

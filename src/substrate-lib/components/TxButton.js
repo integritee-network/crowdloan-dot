@@ -213,9 +213,9 @@ function TxButton ({
   };
 
   return (
-    <Button
-      basic
-      color={color}
+    <Button className="gradient-btn"
+      // basic
+      // color={color}
       style={style}
       type='submit'
       onClick={transaction}
