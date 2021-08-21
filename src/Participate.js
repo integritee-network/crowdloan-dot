@@ -128,6 +128,23 @@ export default function Participate (props) {
           <span>3 WAYS TO TAKE PART</span>
           <h1>Participate in the Integritee Crowdloan!</h1>
         </div>
+        <div className="NewsLetter1">
+
+        <p>
+          
+          Crowdlending will start soon – sign up to hear when it’s time to join in.
+          </p>
+          <div className="child">
+          <a href="https://mailchi.mp/integritee/get-notified"> 
+          <Button className="outline-btn with-icon">
+              Get Notified
+              </Button>
+            </a>
+          </div>
+         
+        </div>
+
+        {/*
         <Grid>
           <Grid.Row>
             <Grid.Column width={5} className="participate-tabs">
@@ -268,6 +285,7 @@ export default function Participate (props) {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+                  */}
       </Container>
     </div>
     </div>
