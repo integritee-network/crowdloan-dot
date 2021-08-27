@@ -67,7 +67,7 @@ export default function Participate (props) {
       setCrowdLoanData(result.toJSON());
     };
     const crowdLoan = async () => {
-      await api.query.crowdloan.funds(['2004'], queryResHandler);
+      await api.query.crowdloan.funds(['2015'], queryResHandler);
     };
     crowdLoan();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -102,24 +102,24 @@ export default function Participate (props) {
     slidesToScroll: 1,
   };
   return (
-    
+
     <div className="participatesection">
 
 
-{/* 
+{/*
         <div className="NewsLetter">
 
         <p>
-          
+
           Crowdlending will start soon – sign up to hear when it’s time to join in.
           </p>
           <div className="child">
-          <a href="https://mailchi.mp/integritee/get-notified"> 
+          <a href="https://mailchi.mp/integritee/get-notified">
           <button id="participatebutton"  className="outline-btn with-icon">Get Notified</button>
             </a>
           </div>
-     
-        
+
+
         </div> */}
 
 <div className="participate" id="participate">
@@ -187,14 +187,14 @@ export default function Participate (props) {
                       <a href="https://polkadot.js.org/extension/">here</a>.
                     </li>
                     <li>
-                      Ensure that you have&nbsp; 
+                      Ensure that you have&nbsp;
                       <a href="https://guide.kusama.network/docs/maintain-guides-how-to-unbond/">
                          unbonded</a> KSM in your Polkadot.js account.
                     </li>
                   </ol>
-            
+
                   <AccountSelector className="accounts-section" setAccountAddress={setAccountAddress} />
-           
+
                   <div className={"polkadot_status"}>{status}</div>
 
                   <div className="form mb-5">
@@ -227,7 +227,7 @@ export default function Participate (props) {
 
                 </div>
 
-                
+
                 {/* <div>
                   <h2>Through an Exchange</h2>
                   <p>

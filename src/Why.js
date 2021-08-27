@@ -46,10 +46,10 @@ export default function Main (props) {
     const toHumanData = result.toHuman();
     setCrowdLoan(crowdLoan = (toHumanData));
   };
-  
-  
 
-  const transformed = ['2004'];
+
+
+  const transformed = ['2015'];
   const palletRpc = 'crowdloan';
   const callable = 'funds';
 
@@ -196,8 +196,8 @@ export default function Main (props) {
             is the solution. Help us build a new internet where privacy comes as
             standard and earn TEER in the process.
           </p>
-          
-          <a href="#participate"> 
+
+          <a href="#participate">
           <Button className="ui primary gradient-btn button">
             Get Ready!
             </Button>
@@ -211,7 +211,7 @@ export default function Main (props) {
               trigger={<Button className="outline-btn with-icon">
               Get Notified
               </Button>}
-            > 
+            >
               <Modal.Header>Notify Me</Modal.Header>
               <Modal.Content image>
                 <Modal.Description>
@@ -231,7 +231,7 @@ export default function Main (props) {
                 <Button
                   color="green"
                   content="Send"
-                  
+
                   onClick={() => sendEmail()}
                 />
               </Modal.Actions>
@@ -243,33 +243,33 @@ export default function Main (props) {
         {/* <div className="NewsLetter1">
 
         <p>
-          
+
           Crowdlending will start soon – sign up to hear when it’s time to join in.
           </p>
           <div className="child">
-          <a href="https://mailchi.mp/integritee/get-notified"> 
+          <a href="https://mailchi.mp/integritee/get-notified">
           <Button className="outline-btn with-icon">
               Get Notified
               </Button>
             </a>
           </div>
-         
+
         </div> */}
-       
+
         <ul className="counter">
           <li>
             <span>KSM CONTRIBUTED</span>
             {crowdLoan.raised}
           </li>
         </ul>
-        
+
         {/* <div className="graph">
           <HighchartsReact
               highcharts={Highcharts}
               options={options}
             />
         </div> */}
-       
+
       </Container>
     </div>
   );
