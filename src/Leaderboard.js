@@ -32,7 +32,7 @@ export default function Leaderboard() {
             row: 100,
             page: page,
             from_history: true,
-            para_id: 2004,
+            para_id: 2015,
           }),
         }
       );

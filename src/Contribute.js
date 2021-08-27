@@ -59,7 +59,7 @@ export default function Main (props) {
       setCrowdLoanData(result.toJSON());
     };
     const crowdLoan = async () => {
-      await api.query.crowdloan.funds(['2004'], queryResHandler);
+      await api.query.crowdloan.funds(['2015'], queryResHandler);
     };
     crowdLoan();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -127,7 +127,7 @@ export default function Main (props) {
         </Grid.Column>
       </Grid>
       </div>
-    </div> 
+    </div>
   );
 }
 

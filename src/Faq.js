@@ -15,8 +15,7 @@ export default function Main (props) {
       case 2: return (<div className="text"><h3>What will I get for my support?</h3>
                 <p>Lenders will be rewarded with TEER tokens. This token has an intrinsic value, as it gives access to Integritee’s services, as well as a market value, which will increase with adoption.
                 Each supporter will be allocated TEER according to the following formula: 
-                Your KSM contribution / total KSM contributions * 1,000,000
-</p></div>);
+                Your KSM contribution / total KSM contributions * 1,000,000. TEER will be vested linearly during the 48-week lease period, starting shortly after winning a slot.</p></div>);
       case 3: return (<div className="text"><h3>How long will the tokens be locked?</h3>
             <p>Bonded KSM tokens will be locked for a total of 48 weeks, the duration of the lease if Integritee wins a slot. If Integritee does not win one of the auctions during the crowdloan campaign, the KSM will be released by the end of the crowdloan campaign. </p></div>);
       case 4: return (<div className="text"><h3>How will my KSM be returned to me?</h3>

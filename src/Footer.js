@@ -39,10 +39,12 @@ export default function Footer () {
                     </Menu.Menu>
                 </Container>
                 </Menu>
-
+                
                 <Container className="part-btn-holder">
-              <a className="ui primary gradient-btn button" href="#participate">Participate Now!</a>
+              <a className="ui primary gradient-btn button" href="#participate">Participate Now!</a> <br></br>
+              <a className="ui primary gradient-btn button" href="https://mailchi.mp/integritee/get-notified">Subscribe Now!</a>
                 </Container>
+              
                 <Container className="footer-bottom">
                     <div className="social">
                         <ul>

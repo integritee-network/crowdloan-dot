@@ -67,7 +67,7 @@ export default function Participate (props) {
       setCrowdLoanData(result.toJSON());
     };
     const crowdLoan = async () => {
-      await api.query.crowdloan.funds(['2004'], queryResHandler);
+      await api.query.crowdloan.funds(['2015'], queryResHandler);
     };
     crowdLoan();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -102,49 +102,32 @@ export default function Participate (props) {
     slidesToScroll: 1,
   };
   return (
-    
+
     <div className="participatesection">
 
 
-{/* 
+{/*
         <div className="NewsLetter">
 
         <p>
-          
+
           Crowdlending will start soon – sign up to hear when it’s time to join in.
           </p>
           <div className="child">
-          <a href="https://mailchi.mp/integritee/get-notified"> 
+          <a href="https://mailchi.mp/integritee/get-notified">
           <button id="participatebutton"  className="outline-btn with-icon">Get Notified</button>
             </a>
           </div>
-     
-        
+
+
         </div> */}
 
-    <div className="participate" id="participate">
+<div className="participate" id="participate">
       <Container>
         <div className="text">
-          <span>3 WAYS TO TAKE PART</span>
+          <span>2 WAYS TO TAKE PART</span>
           <h1>Participate in the Integritee Crowdloan!</h1>
         </div>
-        <div className="NewsLetter1">
-
-        <p>
-          
-          Crowdlending will start soon – sign up to hear when it’s time to join in.
-          </p>
-          <div className="child">
-          <a href="https://mailchi.mp/integritee/get-notified"> 
-          <Button className="outline-btn with-icon">
-              Get Notified
-              </Button>
-            </a>
-          </div>
-         
-        </div>
-
-        {/*
         <Grid>
           <Grid.Row>
             <Grid.Column width={5} className="participate-tabs">
@@ -168,7 +151,7 @@ export default function Participate (props) {
                     </div>
                   </div>
                 </div>
-                <div>
+                {/* <div>
                   <div className="main">
                     <span>THROUGH AN EXCHANGE</span>
                     <div className="image-holder">
@@ -181,7 +164,7 @@ export default function Participate (props) {
                       <img src={icon3} />
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div>
                   <div className="main">
                     <div>
@@ -204,14 +187,14 @@ export default function Participate (props) {
                       <a href="https://polkadot.js.org/extension/">here</a>.
                     </li>
                     <li>
-                      Ensure that you have&nbsp; 
+                      Ensure that you have&nbsp;
                       <a href="https://guide.kusama.network/docs/maintain-guides-how-to-unbond/">
                          unbonded</a> KSM in your Polkadot.js account.
                     </li>
                   </ol>
-            
+
                   <AccountSelector className="accounts-section" setAccountAddress={setAccountAddress} />
-           
+
                   <div className={"polkadot_status"}>{status}</div>
 
                   <div className="form mb-5">
@@ -244,8 +227,8 @@ export default function Participate (props) {
 
                 </div>
 
-                
-                <div>
+
+                {/* <div>
                   <h2>Through an Exchange</h2>
                   <p>
                     If you hold KSM on a crypto exchange, it may provide
@@ -266,7 +249,7 @@ export default function Participate (props) {
                       <img src={icon3} />
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div>
                   <h2>Using Polkadot-JS Apps</h2>
                   <ol>
@@ -285,7 +268,6 @@ export default function Participate (props) {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-                  */}
       </Container>
     </div>
     </div>
