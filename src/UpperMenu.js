@@ -164,5 +164,5 @@ function BalanceAnnotation (props) {
 
 export default function UpperMenu (props) {
   const { api, keyring } = useSubstrate();
-  return keyring.getPairs && api.query ? <Main {...props} /> : null;
+  return keyring && keyring.getPairs && api && api.query ? <Main {...props} /> : null;
 }

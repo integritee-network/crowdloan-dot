@@ -25,7 +25,6 @@
     "@polkadot/util": "^6.10.1",
     "@polkadot/util-crypto": "^6.10.1",
     "emailjs-com": "^3.2.0",
-    "eslint-config-react-app": "^6.0.0",
     "highcharts": "^9.1.2",
     "highcharts-react-official": "^3.0.0",
     "prop-types": "^15.7.2",
@@ -38,6 +37,7 @@
     "react-scroll": "^1.8.2",
     "react-slick": "^0.28.1",
     "react-toastify": "^7.0.4",
+    "referral-code-generator": "^1.0.8",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3"
   },

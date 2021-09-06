@@ -224,7 +224,7 @@ export default function Participate (props) {
                       disableButton: disableButton
                     }}
                   />
-
+                  <div className={"polkadot_status"}>{status}</div>
                 </div>
 
 

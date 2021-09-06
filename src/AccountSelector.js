@@ -141,5 +141,5 @@ function BalanceAnnotation (props) {
 
 export default function AccountSelector (props) {
   const { api, keyring } = useSubstrate();
-  return keyring.getPairs && api.query ? <Main {...props} /> : null;
+  return keyring && api.query ? <Main {...props} /> : null;
 }

@@ -30,7 +30,7 @@ export default function Main (props) {
     let templateParams = {
       from_email: formInput.email
     };
-    emailjs.send("service_9y3qlo9", "template_h70ohwc", templateParams, "user_pwYYRbHuT9HQ2lzghX2Ym")
+    emailjs.send("service_gdzprbp", "template_4htuvy9", templateParams, "user_8LztNfOboIaSThE1Xj3TN")
     .then((result) => {
         console.log(result.text);
         toast.success("Email Send Successfully!");
@@ -46,15 +46,15 @@ export default function Main (props) {
     const toHumanData = result.toHuman();
     setCrowdLoan(crowdLoan = (toHumanData));
   };
+  
+  
 
-
-
-  const transformed = ['2015'];
+  const transformed = ['2004'];
   const palletRpc = 'crowdloan';
   const callable = 'funds';
 
   const getCrowdLoanData = async () => {
-    await api.query[palletRpc][callable](...transformed, queryResHandler);
+    if(api && api.query && api.query[palletRpc] && api.query[palletRpc][callable]) await api.query[palletRpc][callable](...transformed, queryResHandler);
   };
 
   if (Object.keys(crowdLoan).length === 0) {
@@ -231,7 +231,7 @@ export default function Main (props) {
                 <Button
                   color="green"
                   content="Send"
-
+                  
                   onClick={() => sendEmail()}
                 />
               </Modal.Actions>
