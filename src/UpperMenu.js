@@ -70,9 +70,15 @@ function Main (props) {
          <a > <img src={logo} width={200} /></a> 
         </Menu.Menu>
         <Menu.Menu position='right' className={`toggle-menu ${toggleMenuFun ? "open" : ""}`}>
+          
           <Menu.Item
             name='Crowdloan Campaign'
             href="#crowdloan"
+          />
+
+          <Menu.Item
+            name='Referral Program'
+            href="#referral"
           />
 
           <Menu.Item

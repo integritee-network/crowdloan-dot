@@ -29,6 +29,10 @@ export default function Footer () {
                         href="#crowdloan"
                     />
                     <Menu.Item
+                        name='Referral Program'
+                        href="#referral"
+                    />
+                    <Menu.Item
                         name='TEER Token'
                         href="#TeerToken"
                     />

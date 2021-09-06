@@ -10,7 +10,7 @@ import referralCodeGenerator from 'referral-code-generator'
 export default function Referral (props) {
     const [open, setOpen] = React.useState(false)
   return (
-        <div className="green-bg">
+        <div className="green-bg" id="referral">
             <Container>
                 <div className="text">
                     <Grid>
