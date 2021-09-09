@@ -6,8 +6,9 @@ import { Button, Modal, Input, Form } from 'semantic-ui-react';
 import UserIcon from '../src/Images/user.png';
 import IntegriteeIcon from '../src/Images/integritee-logo.png';
 import referralCodeGenerator from 'referral-code-generator'
-
+import { mnemonicGenerate } from '@polkadot/util-crypto';
 export default function Referral (props) {
+    const mnemonic = mnemonicGenerate();
     const [open, setOpen] = React.useState(false)
   return (
         <div className="green-bg" id="referral">
@@ -42,11 +43,12 @@ export default function Referral (props) {
                                 If you’ve already participated in the crowdloan, you can generate a
                                 referral code now!
                             </p>
-                            <Modal size="mini" open={open} trigger={<Button className="ui primary gradient-btn button" onClick={() => setOpen(true)}>Generate Referral Code</Button>}>
+                            {/* <Modal size="mini" open={open} trigger={<Button className="ui primary gradient-btn button" onClick={() => setOpen(true)}>Generate Referral Code</Button>}>
                                 <Modal.Header>Generate Referral Code</Modal.Header>
                                 <Modal.Content scrolling>
                                 <Modal.Description>
-                                    <Input fluid placeholder='Get code' value={referralCodeGenerator.alpha('lowercase', 8)} />
+                                    <span>{mnemonic}</span>
+                                    <Input fluid placeholder='email' value="" />
                                 </Modal.Description>
                                 </Modal.Content>
                                 <Modal.Actions>
@@ -59,8 +61,9 @@ export default function Referral (props) {
                                     positive
                                     />
                                 </Modal.Actions>
-                            </Modal>
-                            <a className="ui primary gradient-btn button" href="#participate">Participate Now!</a>
+                            </Modal> */}
+                            
+                            <a style={{  marginLeft: '0px !important' }} className="ui primary gradient-btn button" href="#participate">Participate Now!</a>
                         </Grid.Column>
                         <Grid.Column>
                             <br></br>

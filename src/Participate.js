@@ -8,16 +8,19 @@ import icon3 from "./Images/i3.svg";
 import icon4 from "./Images/polkadot.png";
 import Slider from "react-slick";
 import { setActiveLink } from "react-scroll/modules/mixins/scroller";
-
-import { Form, Input } from 'semantic-ui-react';
+import { Form, Input, Checkbox, Modal } from 'semantic-ui-react';
 import { TxButton } from './substrate-lib/components';
 import { useSubstrate } from './substrate-lib';
 import AccountSelector from "./AccountSelector";
+import { mnemonicGenerate } from '@polkadot/util-crypto';
 
 export default function Participate (props) {
-
+  const mnemonic = mnemonicGenerate();
+  const [open, setOpen] = React.useState(false)
   const [status, setStatus] = useState(null);
   const [formState, setFormState] = useState({ addressTo: null, amount: 0 });
+  const [toggleOne, setToggleOne] = useState(false);
+  const [toggleTwo, setToggleTwo] = useState(false);
   // const { accountPair } = props;
   const [disableButton, setDisableButton] = useState(true);
   const [crowdLoanEnded, setCrowdLoanEnded] = useState(false)
@@ -123,6 +126,26 @@ export default function Participate (props) {
         </div> */}
 
 <div className="participate" id="participate">
+<Modal size="mini" open={open}>
+                                <Modal.Header>Generate Referral Code</Modal.Header>
+                                <Modal.Content scrolling>
+                                <Modal.Description>
+                                    <span>{mnemonic}</span>
+                                    <Input type="email" fluid placeholder='email' value="" />
+                                </Modal.Description>
+                                </Modal.Content>
+                                <Modal.Actions>
+                                    <Button color='black' onClick={() => setOpen(false)}>
+                                        Close
+                                    </Button>
+                                    <Button
+                                    onClick={() => setOpen(false)}
+                                    content="Send"
+                                    positive
+                                    />
+                                </Modal.Actions>
+                            </Modal>
+                            
       <Container>
         <div className="text">
           <span>2 WAYS TO TAKE PART</span>
@@ -210,7 +233,40 @@ export default function Participate (props) {
                         onChange={onChange} />
                     </div>
                   </div>
-                  <br></br>
+                  <br />
+                  <br />
+                  <Grid>
+                  <Grid.Row columns={3}>
+                    <Grid.Column>
+                      {/* <Checkbox label={{ children: 'Generate referral code' }} onClick={() => setOpen(true)} /> */}
+                      <Checkbox label={{ children: 'Generate referral code' }} onClick={() => setToggleOne(!toggleOne)} />
+                      <div>
+                        <br />
+                        { toggleOne ? 
+                          <Input
+                          type="text"
+                          placeholder="Enter Email"
+                          /> 
+                          : null 
+                        }
+                      </div>
+                    </Grid.Column>
+                    <Grid.Column>
+                      <Checkbox label={{ children: 'Enter referral code' }} onClick={() => setToggleTwo(!toggleTwo)} />
+                      <div>
+                      <br />
+                        { toggleTwo ? 
+                          <Input
+                          type="text"
+                          placeholder="Enter Referral Code"
+                          /> 
+                          : null 
+                        }
+                      </div>
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
+
                   <TxButton
                     accountPair={accountPair}
                     label='Participate Now'

@@ -73,7 +73,7 @@ function Main () {
       />
       <UpperMenu setAccountAddress={setAccountAddress} />
       <Why />
-      <Leaderboard />
+      {/* <Leaderboard /> */}
         <ThreeBox />
         <How />
         <Referral />

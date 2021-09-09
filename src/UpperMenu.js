@@ -24,13 +24,15 @@ function Main (props) {
   const [toggleMenuFun, setToggleMenuFun] = useState(false);
 
   // Get the list of accounts we possess the private key for
-  const keyringOptions = keyring.getPairs().map(account => ({
-    key: account.address,
-    value: account.address,
-    text: account.meta.name.toUpperCase(),
-    icon: 'user'
-  }));
-
+  let keyringOptions = [];
+  if(keyring){
+    keyringOptions = keyring.getPairs().map(account => ({
+      key: account.address,
+      value: account.address,
+      text: account.meta.name.toUpperCase(),
+      icon: 'user'
+    }));
+  }
   const initialAddress =
     keyringOptions.length > 0 ? keyringOptions[0].value : '';
 
@@ -170,5 +172,5 @@ function BalanceAnnotation (props) {
 
 export default function UpperMenu (props) {
   const { api, keyring } = useSubstrate();
-  return keyring && keyring.getPairs && api && api.query ? <Main {...props} /> : null;
+  return  (<Main {...props} />)
 }

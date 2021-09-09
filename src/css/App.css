@@ -589,7 +589,7 @@ div[disabled]
   padding: 18px 25px !important;
 }
 .green-bg a {
-  margin-left: 15px !important;
+  /* margin-left: 15px !important; */
 }
 .green-bg .process {
   margin: 0;
@@ -746,6 +746,20 @@ div[disabled]
   background-size: 1130px !important;
   background-position: 120% -120px !important;
   position: relative;
+}
+.participate .ui.checkbox label {
+  color: #fff !important;
+}
+.participate .ui.checkbox .box:before, 
+.participate .ui.checkbox label:before {
+  background: #19197c !important;
+  border-color: #35918d !important;
+}
+.participate .ui.checkbox .box:after, 
+.participate .ui.checkbox label:after {
+  color: #6de0d7 !important;
+  font-size: 12px;
+  line-height: 16px;
 }
 .participate span {
   font-family: "Gotham Rounded", sans-serif;
