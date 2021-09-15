@@ -20,28 +20,29 @@ export default function Referral (props) {
                             <span>REFERRAL PROGRAM EXPLAINED</span>
                             <h2>How Integritee’s Referral <br /> Program works</h2>
                             <p>
-                                The Integritee Crowdloan referral program allows you to leverage
-                                the power of your personal network and gain additional rewards for
-                                both yourself and the people you refer - so everybody wins! 
+                            The Integritee Crowdloan Referral Program allows you to leverage
+                            the power of your personal network and gain additional rewards for
+                            both yourself and the people you refer - so everybody wins!
+ 
                             </p>
                             <p>
-                                How it works is simple - you and the person you refer will both
-                                receive an additional 3% of that persons TEER reward on top of your
-                                normal TEER rewards for participating in the crowdloan.
+                            How it works is simple - you and the person you refer will both
+                            receive an additional 3% of that person’s TEER reward on top of
+                            your normal TEER rewards for participating in the crowdloan.
                             </p>
                             <p>
-                                As you know Integritee has allocated 10% of total TEER supply as
-                                rewards for this crowdloan. This is 1 Million TEER tokens! These
-                                rewards are distributed proportionally to the amount of KSM you
-                                commit in relation to the total committed KSM for the crowdloan. 
+                            As you know, Integritee has allocated 10% of total TEER supply as
+                            rewards for this crowdloan. This is 1 million TEER tokens! These
+                            rewards are distributed proportionally to the amount of KSM you
+                            commit in relation to the total committed KSM for the crowdloan.
                             </p>
                             <p>
-                                So lets look at an example (on the right) of someone you refer who
-                                contributes KSM to the Crowdloan - lets call them John Doe.
+                            So let’s look at an example (on the right) of someone you refer who
+                            contributes KSM to the crowdloan - let’s call them John Doe.
                             </p>
                             <p>
-                                If you’ve already participated in the crowdloan, you can generate a
-                                referral code now!
+                            If you’ve already participated in the crowdloan, you can generate a
+                            referral code now!
                             </p>
                             {/* <Modal size="mini" open={open} trigger={<Button className="ui primary gradient-btn button" onClick={() => setOpen(true)}>Generate Referral Code</Button>}>
                                 <Modal.Header>Generate Referral Code</Modal.Header>

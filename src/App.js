@@ -17,6 +17,8 @@ import Rewards from './Rewards';
 import Roadmap from './Roadmap';
 import Clients from './clients';
 import Referral from './Referral';
+import Support from './SupporterReward';
+import SupportM from './SupportRewardMobile';
 import Footer from './Footer';
 import Leaderboard from './Leaderboard';
 import { ToastContainer, toast } from 'react-toastify';
@@ -76,10 +78,14 @@ function Main () {
       {/* <Leaderboard /> */}
         <ThreeBox />
         <How />
+        <Support />
+        <SupportM />
         <Referral />
       {/* <Participate /> */}
       {apiState !== "READY" ? <></> : <Participate />}
       {/* <Contribute id='#contribute' accountPair={accountPair} /> */}
+        
+        
         <Rewards />
         
         <Value />

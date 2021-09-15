@@ -478,6 +478,17 @@ div[disabled]
   color: #000065;    
   padding: 100px 0;
 }
+
+.green-bg .text #column1 {
+  width: 70% !important;
+}
+.green-bg .text #column2 {
+  width: 30% !important;
+}
+.green-bg .text #column3 {
+  width: 60% !important;
+}
+
 .grey-bg span {
   font-family: "Gotham Rounded", sans-serif;
   color: #70e6da;
@@ -1527,7 +1538,7 @@ div[disabled]
   padding: 10px;
 }
 .footer .footer-bottom .social li + li {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 .footer .footer-bottom .social svg {
   color: #fff;
@@ -1866,4 +1877,18 @@ div[disabled]
     height: 75px !important;
   }
 
+}
+
+@media screen and (max-width: 1200px) {
+  #Support {
+    display: none;
+  }
+  
+}
+@media screen and (min-width: 1200px) {
+  #SupportMobile {
+    display: none !important;
+   
+  }
+  
 }

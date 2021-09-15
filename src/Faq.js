@@ -30,8 +30,9 @@ export default function Main (props) {
                     <p>Integritee will continue to bid in subsequent auctions until it has won a lease, or until the end of our crowdloan campaign. If that happens all KSM tokens will be released to their owners.</p></div>);
         case 8: return (<div className="text"><h3>How can I get a referral code if I have already contributed?</h3>
                     <p>You will have to contribute another small amount (Min. amount = 0.1 KSM) to the crowdloan to receive a referral code.</p></div>);
-        case 9: return (<div className="text"><h3>What happens to referral bonuses if Integritee does not win a slot this round?</h3>
-                    <p>The referral bonuses are linked to the TEER rewards for the crowdloan campaign. If Integritee does not win this round then the rewards and the bonuses are reallocated to the next round.</p></div>);
+        case 9: return (<div className="text"><h3>What happens to referral bonuses if Integritee does not win a slot during this campaign?</h3>
+                    <p>The referral bonuses are linked to the TEER rewards for the crowdloan campaign. If Integritee does not win a slot by the end of our campaign, 
+                        all KSM will be unbonded and released to their owners and only the guaranteed rewards will be distributed, but not standard rewards or referral bonuses.</p></div>);
     }
   };
 
@@ -55,7 +56,7 @@ export default function Main (props) {
                 <button className={`${faqContent == 6 ? 'active' : ''}`} onClick={() => setFaqContent(6)}>I HAVE KSM ON AN EXCHANGE, DO I NEED TO UNBOND?</button>
                 <button className={`${faqContent == 7 ? 'active' : ''}`} onClick={() => setFaqContent(7)}>WHAT HAPPENS IF INTEGRITEE DOES NOT WIN THE PARACHAIN AUCTION?</button>
                 <button className={`${faqContent == 8 ? 'active' : ''}`} onClick={() => setFaqContent(8)}>HOW CAN I GET A REFERRAL CODE IF I HAVE ALREADY CONTRIBUTED?</button>
-                <button className={`${faqContent == 9 ? 'active' : ''}`} onClick={() => setFaqContent(9)}>WHAT HAPPENS TO REFERRAL BONUSES IF INTEGRITEE DOES NOT WIN A SLOT THIS ROUND?</button>
+                <button className={`${faqContent == 9 ? 'active' : ''}`} onClick={() => setFaqContent(9)}>WHAT HAPPENS TO REFERRAL BONUSES IF INTEGRITEE DOES NOT WIN A SLOT DURING THIS CAMPAIGN?</button>
             </Grid.Column>
                     <Grid.Column width={10} className="right-section">
                 {showContent()}

@@ -3,7 +3,13 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 // import { ReactComponent as Logo } from './css/IntegriteeLogoAndSlogan.svg';
 import logo from './css/IntegriteeLogoAndSlogan.svg';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-
+import icon0 from './Images/i0.svg';
+import mediumlogo from './Images/Medium-Logo.png';
+import subsociallogo from './Images/subsocial-20x20px white.png';
+import elementlogo from './Images/element_20x20px white.png';
+import { AiOutlineTwitter } from 'react-icons/ai';
+import { GrLinkedinOption } from 'react-icons/gr';
+import { FaTelegramPlane } from 'react-icons/fa';
 
 import {
   Menu,
@@ -62,12 +68,15 @@ function Main (props) {
   };
 
   return (
+    
     <Menu
       tabular
       className="main-menu"
       id="main-nav"
     >
+       
       <Container>
+        
         <Menu.Menu className="logo">
          <a > <img src={logo} width={200} /></a> 
         </Menu.Menu>
