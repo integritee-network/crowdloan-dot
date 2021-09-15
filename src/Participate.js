@@ -4,7 +4,6 @@ import {
   Container,
   Button,
   Grid,
-  Form,
   Input,
   Checkbox,
   Modal,
@@ -12,16 +11,14 @@ import {
   Loader,
 } from 'semantic-ui-react';
 import icon0 from './Images/i0.svg';
-import icon1 from './Images/i1.svg';
-import icon2 from './Images/i2.svg';
-import icon3 from './Images/i3.svg';
 import icon4 from './Images/polkadot.png';
 import Slider from 'react-slick';
-import { setActiveLink } from 'react-scroll/modules/mixins/scroller';
 import { TxButton } from './substrate-lib/components';
 import { useSubstrate } from './substrate-lib';
 import AccountSelector from './AccountSelector';
 import { mnemonicGenerate } from '@polkadot/util-crypto';
+import EmbedVideo from './EmbedVideo';
+import { P } from 'glamorous';
 
 export default function Participate(props) {
   const mnemonic = mnemonicGenerate();
@@ -285,10 +282,8 @@ export default function Participate(props) {
                                   type='email'
                                   pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
                                   placeholder='Enter Email'
-                                  
                                 />
                               ) : null}
-                              
                             </div>
                             <br />
                           </Grid.Column>
@@ -389,27 +384,11 @@ export default function Participate(props) {
               </div> */}
                   <div>
                     <h2>Using Polkadot-JS Apps</h2>
-                    <ol>
-                      <li>
-                        Navigate to:{' '}
-                        <a href='https://polkadot.js.org/apps/'>
-                          polkadot.js.org/apps/
-                        </a>
-                        .
-                      </li>
-                      <li>Follow the instructions detailed in this video:</li>
-                    </ol>
-                    <div className='video-box'>
-                      <div className='video-placeholder'>
-                        <iframe
-                          src='https://www.youtube.com/embed/YrTxDufrcQM'
-                          title='YouTube video player'
-                          frameBorder='0'
-                          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                          allowFullScreen
-                        ></iframe>
-                      </div>
-                    </div>
+                    <p>
+                      Follow the instructions detailed in this video:
+                    </p>
+
+                    <EmbedVideo />
                   </div>
                 </Slider>
               </Grid.Column>
