@@ -166,9 +166,15 @@ function TxButton({
     };
 
     fetch('https://api.crowdloan.integritee.network/storeuser', requestOptions)
-      .then((response) => response.text())
+      .then((response) => {response.text();})
       .then((result) => console.log(result))
-      .catch((error) => console.log('error', error));
+      .catch((error) => {
+        console.log('error', error);
+        console.log('trying again');
+        setLoading(true);
+        setTimeout(() => {  saveParticipateInfo(accountAddress, formState, grc, erc, hash); }, 2000);
+      });
+      setLoading(false);
   };
 
   const signedTx = async () => {
