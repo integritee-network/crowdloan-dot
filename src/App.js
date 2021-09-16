@@ -16,6 +16,9 @@ import Value from './Value';
 import Rewards from './Rewards';
 import Roadmap from './Roadmap';
 import Clients from './clients';
+import Referral from './Referral';
+import Support from './SupporterReward';
+import SupportM from './SupportRewardMobile';
 import Footer from './Footer';
 import Leaderboard from './Leaderboard';
 import { ToastContainer, toast } from 'react-toastify';
@@ -44,18 +47,19 @@ function Main () {
       </Grid.Column>
     </Grid>;
 
-  if (apiState === 'ERROR') return message(apiError);
-  else if (apiState !== 'READY') return loader('Connecting to Kusama');
+   if (apiState === 'ERROR') return message(apiError);
+   else if (apiState !== 'READY') return loader('Connecting to Kusama');
 
-  if (keyringState !== 'READY') {
-    return loader('Loading accounts (please review any extension\'s authorization)');
-  }
+   if (keyringState !== 'READY') {
+     return loader('Loading accounts (please review any extension\'s authorization)');
+   }
 
   // const anchor = document.querySelector('#some-id')
   // anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
 
   const contextRef = createRef();
-
+  console.log(apiState);
+  
   return (
     <div ref={contextRef}>
       <ToastContainer
@@ -71,12 +75,19 @@ function Main () {
       />
       <UpperMenu setAccountAddress={setAccountAddress} />
       <Why />
-      <Leaderboard />
+      {/* <Leaderboard /> */}
         <ThreeBox />
         <How />
-      <Participate />
+        <Support />
+        <SupportM />
+        <Referral />
+      {/* <Participate /> */}
+      {apiState !== "READY" ? <></> : <Participate />}
       {/* <Contribute id='#contribute' accountPair={accountPair} /> */}
+        
+        
         <Rewards />
+        
         <Value />
         <Roadmap />
         <Faq />
@@ -88,6 +99,7 @@ function Main () {
 }
 
 export default function App () {
+
   return (
     <SubstrateContextProvider>
       <Main />

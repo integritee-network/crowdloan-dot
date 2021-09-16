@@ -2,7 +2,8 @@ import './css/App.css';
 import { Container, Menu } from 'semantic-ui-react';
 import icon0 from './Images/i0.svg';
 import mediumlogo from './Images/Medium-Logo.png';
-import elementlogo from './Images/element.png';
+import subsociallogo from './Images/subsocial-20x20px white.png';
+import elementlogo from './Images/element_20x20px white.png';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { GrLinkedinOption } from 'react-icons/gr';
 import { FaTelegramPlane } from 'react-icons/fa';
@@ -29,6 +30,10 @@ export default function Footer () {
                         href="#crowdloan"
                     />
                     <Menu.Item
+                        name='Referral Program'
+                        href="#referral"
+                    />
+                    <Menu.Item
                         name='TEER Token'
                         href="#TeerToken"
                     />
@@ -48,12 +53,14 @@ export default function Footer () {
                 <Container className="footer-bottom">
                     <div className="social">
                         <ul>
-                            <li><a target="_blank" href="https://twitter.com/integri_t_e_e"><AiOutlineTwitter /> </a> </li>
-                            <li> <a target="_blank" href="https://www.linkedin.com/company/integritee/"><GrLinkedinOption /> </a> </li>
-                            <li><a target="_blank" href="https://t.me/Integritee_Official"><FaTelegramPlane/> </a> </li>
-                            <li> <a target="_blank" href="https://medium.com/integritee"><img src={mediumlogo} width={20} /> </a> </li>
-                            {/* <li> <a target="_blank" href="https://app.element.io/#/room/#integritee-watercooler:matrix.org"><img src={elementlogo} width={20} /> </a> </li> */}
-                    
+
+                        <li> <a target="_blank" href="https://www.linkedin.com/company/integritee/"><GrLinkedinOption /> </a> </li>
+                        <li><a target="_blank" href="https://t.me/Integritee_Official"><FaTelegramPlane/> </a> </li>
+                        <li><a target="_blank" href="https://twitter.com/integri_t_e_e"><AiOutlineTwitter /> </a> </li>
+                        <li> <a target="_blank" href="https://app.element.io/#/room/#integritee-watercooler:matrix.org"><img src={elementlogo} width={20} /> </a> </li>
+                        <li> <a target="_blank" href="https://app.subsocial.network/4638"><img src={subsociallogo} width={20} /> </a> </li>
+                        <li> <a target="_blank" href="https://medium.com/integritee"><img src={mediumlogo} width={20} /> </a> </li>
+                        
                         </ul>
                     </div>
                     <div className="bottom-nav">

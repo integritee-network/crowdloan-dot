@@ -325,7 +325,7 @@ NewsLetter1 button:focus{
 .participate,
 .why .outline-btn {
   border: 2px solid #537ba1;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   padding: 15px 16px;
   display: block;
   margin-bottom: 10px;
@@ -336,7 +336,7 @@ NewsLetter1 button:focus{
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
   font-weight: 600;
   color: #fff;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 .participate,
 .why .outline-btn.with-icon {
@@ -478,6 +478,17 @@ div[disabled]
   color: #000065;    
   padding: 100px 0;
 }
+
+.green-bg .text #column1 {
+  width: 70% !important;
+}
+.green-bg .text #column2 {
+  width: 30% !important;
+}
+.green-bg .text #column3 {
+  width: 60% !important;
+}
+
 .grey-bg span {
   font-family: "Gotham Rounded", sans-serif;
   color: #70e6da;
@@ -548,6 +559,105 @@ div[disabled]
   margin: 50px 0 0;
 }
 .white-bg .image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.green-bg {
+  background: #70e6da;
+  font-family: 'Gotham Rounded', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #000065;    
+  padding: 100px 0;
+}
+.green-bg span {
+  font-family: "Gotham Rounded", sans-serif;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 10px;
+  display: block;
+}
+.green-bg h2 {
+  font-family: "Gotham Rounded", sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: #000065;
+  margin: 0 0 20px;
+}
+.green-bg .image {
+  width: 100%;
+  margin: 50px 0 0;
+}
+.green-bg .image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.green-bg button,
+.green-bg a {
+  padding: 18px 25px !important;
+}
+.green-bg a {
+  /* margin-left: 15px !important; */
+}
+.green-bg .process {
+  margin: 0;
+  padding: 0;
+}
+.green-bg .process li {
+  padding-left: 35px;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+}
+.green-bg .process li::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  top: 3px;
+  bottom: 60px;
+  left: 135px;
+  background: #000065;
+}
+.green-bg .process li:last-child::after {
+  bottom: 75px;
+}
+.green-bg .process li:last-child .icon-holder {
+  display: flex;
+  justify-content: center;
+}
+.green-bg .process li:last-child .icon-holder > div:last-child {
+  padding-left: 15px;
+}
+.green-bg .process li + li {
+  padding-top: 40px;
+}
+.green-bg .process li .icon {
+  background-color: #658ea9;
+  width: 35px;
+  height: 35px;
+  margin: 0 auto 7px;
+  border-radius: 25px;
+  padding: 8px 11px;
+}
+.green-bg .process li .icon.integritee {
+  padding: 11px 10px;
+  background-color: #000065;
+}
+.green-bg .process li .icon-holder {
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  width: 200px;
+  flex: 0 0 200px;
+}
+.green-bg .process li .text-holder {
+  font-size: 14px;
+}
+.green-bg .process li .icon img {
   width: 100%;
   height: auto;
   display: block;
@@ -647,6 +757,20 @@ div[disabled]
   background-size: 1130px !important;
   background-position: 120% -120px !important;
   position: relative;
+}
+.participate .ui.checkbox label {
+  color: #fff !important;
+}
+.participate .ui.checkbox .box:before, 
+.participate .ui.checkbox label:before {
+  background: #19197c !important;
+  border-color: #35918d !important;
+}
+.participate .ui.checkbox .box:after, 
+.participate .ui.checkbox label:after {
+  color: #6de0d7 !important;
+  font-size: 12px;
+  line-height: 16px;
 }
 .participate span {
   font-family: "Gotham Rounded", sans-serif;
@@ -1414,7 +1538,7 @@ div[disabled]
   padding: 10px;
 }
 .footer .footer-bottom .social li + li {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 .footer .footer-bottom .social svg {
   color: #fff;
@@ -1621,8 +1745,27 @@ div[disabled]
     visibility: visible;
     transition: 0.3s all ease;
   }
-
-
+  .green-bg .process li .icon-holder {
+    width: auto;
+    flex: auto;
+  }
+  .green-bg .process {
+    padding: 25px 0 0;
+  }
+  .green-bg .process li .icon-holder {
+    margin-bottom: 15px;
+  }
+  .green-bg .process li {
+    display: block;
+    text-align: center;
+    padding: 0;
+  }
+  .green-bg .process li + li {
+    padding-top: 30px;
+  }
+  .green-bg .process li::after {
+    display: none;
+  }
   .why.leaderboard {
     position: relative;
     top: -1px;
@@ -1734,4 +1877,18 @@ div[disabled]
     height: 75px !important;
   }
 
+}
+
+@media screen and (max-width: 1200px) {
+  #Support {
+    display: none;
+  }
+  
+}
+@media screen and (min-width: 1200px) {
+  #SupportMobile {
+    display: none !important;
+   
+  }
+  
 }

@@ -88,7 +88,7 @@ export default function Leaderboard() {
   return (
     <div className="why leaderboard">
       <div className="leaderboard">
-        {/*}
+        
         <h2>Leaderboard</h2>
         <div className="sliderdiv">
           {allDataLoaded ? (
@@ -107,7 +107,7 @@ export default function Leaderboard() {
             <p>loading</p>
           )}
         </div>
-          */}
+         
       </div>
     </div>
   );

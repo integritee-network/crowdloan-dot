@@ -3,7 +3,13 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 // import { ReactComponent as Logo } from './css/IntegriteeLogoAndSlogan.svg';
 import logo from './css/IntegriteeLogoAndSlogan.svg';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-
+import icon0 from './Images/i0.svg';
+import mediumlogo from './Images/Medium-Logo.png';
+import subsociallogo from './Images/subsocial-20x20px white.png';
+import elementlogo from './Images/element_20x20px white.png';
+import { AiOutlineTwitter } from 'react-icons/ai';
+import { GrLinkedinOption } from 'react-icons/gr';
+import { FaTelegramPlane } from 'react-icons/fa';
 
 import {
   Menu,
@@ -24,13 +30,15 @@ function Main (props) {
   const [toggleMenuFun, setToggleMenuFun] = useState(false);
 
   // Get the list of accounts we possess the private key for
-  const keyringOptions = keyring.getPairs().map(account => ({
-    key: account.address,
-    value: account.address,
-    text: account.meta.name.toUpperCase(),
-    icon: 'user'
-  }));
-
+  let keyringOptions = [];
+  if(keyring){
+    keyringOptions = keyring.getPairs().map(account => ({
+      key: account.address,
+      value: account.address,
+      text: account.meta.name.toUpperCase(),
+      icon: 'user'
+    }));
+  }
   const initialAddress =
     keyringOptions.length > 0 ? keyringOptions[0].value : '';
 
@@ -60,19 +68,28 @@ function Main (props) {
   };
 
   return (
+    
     <Menu
       tabular
       className="main-menu"
       id="main-nav"
     >
+       
       <Container>
+        
         <Menu.Menu className="logo">
          <a > <img src={logo} width={200} /></a> 
         </Menu.Menu>
         <Menu.Menu position='right' className={`toggle-menu ${toggleMenuFun ? "open" : ""}`}>
+          
           <Menu.Item
             name='Crowdloan Campaign'
             href="#crowdloan"
+          />
+
+          <Menu.Item
+            name='Referral Program'
+            href="#referral"
           />
 
           <Menu.Item
@@ -164,5 +181,5 @@ function BalanceAnnotation (props) {
 
 export default function UpperMenu (props) {
   const { api, keyring } = useSubstrate();
-  return keyring.getPairs && api.query ? <Main {...props} /> : null;
+  return  (<Main {...props} />)
 }

@@ -6,7 +6,12 @@ import { web3FromSource } from '@polkadot/extension-dapp';
 import { useSubstrate } from '../';
 import utils from '../utils';
 
-function TxButton ({
+function TxButton({
+  setLoading = null,
+  accountAddress = null,
+  formState = null,
+  grc = null,
+  erc = null,
   accountPair = null,
   label,
   setStatus,
@@ -14,14 +19,15 @@ function TxButton ({
   style = null,
   type = 'QUERY',
   attrs = null,
-  disabled = false
+  disabled = false,
 }) {
   // Hooks
   const { api } = useSubstrate();
   const [unsub, setUnsub] = useState(null);
   const [sudoKey, setSudoKey] = useState(null);
 
-  const { palletRpc, callable, inputParams, paramFields, disableButton } = attrs;
+  const { palletRpc, callable, inputParams, paramFields, disableButton } =
+    attrs;
 
   const isQuery = () => type === 'QUERY';
   const isSudo = () => type === 'SUDO-TX';
@@ -33,7 +39,9 @@ function TxButton ({
 
   const loadSudoKey = () => {
     (async function () {
-      if (!api || !api.query.sudo) { return; }
+      if (!api || !api.query.sudo) {
+        return;
+      }
       const sudoKey = await api.query.sudo.key();
       sudoKey.isEmpty ? setSudoKey(null) : setSudoKey(sudoKey.toString());
     })();
@@ -44,7 +52,7 @@ function TxButton ({
   const getFromAcct = async () => {
     const {
       address,
-      meta: { source, isInjected }
+      meta: { source, isInjected },
     } = accountPair;
     let fromAcct;
 
@@ -60,13 +68,58 @@ function TxButton ({
     return fromAcct;
   };
 
-  const txResHandler = ({ status }) =>
-    status.isFinalized
-      ? setStatus(`😉 Finalized. Block hash: ${status.asFinalized.toString()}`)
-      : setStatus(`Current transaction status: ${status.type}`);
+  const txResHandlerSaveTransaction = (status) => {
+    const hash = status.asFinalized.toString();
+    if (isSigned()) {
+      if (document.getElementById('grc') && document.getElementById('erc')) {
+        saveParticipateInfo(
+          accountAddress,
+          formState,
+          document.getElementById('grc').value,
+          document.getElementById('erc')
+            ? document.getElementById('erc').value
+            : new URL(window.location.href).searchParams.get('ref'),
+          hash
+        );
+      } else if (document.getElementById('erc')) {
+        saveParticipateInfo(
+          accountAddress,
+          formState,
+          '',
+          document.getElementById('erc')
+            ? document.getElementById('erc').value
+            : new URL(window.location.href).searchParams.get('ref'),
+          hash
+        );
+      } else if (document.getElementById('grc')) {
+        saveParticipateInfo(accountAddress, formState, document.getElementById('grc').value, '', hash);
+      }
+      setLoading(false);
+    }
+    setStatus(`😉 Finalized. Block hash: ${hash}`);
+  };
 
-  const txErrHandler = err =>
+  const txResHandler = ({ status }) => {
+    status.isFinalized
+      ? txResHandlerSaveTransaction(status)
+      : setStatus(`Current transaction status: ${status.type}`);
+  };
+  const txErrHandler = (err) => {
     setStatus(`😞 Transaction Failed: ${err.toString()}`);
+    if (isSigned()) {
+      setLoading(false);
+    }
+    console.log('+++++++++++++++++++++');
+    console.log(accountAddress);
+    console.log(formState);
+    console.log(grc);
+    console.log(
+      document.getElementById('erc')
+        ? document.getElementById('erc').value
+        : new URL(window.location.href).searchParams.get('ref')
+    );
+    console.log('+++++++++++++++++++++');
+  };
 
   const sudoTx = async () => {
     const fromAcct = await getFromAcct();
@@ -76,22 +129,75 @@ function TxButton ({
       ? api.tx.sudo.sudo(api.tx[palletRpc][callable](...transformed))
       : api.tx.sudo.sudo(api.tx[palletRpc][callable]());
 
-    const unsub = txExecute.signAndSend(fromAcct, txResHandler)
+    const unsub = txExecute
+      .signAndSend(fromAcct, txResHandler)
       .catch(txErrHandler);
     setUnsub(() => unsub);
   };
 
   const uncheckedSudoTx = async () => {
     const fromAcct = await getFromAcct();
-    const txExecute =
-      api.tx.sudo.sudoUncheckedWeight(api.tx[palletRpc][callable](...inputParams), 0);
+    const txExecute = api.tx.sudo.sudoUncheckedWeight(
+      api.tx[palletRpc][callable](...inputParams),
+      0
+    );
 
-    const unsub = txExecute.signAndSend(fromAcct, txResHandler)
+    const unsub = txExecute
+      .signAndSend(fromAcct, txResHandler)
       .catch(txErrHandler);
     setUnsub(() => unsub);
   };
 
+  const saveParticipateInfo = (accountAddress, formState, grc, erc, hash) => {
+    const formdata = new FormData();
+    formdata.append('Participant[email]', grc);
+    formdata.append('Participant[referrer_code]', erc);
+    formdata.append('Participant[tx_hash]', hash);
+    formdata.append('Participant[account_nr]', accountAddress);
+    formdata.append('Participant[amount]', formState.amount);
+
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'x-requested-with': 'XMLHttpRequest',
+      },
+      body: formdata,
+      redirect: 'follow',
+    };
+
+    fetch('https://api.crowdloan.integritee.network/storeuser', requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log('error', error));
+  };
+
   const signedTx = async () => {
+    // console.log('inside function');
+    // console.log(grc);
+    // console.log(document.getElementById('erc') ? document.getElementById('erc').value : new URL(window.location.href).searchParams.get('ref'));
+    // console.log('inside function');
+
+    // console.log('--------------------------');
+    // console.log(document.getElementById('grc') ? document.getElementById('grc').checkValidity() : 'no grc');
+    // console.log(document.getElementById('erc') ? document.getElementById('erc').checkValidity() : 'no erc');
+    // console.log('--------------------------');
+
+    if (document.getElementById('grc')) {
+      if (!document.getElementById('grc').checkValidity()) {
+        // console.log('return');
+        return;
+      }
+    }
+    if (document.getElementById('erc')) {
+      if (!document.getElementById('erc').checkValidity()) {
+        // console.log('return');
+        return;
+      }
+    }
+    // console.log('no return');
+    setStatus('Sending...');
+    setLoading(true);
+
     const fromAcct = await getFromAcct();
     const transformed = transformParams(paramFields, inputParams);
     // transformed can be empty parameters
@@ -100,7 +206,8 @@ function TxButton ({
       ? api.tx[palletRpc][callable](...transformed)
       : api.tx[palletRpc][callable]();
 
-    const unsub = await txExecute.signAndSend(fromAcct, txResHandler)
+    const unsub = await txExecute
+      .signAndSend(fromAcct, txResHandler)
       .catch(txErrHandler);
     setUnsub(() => unsub);
   };
@@ -112,23 +219,30 @@ function TxButton ({
       ? api.tx[palletRpc][callable](...transformed)
       : api.tx[palletRpc][callable]();
 
-    const unsub = await txExecute.send(txResHandler)
-      .catch(txErrHandler);
+    const unsub = await txExecute.send(txResHandler).catch(txErrHandler);
     setUnsub(() => unsub);
   };
 
-  const queryResHandler = result => {
+  const queryResHandler = (result) => {
     result.isNone ? setStatus('None') : setStatus(result.toString());
   };
   const query = async () => {
     const transformed = transformParams(paramFields, inputParams);
-    const unsub = await api.query[palletRpc][callable](...transformed, queryResHandler);
+    const unsub = await api.query[palletRpc][callable](
+      ...transformed,
+      queryResHandler
+    );
     setUnsub(() => unsub);
   };
 
   const rpc = async () => {
-    const transformed = transformParams(paramFields, inputParams, { emptyAsNull: false });
-    const unsub = await api.rpc[palletRpc][callable](...transformed, queryResHandler);
+    const transformed = transformParams(paramFields, inputParams, {
+      emptyAsNull: false,
+    });
+    const unsub = await api.rpc[palletRpc][callable](
+      ...transformed,
+      queryResHandler
+    );
     setUnsub(() => unsub);
   };
 
@@ -137,13 +251,15 @@ function TxButton ({
     result.isNone ? setStatus('None') : setStatus(result.toString());
   };
 
-  const transaction = async () => {
+  const transaction = async (event) => {
     if (unsub) {
       unsub();
       setUnsub(null);
     }
 
-    setStatus('Sending...');
+    if (!isSigned()) {
+      setStatus('Sending...');
+    }
 
     (isSudo() && sudoTx()) ||
       (isUncheckedSudo() && uncheckedSudoTx()) ||
@@ -152,75 +268,111 @@ function TxButton ({
       (isQuery() && query()) ||
       (isRpc() && rpc()) ||
       (isConstant() && constant());
+
+    console.log('clicked');
   };
 
-  const transformParams = (paramFields, inputParams, opts = { emptyAsNull: true }) => {
+  const transformParams = (
+    paramFields,
+    inputParams,
+    opts = { emptyAsNull: true }
+  ) => {
     // if `opts.emptyAsNull` is true, empty param value will be added to res as `null`.
     //   Otherwise, it will not be added
-    const paramVal = inputParams.map(inputParam => {
+    const paramVal = inputParams.map((inputParam) => {
       // To cater the js quirk that `null` is a type of `object`.
-      if (typeof inputParam === 'object' && inputParam !== null && typeof inputParam.value === 'string') {
+      if (
+        typeof inputParam === 'object' &&
+        inputParam !== null &&
+        typeof inputParam.value === 'string'
+      ) {
         return inputParam.value.trim();
       } else if (typeof inputParam === 'string') {
         return inputParam.trim();
       }
       return inputParam;
     });
-    const params = paramFields.map((field, ind) => ({ ...field, value: paramVal[ind] || null }));
+    const params = paramFields.map((field, ind) => ({
+      ...field,
+      value: paramVal[ind] || null,
+    }));
 
     return params.reduce((memo, { type = 'string', value }) => {
-      if (value == null || value === '') return (opts.emptyAsNull ? [...memo, null] : memo);
+      if (value == null || value === '')
+        return opts.emptyAsNull ? [...memo, null] : memo;
 
       let converted = value;
 
       // Deal with a vector
       if (type.indexOf('Vec<') >= 0) {
-        converted = converted.split(',').map(e => e.trim());
-        converted = converted.map(single => isNumType(type)
-          ? (single.indexOf('.') >= 0 ? Number.parseFloat(single) : Number.parseInt(single))
-          : single
+        converted = converted.split(',').map((e) => e.trim());
+        converted = converted.map((single) =>
+          isNumType(type)
+            ? single.indexOf('.') >= 0
+              ? Number.parseFloat(single)
+              : Number.parseInt(single)
+            : single
         );
         return [...memo, converted];
       }
 
       // Deal with a single value
       if (isNumType(type)) {
-        converted = converted.indexOf('.') >= 0 ? Number.parseFloat(converted) : Number.parseInt(converted);
+        converted =
+          converted.indexOf('.') >= 0
+            ? Number.parseFloat(converted)
+            : Number.parseInt(converted);
       }
       return [...memo, converted];
     }, []);
   };
 
-  const isNumType = type =>
-    utils.paramConversion.num.some(el => type.indexOf(el) >= 0);
+  const isNumType = (type) =>
+    utils.paramConversion.num.some((el) => type.indexOf(el) >= 0);
 
   const allParamsFilled = () => {
-    if (paramFields.length === 0) { return true; }
+    if (paramFields.length === 0) {
+      return true;
+    }
 
     return paramFields.every((paramField, ind) => {
       const param = inputParams[ind];
-      if (paramField.optional) { return true; }
-      if (param == null) { return true; }
+      if (paramField.optional) {
+        return true;
+      }
+      if (param == null) {
+        return true;
+      }
 
       const value = typeof param === 'object' ? param.value : param;
       return value !== null && value !== '';
     });
   };
 
-  const isSudoer = acctPair => {
-    if (!sudoKey || !acctPair) { return false; }
+  const isSudoer = (acctPair) => {
+    if (!sudoKey || !acctPair) {
+      return false;
+    }
     return acctPair.address === sudoKey;
   };
 
   return (
-    <Button className="gradient-btn"
+    <Button
+      className='gradient-btn'
       // basic
       // color={color}
       style={style}
       type='submit'
       onClick={transaction}
-      disabled={disabled || !palletRpc || !callable || !allParamsFilled() || accountPair === '' || disableButton ||
-        ((isSudo() || isUncheckedSudo()) && !isSudoer(accountPair))}
+      disabled={
+        disabled ||
+        !palletRpc ||
+        !callable ||
+        !allParamsFilled() ||
+        accountPair === '' ||
+        disableButton ||
+        ((isSudo() || isUncheckedSudo()) && !isSudoer(accountPair))
+      }
     >
       {label}
     </Button>
@@ -232,39 +384,30 @@ TxButton.propTypes = {
   accountPair: PropTypes.object,
   setStatus: PropTypes.func.isRequired,
   type: PropTypes.oneOf([
-    'QUERY', 'RPC', 'SIGNED-TX', 'UNSIGNED-TX', 'SUDO-TX', 'UNCHECKED-SUDO-TX',
-    'CONSTANT']).isRequired,
+    'QUERY',
+    'RPC',
+    'SIGNED-TX',
+    'UNSIGNED-TX',
+    'SUDO-TX',
+    'UNCHECKED-SUDO-TX',
+    'CONSTANT',
+  ]).isRequired,
   attrs: PropTypes.shape({
     palletRpc: PropTypes.string,
     callable: PropTypes.string,
     inputParams: PropTypes.array,
-    paramFields: PropTypes.array
-  }).isRequired
+    paramFields: PropTypes.array,
+  }).isRequired,
 };
 
-function TxGroupButton (props) {
+function TxGroupButton(props) {
   return (
     <Button.Group>
-      <TxButton
-        label='Unsigned'
-        type='UNSIGNED-TX'
-        color='grey'
-        {...props}
-      />
+      <TxButton label='Unsigned' type='UNSIGNED-TX' color='grey' {...props} />
       <Button.Or />
-      <TxButton
-        label='Signed'
-        type='SIGNED-TX'
-        color='blue'
-        {...props}
-      />
+      <TxButton label='Signed' type='SIGNED-TX' color='blue' {...props} />
       <Button.Or />
-      <TxButton
-        label='SUDO'
-        type='SUDO-TX'
-        color='red'
-        {...props}
-      />
+      <TxButton label='SUDO' type='SUDO-TX' color='red' {...props} />
     </Button.Group>
   );
 }
