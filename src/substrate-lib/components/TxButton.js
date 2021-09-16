@@ -165,14 +165,16 @@ function TxButton({
       redirect: 'follow',
     };
 
-    fetch('https://ap.crowdloan.integritee.network/storeuser', requestOptions)
-      .then((response) => response.text())
+    fetch('https://api.crowdloan.integritee.network/storeuser', requestOptions)
+      .then((response) => {response.text();})
       .then((result) => console.log(result))
       .catch((error) => {
         console.log('error', error);
         console.log('trying again');
-        saveParticipateInfo(accountAddress, formState, grc, erc, hash);
+        setLoading(true);
+        setTimeout(() => {  saveParticipateInfo(accountAddress, formState, grc, erc, hash); }, 2000);
       });
+      setLoading(false);
   };
 
   const signedTx = async () => {
