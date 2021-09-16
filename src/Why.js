@@ -47,8 +47,11 @@ export default function Main (props) {
     setCrowdLoan(crowdLoan = (toHumanData));
   };
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
   const transformed = ['2015'];
   const palletRpc = 'crowdloan';
   const callable = 'funds';

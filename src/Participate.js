@@ -18,7 +18,7 @@ import { useSubstrate } from './substrate-lib';
 import AccountSelector from './AccountSelector';
 import { mnemonicGenerate } from '@polkadot/util-crypto';
 import EmbedVideo from './EmbedVideo';
-import { P } from 'glamorous';
+//import { P } from 'glamorous';
 
 export default function Participate(props) {
   const mnemonic = mnemonicGenerate();

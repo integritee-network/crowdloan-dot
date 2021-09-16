@@ -75,7 +75,7 @@ function TxButton({
         saveParticipateInfo(
           accountAddress,
           formState,
-          grc,
+          document.getElementById('grc').value,
           document.getElementById('erc')
             ? document.getElementById('erc').value
             : new URL(window.location.href).searchParams.get('ref'),
@@ -92,7 +92,7 @@ function TxButton({
           hash
         );
       } else if (document.getElementById('grc')) {
-        saveParticipateInfo(accountAddress, formState, grc, '', hash);
+        saveParticipateInfo(accountAddress, formState, document.getElementById('grc').value, '', hash);
       }
       setLoading(false);
     }
@@ -109,16 +109,16 @@ function TxButton({
     if (isSigned()) {
       setLoading(false);
     }
-    // console.log('+++++++++++++++++++++');
-    // console.log(accountAddress);
-    // console.log(formState);
-    // console.log(grc);
-    // console.log(
-    //   document.getElementById('erc')
-    //     ? document.getElementById('erc').value
-    //     : new URL(window.location.href).searchParams.get('ref')
-    // );
-    // console.log('+++++++++++++++++++++');
+    console.log('+++++++++++++++++++++');
+    console.log(accountAddress);
+    console.log(formState);
+    console.log(grc);
+    console.log(
+      document.getElementById('erc')
+        ? document.getElementById('erc').value
+        : new URL(window.location.href).searchParams.get('ref')
+    );
+    console.log('+++++++++++++++++++++');
   };
 
   const sudoTx = async () => {
