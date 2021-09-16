@@ -6083,6 +6083,7 @@ __metadata:
     buffer: ^6.0.3
     emailjs-com: ^3.2.0
     eslint: ^7.20.0
+    eslint-config-react-app: ^6.0.0
     eslint-config-semistandard: ^15.0.1
     eslint-config-standard: ^16.0.2
     eslint-plugin-import: ^2.22.1
