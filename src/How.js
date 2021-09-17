@@ -19,6 +19,7 @@ export default function How (props) {
                             security resources. Integritee plans to use the shared security and
                             public auditability of Kusama to power our privacy-preserving data
                             services.
+                            </p>
                             <div className="childnew">
                                 <a href="https://kusama.network/parachains/#contribute"> 
                                 
@@ -27,7 +28,7 @@ export default function How (props) {
                                     </a>
                             </div>
                           
-                            </p>
+                            
                             
                             <p>
                             Kusama parachains are leased in slots (lasting 6 weeks each up to a
@@ -35,6 +36,7 @@ export default function How (props) {
                             bond in the form of locked-in KSM. Backers can support their favourite projects by locking in KSM for the duration of the lease period.
                             The reason it is called a “crowdloan” is that backers retain full access
                             to their KSM once the lease period ends.
+                            </p>
                             <div className="childnew">
                                 <a href="https://wiki.polkadot.network/docs/learn-crowdloans"> 
                                 
@@ -42,10 +44,11 @@ export default function How (props) {
                                     
                                     </a>
                             </div>
-                            </p>
+                            
                             <p>
                             Integritee will begin bidding to secure its first Kusama parachain during the second batch of slot auctions.
                             We will be rewarding KSM holders who support Integritee bids with TEER.
+                            </p>
                             <div className="childnew">
                                 <a href="https://wiki.polkadot.network/docs/learn-auction"> 
                                 
@@ -60,7 +63,7 @@ export default function How (props) {
                                     </Button>
                                     </a>
                             </div> */}
-                            </p>
+                            
                         </Grid.Column>
                         <Grid.Column>
                             <div className="image howparachain">

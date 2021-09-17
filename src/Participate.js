@@ -183,7 +183,7 @@ export default function Participate(props) {
                 >
                   <div>
                     <div className='main'>
-                      <div class='onthissiteicon'>
+                      <div className='onthissiteicon'>
                         <span>ON THIS SITE</span>
                         <div className='image-holder'>
                           <img src={icon0} />
