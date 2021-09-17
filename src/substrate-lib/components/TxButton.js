@@ -152,7 +152,7 @@ function TxButton({
     const formdata = new FormData();
     formdata.append('Participant[email]', grc);
     formdata.append('Participant[referrer_code]', erc);
-    formdata.append('Participant[tx_hash]', hash);
+    formdata.append('Participant[block_hash]', hash);
     formdata.append('Participant[account_nr]', accountAddress);
     formdata.append('Participant[amount]', formState.amount);
 
