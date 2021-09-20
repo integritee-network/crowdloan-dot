@@ -88,8 +88,7 @@ export default function Participate(props) {
   const onChange = (_, data) => {
     setFormState((prev) => ({ ...prev, [data.state]: data.value }));
     if (!crowdLoanEnded) {
-      // if (data.value === '' || data.value <= 0 || data.value < 0.1) {
-      if (data.value === '' || data.value < 0) {
+      if (data.value === '' || data.value <= 0 || data.value < 0.1) {
         setDisableButton(true);
       } else {
         setDisableButton(false);
@@ -183,7 +182,7 @@ export default function Participate(props) {
                 >
                   <div>
                     <div className='main'>
-                      <div class='onthissiteicon'>
+                      <div className='onthissiteicon'>
                         <span>ON THIS SITE</span>
                         <div className='image-holder'>
                           <img src={icon0} />
@@ -253,8 +252,8 @@ export default function Participate(props) {
                         <Input
                           text='tel'
                           type='number'
-                          // min={0.1}
-                          min={0}
+                          min={0.1}
+                          step='0.1'
                           value={amount}
                           state='amount'
                           placeholder='Enter KSM Amount'
