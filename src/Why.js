@@ -1,5 +1,5 @@
 import './css/App.css';
-import { Container, Button, Modal, Form } from 'semantic-ui-react';
+import { Container, Button, Modal, Form, Dimmer, Loader } from 'semantic-ui-react';
 import GraphImage from './Images/graph.png';
 import Slider from 'react-slick';
 import { useSubstrate } from './substrate-lib';
@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 export default function Main (props) {
   const { api } = useSubstrate();
   const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = useState(true);
   let [crowdLoan, setCrowdLoan] = useState({
   });
   const [formInput, setFormInput] = useReducer(
@@ -45,6 +46,8 @@ export default function Main (props) {
   const queryResHandler = result => {
     const toHumanData = result.toHuman();
     setCrowdLoan(crowdLoan = (toHumanData));
+    console.log('**set-----------------------');
+    setLoading(false);
   };
 
   const transformed = ['2015'];
@@ -52,11 +55,20 @@ export default function Main (props) {
   const callable = 'funds';
 
   const getCrowdLoanData = async () => {
-    if(api && api.query && api.query[palletRpc] && api.query[palletRpc][callable]) await api.query[palletRpc][callable](...transformed, queryResHandler);
+    if (
+      api &&
+      api.query &&
+      api.query[palletRpc] &&
+      api.query[palletRpc][callable]
+    ) {
+      await api.query[palletRpc][callable](...transformed, queryResHandler);
+    }
   };
 
   if (Object.keys(crowdLoan).length === 0) {
-    getCrowdLoanData();
+    getCrowdLoanData().then(() =>
+      console.log('**data---------------------------')
+    );
   }
 
   const settings = {
@@ -258,6 +270,13 @@ export default function Main (props) {
           <li>
             <span>KSM CONTRIBUTED</span>
             {crowdLoan.raised}
+            {loading && (
+              <Dimmer active>
+                <Loader size='mini' inline='centered'>
+                  Loading
+                </Loader>
+              </Dimmer>
+            )}
           </li>
         </ul>
 

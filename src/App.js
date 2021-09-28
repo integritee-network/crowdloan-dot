@@ -47,12 +47,12 @@ function Main () {
       </Grid.Column>
     </Grid>;
 
-   if (apiState === 'ERROR') return message(apiError);
-   else if (apiState !== 'READY') return loader('Connecting to Kusama');
+  //  if (apiState === 'ERROR') return message(apiError);
+  //  else if (apiState !== 'READY') return loader('Connecting to Kusama');
 
-   if (keyringState !== 'READY') {
-     return loader('Loading accounts (please review any extension\'s authorization)');
-   }
+  //  if (keyringState !== 'READY') {
+  //    return loader('Loading accounts (please review any extension\'s authorization)');
+  //  }
 
   // const anchor = document.querySelector('#some-id')
   // anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })

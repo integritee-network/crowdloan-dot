@@ -25,9 +25,9 @@ export default function Clients (props) {
       <Container>
         <div className="text">
           <span>OUR COLLABORATORS</span>
-          <div className="image-holder">
+          {/* <div className="image-holder">
             <img src={C1} />
-          </div>
+          </div> */}
           <div className="image-holder">
             <img src={C2} />
           </div>

@@ -1,29 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 // import { ReactComponent as Logo } from './css/IntegriteeLogoAndSlogan.svg';
 import logo from './css/IntegriteeLogoAndSlogan.svg';
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import icon0 from './Images/i0.svg';
-import mediumlogo from './Images/Medium-Logo.png';
-import subsociallogo from './Images/subsocial-20x20px white.png';
-import elementlogo from './Images/element_20x20px white.png';
-import { AiOutlineTwitter } from 'react-icons/ai';
-import { GrLinkedinOption } from 'react-icons/gr';
-import { FaTelegramPlane } from 'react-icons/fa';
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import elementlogo from './Images/social-blue-logo/Element-logo.png';
+import linkedinlogo from './Images/social-blue-logo/LinkedIn-logo.png';
+import mediumlogo from './Images/social-blue-logo/Medium-Logo.jpeg';
+import subsociallogo from './Images/social-blue-logo/Subsocial-logo.png';
+import telegramlogo from './Images/social-blue-logo/Telegram-logo.png';
+import twitterlogo from './Images/social-blue-logo/Twitter-logo.png';
 
-import {
-  Menu,
-  Button,
-  Dropdown,
-  Container,
-  Icon,
-  Image,
-  Label
-} from 'semantic-ui-react';
+import { Menu, Container, Icon, Label } from 'semantic-ui-react';
 
 import { useSubstrate } from './substrate-lib';
 
-function Main (props) {
+function Main(props) {
   const { keyring } = useSubstrate();
   const { setAccountAddress } = props;
   const [accountSelected, setAccountSelected] = useState('');
@@ -31,12 +21,12 @@ function Main (props) {
 
   // Get the list of accounts we possess the private key for
   let keyringOptions = [];
-  if(keyring){
-    keyringOptions = keyring.getPairs().map(account => ({
+  if (keyring) {
+    keyringOptions = keyring.getPairs().map((account) => ({
       key: account.address,
       value: account.address,
       text: account.meta.name.toUpperCase(),
-      icon: 'user'
+      icon: 'user',
     }));
   }
   const initialAddress =
@@ -49,62 +39,110 @@ function Main (props) {
     scroll();
   }, [setAccountAddress, initialAddress]);
 
-  const onChange = address => {
+  const onChange = (address) => {
     // Update state with new account address
     setAccountAddress(address);
     setAccountSelected(address);
   };
 
   const scroll = () => {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
 
         document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       });
     });
   };
 
   return (
-    
-    <Menu
-      tabular
-      className="main-menu"
-      id="main-nav"
-    >
-       
+    <Menu tabular className='main-menu' id='main-nav'>
       <Container>
-        
-        <Menu.Menu className="logo">
-         <a > <img src={logo} width={200} /></a> 
+        <Menu.Menu className='logo'>
+          <a>
+            {' '}
+            <img src={logo} alt='logo' width={200} />
+          </a>
         </Menu.Menu>
-        <Menu.Menu position='right' className={`toggle-menu ${toggleMenuFun ? "open" : ""}`}>
-          
-          <Menu.Item
-            name='Crowdloan Campaign'
-            href="#crowdloan"
-          />
+        <Menu.Menu
+          position='right'
+          className={`toggle-menu ${toggleMenuFun ? 'open' : ''}`}
+        >
+          <Menu.Item name='Crowdloan Campaign' href='#crowdloan' />
 
-          <Menu.Item
-            name='Referral Program'
-            href="#referral"
-          />
+          <Menu.Item name='Referral Program' href='#referral' />
 
-          <Menu.Item
-            name='TEER Token'
-            href="#TeerToken"
-          />
-          <Menu.Item
-            name='FAQ'
-            href="#FAQ"
-          />
+          <Menu.Item name='TEER Token' href='#TeerToken' />
+          <Menu.Item name='FAQ' href='#FAQ' />
 
-          <a className="ui primary gradient-btn button" href="#participate">Participate Now!</a>
+          <a className='ui primary gradient-btn button' style={{lineHeight:'1.5'}} href='#participate'>
+            Participate Now!
+          </a>
+          <div className='nav-social'>
+            <ul>
+              <li>
+                {' '}
+                <a
+                  target='_blank'
+                  rel='noreferrer'
+                  href='https://www.linkedin.com/company/integritee/'
+                >
+                  <img src={linkedinlogo} alt='linkedin logo' width={20} />{' '}
+                </a>{' '}
+              </li>
+              <li>
+                <a
+                  target='_blank'
+                  rel='noreferrer'
+                  href='https://t.me/Integritee_Official'
+                >
+                  <img src={telegramlogo} alt='telegram logo' width={20} />{' '}
+                </a>{' '}
+              </li>
+              <li>
+                <a
+                  target='_blank'
+                  rel='noreferrer'
+                  href='https://twitter.com/integri_t_e_e'
+                >
+                  <img src={twitterlogo} alt='twitter logo' width={20} />{' '}
+                </a>{' '}
+              </li>
+              <li>
+                {' '}
+                <a
+                  target='_blank'
+                  rel='noreferrer'
+                  href='https://app.element.io/#/room/#integritee-watercooler:matrix.org'
+                >
+                  <img src={elementlogo} alt='element logo' width={20} />{' '}
+                </a>{' '}
+              </li>
+              <li>
+                {' '}
+                <a
+                  target='_blank'
+                  rel='noreferrer'
+                  href='https://app.subsocial.network/4638'
+                >
+                  <img src={subsociallogo} alt='subsocial logo' width={20} />{' '}
+                </a>{' '}
+              </li>
+              <li>
+                {' '}
+                <a
+                  target='_blank'
+                  rel='noreferrer'
+                  href='https://medium.com/integritee'
+                >
+                  <img src={mediumlogo} alt='medium logo' width={20} />{' '}
+                </a>{' '}
+              </li>
+            </ul>
+          </div>
         </Menu.Menu>
-
-
 
         {/* <Menu.Menu position='right' style={{ alignItems: 'center' }}>
           { !accountSelected
@@ -142,14 +180,17 @@ function Main (props) {
           <BalanceAnnotation accountSelected={accountSelected} />
         </Menu.Menu> */}
       </Container>
-      <div className='toggle-btn' onClick={() => setToggleMenuFun(!toggleMenuFun)}>
+      <div
+        className='toggle-btn'
+        onClick={() => setToggleMenuFun(!toggleMenuFun)}
+      >
         {toggleMenuFun ? <AiOutlineClose /> : <AiOutlineMenu />}
       </div>
     </Menu>
   );
 }
 
-function BalanceAnnotation (props) {
+function BalanceAnnotation(props) {
   const { accountSelected } = props;
   const { api } = useSubstrate();
   const [accountBalance, setAccountBalance] = useState(0);
@@ -160,10 +201,11 @@ function BalanceAnnotation (props) {
 
     // If the user has selected an address, create a new subscription
     accountSelected &&
-      api.query.system.account(accountSelected, balance => {
-        setAccountBalance(balance.data.free.toHuman());
-      })
-        .then(unsub => {
+      api.query.system
+        .account(accountSelected, (balance) => {
+          setAccountBalance(balance.data.free.toHuman());
+        })
+        .then((unsub) => {
           unsubscribe = unsub;
         })
         .catch(console.error);
@@ -171,15 +213,15 @@ function BalanceAnnotation (props) {
     return () => unsubscribe && unsubscribe();
   }, [api, accountSelected]);
 
-  return accountSelected
-    ? <Label pointing='left'>
+  return accountSelected ? (
+    <Label pointing='left'>
       <Icon name='money' color='green' />
       {accountBalance}
     </Label>
-    : null;
+  ) : null;
 }
 
-export default function UpperMenu (props) {
+export default function UpperMenu(props) {
   const { api, keyring } = useSubstrate();
-  return  (<Main {...props} />)
+  return <Main {...props} />;
 }

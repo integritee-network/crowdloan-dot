@@ -9,13 +9,12 @@ const videoPlayerStyle = {
 const EmbedVideo = () => (
   <ReactPlayer
     className='react-player fixed-bottom'
-    url='./video/Video.mp4'
-    width='100%'
-    height='100%'
+    // url='./video/Video.mp4'
+    url='https://www.youtube.com/watch?v=fBxxpaJrVyE'
     // controls={true}
     // playing
     controls
-    // style={videoPlayerStyle}
+    style={videoPlayerStyle}
     // light = {true}
     // light="./Images/element_.png"
   />

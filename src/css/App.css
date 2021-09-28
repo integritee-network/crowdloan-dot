@@ -1675,7 +1675,8 @@ div[disabled]
 .left-slider {
   height: 460px;
 }
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) { */
+  @media screen and (max-width: 1000px) {
   .toggle-btn {
     display: block;
     align-self: center;
@@ -1891,4 +1892,17 @@ div[disabled]
    
   }
   
+}
+
+.nav-social ul {
+  display: flex;
+  margin: 0;
+  padding: 10px;
+}
+.nav-social li + li {
+  margin-left: 15px;
+}
+.nav-social svg {
+  color: #fff;
+  font-size: 20px;
 }
