@@ -7,7 +7,7 @@ import elementlogo from './Images/element_20x20px white.png';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { GrLinkedinOption } from 'react-icons/gr';
 import { FaTelegramPlane } from 'react-icons/fa';
-
+import discordl from './Images/Discord-20x20px WHITE-01.png';
 
 export default function Footer () {
   return (
@@ -60,6 +60,7 @@ export default function Footer () {
                         <li> <a target="_blank" href="https://app.element.io/#/room/#integritee-watercooler:matrix.org"><img src={elementlogo} width={20} /> </a> </li>
                         <li> <a target="_blank" href="https://app.subsocial.network/4638"><img src={subsociallogo} width={20} /> </a> </li>
                         <li> <a target="_blank" href="https://medium.com/integritee"><img src={mediumlogo} width={20} /> </a> </li>
+                        <li> <a target="_blank" href="https://discord.com/invite/anhtxwr4eS"><img src={discordl} width={20} /> </a> </li>
                         
                         </ul>
                     </div>

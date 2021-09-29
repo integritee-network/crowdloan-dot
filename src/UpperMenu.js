@@ -4,10 +4,11 @@ import logo from './css/IntegriteeLogoAndSlogan.svg';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import elementlogo from './Images/social-blue-logo/Element-logo.png';
 import linkedinlogo from './Images/social-blue-logo/LinkedIn-logo.png';
-import mediumlogo from './Images/social-blue-logo/Medium-Logo.jpeg';
+import mediumlogo from './Images/social-blue-logo/Medium-Logo.png';
 import subsociallogo from './Images/social-blue-logo/Subsocial-logo.png';
 import telegramlogo from './Images/social-blue-logo/Telegram-logo.png';
 import twitterlogo from './Images/social-blue-logo/Twitter-logo.png';
+import discordlogo from './Images/social-blue-logo/Discord-logo.png';
 
 import { Menu, Container, Icon, Label } from 'semantic-ui-react';
 
@@ -138,6 +139,16 @@ function Main(props) {
                   href='https://medium.com/integritee'
                 >
                   <img src={mediumlogo} alt='medium logo' width={20} />{' '}
+                </a>{' '}
+              </li>
+              <li>
+                {' '}
+                <a
+                  target='_blank'
+                  rel='noreferrer'
+                  href='https://discord.com/invite/anhtxwr4eS'
+                >
+                  <img src={discordlogo} alt='discord logo' width={20} />{' '}
                 </a>{' '}
               </li>
             </ul>
