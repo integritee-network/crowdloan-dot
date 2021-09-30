@@ -34,6 +34,10 @@ export default function Footer () {
                         href="#referral"
                     />
                     <Menu.Item
+                        name='NFT'
+                        href="#nftsection"
+                    />
+                    <Menu.Item
                         name='TEER Token'
                         href="#TeerToken"
                     />

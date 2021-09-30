@@ -662,6 +662,66 @@ div[disabled]
   height: auto;
   display: block;
 }
+/* .white-bg .process {
+  margin: 0;
+  padding: 0;
+}
+.white-bg .process li {
+  padding-left: 35px;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+}
+.white-bg .process li::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  top: 3px;
+  bottom: 60px;
+  left: 135px;
+  background: #000065;
+}
+.white-bg .process li:last-child::after {
+  bottom: 75px;
+}
+.white-bg .process li:last-child .icon-holder {
+  display: flex;
+  justify-content: center;
+}
+.white-bg .process li:last-child .icon-holder > div:last-child {
+  padding-left: 15px;
+}
+.white-bg .process li + li {
+  padding-top: 40px;
+}
+.white-bg .process li .icon {
+  background-color: #658ea9;
+  width: 35px;
+  height: 35px;
+  margin: 0 auto 7px;
+  border-radius: 25px;
+  padding: 8px 11px;
+}
+.white-bg .process li .icon.integritee {
+  padding: 11px 10px;
+  background-color: #000065;
+}
+.white-bg .process li .icon-holder {
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  width: 200px;
+  flex: 0 0 200px;
+}
+.white-bg .process li .text-holder {
+  font-size: 14px;
+}
+.white-bg .process li .icon img {
+  width: 100%;
+  height: auto;
+  display: block;
+} */
 .why.leaderboard {
   font-family: 'Gotham Rounded', sans-serif;
   background: #000065 !important;

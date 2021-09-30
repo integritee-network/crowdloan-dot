@@ -11,6 +11,7 @@ import Faq from './Faq';
 import './css/App.css';
 import ThreeBox from './ThreeBox';
 import How from './How';
+import NFTsection from './NFTSection';
 import Participate from './Participate';
 import Value from './Value';
 import Rewards from './Rewards';
@@ -23,6 +24,7 @@ import Footer from './Footer';
 import Leaderboard from './Leaderboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 function Main () {
   const [accountAddress, setAccountAddress] = useState(null);
@@ -81,6 +83,7 @@ function Main () {
         <Support />
         <SupportM />
         <Referral />
+        <NFTsection />
       {/* <Participate /> */}
       {apiState !== "READY" ? <></> : <Participate />}
       {/* <Contribute id='#contribute' accountPair={accountPair} /> */}

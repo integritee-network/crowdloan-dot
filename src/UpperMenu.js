@@ -75,6 +75,8 @@ function Main(props) {
 
           <Menu.Item name='Referral Program' href='#referral' />
 
+          <Menu.Item name='NFT' href='#nftsection' />
+
           <Menu.Item name='TEER Token' href='#TeerToken' />
           <Menu.Item name='FAQ' href='#FAQ' />
 
