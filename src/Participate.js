@@ -76,7 +76,7 @@ export default function Participate(props) {
   }, [bestNumber]);
 
   const { apiState, keyring, keyringState, apiError } = useSubstrate();
-  
+
   try {
     keyring.setSS58Format(2);
   } catch (error) {
@@ -88,15 +88,15 @@ export default function Participate(props) {
     keyringState === 'READY' &&
     keyring.getPair(accountAddress);
 
-  // disable contribution if crowdfunding has already ended: Enable this codeblock when going live
-  // useEffect(() => {
-  //   if (blockNumber >= crowdLoanData.end && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length !== 0) {
-  //     setDisableButton(true);
-  //     setCrowdLoanEnded(true)
-  //     setStatus('crowdloan has ended');
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [blockNumber]);
+  //disable contribution if crowdfunding has already ended: Enable this codeblock when going live
+  useEffect(() => {
+    if (blockNumber >= crowdLoanData.end && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length !== 0) {
+      setDisableButton(true);
+      setCrowdLoanEnded(true)
+      setStatus('crowdloan has ended');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [blockNumber]);
 
   useEffect(() => {
     const queryResHandler = (result) => {
@@ -242,7 +242,7 @@ export default function Participate(props) {
                           <img src={icon4} />
                         </div>
                       </div>
-                      
+
                     </div>
                   </div>
                   <div>
@@ -255,7 +255,7 @@ export default function Participate(props) {
                           <img src={icon5} />
                         </div>
                       </div>
-                      
+
                     </div>
                   </div>
 
