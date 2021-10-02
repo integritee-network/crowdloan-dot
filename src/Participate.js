@@ -12,6 +12,7 @@ import {
 } from 'semantic-ui-react';
 import icon0 from './Images/i0.svg';
 import icon4 from './Images/polkadot.png';
+import icon5 from './Images/fearless-wallet.png';
 import Slider from 'react-slick';
 import { TxButton } from './substrate-lib/components';
 import { useSubstrate } from './substrate-lib';
@@ -193,7 +194,7 @@ export default function Participate(props) {
 
         <Container>
           <div className='text'>
-            <span>2 WAYS TO TAKE PART</span>
+            <span>3 WAYS TO TAKE PART</span>
             <h1>Participate in the Integritee Crowdloan!</h1>
           </div>
           <Grid>
@@ -241,8 +242,23 @@ export default function Participate(props) {
                           <img src={icon4} />
                         </div>
                       </div>
+                      
                     </div>
                   </div>
+                  <div>
+                  <br/>
+                  <br/>
+                    <div className='main'>
+                      <div>
+                        <span>USING FEARLESS WALLET</span>
+                        <div className='image-holder'>
+                          <img src={icon5} />
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+
                 </Slider>
               </Grid.Column>
               <Grid.Column className='right-section' width={10}>
@@ -417,7 +433,43 @@ export default function Participate(props) {
                     <h2>Using Polkadot-JS Apps</h2>
                     <p>Follow the instructions detailed in this video:</p>
 
-                    <EmbedVideo />
+                    <EmbedVideo style={{width:'100%'}} />
+                    <p>
+                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    </p>
+                  </div>
+                  <div>
+                  <h2>Using Fearless Wallet</h2>
+                  <br/>
+                  <br/>
+                    <ol>
+                      <li>
+                      Download the App on the&nbsp;
+                      <a href='https://apps.apple.com/us/app/fearless-wallet/id1537251089'>App Store</a> or on&nbsp;
+                      <a href='https://play.google.com/store/apps/details?id=jp.co.soramitsu.fearless'>Google Play</a>
+                      </li>
+                      <br/>
+                      <li>
+                      Import or create and fund an account
+                      </li>
+                      <br/>
+                      <li>
+                      Choose the Kusama Network
+                      </li>
+                      <br/>
+                      <li>
+                      Go to Crowdloans and click on Integritee Network (TEER)
+                      </li>
+                      <br/>
+                      <li>
+                      Contribute to the crowdloan
+                      </li>
+                      <br/>
+                    </ol>
+                    <br/>
+                    <p>
+                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    </p>
                   </div>
                 </Slider>
               </Grid.Column>

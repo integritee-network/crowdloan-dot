@@ -1753,7 +1753,7 @@ div[disabled]
   }
   .left-slider {
     /*  just until its hidden */
-    height: 150px;
+    height: 270px;
   }
   .participate-tabs .slick-current .main:after {
     left: 0;
@@ -1965,4 +1965,8 @@ div[disabled]
 .nav-social svg {
   color: #fff;
   font-size: 20px;
+}
+
+#videoway {
+  width: 99% !important;
 }
