@@ -25,7 +25,6 @@ import Leaderboard from './Leaderboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 function Main () {
   const [accountAddress, setAccountAddress] = useState(null);
   const { apiState, keyring, keyringState, apiError } = useSubstrate();
@@ -61,7 +60,7 @@ function Main () {
 
   const contextRef = createRef();
   console.log(apiState);
-  
+
   return (
     <div ref={contextRef}>
       <ToastContainer
@@ -85,12 +84,11 @@ function Main () {
         <Referral />
         <NFTsection />
       {/* <Participate /> */}
-      {apiState !== "READY" ? <></> : <Participate />}
+      {apiState !== 'READY' ? <></> : <Participate />}
       {/* <Contribute id='#contribute' accountPair={accountPair} /> */}
-        
-        
+
         <Rewards />
-        
+
         <Value />
         <Roadmap />
         <Faq />
@@ -102,7 +100,6 @@ function Main () {
 }
 
 export default function App () {
-
   return (
     <SubstrateContextProvider>
       <Main />

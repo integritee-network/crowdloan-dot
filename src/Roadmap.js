@@ -41,7 +41,7 @@ export default function Participate () {
                         <li>Launch main-net, TEER token and sidechains.</li>
                         <li>Q4 <br /> Secure Polkadot slot(s).</li>
                         <li>List TEER on major exchange &amp; release Kusama-Polkadot bridge.</li>
-                        
+
                     </ul>
                     <span>2021</span>
                     </div>

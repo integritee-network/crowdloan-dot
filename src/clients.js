@@ -6,18 +6,18 @@ import C3 from './Images/investor-logo/6.png';
 import C4 from './Images/investor-logo/3.png';
 import C5 from './Images/investor-logo/4.png';
 import C6 from './Images/investor-logo/5.png';
-import I1 from './Images/investor-logo/other/1.png'
-import I2 from './Images/investor-logo/other/2.png'
-import I3 from './Images/investor-logo/other/3.png'
-import I4 from './Images/investor-logo/other/4.png'
-import I5 from './Images/investor-logo/other/5.png'
-import I6 from './Images/investor-logo/other/6.png'
-import I7 from './Images/investor-logo/other/7.png'
-import I8 from './Images/investor-logo/other/8.png'
-import I9 from './Images/investor-logo/other/9.png'
-import I10 from './Images/investor-logo/other/10.png'
-import I11 from './Images/investor-logo/other/11.png'
-import I12 from './Images/investor-logo/other/12.png'
+import I1 from './Images/investor-logo/other/1.png';
+import I2 from './Images/investor-logo/other/2.png';
+import I3 from './Images/investor-logo/other/3.png';
+import I4 from './Images/investor-logo/other/4.png';
+import I5 from './Images/investor-logo/other/5.png';
+import I6 from './Images/investor-logo/other/6.png';
+import I7 from './Images/investor-logo/other/7.png';
+import I8 from './Images/investor-logo/other/8.png';
+import I9 from './Images/investor-logo/other/9.png';
+import I10 from './Images/investor-logo/other/10.png';
+import I11 from './Images/investor-logo/other/11.png';
+import I12 from './Images/investor-logo/other/12.png';
 
 export default function Clients (props) {
   return (

@@ -14,7 +14,7 @@ import { Menu, Container, Icon, Label } from 'semantic-ui-react';
 
 import { useSubstrate } from './substrate-lib';
 
-function Main(props) {
+function Main (props) {
   const { keyring } = useSubstrate();
   const { setAccountAddress } = props;
   const [accountSelected, setAccountSelected] = useState('');
@@ -27,7 +27,7 @@ function Main(props) {
       key: account.address,
       value: account.address,
       text: account.meta.name.toUpperCase(),
-      icon: 'user',
+      icon: 'user'
     }));
   }
   const initialAddress =
@@ -52,7 +52,7 @@ function Main(props) {
         e.preventDefault();
 
         document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth',
+          behavior: 'smooth'
         });
       });
     });
@@ -205,7 +205,7 @@ function Main(props) {
   );
 }
 
-function BalanceAnnotation(props) {
+function BalanceAnnotation (props) {
   const { accountSelected } = props;
   const { api } = useSubstrate();
   const [accountBalance, setAccountBalance] = useState(0);
@@ -228,15 +228,17 @@ function BalanceAnnotation(props) {
     return () => unsubscribe && unsubscribe();
   }, [api, accountSelected]);
 
-  return accountSelected ? (
+  return accountSelected
+    ? (
     <Label pointing='left'>
       <Icon name='money' color='green' />
       {accountBalance}
     </Label>
-  ) : null;
+      )
+    : null;
 }
 
-export default function UpperMenu(props) {
+export default function UpperMenu (props) {
   const { api, keyring } = useSubstrate();
   return <Main {...props} />;
 }

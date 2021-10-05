@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
+import React, { useState, useEffect } from 'react';
+import Slider from 'react-slick';
 
-export default function Leaderboard() {
+export default function Leaderboard () {
   const [allDataLoaded, setAllDataLoaded] = useState(false);
   const [contributors, setContributors] = useState(new Map());
   const [contributorsUnsorted, setContributorsUnsorted] = useState(new Map());
@@ -12,33 +12,33 @@ export default function Leaderboard() {
     vertical: true,
     speed: 500,
     slidesToShow: 8,
-    slidesToScroll: 1,
+    slidesToScroll: 1
   };
 
   // fetch contributors
   useEffect(() => {
-    function makeApiCall(page) {
+    function makeApiCall (page) {
       // console.log(page);
       return fetch(
-        "https://kusama.api.subscan.io/api/scan/parachain/contributes",
+        'https://kusama.api.subscan.io/api/scan/parachain/contributes',
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
-            "X-API-Key": "f61b3cd451cee62383692c528215d12c",
-            Accept: "application/json",
+            'Content-Type': 'application/json',
+            'X-API-Key': 'f61b3cd451cee62383692c528215d12c',
+            Accept: 'application/json'
           },
           body: JSON.stringify({
             row: 100,
             page: page,
             from_history: true,
-            para_id: 2015,
-          }),
+            para_id: 2015
+          })
         }
       );
     }
 
-    async function processUsers() {
+    async function processUsers () {
       let result;
       for (let i = 0; i < 150; i++) {
         result = await makeApiCall(i).then((res) => res.json());
@@ -60,7 +60,7 @@ export default function Leaderboard() {
             setAllDataLoaded(true);
           }
         } else {
-          console.log("all data filled");
+          console.log('all data filled');
           setContributorsUnsorted(contributorsProperty);
           setAllDataLoaded(true);
           break;
@@ -68,7 +68,7 @@ export default function Leaderboard() {
       }
     }
 
-    async function doTask() {
+    async function doTask () {
       await processUsers();
     }
     doTask();
@@ -88,10 +88,11 @@ export default function Leaderboard() {
   return (
     <div className="why leaderboard">
       <div className="leaderboard">
-        
+
         <h2>Leaderboard</h2>
         <div className="sliderdiv">
-          {allDataLoaded ? (
+          {allDataLoaded
+            ? (
             <div>
               <Slider {...settings}>
                 {Array.from(contributors)
@@ -103,11 +104,12 @@ export default function Leaderboard() {
                   ))}
               </Slider>
             </div>
-          ) : (
+              )
+            : (
             <p>loading</p>
-          )}
+              )}
         </div>
-         
+
       </div>
     </div>
   );

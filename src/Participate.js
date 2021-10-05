@@ -8,7 +8,7 @@ import {
   Checkbox,
   Modal,
   Dimmer,
-  Loader,
+  Loader
 } from 'semantic-ui-react';
 import icon0 from './Images/i0.svg';
 import icon4 from './Images/polkadot.png';
@@ -21,14 +21,14 @@ import { mnemonicGenerate } from '@polkadot/util-crypto';
 import EmbedVideo from './EmbedVideo';
 // import { P } from 'glamorous';
 
-export default function Participate(props) {
+export default function Participate (props) {
   const mnemonic = mnemonicGenerate();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState(null);
   const [formState, setFormState] = useState({
     addressTo: null,
-    amount: 0.1,
+    amount: 0.1
   });
   const [toggleOne, setToggleOne] = useState(false);
   const [toggleTwo, setToggleTwo] = useState(
@@ -76,7 +76,7 @@ export default function Participate(props) {
   }, [bestNumber]);
 
   const { apiState, keyring, keyringState, apiError } = useSubstrate();
-  
+
   try {
     keyring.setSS58Format(2);
   } catch (error) {
@@ -145,7 +145,7 @@ export default function Participate(props) {
     infinite: false,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToScroll: 1
   };
 
   return (
@@ -242,7 +242,7 @@ export default function Participate(props) {
                           <img src={icon4} />
                         </div>
                       </div>
-                      
+
                     </div>
                   </div>
                   <div>
@@ -255,7 +255,7 @@ export default function Participate(props) {
                           <img src={icon5} />
                         </div>
                       </div>
-                      
+
                     </div>
                   </div>
 
@@ -316,13 +316,14 @@ export default function Participate(props) {
                           <Grid.Column>
                             <Checkbox
                               label={{
-                                children: 'Generate referral code',
+                                children: 'Generate referral code'
                               }}
                               onClick={() => setToggleOne(!toggleOne)}
                             />
                             <div>
                               <br />
-                              {toggleOne ? (
+                              {toggleOne
+                                ? (
                                 <Input
                                   required
                                   id='grc'
@@ -330,7 +331,8 @@ export default function Participate(props) {
                                   pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
                                   placeholder='Enter Email'
                                 />
-                              ) : null}
+                                  )
+                                : null}
                             </div>
                             <br />
                           </Grid.Column>
@@ -338,16 +340,18 @@ export default function Participate(props) {
                             <Checkbox
                               checked={toggleTwo}
                               label={{
-                                children: 'Enter referral code',
+                                children: 'Enter referral code'
                               }}
                               onClick={() => setToggleTwo(!toggleTwo)}
                             />
                             <div>
                               <br />
-                              {toggleTwo ? (
-                                new URL(window.location.href).searchParams.get(
-                                  'ref'
-                                ) ? (
+                              {toggleTwo
+                                ? (
+                                    new URL(window.location.href).searchParams.get(
+                                      'ref'
+                                    )
+                                      ? (
                                   <Input
                                     required
                                     readOnly
@@ -358,15 +362,17 @@ export default function Participate(props) {
                                     type='text'
                                     placeholder='Enter Referral Code'
                                   />
-                                ) : (
+                                        )
+                                      : (
                                   <Input
                                     required
                                     id='erc'
                                     type='text'
                                     placeholder='Enter Referral Code'
                                   />
-                                )
-                              ) : null}
+                                        )
+                                  )
+                                : null}
                             </div>
                             <br />
                           </Grid.Column>
@@ -397,10 +403,10 @@ export default function Participate(props) {
                           inputParams: [
                             paraId,
                             amount * Math.pow(10, 12),
-                            null,
+                            null
                           ],
                           paramFields: [true, true, false],
-                          disableButton: disableButton,
+                          disableButton: disableButton
                         }}
                       />
                     </form>
@@ -433,7 +439,7 @@ export default function Participate(props) {
                     <h2>Using Polkadot-JS Apps</h2>
                     <p>Follow the instructions detailed in this video:</p>
 
-                    <EmbedVideo style={{width:'100%'}} />
+                    <EmbedVideo style={{ width: '100%' }} />
                     <p>
                     Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
                     </p>

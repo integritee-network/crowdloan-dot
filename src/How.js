@@ -1,7 +1,6 @@
 import './css/App.css';
-import { Container, Grid } from 'semantic-ui-react';
+import { Container, Grid, Button, Modal, Form } from 'semantic-ui-react';
 import Otherimage from './Images/other-image.png';
-import { Button, Modal, Form } from 'semantic-ui-react';
 
 export default function How (props) {
   return (
@@ -21,15 +20,13 @@ export default function How (props) {
                             services.
                             </p>
                             <div className="childnew">
-                                <a href="https://kusama.network/parachains/#contribute"> 
-                                
+                                <a href="https://kusama.network/parachains/#contribute">
+
                                 How to contribute
-                                    
+
                                     </a>
                             </div>
-                          
-                            
-                            
+
                             <p>
                             Kusama parachains are leased in slots (lasting 6 weeks each up to a
                             maximum of 48 weeks) to the projects which provide the largest
@@ -38,32 +35,32 @@ export default function How (props) {
                             to their KSM once the lease period ends.
                             </p>
                             <div className="childnew">
-                                <a href="https://wiki.polkadot.network/docs/learn-crowdloans"> 
-                                
+                                <a href="https://wiki.polkadot.network/docs/learn-crowdloans">
+
                                 Learn more about crowdloans
-                                    
+
                                     </a>
                             </div>
-                            
+
                             <p>
                             Integritee will begin bidding to secure its first Kusama parachain during the second batch of slot auctions.
                             We will be rewarding KSM holders who support Integritee bids with TEER.
                             </p>
                             <div className="childnew">
-                                <a href="https://wiki.polkadot.network/docs/learn-auction"> 
-                                
+                                <a href="https://wiki.polkadot.network/docs/learn-auction">
+
                               Learn more about the auction
-                                    
+
                                     </a>
                             </div>
                             {/* <div className="child">
-                                <a href="https://wiki.polkadot.network/docs/learn-crowdloans"> 
+                                <a href="https://wiki.polkadot.network/docs/learn-crowdloans">
                                 <Button className="ui primary gradient-btn button">
                                 Learn more about crowdloans
                                     </Button>
                                     </a>
                             </div> */}
-                            
+
                         </Grid.Column>
                         <Grid.Column>
                             <div className="image howparachain">
