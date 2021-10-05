@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 
 const videoPlayerStyle = {
   border: '0.5px solid #70e6da',
-  marginLeft: '0px',
+  marginLeft: '0px'
 };
 
 const EmbedVideo = () => (

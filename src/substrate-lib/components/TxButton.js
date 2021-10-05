@@ -6,7 +6,7 @@ import { web3FromSource } from '@polkadot/extension-dapp';
 import { useSubstrate } from '../';
 import utils from '../utils';
 
-function TxButton({
+function TxButton ({
   setLoading = null,
   accountAddress = null,
   formState = null,
@@ -19,7 +19,7 @@ function TxButton({
   style = null,
   type = 'QUERY',
   attrs = null,
-  disabled = false,
+  disabled = false
 }) {
   // Hooks
   const { api } = useSubstrate();
@@ -52,7 +52,7 @@ function TxButton({
   const getFromAcct = async () => {
     const {
       address,
-      meta: { source, isInjected },
+      meta: { source, isInjected }
     } = accountPair;
     let fromAcct;
 
@@ -159,22 +159,22 @@ function TxButton({
     const requestOptions = {
       method: 'POST',
       headers: {
-        'x-requested-with': 'XMLHttpRequest',
+        'x-requested-with': 'XMLHttpRequest'
       },
       body: formdata,
-      redirect: 'follow',
+      redirect: 'follow'
     };
 
     fetch('https://api.crowdloan.integritee.network/storeuser', requestOptions)
-      .then((response) => {response.text();})
+      .then((response) => { response.text(); })
       .then((result) => console.log(result))
       .catch((error) => {
         console.log('error', error);
         console.log('trying again');
         setLoading(true);
-        setTimeout(() => {  saveParticipateInfo(accountAddress, formState, grc, erc, hash); }, 2000);
+        setTimeout(() => { saveParticipateInfo(accountAddress, formState, grc, erc, hash); }, 2000);
       });
-      setLoading(false);
+    setLoading(false);
   };
 
   const signedTx = async () => {
@@ -243,7 +243,7 @@ function TxButton({
 
   const rpc = async () => {
     const transformed = transformParams(paramFields, inputParams, {
-      emptyAsNull: false,
+      emptyAsNull: false
     });
     const unsub = await api.rpc[palletRpc][callable](
       ...transformed,
@@ -300,12 +300,11 @@ function TxButton({
     });
     const params = paramFields.map((field, ind) => ({
       ...field,
-      value: paramVal[ind] || null,
+      value: paramVal[ind] || null
     }));
 
     return params.reduce((memo, { type = 'string', value }) => {
-      if (value == null || value === '')
-        return opts.emptyAsNull ? [...memo, null] : memo;
+      if (value == null || value === '') { return opts.emptyAsNull ? [...memo, null] : memo; }
 
       let converted = value;
 
@@ -396,17 +395,17 @@ TxButton.propTypes = {
     'UNSIGNED-TX',
     'SUDO-TX',
     'UNCHECKED-SUDO-TX',
-    'CONSTANT',
+    'CONSTANT'
   ]).isRequired,
   attrs: PropTypes.shape({
     palletRpc: PropTypes.string,
     callable: PropTypes.string,
     inputParams: PropTypes.array,
-    paramFields: PropTypes.array,
-  }).isRequired,
+    paramFields: PropTypes.array
+  }).isRequired
 };
 
-function TxGroupButton(props) {
+function TxGroupButton (props) {
   return (
     <Button.Group>
       <TxButton label='Unsigned' type='UNSIGNED-TX' color='grey' {...props} />

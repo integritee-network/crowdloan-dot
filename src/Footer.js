@@ -48,12 +48,12 @@ export default function Footer () {
                     </Menu.Menu>
                 </Container>
                 </Menu>
-                
+
                 <Container className="part-btn-holder">
               <a className="ui primary gradient-btn button" href="#participate">Participate Now!</a> <br></br>
               <a className="ui primary gradient-btn button" href="https://mailchi.mp/integritee/get-notified">Subscribe Now!</a>
                 </Container>
-              
+
                 <Container className="footer-bottom">
                     <div className="social">
                         <ul>
@@ -65,13 +65,13 @@ export default function Footer () {
                         <li> <a target="_blank" href="https://app.subsocial.network/4638"><img src={subsociallogo} width={20} /> </a> </li>
                         <li> <a target="_blank" href="https://medium.com/integritee"><img src={mediumlogo} width={20} /> </a> </li>
                         <li> <a target="_blank" href="https://discord.com/invite/anhtxwr4eS"><img src={discordl} width={20} /> </a> </li>
-                        
+
                         </ul>
                     </div>
                     <div className="bottom-nav">
                         <ul>
-                            <li> <a  href="https://www.integritee.network/privacy-policy">Impressum</a> </li>
-                            <li> <a  href="https://www.integritee.network/privacy-policy">Privacy Policy</a> </li>
+                            <li> <a href="https://www.integritee.network/privacy-policy">Impressum</a> </li>
+                            <li> <a href="https://www.integritee.network/privacy-policy">Privacy Policy</a> </li>
                         </ul>
                     </div>
                 </Container>
