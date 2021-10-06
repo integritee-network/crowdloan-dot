@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 // import { ReactComponent as Logo } from './css/IntegriteeLogoAndSlogan.svg';
-import logo from './css/IntegriteeLogoAndSlogan.svg';
+// import logo from './css/IntegriteeLogoAndSlogan.svg';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 
 import {
@@ -10,7 +10,6 @@ import {
   Dropdown,
   Container,
   Icon,
-  Image,
   Label
 } from 'semantic-ui-react';
 

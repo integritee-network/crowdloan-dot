@@ -29,58 +29,58 @@ export default function Clients (props) {
             <img src={C1} />
           </div> */}
           <div className="image-holder">
-            <img src={C2} />
+            <img src={C2} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={C3} />
+            <img src={C3} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={C4} />
+            <img src={C4} alt='icon' />
           </div>
           <div className="image-holder">
-            <img src={C5} />
+            <img src={C5} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={C6} />
+            <img src={C6} alt='icon'/>
           </div>
         </div>
         <div className="text">
           <span>OUR INVESTORS</span>
           <div className="image-holder">
-            <img src={I1} />
+            <img src={I1} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={I11} />
+            <img src={I11} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={I2} />
+            <img src={I2} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={I3} />
+            <img src={I3} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={I4} />
+            <img src={I4} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={I12} />
+            <img src={I12} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={I5} />
+            <img src={I5} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={I6} />
+            <img src={I6} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={I7} />
+            <img src={I7} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={I8} />
+            <img src={I8} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={I10} />
+            <img src={I10} alt='icon'/>
           </div>
           <div className="image-holder">
-            <img src={I9} />
+            <img src={I9} alt='icon'/>
           </div>
         </div>
       </Container>

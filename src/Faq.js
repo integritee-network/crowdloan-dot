@@ -42,15 +42,15 @@ export default function Main (props) {
         <h2>FAQs</h2>
         <Grid>
                     <Grid.Column width={5} className='link'>
-                <button className={`${faqContent == 1 ? 'active' : ''}`} onClick={() => setFaqContent(1)}>HOW DOES CROWDLENDING WORK?</button>
-                <button className={`${faqContent == 2 ? 'active' : ''}`} onClick={() => setFaqContent(2)}>WHAT WILL I GET FOR MY SUPPORT?</button>
-                <button className={`${faqContent == 3 ? 'active' : ''}`} onClick={() => setFaqContent(3)}>HOW LONG WILL THE TOKENS BE LOCKED?</button>
-                <button className={`${faqContent == 4 ? 'active' : ''}`} onClick={() => setFaqContent(4)}>HOW WILL MY KSM BE RETURNED TO ME?</button>
-                <button className={`${faqContent == 5 ? 'active' : ''}`} onClick={() => setFaqContent(5)}>WHAT IS UNBONDING?</button>
-                <button className={`${faqContent == 6 ? 'active' : ''}`} onClick={() => setFaqContent(6)}>I HAVE KSM ON AN EXCHANGE, DO I NEED TO UNBOND?</button>
-                <button className={`${faqContent == 7 ? 'active' : ''}`} onClick={() => setFaqContent(7)}>WHAT HAPPENS IF INTEGRITEE DOES NOT WIN THE PARACHAIN AUCTION?</button>
-                <button className={`${faqContent == 8 ? 'active' : ''}`} onClick={() => setFaqContent(8)}>HOW CAN I GET A REFERRAL CODE IF I HAVE ALREADY CONTRIBUTED?</button>
-                <button className={`${faqContent == 9 ? 'active' : ''}`} onClick={() => setFaqContent(9)}>WHAT HAPPENS TO REFERRAL BONUSES IF INTEGRITEE DOES NOT WIN A SLOT DURING THIS CAMPAIGN?</button>
+                <button className={`${faqContent === 1 ? 'active' : ''}`} onClick={() => setFaqContent(1)}>HOW DOES CROWDLENDING WORK?</button>
+                <button className={`${faqContent === 2 ? 'active' : ''}`} onClick={() => setFaqContent(2)}>WHAT WILL I GET FOR MY SUPPORT?</button>
+                <button className={`${faqContent === 3 ? 'active' : ''}`} onClick={() => setFaqContent(3)}>HOW LONG WILL THE TOKENS BE LOCKED?</button>
+                <button className={`${faqContent === 4 ? 'active' : ''}`} onClick={() => setFaqContent(4)}>HOW WILL MY KSM BE RETURNED TO ME?</button>
+                <button className={`${faqContent === 5 ? 'active' : ''}`} onClick={() => setFaqContent(5)}>WHAT IS UNBONDING?</button>
+                <button className={`${faqContent === 6 ? 'active' : ''}`} onClick={() => setFaqContent(6)}>I HAVE KSM ON AN EXCHANGE, DO I NEED TO UNBOND?</button>
+                <button className={`${faqContent === 7 ? 'active' : ''}`} onClick={() => setFaqContent(7)}>WHAT HAPPENS IF INTEGRITEE DOES NOT WIN THE PARACHAIN AUCTION?</button>
+                <button className={`${faqContent === 8 ? 'active' : ''}`} onClick={() => setFaqContent(8)}>HOW CAN I GET A REFERRAL CODE IF I HAVE ALREADY CONTRIBUTED?</button>
+                <button className={`${faqContent === 9 ? 'active' : ''}`} onClick={() => setFaqContent(9)}>WHAT HAPPENS TO REFERRAL BONUSES IF INTEGRITEE DOES NOT WIN A SLOT DURING THIS CAMPAIGN?</button>
             </Grid.Column>
                     <Grid.Column width={10} className="right-section">
                 {showContent()}
