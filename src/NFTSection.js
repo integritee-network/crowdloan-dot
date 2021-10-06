@@ -68,7 +68,7 @@ export default function NFTsection (props) {
                                     <br/>
                                     <tr>
                                         <td style={{ width: '10%' }}>
-                                        <img src={number1} width={25} />
+                                        <img src={number1} alt='icon' width={25} />
                                         </td>
                                         <td style={{width:'90%'}}>
                                        <p style={{fontWeight:'600'}}>Contribute 0.1 KSM or more to the Integritee Crowdloan Campaign. &nbsp; 
@@ -82,7 +82,7 @@ export default function NFTsection (props) {
                                     <br/>
                                     <tr>
                                         <td style={{ width: '10%' }}>
-                                        <img src={number2} width={25} />
+                                        <img src={number2} width={25} alt='icon' />
                                         </td>
                                         <td style={{ width: '90%' }}>
                                        <p style={{ fontWeight: '600' }}> Join &amp; follow our groups and social channels. </p>
@@ -94,15 +94,15 @@ export default function NFTsection (props) {
                                         </td>
                                         <td>
                                             <a href='https://discord.com/invite/anhtxwr4eS'>
-                                            <img src={discordnft} width={35} style={{ marginRight: '30px' }} />
+                                             <img alt='icon' src={discordnft} width={35} style={{ marginRight: '30px' }} />
                                             </a>
 
                                             <a href='https://t.me/Integritee_Official'>
-                                            <img src={telegramnft} width={35} style={{ marginRight: '30px' }} />
+                                            <img alt='icon' src={telegramnft} width={35} style={{ marginRight: '30px' }} />
                                             </a>
 
                                             <a href='https://medium.com/integritee'>
-                                            <img src={mediumnft} width={35} />
+                                            <img alt='icon' src={mediumnft} width={35} />
                                             </a>
                                         </td>
 
@@ -111,7 +111,7 @@ export default function NFTsection (props) {
                                     <br/>
                                     <tr>
                                         <td style={{ width: '10%' }}>
-                                        <img src={number3} width={25} />
+                                        <img alt='icon' src={number3} width={25} />
                                         </td>
                                         <td style={{ width: '90%' }}>
                                       <p style={{ fontWeight: '600' }}>  Follow Integritee on Twitter and write or repost at least 3 tweets mentioning @integritee.
@@ -124,7 +124,7 @@ export default function NFTsection (props) {
                                         </td>
                                         <td>
                                             <a href='https://twitter.com/integri_t_e_e'>
-                                            <img src={twitternft} width={35} />
+                                            <img alt='icon' src={twitternft} width={35} />
                                             </a>
                                         </td>
 

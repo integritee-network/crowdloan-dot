@@ -1,11 +1,11 @@
 import React, { useState, createRef } from 'react';
-import { Container, Dimmer, Loader, Grid, Sticky, Message } from 'semantic-ui-react';
+import { Dimmer, Loader, Grid, Message } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import { SubstrateContextProvider, useSubstrate } from './substrate-lib';
 
 import UpperMenu from './UpperMenu';
 import Contribute from './Contribute';
-import Crowdloan from './Crowdloan';
+// import Crowdloan from './Crowdloan';
 import Why from './Why';
 import Faq from './Faq';
 import './css/App.css';
@@ -21,8 +21,8 @@ import Referral from './Referral';
 import Support from './SupporterReward';
 import SupportM from './SupportRewardMobile';
 import Footer from './Footer';
-import Leaderboard from './Leaderboard';
-import { ToastContainer, toast } from 'react-toastify';
+// import Leaderboard from './Leaderboard';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Main () {

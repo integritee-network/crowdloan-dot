@@ -215,7 +215,7 @@ export default function Participate (props) {
                       <div className='onthissiteicon'>
                         <span>ON THIS SITE</span>
                         <div className='image-holder'>
-                          <img src={icon0} />
+                          <img src={icon0} alt='icon' />
                         </div>
                       </div>
                     </div>
@@ -239,7 +239,7 @@ export default function Participate (props) {
                       <div>
                         <span>USING POLKADOT-JS APPS</span>
                         <div className='image-holder'>
-                          <img src={icon4} />
+                          <img src={icon4} alt='icon'/>
                         </div>
                       </div>
 
@@ -252,7 +252,7 @@ export default function Participate (props) {
                       <div>
                         <span>USING FEARLESS WALLET</span>
                         <div className='image-holder'>
-                          <img src={icon5} />
+                          <img src={icon5} alt='icon' />
                         </div>
                       </div>
 

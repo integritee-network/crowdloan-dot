@@ -18,7 +18,7 @@ export default function Footer () {
                 >
                 <Container>
                     <Menu.Menu className="logo">
-                    <img src={icon0} width={200} />
+                    <img src={icon0} alt='icon' width={200} />
                     </Menu.Menu>
                     <Menu.Menu position='right'>
                     <Menu.Item

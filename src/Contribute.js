@@ -1,34 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Form, Input, Grid } from 'semantic-ui-react';
-import { TxButton } from './substrate-lib/components';
+import { Form, Grid } from 'semantic-ui-react';
+// import { TxButton } from './substrate-lib/components';
 import { useSubstrate } from './substrate-lib';
-import { Element } from 'react-scroll';
+// import { Element } from 'react-scroll';
 import './css/styles.module.css';
-import krakenLogo, { ReactComponent as Kraken } from './css/Exchanges/kraken-vector-logo.svg';
+// import krakenLogo, { ReactComponent as Kraken } from './css/Exchanges/kraken-vector-logo.svg';
 // import kucoin from './css/Exchanges/KUCOIN.svg';
 // import okex from './css/Exchanges/okex.svg';
-import { ReactComponent as Kucoin } from './css/Exchanges/KUCOIN.svg';
-import { ReactComponent as Okex } from './css/Exchanges/okex.svg';
+// import { ReactComponent as Kucoin } from './css/Exchanges/KUCOIN.svg';
+// import { ReactComponent as Okex } from './css/Exchanges/okex.svg';
 
 export default function Main (props) {
   const [status, setStatus] = useState(null);
-  const [formState, setFormState] = useState({ addressTo: null, amount: 0 });
-  const { accountPair } = props;
-  const [disableButton, setDisableButton] = useState(true);
+  // const [formState, setFormState] = useState({ addressTo: null, amount: 0 });
+  // const { accountPair } = props;
+  // const [disableButton, setDisableButton] = useState(true);
   const { api } = useSubstrate();
   const [blockNumber, setBlockNumber] = useState(0);
   const [crowdLoanData, setCrowdLoanData] = useState({});
-  const { amount } = formState;
-  const paraId = '2015';
+  // const { amount } = formState;
+  // const paraId = '2015';
 
-  const onChange = (_, data) => {
-    setFormState(prev => ({ ...prev, [data.state]: data.value }));
-    if (data.value === '' || data.value <= 0) {
-      setDisableButton(true);
-    } else {
-      setDisableButton(false);
-    }
-  };
+  // const onChange = (_, data) => {
+  //   setFormState(prev => ({ ...prev, [data.state]: data.value }));
+  //   if (data.value === '' || data.value <= 0) {
+  //     setDisableButton(true);
+  //   } else {
+  //     setDisableButton(false);
+  //   }
+  // };
 
   const bestNumber = api.derive.chain.bestNumber;
 
@@ -48,7 +48,7 @@ export default function Main (props) {
 
   useEffect(() => {
     if (blockNumber >= crowdLoanData.end && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length !== 0) {
-      setDisableButton(true);
+      // setDisableButton(true);
       setStatus('crowdloan has ended');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -130,16 +130,3 @@ export default function Main (props) {
     </div>
   );
 }
-
-{ /* <Grid stackable columns='equal'>
-          <Grid.Row stretched>
-            <NodeInfo />
-            <BlockNumber />
-          </Grid.Row>
-          <Grid.Row>
-            <Crowdloan />
-          </Grid.Row>
-          <Grid.Row>
-            <Contribute accountPair={accountPair} />
-          </Grid.Row>
-        </Grid> */ }
