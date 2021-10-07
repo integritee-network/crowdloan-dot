@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './css/App.css';
-import { Container, Grid, Button, Modal, Input, Form } from 'semantic-ui-react';
-import Otherimage from './Images/other-image.png';
-import UserIcon from '../src/Images/user.png';
-import IntegriteeIcon from '../src/Images/integritee-logo.png';
-import referralCodeGenerator from 'referral-code-generator';
-import { mnemonicGenerate } from '@polkadot/util-crypto';
+import { Container, Grid } from 'semantic-ui-react';
+// import Otherimage from './Images/other-image.png';
+// import UserIcon from '../src/Images/user.png';
+// import IntegriteeIcon from '../src/Images/integritee-logo.png';
+// import referralCodeGenerator from 'referral-code-generator';
+// import { mnemonicGenerate } from '@polkadot/util-crypto';
 import backgroundimage from './Images/Guaranteed4.png';
 export default function SupporterReward (props) {
-  const mnemonic = mnemonicGenerate();
-  const [open, setOpen] = React.useState(false);
+//   const mnemonic = mnemonicGenerate();
+//   const [open, setOpen] = React.useState(false);
   return (
         <div className="green-bg" id="Support" style={{
           backgroundImage: `url(${backgroundimage})`,

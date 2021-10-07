@@ -58,13 +58,13 @@ export default function Footer () {
                     <div className="social">
                         <ul>
 
-                        <li> <a target="_blank" href="https://www.linkedin.com/company/integritee/"><GrLinkedinOption /> </a> </li>
-                        <li><a target="_blank" href="https://t.me/Integritee_Official"><FaTelegramPlane/> </a> </li>
-                        <li><a target="_blank" href="https://twitter.com/integri_t_e_e"><AiOutlineTwitter /> </a> </li>
-                        <li> <a target="_blank" href="https://app.element.io/#/room/#integritee-watercooler:matrix.org"><img src={elementlogo} width={20} /> </a> </li>
-                        <li> <a target="_blank" href="https://app.subsocial.network/4638"><img src={subsociallogo} width={20} /> </a> </li>
-                        <li> <a target="_blank" href="https://medium.com/integritee"><img src={mediumlogo} width={20} /> </a> </li>
-                        <li> <a target="_blank" href="https://discord.com/invite/anhtxwr4eS"><img src={discordl} width={20} /> </a> </li>
+                        <li> <a rel="noreferrer" target="_blank" href="https://www.linkedin.com/company/integritee/"><GrLinkedinOption /> </a> </li>
+                        <li><a rel="noreferrer" target="_blank" href="https://t.me/Integritee_Official"><FaTelegramPlane/> </a> </li>
+                        <li><a rel="noreferrer" target="_blank" href="https://twitter.com/integri_t_e_e"><AiOutlineTwitter /> </a> </li>
+                        <li> <a rel="noreferrer" target="_blank" href="https://app.element.io/#/room/#integritee-watercooler:matrix.org"><img src={elementlogo} width={20} alt="icon" /> </a> </li>
+                        <li> <a rel="noreferrer" target="_blank" href="https://app.subsocial.network/4638"><img src={subsociallogo} width={20} alt="icon" /> </a> </li>
+                        <li> <a rel="noreferrer" target="_blank" href="https://medium.com/integritee"><img src={mediumlogo} width={20} alt="icon" /> </a> </li>
+                        <li> <a rel="noreferrer" target="_blank" href="https://discord.com/invite/anhtxwr4eS"><img src={discordl} width={20} alt="icon" /> </a> </li>
 
                         </ul>
                     </div>

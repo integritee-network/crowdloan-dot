@@ -5,13 +5,6 @@ export default function Main (props) {
   const [faqContent, setFaqContent] = useState(1);
   const showContent = () => {
     switch (faqContent) {
-      default: return (<div className="text"><h3>How does crowdlending work?</h3>
-                <p>Kusama parachain slots are leased, for a limited period, via slot auctions. Projects bid for
-                auction slots with collateral in the form of KSM tokens. Crowdlending is one way for bidders to raise the collateral they need to win a slot. Integritee supporters can “lend” their
-                tokens – in a process called bonding, staking, or nominating – to help the company achieve
-                its goal of occupying slots on Kusama.</p><p>Lenders (or “nominators”) never cede custody of their tokens; the bids are merely locked for the
-                duration of the lease, and released in full at the end of the period. Integritee will never get access
-                to your wallet or tokens and will never hold any contributions. This process works directly between contributors and the Kusama Network.</p></div>);
       case 2: return (<div className="text"><h3>What will I get for my support?</h3>
                     <p>Lenders will be rewarded with TEER tokens. This token has an intrinsic value, as it gives access to Integritee’s services, as well as a market value, which will increase with adoption.
                     Each supporter will be allocated TEER according to the following formula:
@@ -33,6 +26,13 @@ export default function Main (props) {
       case 9: return (<div className="text"><h3>What happens to referral bonuses if Integritee does not win a slot during this campaign?</h3>
                     <p>The referral bonuses are linked to the TEER rewards for the crowdloan campaign. If Integritee does not win a slot by the end of our campaign,
                         all KSM will be unbonded and released to their owners and only the guaranteed rewards will be distributed, but not standard rewards or referral bonuses.</p></div>);
+      default: return (<div className="text"><h3>How does crowdlending work?</h3>
+        <p>Kusama parachain slots are leased, for a limited period, via slot auctions. Projects bid for
+        auction slots with collateral in the form of KSM tokens. Crowdlending is one way for bidders to raise the collateral they need to win a slot. Integritee supporters can “lend” their
+        tokens – in a process called bonding, staking, or nominating – to help the company achieve
+        its goal of occupying slots on Kusama.</p><p>Lenders (or “nominators”) never cede custody of their tokens; the bids are merely locked for the
+        duration of the lease, and released in full at the end of the period. Integritee will never get access
+        to your wallet or tokens and will never hold any contributions. This process works directly between contributors and the Kusama Network.</p></div>);
     }
   };
 

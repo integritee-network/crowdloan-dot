@@ -1,5 +1,5 @@
 import './css/App.css';
-import { Container, Grid, Button, Modal, Form } from 'semantic-ui-react';
+import { Container, Grid } from 'semantic-ui-react';
 import Otherimage from './Images/other-image.png';
 
 export default function How (props) {

@@ -1,6 +1,6 @@
 import './css/App.css';
-import { Container, Grid } from 'semantic-ui-react';
-import C1 from './Images/investor-logo/2.png';
+import { Container } from 'semantic-ui-react';
+// import C1 from './Images/investor-logo/2.png';
 import C2 from './Images/investor-logo/1.png';
 import C3 from './Images/investor-logo/6.png';
 import C4 from './Images/investor-logo/3.png';
