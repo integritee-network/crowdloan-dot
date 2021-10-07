@@ -1,47 +1,47 @@
 import './css/App.css';
-import { Container, Button, Modal, Form, Dimmer, Loader } from 'semantic-ui-react';
-import GraphImage from './Images/graph.png';
-import Slider from 'react-slick';
+import { Container, Button, Dimmer, Loader } from 'semantic-ui-react';
+// import GraphImage from './Images/graph.png';
+// import Slider from 'react-slick';
 import { useSubstrate } from './substrate-lib';
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useState } from 'react';
 
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
-import emailjs from 'emailjs-com';
-import { toast } from 'react-toastify';
+// import Highcharts from 'highcharts';
+// import HighchartsReact from 'highcharts-react-official';
+// import emailjs from 'emailjs-com';
+// import { toast } from 'react-toastify';
 
 export default function Main (props) {
   const { api } = useSubstrate();
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(true);
   let [crowdLoan, setCrowdLoan] = useState({
   });
-  const [formInput, setFormInput] = useReducer(
-    (state, newState) => ({ ...state, ...newState }),
-    {
-      email: ''
-    }
-  );
-  const handleInput = (evt) => {
-    const name = evt.target.name;
-    const newValue = evt.target.value;
-    setFormInput({ [name]: newValue });
-  };
-  const sendEmail = () => {
-    const templateParams = {
-      from_email: formInput.email
-    };
-    emailjs.send('service_gdzprbp', 'template_4htuvy9', templateParams, 'user_8LztNfOboIaSThE1Xj3TN')
-      .then((result) => {
-        console.log(result.text);
-        toast.success('Email Send Successfully!');
-      }, (error) => {
-        console.log(error.text);
-        toast.error('Email not send. Something went wrong. Please try later!');
-      });
-    setFormInput({ email: '' });
-    setOpen(false);
-  };
+  // const [formInput, setFormInput] = useReducer(
+  //   (state, newState) => ({ ...state, ...newState }),
+  //   {
+  //     email: ''
+  //   }
+  // );
+  // const handleInput = (evt) => {
+  //   const name = evt.target.name;
+  //   const newValue = evt.target.value;
+  //   setFormInput({ [name]: newValue });
+  // };
+  // const sendEmail = () => {
+  //   const templateParams = {
+  //     from_email: formInput.email
+  //   };
+  //   emailjs.send('service_gdzprbp', 'template_4htuvy9', templateParams, 'user_8LztNfOboIaSThE1Xj3TN')
+  //     .then((result) => {
+  //       console.log(result.text);
+  //       toast.success('Email Send Successfully!');
+  //     }, (error) => {
+  //       console.log(error.text);
+  //       toast.error('Email not send. Something went wrong. Please try later!');
+  //     });
+  //   setFormInput({ email: '' });
+  //   setOpen(false);
+  // };
 
   const queryResHandler = result => {
     const toHumanData = result.toHuman();
@@ -71,116 +71,116 @@ export default function Main (props) {
     );
   }
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    vertical: true,
-    speed: 500,
-    slidesToShow: 7,
-    slidesToScroll: 1
-  };
+  // const settings = {
+  //   dots: false,
+  //   infinite: true,
+  //   vertical: true,
+  //   speed: 500,
+  //   slidesToShow: 7,
+  //   slidesToScroll: 1
+  // };
 
-  const options = {
-    animationEnabled: true,
-    chart: {
-      height: 320,
-      renderTo: 'container',
-      backgroundColor: 'transparent',
-      type: 'spline'
-    },
-    title: {
-      text: ''
-    },
-    credits: {
-      enabled: false
-    },
-    xAxis: {
-      type: 'datetime',
-      month: '%e. %b',
-      year: '%b',
-      tickWidth: 0,
-      lineWidth: 0,
-      crosshair: {
-        width: 1,
-        color: '#fff',
-        dashStyle: 'solid'
-      },
-      labels: {
-        style: {
-          color: '#70e6da',
-          textTransform: 'uppercase',
-          fontWeight: '600',
-          fontFamily: 'Gotham Rounded',
-          paddingTop: '20px'
-        }
-      }
-    },
-    yAxis: {
-      gridLineColor: '#fff',
-      gridLineDashStyle: 'solid',
-      title: {
-        text: ''
-      },
-      labels: {
-        enabled: false,
-        style: {
-          color: '#70e6da',
-          textTransform: 'uppercase',
-          fontWeight: '600',
-          fontFamily: 'Gotham Rounded',
-          paddingTop: '20px'
-        }
-      }
-    },
-    tooltip: {
-      shadow: false,
-      backgroundColor: 'rgba(255,255,255,0.8)',
-      borderColor: 'none',
-      padding: 10,
-      borderRadius: '8px',
-      className: 'chart-tooltip'
-    },
-    noData: {
-      attr: null,
-      position: { x: 0, y: 0, align: 'center', verticalAlign: 'middle' },
-      style: { fontSize: '12px', fontWeight: 'bold', color: '#60606a' }
-    },
-    plotOptions: {
-      series: {
-        marker: {
-          fillColor: '#70e6da',
-          shadow: false,
-          lineWidth: 0,
-          width: 20,
-          height: 20,
-          lineColor: '#fff',
-          enabled: false
-        }
-      }
-    },
-    series: [
-      {
-        showInLegend: false,
-        type: 'area',
-        lineWidth: 1,
-        lineColor: '#70e6da',
-        fillColor: {
-          linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-          stops: [
-            [0, 'rgba(105, 216, 205, 0.95)'], // start
-            [0.5, 'rgba(105, 216, 205, 0.8)'], // middle
-            [1, 'rgba(105, 216, 205, 0.1)'] // end
-          ]
-        },
-        data: [
-          { x: Date.UTC(2021, 0, 1), y: 1 },
-          { x: Date.UTC(2021, 1, 1), y: 7 },
-          { x: Date.UTC(2021, 2, 1), y: 6 },
-          { x: Date.UTC(2021, 3, 1), y: 6 }
-        ]
-      }
-    ]
-  };
+  // const options = {
+  //   animationEnabled: true,
+  //   chart: {
+  //     height: 320,
+  //     renderTo: 'container',
+  //     backgroundColor: 'transparent',
+  //     type: 'spline'
+  //   },
+  //   title: {
+  //     text: ''
+  //   },
+  //   credits: {
+  //     enabled: false
+  //   },
+  //   xAxis: {
+  //     type: 'datetime',
+  //     month: '%e. %b',
+  //     year: '%b',
+  //     tickWidth: 0,
+  //     lineWidth: 0,
+  //     crosshair: {
+  //       width: 1,
+  //       color: '#fff',
+  //       dashStyle: 'solid'
+  //     },
+  //     labels: {
+  //       style: {
+  //         color: '#70e6da',
+  //         textTransform: 'uppercase',
+  //         fontWeight: '600',
+  //         fontFamily: 'Gotham Rounded',
+  //         paddingTop: '20px'
+  //       }
+  //     }
+  //   },
+  //   yAxis: {
+  //     gridLineColor: '#fff',
+  //     gridLineDashStyle: 'solid',
+  //     title: {
+  //       text: ''
+  //     },
+  //     labels: {
+  //       enabled: false,
+  //       style: {
+  //         color: '#70e6da',
+  //         textTransform: 'uppercase',
+  //         fontWeight: '600',
+  //         fontFamily: 'Gotham Rounded',
+  //         paddingTop: '20px'
+  //       }
+  //     }
+  //   },
+  //   tooltip: {
+  //     shadow: false,
+  //     backgroundColor: 'rgba(255,255,255,0.8)',
+  //     borderColor: 'none',
+  //     padding: 10,
+  //     borderRadius: '8px',
+  //     className: 'chart-tooltip'
+  //   },
+  //   noData: {
+  //     attr: null,
+  //     position: { x: 0, y: 0, align: 'center', verticalAlign: 'middle' },
+  //     style: { fontSize: '12px', fontWeight: 'bold', color: '#60606a' }
+  //   },
+  //   plotOptions: {
+  //     series: {
+  //       marker: {
+  //         fillColor: '#70e6da',
+  //         shadow: false,
+  //         lineWidth: 0,
+  //         width: 20,
+  //         height: 20,
+  //         lineColor: '#fff',
+  //         enabled: false
+  //       }
+  //     }
+  //   },
+  //   series: [
+  //     {
+  //       showInLegend: false,
+  //       type: 'area',
+  //       lineWidth: 1,
+  //       lineColor: '#70e6da',
+  //       fillColor: {
+  //         linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+  //         stops: [
+  //           [0, 'rgba(105, 216, 205, 0.95)'], // start
+  //           [0.5, 'rgba(105, 216, 205, 0.8)'], // middle
+  //           [1, 'rgba(105, 216, 205, 0.1)'] // end
+  //         ]
+  //       },
+  //       data: [
+  //         { x: Date.UTC(2021, 0, 1), y: 1 },
+  //         { x: Date.UTC(2021, 1, 1), y: 7 },
+  //         { x: Date.UTC(2021, 2, 1), y: 6 },
+  //         { x: Date.UTC(2021, 3, 1), y: 6 }
+  //       ]
+  //     }
+  //   ]
+  // };
   return (
     <div className="why">
       <Container>

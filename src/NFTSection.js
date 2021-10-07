@@ -1,11 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './css/App.css';
-import { Container, Grid, GridRow, TableBody, Button, Modal, Form } from 'semantic-ui-react';
-import Otherimage from './Images/other-image.png';
-import UserIcon from '../src/Images/user.png';
-import IntegriteeIcon from '../src/Images/integritee-logo.png';
-import { mnemonicGenerate } from '@polkadot/util-crypto';
-import mediumlogo from './Images/social-blue-logo/Medium-Logo.png';
+import { Container, Grid, GridRow, TableBody } from 'semantic-ui-react';
 import number1 from './Images/NFT-Section/numbers-1.png';
 import number2 from './Images/NFT-Section/numbers-2.png';
 import number3 from './Images/NFT-Section/numbers-3.png';
@@ -16,8 +11,6 @@ import discordnft from './Images/NFT-Section/discord.png';
 import mediumnft from './Images/NFT-Section/medium.png';
 
 export default function NFTsection (props) {
-  const mnemonic = mnemonicGenerate();
-  const [open, setOpen] = React.useState(false);
   return (
         <div className="white-bg" id="nftsection">
             <Container>
@@ -132,7 +125,7 @@ export default function NFTsection (props) {
                                     <br/>
                                     <tr>
                                         <td style={{ width: '10%' }}>
-                                        <img src={number4} width={25} />
+                                        <img alt="icon" src={number4} width={25} />
                                         </td>
                                         <td style={{ width: '90%' }}>
                                         <p style={{ fontWeight: '600' }}>Enter your KSM address and social media handles into the&nbsp;
