@@ -89,14 +89,14 @@ export default function Participate(props) {
     keyring.getPair(accountAddress);
 
   // disable contribution if crowdfunding has already ended: Enable this codeblock when going live
-  // useEffect(() => {
-  //   if (blockNumber >= crowdLoanData.end && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length !== 0) {
-  //     setDisableButton(true);
-  //     setCrowdLoanEnded(true)
-  //     setStatus('crowdloan has ended');
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [blockNumber]);
+  useEffect(() => {
+    if (blockNumber >= crowdLoanData.end && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length !== 0) {
+      setDisableButton(true);
+      setCrowdLoanEnded(true)
+      setStatus('crowdloan has ended');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [blockNumber]);
 
   useEffect(() => {
     const queryResHandler = (result) => {

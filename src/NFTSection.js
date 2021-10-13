@@ -78,8 +78,9 @@ export default function NFTsection (props) {
                                         </td>
                                         <td style={{width:'90%'}}>
                                        <p style={{fontWeight:'600'}}>Contribute 0.1 KSM or more to the Integritee Crowdloan Campaign. &nbsp; 
-                                       <a href='#participate' style={{color:'#70e6da', textDecoration:'underline', fontWeight:'600'}}>
-                                           Simply follow the instructions here.</a>
+                                       {/* <a href='#participate' style={{color:'#70e6da', textDecoration:'underline', fontWeight:'600'}}>
+                                           Simply follow the instructions here.
+                                       </a> */}
                                        </p>
                                         
                                         </td>

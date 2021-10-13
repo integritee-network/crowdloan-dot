@@ -207,11 +207,11 @@ export default function Main (props) {
             standard and earn TEER in the process.
           </p>
 
-          <a href="#participate">
+          <a className="ui primary gradient-btn button" href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>          {/* <a href="#participate">
           <Button className="ui primary gradient-btn button">
             Get Ready!
             </Button>
-            </a>
+            </a> */}
             {/* <Modal
               onClose={() => setOpen(false)}
               onOpen={() => setOpen(true)}
@@ -266,7 +266,7 @@ export default function Main (props) {
 
         </div> */}
 
-        <ul className="counter">
+        {/* <ul className="counter">
           <li>
             <span>KSM CONTRIBUTED</span>
             {crowdLoan.raised}
@@ -278,7 +278,7 @@ export default function Main (props) {
               </Dimmer>
             )}
           </li>
-        </ul>
+        </ul> */}
 
         {/* <div className="graph">
           <HighchartsReact

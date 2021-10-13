@@ -64,7 +64,7 @@ export default function Referral (props) {
                                 </Modal.Actions>
                             </Modal> */}
                             
-                            <a style={{  marginLeft: '0px !important' }} className="ui primary gradient-btn button" href="#participate">Participate Now!</a>
+                            {/* <a style={{  marginLeft: '0px !important' }} className="ui primary gradient-btn button" href="#participate">Participate Now!</a> */}
                         </Grid.Column>
                         <Grid.Column>
                             <br></br>
