@@ -80,9 +80,11 @@ function Main(props) {
           <Menu.Item name='TEER Token' href='#TeerToken' />
           <Menu.Item name='FAQ' href='#FAQ' />
 
-          <a className='ui primary gradient-btn button' style={{lineHeight:'1.5'}} href='#participate'>
+          {/* <a className='ui primary gradient-btn button' style={{lineHeight:'1.5'}} href='#participate' >
             Participate Now!
-          </a>
+          </a> */}
+          <a className="ui primary gradient-btn button" style={{lineHeight:'1.5'}} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
+
           <div className='nav-social'>
             <ul>
               <li>
