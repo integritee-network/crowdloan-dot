@@ -12,7 +12,7 @@ import mediumnft from './Images/NFT-Section/medium.png';
 
 export default function NFTsection (props) {
   return (
-        <div className="white-bg" id="nftsection">
+        <div className="white-bg" id="nftsection" style={{ backgroundColor: '#eff3f6' }}>
             <Container>
                 <div className="text">
                     <Grid>
@@ -35,8 +35,8 @@ export default function NFTsection (props) {
                             programs and special bonuses, so don’t miss your chance.
                             </p>
 
-                            <p>
                             <p style={{ fontWeight: '600', color: '#000065' }}> What’s it all about? </p>
+                            <p>
                             Integritee is a platform that enables developers and firms to securely pro
                             cess sensitive data confidentially. It achieves this by combining the
                             trust of Polkadot/Kusama blockchain with the speed and confidentiality
@@ -47,8 +47,8 @@ export default function NFTsection (props) {
                             processed in pre-agreed ways in an isolated and trustworthy hardware environment.
                             </p>
 
-                            <p>
                             <p style={{ fontWeight: '600', color: '#000065' }}>How to claim your NFT? </p>
+                            <p>
                             We will be rewarding all supporters of our crowdloan campaign with their own,
                             exclusive Integritee Early Supporter NFT.
                             Follow the instructions on the right to claim yours:
@@ -58,13 +58,12 @@ export default function NFTsection (props) {
                         <Grid.Column>
                             <table>
                                 <TableBody>
-                                    <br/>
-                                    <tr>
+                                    <tr style={{ lineHeight: '60px' }}>
                                         <td style={{ width: '10%' }}>
                                         <img src={number1} alt='icon' width={25} />
                                         </td>
-                                        <td style={{width:'90%'}}>
-                                       <p style={{fontWeight:'600'}}>Contribute 0.1 KSM or more to the Integritee Crowdloan Campaign. &nbsp; 
+                                        <td style={{ width: '90%' }}>
+                                       <p style={{ fontWeight: '600' }}>Contribute 0.1 KSM or more to the Integritee Crowdloan Campaign. &nbsp;
                                        {/* <a href='#participate' style={{color:'#70e6da', textDecoration:'underline', fontWeight:'600'}}>
                                            Simply follow the instructions here.
                                        </a> */}
@@ -72,7 +71,6 @@ export default function NFTsection (props) {
 
                                         </td>
                                     </tr>
-                                    <br/>
                                     <tr>
                                         <td style={{ width: '10%' }}>
                                         <img src={number2} width={25} alt='icon' />
@@ -81,7 +79,7 @@ export default function NFTsection (props) {
                                        <p style={{ fontWeight: '600' }}> Join &amp; follow our groups and social channels. </p>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style={{ lineHeight: '30px' }}>
                                         <td>
 
                                         </td>
@@ -100,9 +98,7 @@ export default function NFTsection (props) {
                                         </td>
 
                                     </tr>
-
-                                    <br/>
-                                    <tr>
+                                    <tr style={{ lineHeight: '30px' }}>
                                         <td style={{ width: '10%' }}>
                                         <img alt='icon' src={number3} width={25} />
                                         </td>
@@ -122,7 +118,6 @@ export default function NFTsection (props) {
                                         </td>
 
                                     </tr>
-                                    <br/>
                                     <tr>
                                         <td style={{ width: '10%' }}>
                                         <img alt="icon" src={number4} width={25} />

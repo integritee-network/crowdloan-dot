@@ -56,7 +56,7 @@ export default function Footer () {
 
                 <Container className="footer-bottom">
                     <div className="social">
-                        <ul>
+                        <ul style={{ listStyleType: 'none' }}>
 
                         <li> <a rel="noreferrer" target="_blank" href="https://www.linkedin.com/company/integritee/"><GrLinkedinOption /> </a> </li>
                         <li><a rel="noreferrer" target="_blank" href="https://t.me/Integritee_Official"><FaTelegramPlane/> </a> </li>
@@ -69,7 +69,7 @@ export default function Footer () {
                         </ul>
                     </div>
                     <div className="bottom-nav">
-                        <ul>
+                        <ul style={{ listStyleType: 'none' }}>
                             <li> <a href="https://www.integritee.network/privacy-policy">Impressum</a> </li>
                             <li> <a href="https://www.integritee.network/privacy-policy">Privacy Policy</a> </li>
                         </ul>

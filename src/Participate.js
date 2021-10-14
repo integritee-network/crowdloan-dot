@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+
 import './css/App.css';
 import {
   Container,
@@ -75,7 +76,8 @@ export default function Participate (props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bestNumber]);
 
-  const { apiState, keyring, keyringState, apiError } = useSubstrate();
+  const { keyring, keyringState } = useSubstrate();
+  // const { apiState, keyring, keyringState, apiError } = useSubstrate();
 
   try {
     keyring.setSS58Format(2);
@@ -92,7 +94,7 @@ export default function Participate (props) {
   useEffect(() => {
     if (blockNumber >= crowdLoanData.end && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length !== 0) {
       setDisableButton(true);
-      setCrowdLoanEnded(true)
+      setCrowdLoanEnded(true);
       setStatus('crowdloan has ended');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -130,15 +132,17 @@ export default function Participate (props) {
     event.preventDefault();
   };
 
-  const [nav1, setNav1] = useState(null);
-  const [nav2, setNav2] = useState(null);
-  let slider1 = [];
-  let slider2 = [];
-
+  const [nav1, setNav1] = useState([]);
+  const [nav2, setNav2] = useState([]);
+  // let slider1 = [];
+  // let slider2 = [];
+  const slider1 = useMemo(() => [], []);
+  const slider2 = useMemo(() => [], []);
   useEffect(() => {
     setNav1(slider1);
     setNav2(slider2);
   }, [slider1, slider2]);
+
   const settings = {
     dots: false,
     dotsClass: 'slick-dots slick-thumb',
@@ -204,7 +208,7 @@ export default function Participate (props) {
                   {...settings}
                   className='left-slider'
                   asNavFor={nav1}
-                  ref={(slider) => (slider2 = slider)}
+                  ref={(slider) => (slider2 === slider)}
                   slidesToShow={3}
                   vertical='true'
                   swipeToSlide={true}
@@ -265,7 +269,7 @@ export default function Participate (props) {
                 <Slider
                   {...settings}
                   asNavFor={nav2}
-                  ref={(slider) => (slider1 = slider)}
+                  ref={(slider) => (slider1 === slider)}
                 >
                   <div>
                     <h2>On this site</h2>

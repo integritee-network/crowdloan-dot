@@ -1,10 +1,12 @@
-import React, { useState, createRef } from 'react';
-import { Dimmer, Loader, Grid, Message } from 'semantic-ui-react';
+import React, { createRef } from 'react';
+// import React, { useState, createRef } from 'react';
+// import { Grid, Message } from 'semantic-ui-react';
+// import { Dimmer, Loader, Grid, Message } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import { SubstrateContextProvider, useSubstrate } from './substrate-lib';
-
+import { SubstrateContextProvider } from './substrate-lib';
+// import { SubstrateContextProvider, useSubstrate } from './substrate-lib';
 import UpperMenu from './UpperMenu';
-import Contribute from './Contribute';
+// import Contribute from './Contribute';
 // import Crowdloan from './Crowdloan';
 import Why from './Why';
 import Faq from './Faq';
@@ -12,7 +14,7 @@ import './css/App.css';
 import ThreeBox from './ThreeBox';
 import How from './How';
 import NFTsection from './NFTSection';
-import Participate from './Participate';
+// import Participate from './Participate';
 import Value from './Value';
 import Rewards from './Rewards';
 import Roadmap from './Roadmap';
@@ -26,27 +28,28 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Main () {
-  const [accountAddress, setAccountAddress] = useState(null);
-  const { apiState, keyring, keyringState, apiError } = useSubstrate();
-  const accountPair =
-    accountAddress &&
-    keyringState === 'READY' &&
-    keyring.getPair(accountAddress);
+  // const [accountAddress, setAccountAddress] = useState(null);
+  // const { apiState, keyring, keyringState } = useSubstrate();
+  // const { apiState, keyring, keyringState, apiError } = useSubstrate();
+  // const accountPair =
+  //   accountAddress &&
+  //   keyringState === 'READY' &&
+  //   keyring.getPair(accountAddress);
 
-  const loader = text =>
-    <Dimmer active>
-      <Loader size='small'>{text}</Loader>
-    </Dimmer>;
+  // const loader = text =>
+  //   <Dimmer active>
+  //     <Loader size='small'>{text}</Loader>
+  //   </Dimmer>;
 
-  const message = err =>
-    <Grid centered columns={2} padded>
-      <Grid.Column>
-        <Message negative compact floating
-          header='Error Connecting to Substrate'
-          content={`${JSON.stringify(err, null, 4)}`}
-        />
-      </Grid.Column>
-    </Grid>;
+  // const message = err =>
+  //   <Grid centered columns={2} padded>
+  //     <Grid.Column>
+  //       <Message negative compact floating
+  //         header='Error Connecting to Substrate'
+  //         content={`${JSON.stringify(err, null, 4)}`}
+  //       />
+  //     </Grid.Column>
+  //   </Grid>;
 
   //  if (apiState === 'ERROR') return message(apiError);
   //  else if (apiState !== 'READY') return loader('Connecting to Kusama');
@@ -59,7 +62,7 @@ function Main () {
   // anchor.scrollIntoView({ behavior: 'smooth', block: 'center' })
 
   const contextRef = createRef();
-  console.log(apiState);
+  // console.log(apiState);
 
   return (
     <div ref={contextRef}>
@@ -74,7 +77,8 @@ function Main () {
         draggable={false}
         pauseOnHover={false}
       />
-      <UpperMenu setAccountAddress={setAccountAddress} />
+      <UpperMenu />
+      {/* <UpperMenu setAccountAddress={setAccountAddress} /> */}
       <Why />
       {/* <Leaderboard /> */}
         <ThreeBox />
@@ -84,7 +88,7 @@ function Main () {
         <Referral />
         <NFTsection />
       {/* <Participate /> */}
-      {apiState !== 'READY' ? <></> : <Participate />}
+      {/* {apiState !== 'READY' ? <></> : <Participate />} */}
       {/* <Contribute id='#contribute' accountPair={accountPair} /> */}
 
         <Rewards />

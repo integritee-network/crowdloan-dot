@@ -83,10 +83,10 @@ function Main (props) {
           {/* <a className='ui primary gradient-btn button' style={{lineHeight:'1.5'}} href='#participate' >
             Participate Now!
           </a> */}
-          <a className="ui primary gradient-btn button" style={{lineHeight:'1.5'}} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
+          <a className="ui primary gradient-btn button" style={{ lineHeight: '1.5' }} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
 
           <div className='nav-social'>
-            <ul>
+            <ul style={{ listStyleType: 'none' }}>
               <li>
                 {' '}
                 <a

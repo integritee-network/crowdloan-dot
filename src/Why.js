@@ -1,9 +1,9 @@
 import './css/App.css';
-import { Container, Button, Dimmer, Loader } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 // import GraphImage from './Images/graph.png';
 // import Slider from 'react-slick';
-import { useSubstrate } from './substrate-lib';
-import React, { useState } from 'react';
+// import { useSubstrate } from './substrate-lib';
+// import React, { useState } from 'react';
 
 // import Highcharts from 'highcharts';
 // import HighchartsReact from 'highcharts-react-official';
@@ -11,11 +11,11 @@ import React, { useState } from 'react';
 // import { toast } from 'react-toastify';
 
 export default function Main (props) {
-  const { api } = useSubstrate();
+  // const { api } = useSubstrate();
   // const [open, setOpen] = React.useState(false);
-  const [loading, setLoading] = useState(true);
-  let [crowdLoan, setCrowdLoan] = useState({
-  });
+  // const [loading, setLoading] = useState(true);
+  // let [crowdLoan, setCrowdLoan] = useState({
+  // });
   // const [formInput, setFormInput] = useReducer(
   //   (state, newState) => ({ ...state, ...newState }),
   //   {
@@ -43,33 +43,33 @@ export default function Main (props) {
   //   setOpen(false);
   // };
 
-  const queryResHandler = result => {
-    const toHumanData = result.toHuman();
-    setCrowdLoan(crowdLoan = (toHumanData));
-    console.log('**set-----------------------');
-    setLoading(false);
-  };
+  // const queryResHandler = result => {
+  //   const toHumanData = result.toHuman();
+  //   setCrowdLoan(crowdLoan = (toHumanData));
+  //   console.log('**set-----------------------');
+  //   setLoading(false);
+  // };
 
-  const transformed = ['2015'];
-  const palletRpc = 'crowdloan';
-  const callable = 'funds';
+  // const transformed = ['2015'];
+  // const palletRpc = 'crowdloan';
+  // const callable = 'funds';
 
-  const getCrowdLoanData = async () => {
-    if (
-      api &&
-      api.query &&
-      api.query[palletRpc] &&
-      api.query[palletRpc][callable]
-    ) {
-      await api.query[palletRpc][callable](...transformed, queryResHandler);
-    }
-  };
+  // const getCrowdLoanData = async () => {
+  //   if (
+  //     api &&
+  //     api.query &&
+  //     api.query[palletRpc] &&
+  //     api.query[palletRpc][callable]
+  //   ) {
+  //     await api.query[palletRpc][callable](...transformed, queryResHandler);
+  //   }
+  // };
 
-  if (Object.keys(crowdLoan).length === 0) {
-    getCrowdLoanData().then(() =>
-      console.log('**data---------------------------')
-    );
-  }
+  // if (Object.keys(crowdLoan).length === 0) {
+  //   getCrowdLoanData().then(() =>
+  //     console.log('**data---------------------------')
+  //   );
+  // }
 
   // const settings = {
   //   dots: false,

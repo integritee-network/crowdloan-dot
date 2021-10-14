@@ -56,7 +56,7 @@ export default function SupportRewardMobile (props) {
 
                                     </Grid.Column>
                                     <Grid.Column id="2" >
-                                    <ul className="" style={{ }}>
+                                    <ul className="" style={{ listStyleType: 'none' }}>
 
                               <li>
 

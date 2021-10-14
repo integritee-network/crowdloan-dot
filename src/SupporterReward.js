@@ -58,7 +58,7 @@ export default function SupporterReward (props) {
                                         </Grid.Column>
 
                                         <Grid.Column style={{ bottom: '-5.188rem', position: 'absolute' }}>
-                                        <ul className="" style={{ }}>
+                                        <ul className="" style={{ listStyleType: 'none' }}>
 
                               <li>
 
