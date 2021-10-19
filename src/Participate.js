@@ -14,6 +14,8 @@ import {
 import icon0 from './Images/i0.svg';
 import icon4 from './Images/polkadot.png';
 import icon5 from './Images/fearless-wallet.png';
+import icon6 from './Images/Newland.svg';
+import icon7 from './Images/Gate.svg';
 import Slider from 'react-slick';
 import { TxButton } from './substrate-lib/components';
 import { useSubstrate } from './substrate-lib';
@@ -139,24 +141,22 @@ export default function Participate (props) {
     event.preventDefault();
   };
 
-  const [nav1, setNav1] = useState([]);
-  const [nav2, setNav2] = useState([]);
-  // let slider1 = [];
-  // let slider2 = [];
-  const slider1 = useMemo(() => [], []);
-  const slider2 = useMemo(() => [], []);
+  const [nav1, setNav1] = useState(null);
+  const [nav2, setNav2] = useState(null);
+  let slider1 = [];
+  let slider2 = [];
+
   useEffect(() => {
     setNav1(slider1);
     setNav2(slider2);
   }, [slider1, slider2]);
-
   const settings = {
     dots: false,
     dotsClass: 'slick-dots slick-thumb',
     infinite: false,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   };
 
   return (
@@ -205,7 +205,7 @@ export default function Participate (props) {
 
         <Container>
           <div className='text'>
-            <span>3 WAYS TO TAKE PART</span>
+            <span>5 WAYS TO TAKE PART</span>
             <h1>Participate in the Integritee Crowdloan!</h1>
           </div>
           <Grid>
@@ -215,8 +215,8 @@ export default function Participate (props) {
                   {...settings}
                   className='left-slider'
                   asNavFor={nav1}
-                  ref={(slider) => (slider2 === slider)}
-                  slidesToShow={3}
+                  ref={(slider) => (slider2 = slider)}
+                  slidesToShow={5}
                   vertical='true'
                   swipeToSlide={true}
                   focusOnSelect={true}
@@ -257,7 +257,7 @@ export default function Participate (props) {
                     </div>
                   </div>
                   <div>
-                  <br/>
+                  
                   <br/>
                     <div className='main'>
                       <div>
@@ -268,15 +268,42 @@ export default function Participate (props) {
                       </div>
 
                     </div>
+                    </div>
+                    <div>
+                    <br/>
+                    <br/>    
+                    <div className='main'>
+                      <div>
+                        <span>THROUGH NEWLAND FINANCE</span>
+                        <div className='image-holder'>
+                          <img src={icon6} alt='icon' />
+                        </div>
+                      </div>
+
+                    </div>
+                    </div>
+                    <div>
+                    <br/>
+                    <br/>
+                      
+                    <div className='main'>
+                      <div>
+                        <span>THROUGH GATE.IO</span>
+                        <div className='image-holder'>
+                          <img src={icon7} alt='icon' style={{height:'70px'}} />
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
 
                 </Slider>
               </Grid.Column>
               <Grid.Column className='right-section' width={10}>
-                <Slider
+              <Slider
                   {...settings}
                   asNavFor={nav2}
-                  ref={(slider) => (slider1 === slider)}
+                  ref={(slider) => (slider1 = slider)}
                 >
                   <div>
                     <h2>On this site</h2>
@@ -480,6 +507,64 @@ export default function Participate (props) {
                       <br/>
                       <li>
                       Contribute to the crowdloan
+                      </li>
+                      <br/>
+                    </ol>
+                    <br/>
+                    <p>
+                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    </p>
+                  </div>
+                  <div>
+                  <h2>Through Newland Finance</h2>
+                  <br/>
+                  <br/>
+                    <ol>
+                      <li>
+                      Download the Polkadot browser extension&nbsp;
+                      <a href='https://polkadot.js.org/extension/'>here</a>&nbsp;
+                        and ensure that you have enough unbonded KSM in your account. 
+                     
+                      
+                      </li>
+                      <br/>
+                      <li>
+                      Find Integritee on the list of KSM projects&nbsp;
+                      <a href='https://ksm.newland.finance/'>here</a>.&nbsp;
+                       The system will automatically connect to your Polkadot wallet. 
+
+                      </li>
+                      <br/>
+                      <li>
+                      Click “Ongoing” in the Integritee listing, enter your contribution and confirm with your wallet password. It will take a little time to complete the transaction.  
+                      </li>
+                      <br/>
+                     <p>On mobile, you can use Math Wallet or TokenPocket Wallet to participate. The process is similar to that described above.</p>
+                    </ol>
+                    <br/>
+                    <p>
+                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    </p>
+                  </div>
+                  <div>
+                  <h2>Through Gate.io</h2>
+                  <br/>
+                  <br/>
+                    <ol>
+                      <li>
+                      Create a&nbsp;
+                      <a href='https://www.gate.io/login'>Gate.io</a>&nbsp;
+                      account and ensure that you have enough unbonded KSM in your account.
+                      </li>
+                      <br/>
+                      <li>
+                      Navigate to&nbsp; 
+                      <a href='https://www.gate.io/hodl/759'>Integritee</a>&nbsp;
+                      in the HODL and Earn list (under the Finance menu).
+                      </li>
+                      <br/>
+                      <li>
+                      Enter the amount of KSM you want to contribute and click “Subscribe”.
                       </li>
                       <br/>
                     </ol>

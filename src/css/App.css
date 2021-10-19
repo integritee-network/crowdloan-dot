@@ -962,7 +962,7 @@ div[disabled]
   position: relative;
 }
 .participate .five .slick-slide {
-  height: 200px;
+  height: 110px;
 }
 .participate .five .main .onthissiteicon {
   height: 76px !important;
@@ -1936,6 +1936,9 @@ div[disabled]
   }
   .participate .five .slick-slide {
     height: 75px !important;
+  }
+  .participate .right-section {
+    margin-top: 150px !important;
   }
 
 }
