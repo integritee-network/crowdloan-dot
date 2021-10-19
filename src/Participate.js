@@ -22,6 +22,8 @@ import { mnemonicGenerate } from '@polkadot/util-crypto';
 import EmbedVideo from './EmbedVideo';
 // import { P } from 'glamorous';
 
+import config from './config';
+
 export default function Participate (props) {
   const mnemonic = mnemonicGenerate();
   const [loading, setLoading] = useState(false);
@@ -42,7 +44,7 @@ export default function Participate (props) {
   const [blockNumber, setBlockNumber] = useState(0);
   const [crowdLoanData, setCrowdLoanData] = useState({});
   const { amount } = formState;
-  const paraId = '2015';
+  const paraId = config.PARACHAIN_ID;
 
   const bestNumber = api.derive.chain.bestNumber;
 
@@ -92,7 +94,7 @@ export default function Participate (props) {
 
   // disable contribution if crowdfunding has already ended: Enable this codeblock when going live
   useEffect(() => {
-    if (blockNumber >= crowdLoanData.end && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length !== 0) {
+    if (crowdLoanData && blockNumber >= crowdLoanData.end && blockNumber > 0 && Object.keys(crowdLoanData).length !== 0) {
       setDisableButton(true);
       setCrowdLoanEnded(true);
       setStatus('crowdloan has ended');

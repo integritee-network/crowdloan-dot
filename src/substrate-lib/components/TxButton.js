@@ -258,7 +258,7 @@ function TxButton ({
   };
 
   const transaction = async (event) => {
-    if (unsub) {
+    if (typeof unsub === 'function') {
       unsub();
       setUnsub(null);
     }

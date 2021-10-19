@@ -7,12 +7,12 @@ export default function Main (props) {
   const { api } = useSubstrate();
   const [loading, setLoading] = useState(true);
   let [crowdLoan, setCrowdLoan] = useState({
-    // raised: null,
-    // end: null,
-    // cap: null,
-    // lastContribution: { preEnding: null },
-    // firstPeriod: null,
-    // lastPeriod: null,
+    raised: 0,
+    end: null,
+    cap: null,
+    lastContribution: { preEnding: null },
+    firstPeriod: null,
+    lastPeriod: null,
   });
 
   const queryResHandler = result => {
@@ -22,7 +22,7 @@ export default function Main (props) {
     // setcrowdLoan(crowdLoan = flatten(data));
     setLoading(false);
   };
-  const transformed = ['2015'];
+  const transformed = ['2087'];
   const palletRpc = 'crowdloan';
   const callable = 'funds';
 
