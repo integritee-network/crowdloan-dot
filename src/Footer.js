@@ -36,10 +36,10 @@ export default function Footer () {
                         name='Referral Program'
                         href="#referral"
                     />
-                    <Menu.Item
+                    {/* <Menu.Item
                         name='NFT'
                         href="#nftsection"
-                    />
+                    /> */}
                     <Menu.Item
                         name='TEER Token'
                         href="#TeerToken"

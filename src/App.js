@@ -10,7 +10,7 @@ import Faq from './Faq';
 import './css/App.css';
 import ThreeBox from './ThreeBox';
 import How from './How';
-import NFTsection from './NFTSection';
+// import NFTsection from './NFTSection';
 import Participate from './Participate';
 import Value from './Value';
 import Rewards from './Rewards';
@@ -92,7 +92,7 @@ function Main () {
         <Support />
         <SupportM />
         <Referral />
-        <NFTsection />
+        {/* <NFTsection /> */}
       {/* <Participate /> */}
       {apiState !== 'READY' || !crowdLoanRunning ? <></> : <Participate />}
       {/* <Contribute id='#contribute' accountPair={accountPair} /> */}
