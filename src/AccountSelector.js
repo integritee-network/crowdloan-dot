@@ -3,6 +3,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 // import { ReactComponent as Logo } from './css/IntegriteeLogoAndSlogan.svg';
 // import logo from './css/IntegriteeLogoAndSlogan.svg';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { formatBalance } from '@polkadot/util';
 
 import {
   Menu,
@@ -133,7 +134,7 @@ function BalanceAnnotation (props) {
     accountSelected &&
       api.query.system
         .account(accountSelected, (balance) => {
-          setAccountBalance(balance.data.free.toHuman());
+          setAccountBalance(balance.data.free.toJSON());
         })
         .then((unsub) => {
           unsubscribe = unsub;
@@ -147,7 +148,7 @@ function BalanceAnnotation (props) {
     ? (
     <Label pointing='left'>
       <Icon name='money' color='green' />
-      {accountBalance}
+      {formatBalance(accountBalance)}
     </Label>
       )
     : null;

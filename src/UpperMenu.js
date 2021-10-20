@@ -14,13 +14,14 @@ import { Menu, Container } from 'semantic-ui-react';
 
 import { useSubstrate } from './substrate-lib';
 // import { crowdloan } from '@polkadot/types/interfaces/definitions';
+import { useGlobalState } from './state';
 
 function Main (props) {
   const { keyring } = useSubstrate();
   const { setAccountAddress } = props;
   const [accountSelected, setAccountSelected] = useState('');
   const [toggleMenuFun, setToggleMenuFun] = useState(false);
-  const [crowdLoanEnded, setCrowdLoanEnded] = useState(false);
+  const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
 
   // Get the list of accounts we possess the private key for
   let keyringOptions = [];
@@ -82,12 +83,12 @@ function Main (props) {
           <Menu.Item name='TEER Token' href='#TeerToken' />
           <Menu.Item name='FAQ' href='#FAQ' />
 
-          {!crowdLoanEnded &&
+          {crowdLoanRunning &&
           <a className='ui primary gradient-btn button' style={{lineHeight:'1.5'}} href='#participate' >
             Participate Now!
           </a>
           }
-          {crowdLoanEnded &&
+          {!crowdLoanRunning &&
           <a className="ui primary gradient-btn button" style={{ lineHeight: '1.5' }} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
           }
           <div className='nav-social'>

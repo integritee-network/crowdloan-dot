@@ -21,6 +21,7 @@ import AccountSelector from './AccountSelector';
 import { mnemonicGenerate } from '@polkadot/util-crypto';
 import EmbedVideo from './EmbedVideo';
 // import { P } from 'glamorous';
+import { formatBalance } from '@polkadot/util';
 
 import config from './config';
 
@@ -50,12 +51,14 @@ export default function Participate (props) {
 
   const [accountAddress, setAccountAddress] = useState(null);
   const [accountBalance, setAccountBalance] = useState(0);
+  const minimumParticipation = 100000000000; // 0.1
+  const divide = 1000000000000;
 
   useEffect(() => {
     // console.log('1****************');
     // console.log(accountBalance);
     // console.log('1****************');
-    if (accountBalance < 0.1) {
+    if (accountBalance < minimumParticipation) {
       setDisableButton(true);
       setStatus('You do not have enough balance');
     } else {
@@ -107,7 +110,7 @@ export default function Participate (props) {
       setCrowdLoanData(result.toJSON());
     };
     const crowdLoan = async () => {
-      await api.query.crowdloan.funds(['2015'], queryResHandler);
+      await api.query.crowdloan.funds([paraId], queryResHandler);
     };
     crowdLoan();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -116,13 +119,15 @@ export default function Participate (props) {
   const onChange = (_, data) => {
     setFormState((prev) => ({ ...prev, [data.state]: data.value }));
     if (!crowdLoanEnded) {
-      // if (data.value === '' || data.value <= 0 || data.value < 0.1) {
-      if (data.value === '' || data.value < 0.1) {
+      if (accountBalance < minimumParticipation ) {
         setDisableButton(true);
-        setStatus('Please enter amount equal or greater than 0.1');
-      } else if (data.value > accountBalance) {
+        setStatus('You do not have enough balance');
+      } else if (data.value === '' || data.value < minimumParticipation/divide) {
         setDisableButton(true);
-        setStatus(`Please enter amount equal or less than ${accountBalance}`);
+        setStatus('Please enter amount equal or greater than ' + minimumParticipation/divide );
+      } else if (data.value > (accountBalance/divide)) {
+        setDisableButton(true);
+        setStatus('Please enter amount equal or less than ' + formatBalance(accountBalance));
       } else {
         setDisableButton(false);
         setStatus('');

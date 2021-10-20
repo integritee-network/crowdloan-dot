@@ -8,8 +8,11 @@ import { AiOutlineTwitter } from 'react-icons/ai';
 import { GrLinkedinOption } from 'react-icons/gr';
 import { FaTelegramPlane } from 'react-icons/fa';
 import discordl from './Images/Discord-20x20px WHITE-01.png';
+import { useGlobalState } from './state';
 
 export default function Footer () {
+  const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
+
   return (
         <div className="footer">
             <Menu
@@ -50,8 +53,14 @@ export default function Footer () {
                 </Menu>
 
                 <Container className="part-btn-holder">
-              {/* <a className="ui primary gradient-btn button" href="#participate">Participate Now!</a> <br></br> */}
-              <a className="ui primary gradient-btn button" href="https://mailchi.mp/integritee/get-notified">Subscribe Now!</a>
+                {crowdLoanRunning &&
+                <a className='ui primary gradient-btn button' href='#participate' >
+                    Participate Now!
+                </a>
+                }
+                {!crowdLoanRunning &&
+                <a className="ui primary gradient-btn button" style={{ lineHeight: '1.5' }} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
+                }
                 </Container>
 
                 <Container className="footer-bottom">

@@ -2192,7 +2192,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@polkadot/api@npm:6.4.2, @polkadot/api@npm:^6.3.1":
+"@polkadot/api@npm:6.4.2, @polkadot/api@npm:^6.4.2":
   version: 6.4.2
   resolution: "@polkadot/api@npm:6.4.2"
   dependencies:
@@ -6044,7 +6044,7 @@ __metadata:
   resolution: "crowdloan@workspace:."
   dependencies:
     "@babel/core": ^7.14.3
-    "@polkadot/api": ^6.3.1
+    "@polkadot/api": ^6.4.2
     "@polkadot/extension-dapp": ^0.40.3
     "@polkadot/keyring": ^7.4.1
     "@polkadot/networks": ^7.4.1
@@ -6077,6 +6077,7 @@ __metadata:
     react-copy-to-clipboard: ^5.0.3
     react-dom: ^16.14.0
     react-h5-video: ^1.0.4
+    react-hooks-global-state: ^1.0.2
     react-icons: ^4.2.0
     react-player: ^2.9.0
     react-scripts: ^4.0.3
@@ -13813,6 +13814,15 @@ fsevents@^1.2.7:
   version: 1.0.4
   resolution: "react-h5-video@npm:1.0.4"
   checksum: 5082d839ecdb6691c0dc5ba65211ae692fb4f09cf6e50397aef3d8e337ffa486e83147d95dafe00ebd20b9ca0ccc5b445ef560b8ce15dd5a40c567425a843558
+  languageName: node
+  linkType: hard
+
+"react-hooks-global-state@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "react-hooks-global-state@npm:1.0.2"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 816b82615bfaecafe97cddf9ea8ee25823be2f709526931b95fb675d0f748e3d10e7fba299234a4d3203a01cc40b70733fd6753c3383af30e3ccd3b94b1d4362
   languageName: node
   linkType: hard
 

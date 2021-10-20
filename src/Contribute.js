@@ -60,7 +60,7 @@ export default function Main (props) {
       setCrowdLoanData(result.toJSON());
     };
     const crowdLoan = async () => {
-      await api.query.crowdloan.funds(['2015'], queryResHandler);
+      await api.query.crowdloan.funds([paraId], queryResHandler);
     };
     crowdLoan();
     // eslint-disable-next-line react-hooks/exhaustive-deps

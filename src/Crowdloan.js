@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSubstrate } from './substrate-lib';
 // to flatten nested JSON
 // var flatten = require('flat')
+import config from './config';
 
 export default function Main (props) {
   const { api } = useSubstrate();
@@ -15,6 +16,8 @@ export default function Main (props) {
     lastPeriod: null,
   });
 
+  const paraId = config.PARACHAIN_ID;
+
   const queryResHandler = result => {
     const toHumanData = result.toHuman();
     setCrowdLoan(crowdLoan = (toHumanData));
@@ -22,7 +25,7 @@ export default function Main (props) {
     // setcrowdLoan(crowdLoan = flatten(data));
     setLoading(false);
   };
-  const transformed = ['2087'];
+  const transformed = [paraId];
   const palletRpc = 'crowdloan';
   const callable = 'funds';
 

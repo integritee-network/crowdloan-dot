@@ -23,6 +23,9 @@ import Footer from './Footer';
 // import Leaderboard from './Leaderboard';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { formatBalance } from '@polkadot/util';
+import { useGlobalState } from './state';
+
 
 function Main () {
   const [accountAddress, setAccountAddress] = useState(null);
@@ -31,6 +34,14 @@ function Main () {
     accountAddress &&
     keyringState === 'READY' &&
     keyring.getPair(accountAddress);
+
+  const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
+  
+  formatBalance.setDefaults({
+    decimals: 12,
+    unit: 'KSM'
+  });
+
 
   const loader = text =>
     <Dimmer active>
@@ -83,7 +94,7 @@ function Main () {
         <Referral />
         <NFTsection />
       {/* <Participate /> */}
-      {apiState !== 'READY' ? <></> : <Participate />}
+      {apiState !== 'READY' || !crowdLoanRunning ? <></> : <Participate />}
       {/* <Contribute id='#contribute' accountPair={accountPair} /> */}
 
         <Rewards />

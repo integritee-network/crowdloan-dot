@@ -3,20 +3,24 @@ import { Container, Button, Modal, Form, Dimmer, Loader } from 'semantic-ui-reac
 // import GraphImage from './Images/graph.png';
 // import Slider from 'react-slick';
 import { useSubstrate } from './substrate-lib';
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
+import { formatBalance } from '@polkadot/util';
+import { useGlobalState, setCrowdLoanRunning } from './state';
 
 // import Highcharts from 'highcharts';
 // import HighchartsReact from 'highcharts-react-official';
 // import emailjs from 'emailjs-com';
 // import { toast } from 'react-toastify';
+import config from './config';
 
 export default function Main (props) {
   const { api } = useSubstrate();
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(true);
-  const [crowdLoanEnded] = useState(false);
-  let [crowdLoan, setCrowdLoan] = useState({
-  });
+  const paraId = config.PARACHAIN_ID;
+  let [crowdLoan, setCrowdLoan] = useState(true);
+  const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
+
   const [formInput, setFormInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
@@ -45,13 +49,16 @@ export default function Main (props) {
   };
 
   const queryResHandler = result => {
-    const toHumanData = result.toHuman();
+    const toHumanData = result.toJSON();
     setCrowdLoan(crowdLoan = (toHumanData));
+    if( toHumanData != null ) {
+      setCrowdLoanRunning(true);
+    }
     console.log('**set-----------------------');
     setLoading(false);
   };
 
-  const transformed = ['2087'];
+  const transformed = [paraId];
   const palletRpc = 'crowdloan';
   const callable = 'funds';
 
@@ -207,11 +214,11 @@ export default function Main (props) {
             is the solution. Help us build a new internet where privacy comes as
             standard and earn TEER in the process.
           </p>
-          {crowdLoanEnded &&
+          {!crowdLoanRunning &&
           <a className="ui primary gradient-btn button" href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
           }
           
-          {!crowdLoanEnded &&
+          {crowdLoanRunning &&
           <a className='ui primary gradient-btn button' href='#participate' >
             Participate Now!
           </a>
@@ -274,7 +281,7 @@ export default function Main (props) {
         <ul className="counter">
           <li>
             <span>KSM CONTRIBUTED</span>
-            {crowdLoan.raised}
+            {formatBalance(crowdLoan.raised)}
             {loading && (
               <Dimmer active>
                 <Loader size='mini' inline='centered'>
