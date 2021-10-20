@@ -14,8 +14,8 @@ import {
 import icon0 from './Images/i0.svg';
 import icon4 from './Images/polkadot.png';
 import icon5 from './Images/fearless-wallet.png';
-import icon6 from './Images/Newland.svg';
-import icon7 from './Images/Gate.svg';
+import icon6 from './Images/Newland.png';
+import icon7 from './Images/gate.png';
 import Slider from 'react-slick';
 import { TxButton } from './substrate-lib/components';
 import { useSubstrate } from './substrate-lib';
@@ -290,7 +290,7 @@ export default function Participate (props) {
                       <div>
                         <span>THROUGH GATE.IO</span>
                         <div className='image-holder'>
-                          <img src={icon7} alt='icon' style={{height:'70px'}} />
+                          <img src={icon7} alt='icon' />
                         </div>
                       </div>
 
