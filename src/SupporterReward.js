@@ -34,8 +34,7 @@ export default function SupporterReward (props) {
                                     regardless of the outcome of the slot auctions. They will be distributed to crowdloan contributors relative 
                                     to their opportunity cost in terms of the amount of KSM they contribute, 
                                     and the length of time this KSM is locked in. The locked-in time starts to be measured from the 
-                                    block that includes the contribution and finishes either when Integritee wins an auction, 
-                                    or Integritee’s crowdloan campaign ends, whichever happens first.
+                                    block that includes the contribution and finishes with the last block of the crowdloan campaign.
                                    
 
                                     </p>

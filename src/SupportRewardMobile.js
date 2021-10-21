@@ -23,18 +23,15 @@ export default function SupportRewardMobile (props) {
                                     <h2 style={{ fontSize: '2rem' }} >With Guaranteed Rewards, Our Backers Can’t Lose</h2>
                                 <Grid.Column id="" >
 
-                                    <p>
-                                    Even in the event that Integritee does not win an auction, 
-                                    our backers will receive Guaranteed TEER Token Rewards after the end of the campaign.
-                                    </p>
-                                    <p>
-                                    The more KSM bonded by our supporters during the auction, 
-                                    the more TEER that will be distributed to backers when it ends if we don’t win.
-
-                                    <br/>  <br/>
+                                <p>
+                                    In addition, we are now offering further guaranteed bonus rewards for Integritee contributors, 
+                                    regardless of the outcome of the slot auctions. They will be distributed to crowdloan contributors relative 
+                                    to their opportunity cost in terms of the amount of KSM they contribute, 
+                                    and the length of time this KSM is locked in. The locked-in time starts to be measured from the 
+                                    block that includes the contribution and finishes with the last block of the crowdloan campaign.
+                                   
 
                                     </p>
-
                                     <span style={{ color: '#000065' }} >Here’s how it works:</span>
 
                                 </Grid.Column>
