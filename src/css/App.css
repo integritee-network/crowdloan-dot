@@ -1847,8 +1847,9 @@ div[disabled]
   .white-bg h2,
   .faq h2,
   .grey-bg h2,
-  .roadmap h1 {
-    font-size: 30px;
+  .roadmap h1,
+  #loyality h2 {
+    font-size: 30px !important;
   }
   .faq button {
     font-size: 14px;

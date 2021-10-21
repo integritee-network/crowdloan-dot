@@ -20,6 +20,7 @@ import Referral from './Referral';
 import Support from './SupporterReward';
 import SupportM from './SupportRewardMobile';
 import Footer from './Footer';
+import LoyalityRewards from './LoyalityRewards';
 // import Leaderboard from './Leaderboard';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -91,6 +92,7 @@ function Main () {
         <How />
         <Support />
         <SupportM />
+        <LoyalityRewards />
         <Referral />
         {/* <NFTsection /> */}
       {/* <Participate /> */}
