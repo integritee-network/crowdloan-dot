@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+
 import './css/App.css';
 import {
   Container,
@@ -8,11 +9,13 @@ import {
   Checkbox,
   Modal,
   Dimmer,
-  Loader,
+  Loader
 } from 'semantic-ui-react';
 import icon0 from './Images/i0.svg';
 import icon4 from './Images/polkadot.png';
 import icon5 from './Images/fearless-wallet.png';
+import icon6 from './Images/Newland.png';
+import icon7 from './Images/gate.png';
 import Slider from 'react-slick';
 import { TxButton } from './substrate-lib/components';
 import { useSubstrate } from './substrate-lib';
@@ -20,15 +23,18 @@ import AccountSelector from './AccountSelector';
 import { mnemonicGenerate } from '@polkadot/util-crypto';
 import EmbedVideo from './EmbedVideo';
 // import { P } from 'glamorous';
+import { formatBalance } from '@polkadot/util';
 
-export default function Participate(props) {
+import config from './config';
+
+export default function Participate (props) {
   const mnemonic = mnemonicGenerate();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState(null);
   const [formState, setFormState] = useState({
     addressTo: null,
-    amount: 0.1,
+    amount: 0.1
   });
   const [toggleOne, setToggleOne] = useState(false);
   const [toggleTwo, setToggleTwo] = useState(
@@ -41,18 +47,20 @@ export default function Participate(props) {
   const [blockNumber, setBlockNumber] = useState(0);
   const [crowdLoanData, setCrowdLoanData] = useState({});
   const { amount } = formState;
-  const paraId = '2015';
+  const paraId = config.PARACHAIN_ID;
 
   const bestNumber = api.derive.chain.bestNumber;
 
   const [accountAddress, setAccountAddress] = useState(null);
   const [accountBalance, setAccountBalance] = useState(0);
+  const minimumParticipation = 100000000000; // 0.1
+  const divide = 1000000000000;
 
   useEffect(() => {
     // console.log('1****************');
     // console.log(accountBalance);
     // console.log('1****************');
-    if (accountBalance < 0.1) {
+    if (accountBalance < minimumParticipation) {
       setDisableButton(true);
       setStatus('You do not have enough balance');
     } else {
@@ -75,8 +83,9 @@ export default function Participate(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bestNumber]);
 
-  const { apiState, keyring, keyringState, apiError } = useSubstrate();
-  
+  const { keyring, keyringState } = useSubstrate();
+  // const { apiState, keyring, keyringState, apiError } = useSubstrate();
+
   try {
     keyring.setSS58Format(2);
   } catch (error) {
@@ -90,9 +99,9 @@ export default function Participate(props) {
 
   // disable contribution if crowdfunding has already ended: Enable this codeblock when going live
   useEffect(() => {
-    if (blockNumber >= crowdLoanData.end && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length !== 0) {
+    if (crowdLoanData && blockNumber >= crowdLoanData.end && blockNumber > 0 && Object.keys(crowdLoanData).length !== 0) {
       setDisableButton(true);
-      setCrowdLoanEnded(true)
+      setCrowdLoanEnded(true);
       setStatus('crowdloan has ended');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -103,7 +112,7 @@ export default function Participate(props) {
       setCrowdLoanData(result.toJSON());
     };
     const crowdLoan = async () => {
-      await api.query.crowdloan.funds(['2015'], queryResHandler);
+      await api.query.crowdloan.funds([paraId], queryResHandler);
     };
     crowdLoan();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -112,13 +121,15 @@ export default function Participate(props) {
   const onChange = (_, data) => {
     setFormState((prev) => ({ ...prev, [data.state]: data.value }));
     if (!crowdLoanEnded) {
-      // if (data.value === '' || data.value <= 0 || data.value < 0.1) {
-      if (data.value === '' || data.value < 0.1) {
+      if (accountBalance < minimumParticipation ) {
         setDisableButton(true);
-        setStatus('Please enter amount equal or greater than 0.1');
-      } else if (data.value > accountBalance) {
+        setStatus('You do not have enough balance');
+      } else if (data.value === '' || data.value < minimumParticipation/divide) {
         setDisableButton(true);
-        setStatus(`Please enter amount equal or less than ${accountBalance}`);
+        setStatus('Please enter amount equal or greater than ' + minimumParticipation/divide );
+      } else if (data.value > (accountBalance/divide)) {
+        setDisableButton(true);
+        setStatus('Please enter amount equal or less than ' + formatBalance(accountBalance));
       } else {
         setDisableButton(false);
         setStatus('');
@@ -194,7 +205,7 @@ export default function Participate(props) {
 
         <Container>
           <div className='text'>
-            <span>3 WAYS TO TAKE PART</span>
+            <span>5 WAYS TO TAKE PART</span>
             <h1>Participate in the Integritee Crowdloan!</h1>
           </div>
           <Grid>
@@ -205,7 +216,7 @@ export default function Participate(props) {
                   className='left-slider'
                   asNavFor={nav1}
                   ref={(slider) => (slider2 = slider)}
-                  slidesToShow={3}
+                  slidesToShow={5}
                   vertical='true'
                   swipeToSlide={true}
                   focusOnSelect={true}
@@ -215,7 +226,7 @@ export default function Participate(props) {
                       <div className='onthissiteicon'>
                         <span>ON THIS SITE</span>
                         <div className='image-holder'>
-                          <img src={icon0} />
+                          <img src={icon0} alt='icon' />
                         </div>
                       </div>
                     </div>
@@ -239,30 +250,57 @@ export default function Participate(props) {
                       <div>
                         <span>USING POLKADOT-JS APPS</span>
                         <div className='image-holder'>
-                          <img src={icon4} />
+                          <img src={icon4} alt='icon'/>
                         </div>
                       </div>
-                      
+
                     </div>
                   </div>
                   <div>
-                  <br/>
+                  
                   <br/>
                     <div className='main'>
                       <div>
                         <span>USING FEARLESS WALLET</span>
                         <div className='image-holder'>
-                          <img src={icon5} />
+                          <img src={icon5} alt='icon' />
                         </div>
                       </div>
+
+                    </div>
+                    </div>
+                    <div>
+                    <br/>
+                    <br/>    
+                    <div className='main'>
+                      <div>
+                        <span>THROUGH NEWLAND FINANCE</span>
+                        <div className='image-holder'>
+                          <img src={icon6} alt='icon' />
+                        </div>
+                      </div>
+
+                    </div>
+                    </div>
+                    <div>
+                    <br/>
+                    <br/>
                       
+                    <div className='main'>
+                      <div>
+                        <span>THROUGH GATE.IO</span>
+                        <div className='image-holder'>
+                          <img src={icon7} alt='icon' />
+                        </div>
+                      </div>
+
                     </div>
                   </div>
 
                 </Slider>
               </Grid.Column>
               <Grid.Column className='right-section' width={10}>
-                <Slider
+              <Slider
                   {...settings}
                   asNavFor={nav2}
                   ref={(slider) => (slider1 = slider)}
@@ -316,13 +354,14 @@ export default function Participate(props) {
                           <Grid.Column>
                             <Checkbox
                               label={{
-                                children: 'Generate referral code',
+                                children: 'Generate referral code'
                               }}
                               onClick={() => setToggleOne(!toggleOne)}
                             />
                             <div>
                               <br />
-                              {toggleOne ? (
+                              {toggleOne
+                                ? (
                                 <Input
                                   required
                                   id='grc'
@@ -330,7 +369,8 @@ export default function Participate(props) {
                                   pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
                                   placeholder='Enter Email'
                                 />
-                              ) : null}
+                                  )
+                                : null}
                             </div>
                             <br />
                           </Grid.Column>
@@ -338,16 +378,18 @@ export default function Participate(props) {
                             <Checkbox
                               checked={toggleTwo}
                               label={{
-                                children: 'Enter referral code',
+                                children: 'Enter referral code'
                               }}
                               onClick={() => setToggleTwo(!toggleTwo)}
                             />
                             <div>
                               <br />
-                              {toggleTwo ? (
-                                new URL(window.location.href).searchParams.get(
-                                  'ref'
-                                ) ? (
+                              {toggleTwo
+                                ? (
+                                    new URL(window.location.href).searchParams.get(
+                                      'ref'
+                                    )
+                                      ? (
                                   <Input
                                     required
                                     readOnly
@@ -358,15 +400,17 @@ export default function Participate(props) {
                                     type='text'
                                     placeholder='Enter Referral Code'
                                   />
-                                ) : (
+                                        )
+                                      : (
                                   <Input
                                     required
                                     id='erc'
                                     type='text'
                                     placeholder='Enter Referral Code'
                                   />
-                                )
-                              ) : null}
+                                        )
+                                  )
+                                : null}
                             </div>
                             <br />
                           </Grid.Column>
@@ -397,10 +441,10 @@ export default function Participate(props) {
                           inputParams: [
                             paraId,
                             amount * Math.pow(10, 12),
-                            null,
+                            null
                           ],
                           paramFields: [true, true, false],
-                          disableButton: disableButton,
+                          disableButton: disableButton
                         }}
                       />
                     </form>
@@ -433,7 +477,7 @@ export default function Participate(props) {
                     <h2>Using Polkadot-JS Apps</h2>
                     <p>Follow the instructions detailed in this video:</p>
 
-                    <EmbedVideo style={{width:'100%'}} />
+                    <EmbedVideo style={{ width: '100%' }} />
                     <p>
                     Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
                     </p>
@@ -463,6 +507,64 @@ export default function Participate(props) {
                       <br/>
                       <li>
                       Contribute to the crowdloan
+                      </li>
+                      <br/>
+                    </ol>
+                    <br/>
+                    <p>
+                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    </p>
+                  </div>
+                  <div>
+                  <h2>Through Newland Finance</h2>
+                  <br/>
+                  <br/>
+                    <ol>
+                      <li>
+                      Download the Polkadot browser extension&nbsp;
+                      <a href='https://polkadot.js.org/extension/'>here</a>&nbsp;
+                        and ensure that you have enough unbonded KSM in your account. 
+                     
+                      
+                      </li>
+                      <br/>
+                      <li>
+                      Find Integritee on the list of KSM projects&nbsp;
+                      <a href='https://ksm.newland.finance/'>here</a>.&nbsp;
+                       The system will automatically connect to your Polkadot wallet. 
+
+                      </li>
+                      <br/>
+                      <li>
+                      Click “Ongoing” in the Integritee listing, enter your contribution and confirm with your wallet password. It will take a little time to complete the transaction.  
+                      </li>
+                      <br/>
+                     <p>On mobile, you can use Math Wallet or TokenPocket Wallet to participate. The process is similar to that described above.</p>
+                    </ol>
+                    <br/>
+                    <p>
+                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    </p>
+                  </div>
+                  <div>
+                  <h2>Through Gate.io</h2>
+                  <br/>
+                  <br/>
+                    <ol>
+                      <li>
+                      Create a&nbsp;
+                      <a href='https://www.gate.io/login'>Gate.io</a>&nbsp;
+                      account and ensure that you have enough unbonded KSM in your account.
+                      </li>
+                      <br/>
+                      <li>
+                      Navigate to&nbsp; 
+                      <a href='https://www.gate.io/hodl/759'>Integritee</a>&nbsp;
+                      in the HODL and Earn list (under the Finance menu).
+                      </li>
+                      <br/>
+                      <li>
+                      Enter the amount of KSM you want to contribute and click “Subscribe”.
                       </li>
                       <br/>
                     </ol>

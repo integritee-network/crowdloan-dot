@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 // import { ReactComponent as Logo } from './css/IntegriteeLogoAndSlogan.svg';
-import logo from './css/IntegriteeLogoAndSlogan.svg';
+// import logo from './css/IntegriteeLogoAndSlogan.svg';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { formatBalance } from '@polkadot/util';
 
 import {
   Menu,
@@ -10,13 +11,12 @@ import {
   Dropdown,
   Container,
   Icon,
-  Image,
-  Label,
+  Label
 } from 'semantic-ui-react';
 
 import { useSubstrate } from './substrate-lib';
 
-function Main(props) {
+function Main (props) {
   const { keyring } = useSubstrate();
   const { setAccountAddress } = props;
   const { setAccountBalancee } = props;
@@ -28,7 +28,7 @@ function Main(props) {
     key: account.address,
     value: account.address,
     text: account.meta.name.toUpperCase(),
-    icon: 'user',
+    icon: 'user'
   }));
 
   const initialAddress =
@@ -53,7 +53,7 @@ function Main(props) {
         e.preventDefault();
 
         document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth',
+          behavior: 'smooth'
         });
       });
     });
@@ -63,7 +63,8 @@ function Main(props) {
     <Menu tabular className='main-menu' id='main-nav'>
       <Container>
         <Menu.Menu position='right' style={{ alignItems: 'center' }}>
-          {!accountSelected ? (
+          {!accountSelected
+            ? (
             <span>
               Add your account with the{' '}
               <a
@@ -74,7 +75,8 @@ function Main(props) {
                 Polkadot JS Extension
               </a>
             </span>
-          ) : null}
+              )
+            : null}
           <CopyToClipboard text={accountSelected}>
             <Button
               basic
@@ -111,7 +113,7 @@ function Main(props) {
   );
 }
 
-function BalanceAnnotation(props) {
+function BalanceAnnotation (props) {
   const { accountSelected } = props;
   const { setAccountBalancee } = props;
   const { api } = useSubstrate();
@@ -132,7 +134,7 @@ function BalanceAnnotation(props) {
     accountSelected &&
       api.query.system
         .account(accountSelected, (balance) => {
-          setAccountBalance(balance.data.free.toHuman());
+          setAccountBalance(balance.data.free.toJSON());
         })
         .then((unsub) => {
           unsubscribe = unsub;
@@ -142,15 +144,17 @@ function BalanceAnnotation(props) {
     return () => unsubscribe && unsubscribe();
   }, [api, accountSelected]);
 
-  return accountSelected ? (
+  return accountSelected
+    ? (
     <Label pointing='left'>
       <Icon name='money' color='green' />
-      {accountBalance}
+      {formatBalance(accountBalance)}
     </Label>
-  ) : null;
+      )
+    : null;
 }
 
-export default function AccountSelector(props) {
+export default function AccountSelector (props) {
   const { api, keyring } = useSubstrate();
   return keyring && api.query ? <Main {...props} /> : null;
 }

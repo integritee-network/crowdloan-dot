@@ -1,25 +1,30 @@
 import './css/App.css';
 import { Container, Button, Modal, Form, Dimmer, Loader } from 'semantic-ui-react';
-import GraphImage from './Images/graph.png';
-import Slider from 'react-slick';
+// import GraphImage from './Images/graph.png';
+// import Slider from 'react-slick';
 import { useSubstrate } from './substrate-lib';
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
+import { formatBalance } from '@polkadot/util';
+import { useGlobalState, setCrowdLoanRunning } from './state';
 
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
-import emailjs from 'emailjs-com';
-import { toast } from "react-toastify";
+// import Highcharts from 'highcharts';
+// import HighchartsReact from 'highcharts-react-official';
+// import emailjs from 'emailjs-com';
+// import { toast } from 'react-toastify';
+import config from './config';
 
 export default function Main (props) {
   const { api } = useSubstrate();
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(true);
-  let [crowdLoan, setCrowdLoan] = useState({
-  });
+  const paraId = config.PARACHAIN_ID;
+  let [crowdLoan, setCrowdLoan] = useState(true);
+  const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
+
   const [formInput, setFormInput] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
-      email: "",
+      email: ''
     }
   );
   const handleInput = (evt) => {
@@ -28,29 +33,32 @@ export default function Main (props) {
     setFormInput({ [name]: newValue });
   };
   const sendEmail = () => {
-    let templateParams = {
+    const templateParams = {
       from_email: formInput.email
     };
-    emailjs.send("service_gdzprbp", "template_4htuvy9", templateParams, "user_8LztNfOboIaSThE1Xj3TN")
-    .then((result) => {
+    emailjs.send('service_gdzprbp', 'template_4htuvy9', templateParams, 'user_8LztNfOboIaSThE1Xj3TN')
+      .then((result) => {
         console.log(result.text);
-        toast.success("Email Send Successfully!");
-    }, (error) => {
+        toast.success('Email Send Successfully!');
+      }, (error) => {
         console.log(error.text);
-        toast.error("Email not send. Something went wrong. Please try later!");
-    });
-    setFormInput({ ["email"]: "" });
+        toast.error('Email not send. Something went wrong. Please try later!');
+      });
+    setFormInput({ email: '' });
     setOpen(false);
   };
 
   const queryResHandler = result => {
-    const toHumanData = result.toHuman();
+    const toHumanData = result.toJSON();
     setCrowdLoan(crowdLoan = (toHumanData));
+    if( toHumanData != null ) {
+      setCrowdLoanRunning(true);
+    }
     console.log('**set-----------------------');
     setLoading(false);
   };
 
-  const transformed = ['2015'];
+  const transformed = [paraId];
   const palletRpc = 'crowdloan';
   const callable = 'funds';
 
@@ -65,7 +73,7 @@ export default function Main (props) {
     }
   };
 
-  if (Object.keys(crowdLoan).length === 0) {
+  if (crowdLoan && Object.keys(crowdLoan).length === 0) {
     getCrowdLoanData().then(() =>
       console.log('**data---------------------------')
     );
@@ -84,102 +92,102 @@ export default function Main (props) {
     animationEnabled: true,
     chart: {
       height: 320,
-      renderTo: "container",
+      renderTo: 'container',
       backgroundColor: 'transparent',
-      type: "spline",
+      type: 'spline'
     },
     title: {
-      text: "",
+      text: ''
     },
     credits: {
-      enabled: false,
+      enabled: false
     },
     xAxis: {
-      type: "datetime",
-      month: "%e. %b",
-      year: "%b",
+      type: 'datetime',
+      month: '%e. %b',
+      year: '%b',
       tickWidth: 0,
       lineWidth: 0,
       crosshair: {
         width: 1,
-        color: "#fff",
-        dashStyle: "solid",
+        color: '#fff',
+        dashStyle: 'solid'
       },
       labels: {
         style: {
-          color: "#70e6da",
-          textTransform: "uppercase",
-          fontWeight: "600",
-          fontFamily: "Gotham Rounded",
-          paddingTop: "20px",
-        },
-      },
+          color: '#70e6da',
+          textTransform: 'uppercase',
+          fontWeight: '600',
+          fontFamily: 'Gotham Rounded',
+          paddingTop: '20px'
+        }
+      }
     },
     yAxis: {
-      gridLineColor: "#fff",
-      gridLineDashStyle: "solid",
+      gridLineColor: '#fff',
+      gridLineDashStyle: 'solid',
       title: {
-        text: "",
+        text: ''
       },
       labels: {
         enabled: false,
         style: {
-          color: "#70e6da",
-          textTransform: "uppercase",
-          fontWeight: "600",
-          fontFamily: "Gotham Rounded",
-          paddingTop: "20px",
-        },
-      },
+          color: '#70e6da',
+          textTransform: 'uppercase',
+          fontWeight: '600',
+          fontFamily: 'Gotham Rounded',
+          paddingTop: '20px'
+        }
+      }
     },
     tooltip: {
       shadow: false,
-      backgroundColor: "rgba(255,255,255,0.8)",
-      borderColor: "none",
+      backgroundColor: 'rgba(255,255,255,0.8)',
+      borderColor: 'none',
       padding: 10,
-      borderRadius: "8px",
-      className: "chart-tooltip",
+      borderRadius: '8px',
+      className: 'chart-tooltip'
     },
     noData: {
       attr: null,
-      position: { x: 0, y: 0, align: "center", verticalAlign: "middle" },
-      style: { fontSize: "12px", fontWeight: "bold", color: "#60606a" },
+      position: { x: 0, y: 0, align: 'center', verticalAlign: 'middle' },
+      style: { fontSize: '12px', fontWeight: 'bold', color: '#60606a' }
     },
     plotOptions: {
       series: {
         marker: {
-          fillColor: "#70e6da",
+          fillColor: '#70e6da',
           shadow: false,
           lineWidth: 0,
           width: 20,
           height: 20,
-          lineColor: "#fff",
-          enabled: false,
-        },
-      },
+          lineColor: '#fff',
+          enabled: false
+        }
+      }
     },
     series: [
       {
         showInLegend: false,
-        type: "area",
+        type: 'area',
         lineWidth: 1,
-        lineColor: "#70e6da",
+        lineColor: '#70e6da',
         fillColor: {
           linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
           stops: [
-            [0, "rgba(105, 216, 205, 0.95)"], // start
-            [0.5, "rgba(105, 216, 205, 0.8)"], // middle
-            [1, "rgba(105, 216, 205, 0.1)"], // end
-          ],
+            [0, 'rgba(105, 216, 205, 0.95)'], // start
+            [0.5, 'rgba(105, 216, 205, 0.8)'], // middle
+            [1, 'rgba(105, 216, 205, 0.1)'] // end
+          ]
         },
         data: [
-          {x: Date.UTC(2021,0,1), y: 1},
-          {x: Date.UTC(2021,1,1), y: 7},
-          {x: Date.UTC(2021,2,1), y: 6},
-          {x: Date.UTC(2021,3,1), y: 6},
-        ],
-      },
-    ],
+          { x: Date.UTC(2021, 0, 1), y: 1 },
+          { x: Date.UTC(2021, 1, 1), y: 7 },
+          { x: Date.UTC(2021, 2, 1), y: 6 },
+          { x: Date.UTC(2021, 3, 1), y: 6 }
+        ]
+      }
+    ]
   };
   return (
     <div className="why">
@@ -206,12 +214,15 @@ export default function Main (props) {
             is the solution. Help us build a new internet where privacy comes as
             standard and earn TEER in the process.
           </p>
-
-          <a className="ui primary gradient-btn button" href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>          {/* <a href="#participate">
-          <Button className="ui primary gradient-btn button">
-            Get Ready!
-            </Button>
-            </a> */}
+          {!crowdLoanRunning &&
+          <a className="ui primary gradient-btn button" href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
+          }
+          
+          {crowdLoanRunning &&
+          <a className='ui primary gradient-btn button' href='#participate' >
+            Participate Now!
+          </a>
+          }
             {/* <Modal
               onClose={() => setOpen(false)}
               onOpen={() => setOpen(true)}
@@ -266,10 +277,11 @@ export default function Main (props) {
 
         </div> */}
 
-        {/* <ul className="counter">
+        {crowdLoan && (
+        <ul className="counter">
           <li>
             <span>KSM CONTRIBUTED</span>
-            {crowdLoan.raised}
+            {formatBalance(crowdLoan.raised)}
             {loading && (
               <Dimmer active>
                 <Loader size='mini' inline='centered'>
@@ -278,7 +290,7 @@ export default function Main (props) {
               </Dimmer>
             )}
           </li>
-        </ul> */}
+        </ul>)}
 
         {/* <div className="graph">
           <HighchartsReact

@@ -1,6 +1,6 @@
 import './css/App.css';
 import { Container, Grid } from 'semantic-ui-react';
-import Graphimage from './Images/graph2.png';
+// import Graphimage from './Images/graph2.png';
 
 export default function Rewards () {
   return (

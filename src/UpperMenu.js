@@ -10,15 +10,18 @@ import telegramlogo from './Images/social-blue-logo/Telegram-logo.png';
 import twitterlogo from './Images/social-blue-logo/Twitter-logo.png';
 import discordlogo from './Images/social-blue-logo/Discord-logo.png';
 
-import { Menu, Container, Icon, Label } from 'semantic-ui-react';
+import { Menu, Container } from 'semantic-ui-react';
 
 import { useSubstrate } from './substrate-lib';
+// import { crowdloan } from '@polkadot/types/interfaces/definitions';
+import { useGlobalState } from './state';
 
-function Main(props) {
+function Main (props) {
   const { keyring } = useSubstrate();
   const { setAccountAddress } = props;
   const [accountSelected, setAccountSelected] = useState('');
   const [toggleMenuFun, setToggleMenuFun] = useState(false);
+  const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
 
   // Get the list of accounts we possess the private key for
   let keyringOptions = [];
@@ -27,7 +30,7 @@ function Main(props) {
       key: account.address,
       value: account.address,
       text: account.meta.name.toUpperCase(),
-      icon: 'user',
+      icon: 'user'
     }));
   }
   const initialAddress =
@@ -52,7 +55,7 @@ function Main(props) {
         e.preventDefault();
 
         document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth',
+          behavior: 'smooth'
         });
       });
     });
@@ -62,7 +65,7 @@ function Main(props) {
     <Menu tabular className='main-menu' id='main-nav'>
       <Container>
         <Menu.Menu className='logo'>
-          <a>
+          <a href="/#">
             {' '}
             <img src={logo} alt='logo' width={200} />
           </a>
@@ -75,18 +78,21 @@ function Main(props) {
 
           <Menu.Item name='Referral Program' href='#referral' />
 
-          <Menu.Item name='NFT' href='#nftsection' />
+          {/* <Menu.Item name='NFT' href='#nftsection' /> */}
 
           <Menu.Item name='TEER Token' href='#TeerToken' />
           <Menu.Item name='FAQ' href='#FAQ' />
 
-          {/* <a className='ui primary gradient-btn button' style={{lineHeight:'1.5'}} href='#participate' >
+          {crowdLoanRunning &&
+          <a className='ui primary gradient-btn button' style={{lineHeight:'1.5'}} href='#participate' >
             Participate Now!
-          </a> */}
-          <a className="ui primary gradient-btn button" style={{lineHeight:'1.5'}} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
-
+          </a>
+          }
+          {!crowdLoanRunning &&
+          <a className="ui primary gradient-btn button" style={{ lineHeight: '1.5' }} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
+          }
           <div className='nav-social'>
-            <ul>
+            <ul style={{ listStyleType: 'none' }}>
               <li>
                 {' '}
                 <a
@@ -205,7 +211,7 @@ function Main(props) {
   );
 }
 
-function BalanceAnnotation(props) {
+function BalanceAnnotation (props) {
   const { accountSelected } = props;
   const { api } = useSubstrate();
   const [accountBalance, setAccountBalance] = useState(0);
@@ -228,15 +234,17 @@ function BalanceAnnotation(props) {
     return () => unsubscribe && unsubscribe();
   }, [api, accountSelected]);
 
-  return accountSelected ? (
+  return accountSelected
+    ? (
     <Label pointing='left'>
       <Icon name='money' color='green' />
       {accountBalance}
     </Label>
-  ) : null;
+      )
+    : null;
 }
 
-export default function UpperMenu(props) {
+export default function UpperMenu (props) {
   const { api, keyring } = useSubstrate();
   return <Main {...props} />;
 }

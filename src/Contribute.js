@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Form, Input, Grid } from 'semantic-ui-react';
-import { TxButton } from './substrate-lib/components';
+import { Form, Grid } from 'semantic-ui-react';
+// import { TxButton } from './substrate-lib/components';
 import { useSubstrate } from './substrate-lib';
-import { Element } from 'react-scroll';
+// import { Element } from 'react-scroll';
 import './css/styles.module.css';
-import krakenLogo, { ReactComponent as Kraken } from './css/Exchanges/kraken-vector-logo.svg';
+// import krakenLogo, { ReactComponent as Kraken } from './css/Exchanges/kraken-vector-logo.svg';
 // import kucoin from './css/Exchanges/KUCOIN.svg';
 // import okex from './css/Exchanges/okex.svg';
-import { ReactComponent as Kucoin } from './css/Exchanges/KUCOIN.svg';
-import { ReactComponent as Okex } from './css/Exchanges/okex.svg';
+// import { ReactComponent as Kucoin } from './css/Exchanges/KUCOIN.svg';
+// import { ReactComponent as Okex } from './css/Exchanges/okex.svg';
+import config from './config';
 
 export default function Main (props) {
   const [status, setStatus] = useState(null);
@@ -19,7 +20,7 @@ export default function Main (props) {
   const [blockNumber, setBlockNumber] = useState(0);
   const [crowdLoanData, setCrowdLoanData] = useState({});
   const { amount } = formState;
-  const paraId = '2015';
+  const paraId = config.PARACHAIN_ID;
 
   const onChange = (_, data) => {
     setFormState(prev => ({ ...prev, [data.state]: data.value }));
@@ -47,7 +48,7 @@ export default function Main (props) {
   }, [bestNumber]);
 
   useEffect(() => {
-    if (blockNumber >= crowdLoanData.end && blockNumber > 0 && crowdLoanData && Object.keys(crowdLoanData).length !== 0) {
+    if (crowdLoanData && blockNumber >= crowdLoanData.end && blockNumber > 0 && Object.keys(crowdLoanData).length !== 0) {
       setDisableButton(true);
       setStatus('crowdloan has ended');
     }
@@ -59,7 +60,7 @@ export default function Main (props) {
       setCrowdLoanData(result.toJSON());
     };
     const crowdLoan = async () => {
-      await api.query.crowdloan.funds(['2015'], queryResHandler);
+      await api.query.crowdloan.funds([paraId], queryResHandler);
     };
     crowdLoan();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -130,16 +131,3 @@ export default function Main (props) {
     </div>
   );
 }
-
-{ /* <Grid stackable columns='equal'>
-          <Grid.Row stretched>
-            <NodeInfo />
-            <BlockNumber />
-          </Grid.Row>
-          <Grid.Row>
-            <Crowdloan />
-          </Grid.Row>
-          <Grid.Row>
-            <Contribute accountPair={accountPair} />
-          </Grid.Row>
-        </Grid> */ }

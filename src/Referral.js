@@ -1,15 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './css/App.css';
 import { Container, Grid } from 'semantic-ui-react';
-import Otherimage from './Images/other-image.png';
-import { Button, Modal, Input, Form } from 'semantic-ui-react';
+// import Otherimage from './Images/other-image.png';
 import UserIcon from '../src/Images/user.png';
 import IntegriteeIcon from '../src/Images/integritee-logo.png';
-import referralCodeGenerator from 'referral-code-generator'
-import { mnemonicGenerate } from '@polkadot/util-crypto';
+// import referralCodeGenerator from 'referral-code-generator';
+// import { mnemonicGenerate } from '@polkadot/util-crypto';
 export default function Referral (props) {
-    const mnemonic = mnemonicGenerate();
-    const [open, setOpen] = React.useState(false)
+//   const mnemonic = mnemonicGenerate();
+//   const [open, setOpen] = React.useState(false);
   return (
         <div className="green-bg" id="referral">
             <Container>
@@ -23,7 +22,7 @@ export default function Referral (props) {
                             The Integritee Crowdloan Referral Program allows you to leverage
                             the power of your personal network and gain additional rewards for
                             both yourself and the people you refer - so everybody wins!
- 
+
                             </p>
                             <p>
                             How it works is simple - you and the person you refer will both
@@ -63,7 +62,7 @@ export default function Referral (props) {
                                     />
                                 </Modal.Actions>
                             </Modal> */}
-                            
+
                             {/* <a style={{  marginLeft: '0px !important' }} className="ui primary gradient-btn button" href="#participate">Participate Now!</a> */}
                         </Grid.Column>
                         <Grid.Column>

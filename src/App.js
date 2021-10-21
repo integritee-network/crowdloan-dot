@@ -1,8 +1,7 @@
 import React, { useState, createRef } from 'react';
-import { Container, Dimmer, Loader, Grid, Sticky, Message } from 'semantic-ui-react';
+import { Container, Button, Modal, Form, Dimmer, Loader} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import { SubstrateContextProvider, useSubstrate } from './substrate-lib';
-
 import UpperMenu from './UpperMenu';
 import Contribute from './Contribute';
 import Crowdloan from './Crowdloan';
@@ -11,7 +10,7 @@ import Faq from './Faq';
 import './css/App.css';
 import ThreeBox from './ThreeBox';
 import How from './How';
-import NFTsection from './NFTSection';
+// import NFTsection from './NFTSection';
 import Participate from './Participate';
 import Value from './Value';
 import Rewards from './Rewards';
@@ -21,9 +20,11 @@ import Referral from './Referral';
 import Support from './SupporterReward';
 import SupportM from './SupportRewardMobile';
 import Footer from './Footer';
-import Leaderboard from './Leaderboard';
-import { ToastContainer, toast } from 'react-toastify';
+// import Leaderboard from './Leaderboard';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { formatBalance } from '@polkadot/util';
+import { useGlobalState } from './state';
 
 
 function Main () {
@@ -33,6 +34,14 @@ function Main () {
     accountAddress &&
     keyringState === 'READY' &&
     keyring.getPair(accountAddress);
+
+  const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
+  
+  formatBalance.setDefaults({
+    decimals: 12,
+    unit: 'KSM'
+  });
+
 
   const loader = text =>
     <Dimmer active>
@@ -61,7 +70,7 @@ function Main () {
 
   const contextRef = createRef();
   console.log(apiState);
-  
+
   return (
     <div ref={contextRef}>
       <ToastContainer
@@ -83,14 +92,13 @@ function Main () {
         <Support />
         <SupportM />
         <Referral />
-        <NFTsection />
+        {/* <NFTsection /> */}
       {/* <Participate /> */}
-      {apiState !== "READY" ? <></> : <Participate />}
+      {apiState !== 'READY' || !crowdLoanRunning ? <></> : <Participate />}
       {/* <Contribute id='#contribute' accountPair={accountPair} /> */}
-        
-        
+
         <Rewards />
-        
+
         <Value />
         <Roadmap />
         <Faq />
@@ -102,7 +110,6 @@ function Main () {
 }
 
 export default function App () {
-
   return (
     <SubstrateContextProvider>
       <Main />

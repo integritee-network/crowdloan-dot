@@ -1,9 +1,9 @@
 import './css/App.css';
-import { Container, Button, Grid } from 'semantic-ui-react';
-import icon0 from './Images/i0.svg';
-import icon1 from './Images/i1.svg';
-import icon2 from './Images/i2.svg';
-import icon3 from './Images/i3.svg';
+import { Container } from 'semantic-ui-react';
+// import icon0 from './Images/i0.svg';
+// import icon1 from './Images/i1.svg';
+// import icon2 from './Images/i2.svg';
+// import icon3 from './Images/i3.svg';
 
 export default function Participate () {
   return (
@@ -41,7 +41,7 @@ export default function Participate () {
                         <li>Launch main-net, TEER token and sidechains.</li>
                         <li>Q4 <br /> Secure Polkadot slot(s).</li>
                         <li>List TEER on major exchange &amp; release Kusama-Polkadot bridge.</li>
-                        
+
                     </ul>
                     <span>2021</span>
                     </div>
