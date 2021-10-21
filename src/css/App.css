@@ -2006,3 +2006,12 @@ div[disabled]
   line-height: 1.6;
   margin-bottom: 20px;
 }
+
+
+.EarlySporter h2 {
+  font-family: "Gotham Rounded", sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 20px;
+}
