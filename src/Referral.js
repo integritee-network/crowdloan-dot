@@ -6,9 +6,12 @@ import UserIcon from '../src/Images/user.png';
 import IntegriteeIcon from '../src/Images/integritee-logo.png';
 // import referralCodeGenerator from 'referral-code-generator';
 // import { mnemonicGenerate } from '@polkadot/util-crypto';
+import { useGlobalState } from './state';
+
 export default function Referral (props) {
 //   const mnemonic = mnemonicGenerate();
 //   const [open, setOpen] = React.useState(false);
+const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
   return (
         <div className="green-bg" id="referral">
             <Container>
@@ -25,18 +28,29 @@ export default function Referral (props) {
 
                             </p>
                             <p>
-                            How it works: Spread the word about the Integritee crowdloan to your personal network. 
+                            How it works: Make a contribution of at least 0.1 KSM to our crowdloan and generate a referral code. Spread the word about the Integritee crowdloan to your personal network. 
                             When somebody backs us using your referral code, they will receive a 5% bonus on 
                             their Supporter Reward. 
                             As a thank you for making the referral, you will also receive the same amount.
                             </p>
+                            
                             <p>
-                            Let’s look at an example (on the right) of 
-                            someone you refer who contributes KSM to the crowdloan - let’s call them John Doe.
+                            If you have backed Intgritee before and contribute again, you can use the same referral link as last time.
                             </p>
-                            <p>
-                            If you’ve already participated in the crowdloan, you can generate a referral code now.
-                            </p>
+                           
+                            
+                            <br />
+
+                            {crowdLoanRunning &&
+                            <a className='ui primary gradient-btn button' style={{lineHeight:'1.5'}} href='#participate' >
+                                Participate Now!
+                            </a>
+                            }
+                            {!crowdLoanRunning &&
+                            <a className="ui primary gradient-btn button" style={{ lineHeight: '1.5' }} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
+                            }
+
+
                             {/* <Modal size="mini" open={open} trigger={<Button className="ui primary gradient-btn button" onClick={() => setOpen(true)}>Generate Referral Code</Button>}>
                                 <Modal.Header>Generate Referral Code</Modal.Header>
                                 <Modal.Content scrolling>
@@ -57,10 +71,15 @@ export default function Referral (props) {
                                 </Modal.Actions>
                             </Modal> */}
 
-                            {/* <a style={{  marginLeft: '0px !important' }} className="ui primary gradient-btn button" href="#participate">Participate Now!</a> */}
+                          
                         </Grid.Column>
                         <Grid.Column>
-                            <br></br>
+                            <br/>
+                            <br/>
+                            <p>
+                            Let’s look at an example of 
+                            someone you refer who contributes KSM to the crowdloan - let’s call them John Doe.
+                            </p>
                             <br></br>
                             <ul className="process">
                                 <li>
@@ -124,7 +143,7 @@ export default function Referral (props) {
                                         </div>
                                     </div>
                                     <div className="text-holder">
-                                    For using your referral link, both John Doe and you each get a 5% bonus from this amount, which is 5% of 50,000 TEER = 1,500 TEER each.
+                                    For using your referral link, both John Doe and you each get a 5% bonus from this amount, which is 5% of 50,000 TEER = 2,500 TEER each.
                                     </div>
                                 </li>
                             </ul>

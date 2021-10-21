@@ -26,6 +26,15 @@ export default function Main (props) {
       case 9: return (<div className="text"><h3>What happens to referral bonuses if Integritee does not win a slot during this campaign?</h3>
                     <p>The referral bonuses are linked to the TEER rewards for the crowdloan campaign. If Integritee does not win a slot by the end of our campaign,
                         all KSM will be unbonded and released to their owners and only the guaranteed rewards will be distributed, but not standard rewards or referral bonuses.</p></div>);
+      
+      case 10: return (<div className="text"><h3>I backed Integritee during the second batch of Kusama auctions and generated a referral link. Can I use my own referral link to contribute now?</h3>
+                    <p>No. The bonus won’t be applied to your contribution. Please use someone else’s referral link to claim your bonus.</p></div>);
+      
+      case 11: return (<div className="text"><h3>What happens if someone uses my referral code from the second batch of Kusama auctions to contribute now?</h3>
+                    <p>They will get a 5% bonus on their TEER rewards. In order for you to also benefit from the reward, you will need to contribute again (at least 0.1 KSM) during the third batch of auctions.</p></div>);
+      
+      
+      
       default: return (<div className="text"><h3>How does crowdlending work?</h3>
         <p>Kusama parachain slots are leased, for a limited period, via slot auctions. Projects bid for
         auction slots with collateral in the form of KSM tokens. Crowdlending is one way for bidders to raise the collateral they need to win a slot. Integritee supporters can “lend” their
@@ -51,6 +60,9 @@ export default function Main (props) {
                 <button className={`${faqContent === 7 ? 'active' : ''}`} onClick={() => setFaqContent(7)}>WHAT HAPPENS IF INTEGRITEE DOES NOT WIN THE PARACHAIN AUCTION?</button>
                 <button className={`${faqContent === 8 ? 'active' : ''}`} onClick={() => setFaqContent(8)}>HOW CAN I GET A REFERRAL CODE IF I HAVE ALREADY CONTRIBUTED?</button>
                 <button className={`${faqContent === 9 ? 'active' : ''}`} onClick={() => setFaqContent(9)}>WHAT HAPPENS TO REFERRAL BONUSES IF INTEGRITEE DOES NOT WIN A SLOT DURING THIS CAMPAIGN?</button>
+                <button className={`${faqContent === 10 ? 'active' : ''}`} onClick={() => setFaqContent(10)}>I BACKED INTEGRITEE DURING THE SECOND BATCH OF KUSAMA AUCTIONS AND GENERATED A REFERRAL LINK. CAN I USE MY OWN REFERRAL LINK TO CONTRIBUTE NOW?</button>
+                <button className={`${faqContent === 11 ? 'active' : ''}`} onClick={() => setFaqContent(11)}>WHAT HAPPENS IF SOMEONE USES MY REFERRAL CODE FROM THE SECOND BATCH OF KUSAMA AUCTIONS TO CONTRIBUTE NOW? </button>
+
             </Grid.Column>
                     <Grid.Column width={10} className="right-section">
                 {showContent()}

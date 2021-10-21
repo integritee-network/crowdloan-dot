@@ -15,7 +15,7 @@ export default function SupporterReward (props) {
           backgroundImage: `url(${backgroundimage})`,
           backgroundColor: '#eff3f6',
           backgroundSize: 'cover',
-          backgroundPosition: '0px -85px',
+          backgroundPosition: '0px -105px',
           backgroundRepeat: 'no-repeat'
         }}>
             <Container id="Supportsection">
@@ -30,15 +30,13 @@ export default function SupporterReward (props) {
                                 <Grid.Column id="column3" style={{ width: '50%!important' }}>
 
                                     <p>
-                                    Even in the event that Integritee does not win an auction, 
-                                    our backers will receive Guaranteed TEER Token Rewards after the end of the campaign.
-                                    </p>
-
-                                    <p>
-                                    The more KSM bonded by our supporters during the auction, the more 
-                                    TEER that will be distributed to backers when it ends if we don’t win.
-
-                                    <br/>  <br/>
+                                    In addition, we are now offering further guaranteed bonus rewards for Integritee contributors, 
+                                    regardless of the outcome of the slot auctions. They will be distributed to crowdloan contributors relative 
+                                    to their opportunity cost in terms of the amount of KSM they contribute, 
+                                    and the length of time this KSM is locked in. The locked-in time starts to be measured from the 
+                                    block that includes the contribution and finishes either when Integritee wins an auction, 
+                                    or Integritee’s crowdloan campaign ends, whichever happens first.
+                                   
 
                                     </p>
 
@@ -65,8 +63,9 @@ export default function SupporterReward (props) {
                                   <span style={{ color: '#000065' }} >Scenario 2: ≥ 40,000 KSM bonded</span>
                                   <span style={{ color: '#70e6da', fontSize: '15px' }} >40,000 TEER distributed to all contributors</span>
 
-                                  If Integritee doesn’t win an auction and the crowdloan campaign ends with 40,000 KSM bonded 
-                                  or more, 40,000 TEER will be distributed to contributors, proportional to their contribution.
+                                  If Integritee doesn’t win an auction and the crowdloan ends
+                                    with 40,000 KSM bonded or more, 40,000 TEER will be
+                                    distributed to contributors.
                                   
                                   </div>
                               </li>
@@ -92,8 +91,9 @@ export default function SupporterReward (props) {
                     <span style={{ color: '#000065' }} > Scenario 1: ≥ 20,000 KSM bonded</span>
                     <span style={{ color: '#70e6da', fontSize: '15px' }} >20,000 TEER distributed to all contributors</span>
 
-                    If Integritee doesn’t win an auction and the crowdloan campaign ends with 20,000 KSM bonded 
-                    or more, 20,000 TEER will be distributed to all contributors, proportional to their contribution.
+                    If Integritee doesn’t win an auction and the crowdloan ends with
+                    20,000 KSM bonded or more, 20,000 TEER will be distributed to
+                    all contributors.
                     </div>
                     </ul>
                     </Grid.Column>

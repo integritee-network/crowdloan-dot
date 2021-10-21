@@ -4,9 +4,9 @@ import Graphimage from './Images/graph2.png';
 
 export default function How (props) {
   return (
-        <div className="grey-bg-2">
+        <div className="grey-bg-2" id="token">
             <Container>
-                <div className="text">
+                <div className="text" >
                     <Grid>
                         <Grid.Row columns={1}>
                         <Grid.Column>

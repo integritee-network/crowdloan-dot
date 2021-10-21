@@ -87,26 +87,23 @@ function Main () {
       />
       <UpperMenu setAccountAddress={setAccountAddress} />
       <Why />
-      {/* <Leaderboard /> */}
-        <ThreeBox />
-        <How />
-        <Support />
-        <SupportM />
-        <LoyalityRewards />
-        <Referral />
-        {/* <NFTsection /> */}
-      {/* <Participate /> */}
+      <Rewards />
+      <Support />
+      <SupportM />
+      <LoyalityRewards />
+      <Referral />
       {apiState !== 'READY' || !crowdLoanRunning ? <></> : <Participate />}
+      <Value />
+      <How />
+      <Roadmap />
+      <Faq />
+      <Clients />
+      <Footer />
+      {/* <Leaderboard /> */}
+      {/* <ThreeBox /> */}
+      {/* <NFTsection /> */}
+      {/* <Participate /> */}
       {/* <Contribute id='#contribute' accountPair={accountPair} /> */}
-
-        <Rewards />
-
-        <Value />
-        <Roadmap />
-        <Faq />
-        <Clients />
-
-        <Footer />
     </div>
   );
 }
