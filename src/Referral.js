@@ -6,9 +6,12 @@ import UserIcon from '../src/Images/user.png';
 import IntegriteeIcon from '../src/Images/integritee-logo.png';
 // import referralCodeGenerator from 'referral-code-generator';
 // import { mnemonicGenerate } from '@polkadot/util-crypto';
+import { useGlobalState } from './state';
+
 export default function Referral (props) {
 //   const mnemonic = mnemonicGenerate();
 //   const [open, setOpen] = React.useState(false);
+const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
   return (
         <div className="green-bg" id="referral">
             <Container>
@@ -16,33 +19,38 @@ export default function Referral (props) {
                     <Grid>
                         <Grid.Row columns={2}>
                         <Grid.Column>
-                            <span>REFERRAL PROGRAM EXPLAINED</span>
-                            <h2>How Integritee’s Referral <br /> Program works</h2>
+                            <span>REFERRAL PROGRAM</span>
+                            <h2>Tell Your Network About Integritee & Get a 5% Referral Reward</h2>
                             <p>
-                            The Integritee Crowdloan Referral Program allows you to leverage
-                            the power of your personal network and gain additional rewards for
-                            both yourself and the people you refer - so everybody wins!
+                            The Integritee Crowdloan Referral Program allows you to leverage the power of 
+                            your personal network and gain additional rewards for both yourself 
+                            and the people you refer, so everybody wins.
 
                             </p>
                             <p>
-                            How it works is simple - you and the person you refer will both
-                            receive an additional 3% of that person’s TEER reward on top of
-                            your normal TEER rewards for participating in the crowdloan.
+                            How it works: Make a contribution of at least 0.1 KSM to our crowdloan and generate a referral code. Spread the word about the Integritee crowdloan to your personal network. 
+                            When somebody backs us using your referral code, they will receive a 5% bonus on 
+                            their Supporter Reward. 
+                            As a thank you for making the referral, you will also receive the same amount.
                             </p>
+                            
                             <p>
-                            As you know, Integritee has allocated 10% of total TEER supply as
-                            rewards for this crowdloan. This is 1 million TEER tokens! These
-                            rewards are distributed proportionally to the amount of KSM you
-                            commit in relation to the total committed KSM for the crowdloan.
+                            If you have backed Integritee before and contribute again, you can use the same referral link as last time.
                             </p>
-                            <p>
-                            So let’s look at an example (on the right) of someone you refer who
-                            contributes KSM to the crowdloan - let’s call them John Doe.
-                            </p>
-                            <p>
-                            If you’ve already participated in the crowdloan, you can generate a
-                            referral code now!
-                            </p>
+                           
+                            
+                            <br />
+
+                            {crowdLoanRunning &&
+                            <a className='ui primary gradient-btn button' style={{lineHeight:'1.5'}} href='#participate' >
+                                Participate Now!
+                            </a>
+                            }
+                            {!crowdLoanRunning &&
+                            <a className="ui primary gradient-btn button" style={{ lineHeight: '1.5' }} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
+                            }
+
+
                             {/* <Modal size="mini" open={open} trigger={<Button className="ui primary gradient-btn button" onClick={() => setOpen(true)}>Generate Referral Code</Button>}>
                                 <Modal.Header>Generate Referral Code</Modal.Header>
                                 <Modal.Content scrolling>
@@ -63,10 +71,15 @@ export default function Referral (props) {
                                 </Modal.Actions>
                             </Modal> */}
 
-                            {/* <a style={{  marginLeft: '0px !important' }} className="ui primary gradient-btn button" href="#participate">Participate Now!</a> */}
+                          
                         </Grid.Column>
                         <Grid.Column>
-                            <br></br>
+                            <br/>
+                            <br/>
+                            <p>
+                            Let’s look at an example of 
+                            someone you refer who contributes KSM to the crowdloan - let’s call them John Doe.
+                            </p>
                             <br></br>
                             <ul className="process">
                                 <li>
@@ -78,6 +91,7 @@ export default function Referral (props) {
                                     </div>
                                     <div className="text-holder">
                                     You refer John Doe by sending him your referral link.
+
                                     </div>
                                 </li>
                                 <li>
@@ -110,7 +124,7 @@ export default function Referral (props) {
                                         John Doe
                                     </div>
                                     <div className="text-holder">
-                                    John Doe will then receive 5% of the 1 Million TEER tokens = 50,000 TEER
+                                    John Doe will then receive 5% of the 1 million TEER tokens = 50,000 TEER.
                                     </div>
                                 </li>
                                 <li>
@@ -129,7 +143,7 @@ export default function Referral (props) {
                                         </div>
                                     </div>
                                     <div className="text-holder">
-                                    For using your referral link both John Doe and you each get a 3% bonus from this amount, which is 3% of 50,000 TEER = 1,500 TEER each.
+                                    For using your referral link, both John Doe and you each get a 5% bonus from this amount, which is 5% of 50,000 TEER = 2,500 TEER each.
                                     </div>
                                 </li>
                             </ul>

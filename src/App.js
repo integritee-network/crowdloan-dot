@@ -20,6 +20,7 @@ import Referral from './Referral';
 import Support from './SupporterReward';
 import SupportM from './SupportRewardMobile';
 import Footer from './Footer';
+import LoyalityRewards from './LoyalityRewards';
 // import Leaderboard from './Leaderboard';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -86,25 +87,23 @@ function Main () {
       />
       <UpperMenu setAccountAddress={setAccountAddress} />
       <Why />
-      {/* <Leaderboard /> */}
-        <ThreeBox />
-        <How />
-        <Support />
-        <SupportM />
-        <Referral />
-        {/* <NFTsection /> */}
-      {/* <Participate /> */}
+      <Rewards />
+      <Support />
+      <SupportM />
+      <LoyalityRewards />
+      <Referral />
       {apiState !== 'READY' || !crowdLoanRunning ? <></> : <Participate />}
+      <Value />
+      <How />
+      <Roadmap />
+      <Faq />
+      <Clients />
+      <Footer />
+      {/* <Leaderboard /> */}
+      {/* <ThreeBox /> */}
+      {/* <NFTsection /> */}
+      {/* <Participate /> */}
       {/* <Contribute id='#contribute' accountPair={accountPair} /> */}
-
-        <Rewards />
-
-        <Value />
-        <Roadmap />
-        <Faq />
-        <Clients />
-
-        <Footer />
     </div>
   );
 }
