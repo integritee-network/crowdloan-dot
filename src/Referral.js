@@ -35,7 +35,7 @@ const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
                             </p>
                             
                             <p>
-                            If you have backed Intgritee before and contribute again, you can use the same referral link as last time.
+                            If you have backed Integritee before and contribute again, you can use the same referral link as last time.
                             </p>
                            
                             
