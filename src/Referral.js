@@ -129,7 +129,7 @@ export default function Referral (props) {
                                         </div>
                                     </div>
                                     <div className="text-holder">
-                                    For using your referral link both John Doe and you each get a 3% bonus from this amount, which is 3% of 50,000 TEER = 1,500 TEER each.
+                                    For using your referral link both John Doe and you each get a 3% bonus from this amount, which is 3% of 50,000 TEER = 2,500 TEER each.
                                     </div>
                                 </li>
                             </ul>

@@ -19,8 +19,8 @@ export default function LoyalityRewards (props) {
               
 
                             <p>
-                            As a mark of our appreciation for your continued support, if you backed us in the previous slot auctions (Slot 7 - 11), you will be eligible for a 10% Loyalty Reward on any new contribution up to the amount you contributed last time. 
-                            The 10% Loyalty Reward will be added to your Supporter Reward for your new contribution.
+                            As a mark of our appreciation for your continued support, anyone who backed us in the previous auctions (Slot 7 - 11) 
+                            will receive a 10% bonus on their Supporter Reward for any new contribution up to the amount they contributed last time.
                             </p>
                            
 
