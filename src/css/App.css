@@ -1974,3 +1974,44 @@ div[disabled]
 #videoway {
   width: 99% !important;
 }
+
+.EarlySporter {
+  font-family: 'Gotham Rounded', sans-serif;
+  background: #000065;
+  font-size: 16px;
+  font-weight: 300;
+  color: #fff;    
+  padding: 150px 0 100px;
+  
+  
+}
+.EarlySporter span {
+  font-family: "Gotham Rounded", sans-serif;
+  color: #70e6da;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 10px;
+  display: block;
+  
+}
+.EarlySporter h1 {
+  font-family: "Gotham Rounded", sans-serif;
+  font-size: 50px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 20px;
+}
+
+.EarlySporter .text p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+
+.EarlySporter h2 {
+  font-family: "Gotham Rounded", sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 20px;
+}

@@ -14,6 +14,7 @@ import How from './How';
 import Participate from './Participate';
 import Value from './Value';
 import Rewards from './Rewards';
+import EarlySporter from './EarlySupporter'
 import Roadmap from './Roadmap';
 import Clients from './clients';
 import Referral from './Referral';
@@ -88,6 +89,7 @@ function Main () {
       <UpperMenu setAccountAddress={setAccountAddress} />
       <Why />
       <Rewards />
+      <EarlySporter />
       <Support />
       <SupportM />
       <LoyalityRewards />
