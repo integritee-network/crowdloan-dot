@@ -281,7 +281,9 @@ export default function Main (props) {
         <ul className="counter">
           <li>
             <span>KSM CONTRIBUTED</span>
-            {formatBalance(crowdLoan.raised)}
+            {formatBalance(crowdLoan.raised,
+              { withSi: true, forceUnit: '-' }
+            )}
             {loading && (
               <Dimmer active>
                 <Loader size='mini' inline='centered'>
