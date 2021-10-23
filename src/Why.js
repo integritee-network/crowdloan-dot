@@ -6,6 +6,7 @@ import { useSubstrate } from './substrate-lib';
 import React, { useState, useReducer } from 'react';
 import { formatBalance } from '@polkadot/util';
 import { useGlobalState, setCrowdLoanRunning } from './state';
+import { BN, bnToBn } from '@polkadot/util/bn/index.js';
 
 // import Highcharts from 'highcharts';
 // import HighchartsReact from 'highcharts-react-official';
@@ -13,6 +14,13 @@ import { useGlobalState, setCrowdLoanRunning } from './state';
 // import { toast } from 'react-toastify';
 import config from './config';
 
+function toUnit(balance, decimals, unit = 'KSM') {
+  balance = bnToBn(balance).toString();
+  var base = new BN(10).pow(new BN(decimals));
+  var dm = new BN(balance).divmod(base); // decimals, don't use them atm
+  let x = parseFloat(dm.div.toString());
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ' + unit;
+}
 export default function Main (props) {
   const { api } = useSubstrate();
   const [open, setOpen] = React.useState(false);
@@ -281,9 +289,10 @@ export default function Main (props) {
         <ul className="counter">
           <li>
             <span>KSM CONTRIBUTED</span>
-            {formatBalance(crowdLoan.raised,
+            {toUnit(crowdLoan.raised, 12 )}<br/>
+            {/* {formatBalance(crowdLoan.raised,
               { withSi: true, forceUnit: '-' }
-            )}
+            )} */}
             {loading && (
               <Dimmer active>
                 <Loader size='mini' inline='centered'>
