@@ -19,7 +19,7 @@ function toUnit(balance, decimals, unit = 'KSM') {
   var base = new BN(10).pow(new BN(decimals));
   var dm = new BN(balance).divmod(base); // decimals, don't use them atm
   let x = parseFloat(dm.div.toString());
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ' + unit;
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'") + ' ' + unit;
 }
 export default function Main (props) {
   const { api } = useSubstrate();
