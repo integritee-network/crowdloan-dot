@@ -89,7 +89,7 @@ export default function Participate (props) {
   try {
     keyring.setSS58Format(2);
   } catch (error) {
-    console.log(error);
+    //console.log(error);
   }
 
   const accountPair =

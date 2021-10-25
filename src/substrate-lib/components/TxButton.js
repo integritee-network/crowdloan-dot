@@ -5,6 +5,7 @@ import { web3FromSource } from '@polkadot/extension-dapp';
 
 import { useSubstrate } from '../';
 import utils from '../utils';
+import { toast } from 'react-toastify';
 
 function TxButton ({
   setLoading = null,
@@ -72,31 +73,44 @@ function TxButton ({
     const hash = status.asFinalized.toString();
     if (isSigned()) {
       if (document.getElementById('grc') && document.getElementById('erc')) {
-        saveParticipateInfo(
-          accountAddress,
-          formState,
-          document.getElementById('grc').value,
-          document.getElementById('erc')
-            ? document.getElementById('erc').value
-            : new URL(window.location.href).searchParams.get('ref'),
-          hash
-        );
+        grc = document.getElementById('grc').value;
+        erc = document.getElementById('erc') ? document.getElementById('erc').value : new URL(window.location.href).searchParams.get('ref');
       } else if (document.getElementById('erc')) {
-        saveParticipateInfo(
-          accountAddress,
-          formState,
-          '',
-          document.getElementById('erc')
-            ? document.getElementById('erc').value
-            : new URL(window.location.href).searchParams.get('ref'),
-          hash
-        );
+        grc = "";
+        erc = document.getElementById('erc') ? document.getElementById('erc').value : new URL(window.location.href).searchParams.get('ref');
       } else if (document.getElementById('grc')) {
-        saveParticipateInfo(accountAddress, formState, document.getElementById('grc').value, '', hash);
+        grc = document.getElementById('grc').value;
       }
+      saveParticipateInfo(accountAddress, formState, grc, erc, hash)
+        .then((response) => {
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +
+              response.status);
+            toast.error('An error occured, please check the result below!', {
+              autoClose: 50000,
+              hideProgressBar: false
+            });
+            saveData = `😞 Saving data has failed, please send us this screenshot and your account number!`;
+            setStatus(`😉 Finalized. Block hash: ${hash} ${saveData}`);
+          } else {
+            toast.success('Your contribution has been successfully saved!', {
+              autoClose: 5000,
+              hideProgressBar: false
+            });
+          }
+        })
+        .catch((error) => {
+          toast.error('An error occured, please check the result below!', {
+            autoClose: 50000,
+            hideProgressBar: false
+          });
+          console.log('error', error);
+          saveData = `😞 Saving your data has failed, please contact our support and send this screenshot and your account number!`;
+          setStatus(`😉 Finalized. Block hash: ${hash} ${saveData}`);
+        });
       setLoading(false);
     }
-    setStatus(`😉 Finalized. Block hash: ${hash}`);
+    setStatus(`😉 Finalized. Block hash: ${hash} ${saveData}`);
   };
 
   const txResHandler = ({ status }) => {
@@ -165,16 +179,8 @@ function TxButton ({
       redirect: 'follow'
     };
 
-    fetch('https://api.crowdloan.integritee.network/storeuser', requestOptions)
-      .then((response) => { response.text(); })
-      .then((result) => console.log(result))
-      .catch((error) => {
-        console.log('error', error);
-        console.log('trying again');
-        setLoading(true);
-        setTimeout(() => { saveParticipateInfo(accountAddress, formState, grc, erc, hash); }, 2000);
-      });
-    setLoading(false);
+    const response = fetch('https://api.crowdloan.integritee.network/storeuser', requestOptions);
+    return response;
   };
 
   const signedTx = async () => {
