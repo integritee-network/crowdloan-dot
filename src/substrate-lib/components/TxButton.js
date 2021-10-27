@@ -110,7 +110,7 @@ function TxButton ({
         });
       setLoading(false);
     }
-    setStatus(`😉 Finalized. Block hash: ${hash} ${saveData}`);
+    setStatus(`😉 Finalized. Block hash: ${hash}`);
   };
 
   const txResHandler = ({ status }) => {
