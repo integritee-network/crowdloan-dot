@@ -1,5 +1,12 @@
 import requests
 import csv
+import sys
+
+if len(sys.argv) < 2:
+    print("Api Key required.")
+    sys.exit()
+
+api_key = sys.argv[1]
 
 with open('contributions.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile, delimiter=',')
@@ -9,7 +16,7 @@ with open('contributions.csv', 'w', newline='') as csvfile:
         response = requests.post('https://kusama.api.subscan.io/api/scan/parachain/contributes',
                          headers={
                             'Content-Type': 'application/json',
-                            'X-API-Key': 'f61b3cd451cee62383692c528215d12c',
+                            'X-API-Key': api_key,
                             'Accept': 'application/json',
                          },
                          json={
