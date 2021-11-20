@@ -1,4 +1,5 @@
 node_modules
+.idea
 .vscode
 **/.DS_Store
 build
@@ -12,3 +13,4 @@ build
 .pnp.*
 .history/*
 .history
+tools/lottery-filtered-contributions*

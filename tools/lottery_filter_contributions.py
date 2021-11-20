@@ -1,9 +1,10 @@
+#!/usr/bin/env python3
 import csv
 from datetime import datetime, timedelta
 import pytz
 
 input_file = "contributions-2015-38.csv"
-output_file = "filtered-contributions.csv"
+output_file = "lottery-filtered-contributions-2015-38.csv"
 date = pytz.utc.localize(datetime(2021, 11, 12))
 minimum_amount = 1.
 print(f"date is {date}")
