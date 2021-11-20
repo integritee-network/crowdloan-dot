@@ -1,14 +1,19 @@
+#!/usr/bin/env python3
+#
+# ./fetch_contributions <fund index> <subscan api key>
+#
 import requests
 import csv
 import sys
 
-if len(sys.argv) < 2:
-    print("Api Key required.")
+if len(sys.argv) < 3:
+    print("Usage: ./fetch_contributions.py <fund index> <subscan api key>")
     sys.exit()
 
-api_key = sys.argv[1]
+fund_id = sys.argv[1]
+api_key = sys.argv[2]
 
-with open('contributions-2015-24.csv', 'w', newline='') as csvfile:
+with open(f'contributions-2015-{fund_id}.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile, delimiter=',')
 
     page = 0
@@ -23,7 +28,7 @@ with open('contributions-2015-24.csv', 'w', newline='') as csvfile:
                                      'row': 100,
                                      'page': page,
                                      'from_history': True,
-                                     'fund_id': "2015-24"
+                                     'fund_id': f'2015-{fund_id}'
                                  }
                                  )
         contributions = response.json()['data']['contributes']
