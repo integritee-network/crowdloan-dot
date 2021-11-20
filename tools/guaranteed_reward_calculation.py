@@ -1,13 +1,30 @@
+#!/usr/bin/env python3.9
 import csv
 import sys
 
-# Settings:
-input_file = "contributions-2015-24.csv"
-output_file = "rewards.csv"
-blocknumber_crowdloan_end = 9_676_800
-ignore_addresses = ["GNqfSkmHH8FM2m44Y3PE4nMrJDsWbNcLsHsaY2JeAeaHP4v",
-                    "GNqfSkmHH8FM2m44Y3PE4nMrJDsWbNcLsHsaY2JeAeaHP4v"]
+if len(sys.argv) < 2:
+    print("Usage: ./guaranteed_rewards_calculation.py <fund index>")
+    sys.exit()
 
+fund_id = sys.argv[1]
+if fund_id == '24':
+    blocknumber_crowdloan_end = 9_676_800
+    total_rewards = 10_000  # TEER
+elif fund_id == '38':
+    blocknumber_crowdloan_end = 10_281_600
+    total_rewards = 0  # TEER
+else:
+    raise(BaseException(f'unknown fund-id: {fund_id}'))
+
+# Settings:
+
+input_file = f'contributions-2015-{fund_id}.csv'
+output_file = f'guaranteed-rewards-2015-{fund_id}.csv'
+
+waived_accounts = ["EZwaNLfEwAMYcEdbp7uKYFCjnsn43S85pm6BumT5UwvZQvB",
+                    "G7Lwgm7GxrH2V6BREqSdi9EtKAD9DLmREiPW9YnkmpuxDwW",
+                    "E5rK9r9LEa5JPr1iabNaGSMy8GHu1MX2ShnPYSbKLA37xEH",
+                    "EijCociWDFh6ZBKY3P6KnvujkmcttiNVrTLS8WvcQ7KDHRx"]
 
 def get_total_cointime(address: str = None) -> int:
     """
@@ -24,7 +41,7 @@ def get_total_cointime(address: str = None) -> int:
         for row in reader:
             if address is not None and address != row[0]:
                 continue
-            if row[0] in ignore_addresses:
+            if row[0] in waived_accounts:
                 continue
             contribution = int(row[1])
             block_number = int(row[2])
@@ -44,7 +61,7 @@ def read_addresses_from_file() -> dict[str, int]:
 
 
 def get_guaranteed_reward(personal_cointime: int, overall_total: int) -> float:
-    return 10_000 * personal_cointime / overall_total
+    return total_rewards * personal_cointime / overall_total
 
 
 def test_total_cointime_consistency(addresses: dict[str, int]):
@@ -85,18 +102,11 @@ def get_total_reward() -> float:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        # calculate reward for one address
-        the_address = sys.argv[1]
-        total_cointime = get_total_cointime()
-        pers_cointime = get_total_cointime(the_address)
-        print(f"reward for address {the_address}: {get_guaranteed_reward(pers_cointime, total_cointime)}")
-    else:
-        # calculate reward for all addresses
-        print("read in all addresses ... ")
-        address_dict = read_addresses_from_file()
-        print("test data consistency ... ")
-        test_total_cointime_consistency(address_dict)
-        print("calculating rewards ... ")
-        calculate_all_rewards(address_dict)
-        print(f"total rewards given: {get_total_reward()}")
+    # calculate reward for all addresses
+    print("read in all addresses ... ")
+    address_dict = read_addresses_from_file()
+    print("test data consistency ... ")
+    test_total_cointime_consistency(address_dict)
+    print("calculating rewards ... ")
+    calculate_all_rewards(address_dict)
+    print(f"total rewards given: {get_total_reward()}")
