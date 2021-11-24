@@ -9,10 +9,10 @@ if len(sys.argv) < 2:
 fund_id = sys.argv[1]
 if fund_id == '24':
     blocknumber_crowdloan_end = 9_676_800
-    total_rewards = 10_000  # TEER
+    total_rewards = 20_000  # TEER
 elif fund_id == '38':
     blocknumber_crowdloan_end = 10_281_600
-    total_rewards = 0  # TEER
+    total_rewards = 20_000  # TEER
 else:
     raise(BaseException(f'unknown fund-id: {fund_id}'))
 
