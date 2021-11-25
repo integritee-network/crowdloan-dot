@@ -13,6 +13,9 @@ if fund_id == '24':
 elif fund_id == '38':
     blocknumber_crowdloan_end = 10_281_600
     total_rewards = 20_000  # TEER
+elif fund_id == '0':
+    blocknumber_crowdloan_end = 200
+    total_rewards = 20_000  # TEER
 else:
     raise(BaseException(f'unknown fund-id: {fund_id}'))
 
