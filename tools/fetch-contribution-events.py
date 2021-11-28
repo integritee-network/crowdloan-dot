@@ -6,6 +6,7 @@ import requests
 import csv
 import sys
 import json
+import time
 from substrateinterface.utils.ss58 import ss58_decode, ss58_encode
 
 if len(sys.argv) < 3:
@@ -14,6 +15,9 @@ if len(sys.argv) < 3:
 
 fund_id = sys.argv[1]
 api_key = sys.argv[2]
+
+page_rows = 100
+
 if fund_id == '24':
     start_block = 8960721 # (2021-08-25 23:20)
     end_block = 9676800 #(2021-10-15 20:38)
@@ -31,13 +35,16 @@ response = requests.post('https://kusama.api.subscan.io/api/scan/parachain/funds
                              'Accept': 'application/json',
                          },
                          json={
-                             'row': 100,
+                             'row': page_rows,
                              'page': 0,
                              'fund_id': f'2015-{fund_id}'
                          }
                          )
 
 raised = int(response.json()['data']['funds'][0]['raised'])
+
+t_start = time.time()
+blocks_total = end_block - start_block
 
 with open(f'contribution-events-2015-{fund_id}.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile, delimiter=',')
@@ -58,15 +65,26 @@ with open(f'contribution-events-2015-{fund_id}.csv', 'w', newline='') as csvfile
                                          'block_num': block
                                      }
                                      )
-            events = response.json()['data']['events']
+
+            try:
+                events = response.json()['data']['events']
+            except:
+                print(response.json())
+                print("sleeping a bit")
+                time.sleep(0.9)
+                continue
             remaining = int(response.headers['X-RateLimit-Remaining-Second'])
-            if remaining < 2:
-                print(f"hitting rate limit {remaining}/{response.headers['X-RateLimit-Limit-Second']}")
+            if remaining < 1:
+                print(f"approaching rate limit {remaining}/{response.headers['X-RateLimit-Limit-Second']}")
 
             if events is None:
                 break
 
-            print(f"scanning block {block} page : {page} - nr of events: {len(events)}")
+
+            progress = float(block - start_block + 1) / blocks_total
+            t_elapsed = time.time() - t_start
+            t_togo = t_elapsed / progress
+            print(f"scanning block {block} ({progress*100}%) page : {page} - nr of events: {len(events)}, eta {t_togo/3600}h")
 
             for event in events:
                 if event['event_id'] == 'Contributed':
@@ -82,6 +100,8 @@ with open(f'contribution-events-2015-{fund_id}.csv', 'w', newline='') as csvfile
                                          ])
                         csvfile.flush()
 
+            if len(events) < page_rows:
+                break
             page += 1
 
 print(f"total contributed: {total_contributed}")
