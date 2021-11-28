@@ -78,4 +78,9 @@ response = requests.post('https://kusama.api.subscan.io/api/scan/parachain/funds
                                  }
 )
 
-print(response.json())
+raised = int(response.json()['data']['funds'][0]['raised'])
+if total_contributed == raised:
+    print("SUCCESS: sum of contributions equals raised amount")
+else:
+    print(f"ERROR: sum of contributions = {total_contributed} not equal to raised amount of {raised}")
+
