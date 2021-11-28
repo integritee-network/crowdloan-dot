@@ -29,6 +29,8 @@ waived_accounts = ["EZwaNLfEwAMYcEdbp7uKYFCjnsn43S85pm6BumT5UwvZQvB",
                     "E5rK9r9LEa5JPr1iabNaGSMy8GHu1MX2ShnPYSbKLA37xEH",
                     "EijCociWDFh6ZBKY3P6KnvujkmcttiNVrTLS8WvcQ7KDHRx"]
 
+existential_deposit = 0.001 # 1mTEER
+
 def get_total_cointime(address: str = None) -> int:
     """
     calculates the total cointime for a given address.
@@ -87,7 +89,8 @@ def calculate_all_rewards(addresses: dict[str, int]):
     with open(output_file, "w", newline='') as output:
         writer = csv.writer(output)
         for a, c in addresses.items():
-            writer.writerow([a, get_guaranteed_reward(c, overall_total_cointime)])
+            reward = max(existential_deposit, get_guaranteed_reward(c, overall_total_cointime))
+            writer.writerow([a, reward])
 
 
 def get_total_reward() -> float:
