@@ -89,6 +89,8 @@ def calculate_all_rewards(addresses: dict[str, int]):
     with open(output_file, "w", newline='') as output:
         writer = csv.writer(output)
         for a, c in addresses.items():
+            if a in waived_accounts:
+                continue
             reward = max(existential_deposit, get_guaranteed_reward(c, overall_total_cointime))
             writer.writerow([a, reward])
 
