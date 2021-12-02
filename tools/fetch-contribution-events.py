@@ -69,7 +69,11 @@ with open(f'contribution-events-2015-{fund_id}.csv', 'w', newline='') as csvfile
             try:
                 events = response.json()['data']['events']
             except:
-                print(response.json())
+                print(response)
+                try:
+                    print(response.json())
+                except:
+                    print("error decoding response")
                 print("sleeping a bit")
                 time.sleep(0.9)
                 continue
