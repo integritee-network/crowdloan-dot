@@ -9,7 +9,7 @@ if len(sys.argv) < 2:
 fund_id = sys.argv[1]
 if fund_id == '24':
     blocknumber_crowdloan_end = 9_676_800
-    total_rewards = 20_000  # TEER
+    total_rewards = 21460.2955281453 # TEER (correction after missing some contributions)
 elif fund_id == '38':
     blocknumber_crowdloan_end = 10_281_600
     total_rewards = 20_000  # TEER
@@ -77,6 +77,7 @@ def test_total_cointime_consistency(addresses: dict[str, int]):
     """
     total = sum(addresses.values())
     assert total == get_total_cointime()
+    print(f"total cointime: {total}")
 
 
 def calculate_all_rewards(addresses: dict[str, int]):
