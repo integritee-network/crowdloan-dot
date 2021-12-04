@@ -9,9 +9,12 @@ if len(sys.argv) < 2:
 fund_id = sys.argv[1]
 if fund_id == '24':
     blocknumber_crowdloan_end = 9_676_800
-    total_rewards = 20_000  # TEER
+    total_rewards = 21460.2955281453 # TEER (correction after missing some contributions)
 elif fund_id == '38':
     blocknumber_crowdloan_end = 10_281_600
+    total_rewards = 20_000  # TEER
+elif fund_id == '0':
+    blocknumber_crowdloan_end = 200
     total_rewards = 20_000  # TEER
 else:
     raise(BaseException(f'unknown fund-id: {fund_id}'))
@@ -25,6 +28,8 @@ waived_accounts = ["EZwaNLfEwAMYcEdbp7uKYFCjnsn43S85pm6BumT5UwvZQvB",
                     "G7Lwgm7GxrH2V6BREqSdi9EtKAD9DLmREiPW9YnkmpuxDwW",
                     "E5rK9r9LEa5JPr1iabNaGSMy8GHu1MX2ShnPYSbKLA37xEH",
                     "EijCociWDFh6ZBKY3P6KnvujkmcttiNVrTLS8WvcQ7KDHRx"]
+
+existential_deposit = 0.001 # 1mTEER
 
 def get_total_cointime(address: str = None) -> int:
     """
@@ -72,6 +77,7 @@ def test_total_cointime_consistency(addresses: dict[str, int]):
     """
     total = sum(addresses.values())
     assert total == get_total_cointime()
+    print(f"total cointime: {total}")
 
 
 def calculate_all_rewards(addresses: dict[str, int]):
@@ -84,7 +90,10 @@ def calculate_all_rewards(addresses: dict[str, int]):
     with open(output_file, "w", newline='') as output:
         writer = csv.writer(output)
         for a, c in addresses.items():
-            writer.writerow([a, get_guaranteed_reward(c, overall_total_cointime)])
+            if a in waived_accounts:
+                continue
+            reward = max(existential_deposit, get_guaranteed_reward(c, overall_total_cointime))
+            writer.writerow([a, reward])
 
 
 def get_total_reward() -> float:
