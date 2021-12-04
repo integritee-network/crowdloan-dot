@@ -21,7 +21,7 @@ export default function Rewards () {
                             <div className="text">
                             <strong>TEER is listed now:</strong>
                             <p>
-                              As our Token is <a href="https://www.gate.io/trade/TEER_USDT"> traded on an exchange</a>
+                              As our Token is <a href="https://www.gate.io/trade/TEER_USDT"> traded on an exchange </a>
                               you can now calculate the value of TEER rewards.
                             </p>
                             <strong>Decentralization:</strong>
