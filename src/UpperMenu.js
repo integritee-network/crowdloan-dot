@@ -9,6 +9,7 @@ import subsociallogo from './Images/social-blue-logo/Subsocial-logo.png';
 import telegramlogo from './Images/social-blue-logo/Telegram-logo.png';
 import twitterlogo from './Images/social-blue-logo/Twitter-logo.png';
 import discordlogo from './Images/social-blue-logo/Discord-logo.png';
+import subscanlogo from './Images/social-blue-logo/Subscan-logo.png';
 
 import { Menu, Container } from 'semantic-ui-react';
 
@@ -164,6 +165,17 @@ function Main (props) {
                   <img src={discordlogo} alt='discord logo' width={20} />{' '}
                 </a>{' '}
               </li>
+              <li>
+                {' '}
+                <a
+                  target='_blank'
+                  rel='noreferrer'
+                  href='https://integritee.subscan.io/'
+                >
+                  <img src={subscanlogo} alt='subscan logo' width={20} />{' '}
+                </a>{' '}
+              </li>
+
             </ul>
           </div>
         </Menu.Menu>
