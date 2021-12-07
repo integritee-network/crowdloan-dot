@@ -69,7 +69,7 @@ function TxButton ({
   };
 
   const txResHandlerSaveTransaction = (status) => {
-    const hash = status.asFinalized.toString();
+    const hash = status.asInBlock.toString();
     if (isSigned()) {
       if (document.getElementById('grc') && document.getElementById('erc')) {
         saveParticipateInfo(
@@ -96,11 +96,11 @@ function TxButton ({
       }
       setLoading(false);
     }
-    setStatus(`😉 Finalized. Block hash: ${hash}`);
+    setStatus(`😉 InBlock. Block hash: ${hash}`);
   };
 
   const txResHandler = ({ status }) => {
-    status.isFinalized
+    status.isInBlock
       ? txResHandlerSaveTransaction(status)
       : setStatus(`Current transaction status: ${status.type}`);
   };
