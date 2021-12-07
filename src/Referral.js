@@ -22,23 +22,23 @@ const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
                             <span>REFERRAL PROGRAM</span>
                             <h2>Tell Your Network About Integritee & Get a 5% Referral Reward</h2>
                             <p>
-                            The Integritee Crowdloan Referral Program allows you to leverage the power of 
-                            your personal network and gain additional rewards for both yourself 
+                            The Integritee Crowdloan Referral Program allows you to leverage the power of
+                            your personal network and gain additional rewards for both yourself
                             and the people you refer, so everybody wins.
 
                             </p>
                             <p>
-                            How it works: Make a contribution of at least 0.1 KSM to our crowdloan and generate a referral code. Spread the word about the Integritee crowdloan to your personal network. 
-                            When somebody backs us using your referral code, they will receive a 5% bonus on 
-                            their Supporter Reward. 
+                            How it works: Make a contribution of at least 0.1 KSM to our crowdloan and generate a referral code. Spread the word about the Integritee crowdloan to your personal network.
+                            When somebody backs us using your referral code, they will receive a 5% bonus on
+                            their Supporter Reward.
                             As a thank you for making the referral, you will also receive the same amount.
                             </p>
-                            
+
                             <p>
                             If you have backed Integritee before and contribute again, you can use the same referral link as last time.
                             </p>
-                           
-                            
+
+
                             <br />
 
                             {crowdLoanRunning &&
@@ -71,13 +71,13 @@ const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
                                 </Modal.Actions>
                             </Modal> */}
 
-                          
+
                         </Grid.Column>
                         <Grid.Column>
                             <br/>
                             <br/>
                             <p>
-                            Let’s look at an example of 
+                            Let’s look at an example of
                             someone you refer who contributes KSM to the crowdloan - let’s call them John Doe.
                             </p>
                             <br></br>
@@ -113,7 +113,7 @@ const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
                                         Integritee
                                     </div>
                                     <div className="text-holder">
-                                    Integritee wins the slot with 20,000 KSM. That means that John Doe has contributed 5% of the total KSM.
+                                    Integritee wins the slot
                                     </div>
                                 </li>
                                 <li>
@@ -124,7 +124,8 @@ const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
                                         John Doe
                                     </div>
                                     <div className="text-holder">
-                                    John Doe will then receive 5% of the 1 million TEER tokens = 50,000 TEER.
+                                        John Doe will then receive
+                                        10,000 TEER.
                                     </div>
                                 </li>
                                 <li>
@@ -143,7 +144,10 @@ const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
                                         </div>
                                     </div>
                                     <div className="text-holder">
-                                    For using your referral link, both John Doe and you each get a 5% bonus from this amount, which is 5% of 50,000 TEER = 2,500 TEER each.
+                                        For using your referral link, both John Doe
+                                        and you each get a 5% bonus from this
+                                        amount, which is 5% of 10,000 TEER = 500
+                                        TEER each.
                                     </div>
                                 </li>
                             </ul>

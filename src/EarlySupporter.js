@@ -19,10 +19,9 @@ export default function EarlySporter (props) {
                             It’s easy to follow the crowd, but some can see the future before everyone else.
                             </p>
                             <p>
-                            That’s why we are rewarding the early pioneers. Back us before Sunday, 
-                            October 24th at 8pm GMT and receive a 20% Early Supporter Bonus. 
-                            This will be added to your standard Supporter Reward, which is proportional to your KSM contribution. 
-                            The more you bond before the deadline, the more TEER tokens you will be eligible to receive.
+                                That’s why we are rewarding the early pioneers. Back us in the first 72h and receive a 20% Early Supporter Bonus.
+                                This will be added to your standard Supporter Reward, which is proportional to your KSM contribution. The more you bond before the
+                                deadline, the more TEER tokens you will be eligible to receive.
                             </p>
 
                             <br />
@@ -36,7 +35,6 @@ export default function EarlySporter (props) {
                             <a className="ui primary gradient-btn button" style={{ lineHeight: '1.5' }} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
                             }
 
-                          
                         </Grid.Column>
                         </Grid.Row>
                     </Grid>

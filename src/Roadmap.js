@@ -37,9 +37,9 @@ export default function Participate () {
                         <li>Q1-Q2 <br /> Closed seed round &amp; deployed Rococo testnet parachain.</li>
                         {/* <li>Q2 <br /> Closed seed round.</li> */}
                         <li>Q3 <br /> Released Token Paper.</li>
+                        <li>Q4 <br />Launch main-net and TEER token.</li>
+                        <li>List TEER on a major exchange.</li>
                         <li>Secure Kusama slot(s).</li>
-                        <li>Launch main-net and TEER token.</li>
-                        <li>Q4 <br /> List TEER on a major exchange.</li>
 
                     </ul>
                     <span>2021</span>
