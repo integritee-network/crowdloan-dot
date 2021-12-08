@@ -425,6 +425,10 @@ NewsLetter1 button:focus{
   max-width: 600px;
 }
 
+.why ::marker {
+  font-size: 0;
+}
+
 .white-bg .howparachain img {
   margin-top: 150px;
 

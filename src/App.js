@@ -2,9 +2,6 @@ import React, { useState, createRef } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { SubstrateContextProvider, useSubstrate } from './substrate-lib';
 import UpperMenu from './UpperMenu';
-// removing the import below makes a dot appear next to the KSM Contributed value, which is not desired, should be fixed
-// eslint-disable-next-line no-unused-vars
-import Contribute from './Contribute';
 import Why from './Why';
 import Faq from './Faq';
 import './css/App.css';
