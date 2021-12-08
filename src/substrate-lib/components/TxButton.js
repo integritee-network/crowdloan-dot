@@ -96,7 +96,7 @@ function TxButton ({
       }
       setLoading(false);
     }
-    setStatus(viewTransactionHash(hash));
+    setStatus(viewTransactionInfo(hash));
   };
 
   const viewTransactionInfo = (txHash) => {
