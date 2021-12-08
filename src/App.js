@@ -64,8 +64,6 @@ function Main () {
       <Faq />
       <Clients />
       <Footer />
-      {/* <ThreeBox /> */}
-      {/* <Participate /> */}
     </div>
   );
 }
