@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { ReactComponent as Logo } from './css/IntegriteeLogoAndSlogan.svg';
 import logo from './css/IntegriteeLogoAndSlogan.svg';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import elementlogo from './Images/social-blue-logo/Element-logo.png';
@@ -11,7 +10,7 @@ import twitterlogo from './Images/social-blue-logo/Twitter-logo.png';
 import discordlogo from './Images/social-blue-logo/Discord-logo.png';
 import subscanlogo from './Images/social-blue-logo/Subscan-logo.png';
 
-import { Container, Icon, Label, Menu } from 'semantic-ui-react';
+import { Container, Menu } from 'semantic-ui-react';
 
 import { useSubstrate } from './substrate-lib';
 import { useGlobalState } from './state';
@@ -178,39 +177,6 @@ function Main (props) {
       </div>
     </Menu>
   );
-}
-// eslint-disable-next-line no-unused-vars
-function BalanceAnnotation (props) {
-  const { accountSelected } = props;
-  const { api } = useSubstrate();
-  const [accountBalance, setAccountBalance] = useState(0);
-
-  // When account address changes, update subscriptions
-  useEffect(() => {
-    let unsubscribe;
-
-    // If the user has selected an address, create a new subscription
-    accountSelected &&
-      api.query.system
-        .account(accountSelected, (balance) => {
-          setAccountBalance(balance.data.free.toHuman());
-        })
-        .then((unsub) => {
-          unsubscribe = unsub;
-        })
-        .catch(console.error);
-
-    return () => unsubscribe && unsubscribe();
-  }, [api, accountSelected]);
-
-  return accountSelected
-    ? (
-    <Label pointing='left'>
-      <Icon name='money' color='green' />
-      {accountBalance}
-    </Label>
-      )
-    : null;
 }
 
 export default function UpperMenu (props) {
