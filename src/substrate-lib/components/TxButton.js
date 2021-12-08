@@ -96,8 +96,16 @@ function TxButton ({
       }
       setLoading(false);
     }
-    setStatus(`😉 InBlock. Block hash: ${hash}`);
+    setStatus(viewTransactionHash(hash));
   };
+
+  const viewTransactionInfo = (txHash) => {
+    return(
+       <p>
+         😉 InBlock. Block hash: <a href={`https://kusama.subscan.io/extrinsic/${txHash}`}>{txHash}</a>
+       </p>
+     );
+ }
 
   const txResHandler = ({ status }) => {
     status.isInBlock
