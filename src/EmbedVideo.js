@@ -13,7 +13,7 @@ const EmbedVideo = () => (
     url='https://www.youtube.com/watch?v=fBxxpaJrVyE'
     // controls={true}
     // playing
-    ID='videoway'
+    id='videoway'
     controls
     style={videoPlayerStyle}
     // light = {true}
