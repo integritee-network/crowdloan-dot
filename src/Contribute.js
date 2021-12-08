@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Grid } from 'semantic-ui-react';
-// import { TxButton } from './substrate-lib/components';
+import { Form, Grid, Input } from 'semantic-ui-react';
+import { TxButton } from './substrate-lib/components';
 import { useSubstrate } from './substrate-lib';
 // import { Element } from 'react-scroll';
 import './css/styles.module.css';
@@ -47,6 +47,7 @@ export default function Main (props) {
       .catch(console.error);
 
     return () => unsubscribeAll && unsubscribeAll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bestNumber]);
 
   useEffect(() => {
@@ -54,6 +55,7 @@ export default function Main (props) {
       setDisableButton(true);
       setStatus('crowdloan has ended');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blockNumber]);
 
   useEffect(() => {
@@ -64,6 +66,7 @@ export default function Main (props) {
       await api.query.crowdloan.funds([paraId], queryResHandler);
     };
     crowdLoan();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -95,7 +98,7 @@ export default function Main (props) {
           <p>2. Ensure that you have KSM in your Polkadot.js account.</p>
           <p>3. Unbond your KSM. See further details here.</p>
           <Form>
-        {/* <Form.Field>
+        <Form.Field>
           <Input
             fluid
             label='KSM To Lock Up'
@@ -107,8 +110,8 @@ export default function Main (props) {
             min={0.1}
             onChange={onChange}
           />
-        </Form.Field> */}
-        {/* <Form.Field style={{ textAlign: 'left' }}>
+        </Form.Field>
+        <Form.Field style={{ textAlign: 'left' }}>
           <TxButton
             accountPair={accountPair}
             label='Participate Now!'
@@ -122,7 +125,7 @@ export default function Main (props) {
               disableButton: disableButton
             }}
           />
-        </Form.Field> */}
+        </Form.Field>
         <div style={{ overflowWrap: 'break-word' }}>{status}</div>
           </Form>
         </Grid.Column>

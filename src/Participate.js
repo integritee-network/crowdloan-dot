@@ -110,8 +110,7 @@ export default function Participate (props) {
       setCrowdLoanData(result.toJSON());
     };
     const crowdLoan = async () => {
-      const x = await api.query.crowdloan.funds([paraId], queryResHandler);
-      console.log('the funds are: ', x);
+      await api.query.crowdloan.funds([paraId], queryResHandler);
     };
     crowdLoan();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -160,20 +159,6 @@ export default function Participate (props) {
 
   return (
     <div className='participatesection'>
-      {/*
-      <div className="NewsLetter">
-
-      <p>
-
-        Crowdlending will start soon – sign up to hear when it’s time to join in.
-        </p>
-        <div className="child">
-        <a href="https://mailchi.mp/integritee/get-notified">
-        <button id="participatebutton"  className="outline-btn with-icon">Get Notified</button>
-          </a>
-        </div>
-
-      </div> */}
 
       {loading && (
         <Dimmer active>
@@ -230,20 +215,7 @@ export default function Participate (props) {
                       </div>
                     </div>
                   </div>
-                  {/* <div>
-                <div className="main">
-                  <span>THROUGH AN EXCHANGE</span>
-                  <div className="image-holder">
-                    <img src={icon1} />
-                  </div>
-                  <div className="image-holder">
-                    <img src={icon2} />
-                  </div>
-                  <div className="image-holder">
-                    <img src={icon3} />
-                  </div>
-                </div>
-              </div> */}
+
                   <div>
                     <div className='main'>
                       <div>
