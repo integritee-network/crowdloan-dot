@@ -1,11 +1,9 @@
 import './css/App.css';
-import { Container, Grid, Button } from 'semantic-ui-react';
-import { useState, useEffect } from 'react';
-// import CountdownTimer from './countdown';
+import { Container, Grid } from 'semantic-ui-react';
 import { useGlobalState } from './state';
 
 export default function EarlySporter (props) {
-    const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
+  const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
   return (
         <div className="EarlySporter">
             <Container>
@@ -27,7 +25,7 @@ export default function EarlySporter (props) {
                             <br />
 
                             {crowdLoanRunning &&
-                            <a className='ui primary gradient-btn button' style={{lineHeight:'1.5'}} href='#participate' >
+                            <a className='ui primary gradient-btn button' style={{ lineHeight: '1.5' }} href='#participate' >
                                 Participate Now!
                             </a>
                             }
@@ -43,4 +41,3 @@ export default function EarlySporter (props) {
         </div>
   );
 }
-

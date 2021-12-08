@@ -1,15 +1,8 @@
 import React from 'react';
 import './css/App.css';
 import { Container, Grid } from 'semantic-ui-react';
-// import Otherimage from './Images/other-image.png';
-// import UserIcon from '../src/Images/user.png';
-// import IntegriteeIcon from '../src/Images/integritee-logo.png';
-// import referralCodeGenerator from 'referral-code-generator';
-// import { mnemonicGenerate } from '@polkadot/util-crypto';
 import backgroundimage from './Images/Guaranteed4.png';
 export default function SupporterReward (props) {
-//   const mnemonic = mnemonicGenerate();
-//   const [open, setOpen] = React.useState(false);
   return (
         <div className="green-bg" id="Support" style={{
           backgroundImage: `url(${backgroundimage})`,
@@ -30,15 +23,12 @@ export default function SupporterReward (props) {
                                 <Grid.Column id="column3" style={{ width: '50%!important' }}>
 
                                     <p>
-                                    In addition, we are now offering further guaranteed bonus rewards for Integritee contributors, 
-                                    regardless of the outcome of the slot auctions. They will be distributed to crowdloan contributors relative 
-                                    to their opportunity cost in terms of the amount of KSM they contribute, 
-                                    and the length of time this KSM is locked in. The locked-in time starts to be measured from the 
+                                    In addition, we are now offering further guaranteed bonus rewards for Integritee contributors,
+                                    regardless of the outcome of the slot auctions. They will be distributed to crowdloan contributors relative
+                                    to their opportunity cost in terms of the amount of KSM they contribute,
+                                    and the length of time this KSM is locked in. The locked-in time starts to be measured from the
                                     block that includes the contribution and finishes with the last block of the crowdloan campaign.
-                                   
-
                                     </p>
-
                                     <span style={{ color: '#000065' }} >Here’s how it works:</span>
 
                                 </Grid.Column>
@@ -65,7 +55,7 @@ export default function SupporterReward (props) {
                                   If Integritee doesn’t win an auction and the crowdloan ends
                                     with 40,000 KSM bonded or more, 40,000 TEER will be
                                     distributed to contributors.
-                                  
+
                                   </div>
                               </li>
 

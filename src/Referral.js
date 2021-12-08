@@ -1,17 +1,12 @@
 import React from 'react';
 import './css/App.css';
 import { Container, Grid } from 'semantic-ui-react';
-// import Otherimage from './Images/other-image.png';
 import UserIcon from '../src/Images/user.png';
 import IntegriteeIcon from '../src/Images/integritee-logo.png';
-// import referralCodeGenerator from 'referral-code-generator';
-// import { mnemonicGenerate } from '@polkadot/util-crypto';
 import { useGlobalState } from './state';
 
 export default function Referral (props) {
-//   const mnemonic = mnemonicGenerate();
-//   const [open, setOpen] = React.useState(false);
-const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
+  const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
   return (
         <div className="green-bg" id="referral">
             <Container>
@@ -38,40 +33,16 @@ const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
                             If you have backed Integritee before and contribute again, you can use the same referral link as last time.
                             </p>
 
-
                             <br />
 
                             {crowdLoanRunning &&
-                            <a className='ui primary gradient-btn button' style={{lineHeight:'1.5'}} href='#participate' >
+                            <a className='ui primary gradient-btn button' style={{ lineHeight: '1.5' }} href='#participate' >
                                 Participate Now!
                             </a>
                             }
                             {!crowdLoanRunning &&
                             <a className="ui primary gradient-btn button" style={{ lineHeight: '1.5' }} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
                             }
-
-
-                            {/* <Modal size="mini" open={open} trigger={<Button className="ui primary gradient-btn button" onClick={() => setOpen(true)}>Generate Referral Code</Button>}>
-                                <Modal.Header>Generate Referral Code</Modal.Header>
-                                <Modal.Content scrolling>
-                                <Modal.Description>
-                                    <span>{mnemonic}</span>
-                                    <Input fluid placeholder='email' value="" />
-                                </Modal.Description>
-                                </Modal.Content>
-                                <Modal.Actions>
-                                    <Button color='black' onClick={() => setOpen(false)}>
-                                        Close
-                                    </Button>
-                                    <Button
-                                    onClick={() => setOpen(false)}
-                                    content="Send"
-                                    positive
-                                    />
-                                </Modal.Actions>
-                            </Modal> */}
-
-
                         </Grid.Column>
                         <Grid.Column>
                             <br/>

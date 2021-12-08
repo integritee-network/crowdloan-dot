@@ -14,14 +14,17 @@ import config from './config';
 export default function Main (props) {
   const [status, setStatus] = useState(null);
   const [formState, setFormState] = useState({ addressTo: null, amount: 0 });
+  // eslint-disable-next-line no-unused-vars
   const { accountPair } = props;
+  // eslint-disable-next-line no-unused-vars
   const [disableButton, setDisableButton] = useState(true);
   const { api } = useSubstrate();
   const [blockNumber, setBlockNumber] = useState(0);
   const [crowdLoanData, setCrowdLoanData] = useState({});
+  // eslint-disable-next-line no-unused-vars
   const { amount } = formState;
   const paraId = config.PARACHAIN_ID;
-
+  // eslint-disable-next-line no-unused-vars
   const onChange = (_, data) => {
     setFormState(prev => ({ ...prev, [data.state]: data.value }));
     if (data.value === '' || data.value <= 0) {
@@ -44,7 +47,6 @@ export default function Main (props) {
       .catch(console.error);
 
     return () => unsubscribeAll && unsubscribeAll();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bestNumber]);
 
   useEffect(() => {
@@ -52,7 +54,6 @@ export default function Main (props) {
       setDisableButton(true);
       setStatus('crowdloan has ended');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blockNumber]);
 
   useEffect(() => {
@@ -63,7 +64,6 @@ export default function Main (props) {
       await api.query.crowdloan.funds([paraId], queryResHandler);
     };
     crowdLoan();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

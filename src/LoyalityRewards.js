@@ -11,12 +11,11 @@ export default function LoyalityRewards (props) {
                         <Grid.Row columns={2}>
                         <Grid.Column>
                             <span>LOYALTY REWARDS</span>
-                            <h2 style={{fontSize:'38px'}}>Support Integritee Again & Receive a 10% Bonus Reward</h2>
+                            <h2 style={{ fontSize: '38px' }}>Support Integritee Again & Receive a 10% Bonus Reward</h2>
                             <p>
                                 We are proud of the tremendous support we have received from
                                 backers globally in the second and thrid batch of Kusama auctions.
                             </p>
-
 
                             <p>
                                 As a mark of our appreciation for your continued support, anyone
@@ -25,12 +24,10 @@ export default function LoyalityRewards (props) {
                                 amount they contributed last time.
                             </p>
 
-
-
                         </Grid.Column>
                         <Grid.Column>
-                            <div className="LoyalityImage" style={{textAlign:'center'}}>
-                                <img style={{maxWidth:'50%', marginTop:'30px'}} src={LoyalityImage} alt="" />
+                            <div className="LoyalityImage" style={{ textAlign: 'center' }}>
+                                <img style={{ maxWidth: '50%', marginTop: '30px' }} src={LoyalityImage} alt="" />
                             </div>
                         </Grid.Column>
                         </Grid.Row>

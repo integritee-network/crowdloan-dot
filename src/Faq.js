@@ -35,8 +35,6 @@ export default function Main (props) {
       case 11: return (<div className="text"><h3>What happens if someone uses my referral code from previous crowdloan campaigns to contribute now?</h3>
                     <p>They will get a 5% bonus on their TEER rewards. In order for you to also benefit from the reward, you will need to contribute again (at least 0.1 KSM) during the third batch of auctions.</p></div>);
 
-
-
       default: return (<div className="text"><h3>How does crowdlending work?</h3>
         <p>Kusama parachain slots are leased, for a limited period, via slot auctions. Projects bid for
         auction slots with collateral in the form of KSM tokens. Crowdlending is one way for bidders to raise the collateral they need to win a slot. Integritee supporters can “lend” their
