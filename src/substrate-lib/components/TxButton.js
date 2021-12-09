@@ -68,8 +68,21 @@ function TxButton ({
     return fromAcct;
   };
 
-  const txResHandlerSaveTransaction = (status) => {
+  const txResHandlerSaveTransaction = async (status) => {
     const hash = status.asInBlock.toString();
+    console.log("WHAT I THOUGHT WAS TRANSACTION HASH AND MIGHT BE BLOCK HASH: " + hash);
+    // returns SignedBlock
+    const signedBlock = await api.rpc.chain.getBlock(hash);
+    console.log("SIGNED BLOCK" + signedBlock);
+    // the hash for each extrinsic in the block
+    console.log(`"ALL EXTRINSICS OF BLOCK${signedBlock}`);
+    let extrinsics = [];
+    signedBlock.block.extrinsics.forEach((ex, index) => {
+      console.log(index, ex.hash.toHex());
+      extrinsics.push(ex.hash.toHex())
+    });
+    const transactionHash = extrinsics[extrinsics.length-1];
+    console.log("the transactionHash is: " + transactionHash);
     if (isSigned()) {
       if (document.getElementById('grc') && document.getElementById('erc')) {
         saveParticipateInfo(
@@ -96,7 +109,7 @@ function TxButton ({
       }
       setLoading(false);
     }
-    setStatus(viewTransactionInfo(hash));
+    setStatus(viewTransactionInfo(transactionHash));
   };
 
   const viewTransactionInfo = (txHash) => {
@@ -227,6 +240,7 @@ function TxButton ({
   };
 
   const unsignedTx = async () => {
+    console.log("UNSIGNED TRANSACTION!!");
     const transformed = transformParams(paramFields, inputParams);
     // transformed can be empty parameters
     const txExecute = transformed
