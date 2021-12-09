@@ -69,20 +69,13 @@ function TxButton ({
   };
 
   const txResHandlerSaveTransaction = async (status) => {
-    const hash = status.asInBlock.toString();
-    console.log("WHAT I THOUGHT WAS TRANSACTION HASH AND MIGHT BE BLOCK HASH: " + hash);
-    // returns SignedBlock
-    const signedBlock = await api.rpc.chain.getBlock(hash);
-    console.log("SIGNED BLOCK" + signedBlock);
-    // the hash for each extrinsic in the block
-    console.log(`"ALL EXTRINSICS OF BLOCK${signedBlock}`);
+    const blockHash = status.asInBlock.toString();
+    const signedBlock = await api.rpc.chain.getBlock(blockHash);
     let extrinsics = [];
     signedBlock.block.extrinsics.forEach((ex, index) => {
-      console.log(index, ex.hash.toHex());
       extrinsics.push(ex.hash.toHex())
     });
     const transactionHash = extrinsics[extrinsics.length-1];
-    console.log("the transactionHash is: " + transactionHash);
     if (isSigned()) {
       if (document.getElementById('grc') && document.getElementById('erc')) {
         saveParticipateInfo(
@@ -92,7 +85,7 @@ function TxButton ({
           document.getElementById('erc')
             ? document.getElementById('erc').value
             : new URL(window.location.href).searchParams.get('ref'),
-          hash
+            blockHash
         );
       } else if (document.getElementById('erc')) {
         saveParticipateInfo(
@@ -102,20 +95,20 @@ function TxButton ({
           document.getElementById('erc')
             ? document.getElementById('erc').value
             : new URL(window.location.href).searchParams.get('ref'),
-          hash
+            blockHash
         );
       } else if (document.getElementById('grc')) {
         saveParticipateInfo(accountAddress, formState, document.getElementById('grc').value, '', hash);
       }
       setLoading(false);
     }
-    setStatus(viewTransactionInfo(transactionHash));
+    setStatus(viewTransactionInfo(blockHash, transactionHash));
   };
 
-  const viewTransactionInfo = (txHash) => {
+  const viewTransactionInfo = (blockHash, txHash) => {
     return(
        <p>
-         😉 InBlock. Block hash: <a href={`https://kusama.subscan.io/extrinsic/${txHash}`}>{txHash}</a>
+         😉 InBlock. Block hash: {blockHash} <br/> You can get more details on your transaction: <a href={`https://kusama.subscan.io/extrinsic/${txHash}`}>{txHash}</a>
        </p>
      );
  }
