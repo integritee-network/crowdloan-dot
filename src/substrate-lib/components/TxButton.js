@@ -192,36 +192,22 @@ function TxButton ({
   };
 
   const signedTx = async () => {
-        // console.log('inside function');
-    // console.log(grc);
-    // console.log(document.getElementById('erc') ? document.getElementById('erc').value : new URL(window.location.href).searchParams.get('ref'));
-    // console.log('inside function');
-
-    // console.log('--------------------------');
-    // console.log(document.getElementById('grc') ? document.getElementById('grc').checkValidity() : 'no grc');
-    // console.log(document.getElementById('erc') ? document.getElementById('erc').checkValidity() : 'no erc');
-    // console.log('--------------------------');
-
     if (document.getElementById('grc')) {
       if (!document.getElementById('grc').checkValidity()) {
-        // console.log('return');
         return;
       }
     }
     if (document.getElementById('erc')) {
       if (!document.getElementById('erc').checkValidity()) {
-        // console.log('return');
         return;
       }
     }
-    // console.log('no return');
     setStatus('Sending...');
     setLoading(true);
 
     const fromAcct = await getFromAcct();
     const transformed = transformParams(paramFields, inputParams);
     // transformed can be empty parameters
-
     const txExecute = transformed
       ? api.tx[palletRpc][callable](...transformed)
       : api.tx[palletRpc][callable]();
