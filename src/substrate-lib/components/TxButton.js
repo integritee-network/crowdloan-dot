@@ -180,8 +180,6 @@ function TxButton ({
     };
 
     fetch('https://api.crowdloan.integritee.network/storeuser', requestOptions)
-      .then((response) => response)
-      .then((result) => console.log("the result is " + result))
       .catch((error) => {
         console.log('error', error);
         console.log('trying again');
