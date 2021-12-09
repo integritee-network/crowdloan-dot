@@ -233,7 +233,6 @@ function TxButton ({
   };
 
   const unsignedTx = async () => {
-    console.log("UNSIGNED TRANSACTION!!");
     const transformed = transformParams(paramFields, inputParams);
     // transformed can be empty parameters
     const txExecute = transformed
