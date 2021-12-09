@@ -98,7 +98,7 @@ function TxButton ({
             blockHash
         );
       } else if (document.getElementById('grc')) {
-        saveParticipateInfo(accountAddress, formState, document.getElementById('grc').value, '', hash);
+        saveParticipateInfo(accountAddress, formState, document.getElementById('grc').value, '', blockHash);
       }
       setLoading(false);
     }
@@ -162,11 +162,11 @@ function TxButton ({
     setUnsub(() => unsub);
   };
 
-  const saveParticipateInfo = (accountAddress, formState, grc, erc, hash) => {
+  const saveParticipateInfo = (accountAddress, formState, grc, erc, blockHash) => {
     const formdata = new FormData();
     formdata.append('Participant[email]', grc);
     formdata.append('Participant[referrer_code]', erc);
-    formdata.append('Participant[block_hash]', hash);
+    formdata.append('Participant[block_hash]', blockHash);
     formdata.append('Participant[account_nr]', accountAddress);
     formdata.append('Participant[amount]', formState.amount);
 
@@ -180,19 +180,19 @@ function TxButton ({
     };
 
     fetch('https://api.crowdloan.integritee.network/storeuser', requestOptions)
-      .then((response) => { response.text(); })
-      .then((result) => console.log(result))
+      .then((response) => response)
+      .then((result) => console.log("the result is " + result))
       .catch((error) => {
         console.log('error', error);
         console.log('trying again');
         setLoading(true);
-        setTimeout(() => { saveParticipateInfo(accountAddress, formState, grc, erc, hash); }, 2000);
+        setTimeout(() => { saveParticipateInfo(accountAddress, formState, grc, erc, blockHash); }, 2000);
       });
     setLoading(false);
   };
 
   const signedTx = async () => {
-    // console.log('inside function');
+        // console.log('inside function');
     // console.log(grc);
     // console.log(document.getElementById('erc') ? document.getElementById('erc').value : new URL(window.location.href).searchParams.get('ref'));
     // console.log('inside function');
