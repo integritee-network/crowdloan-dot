@@ -80,7 +80,6 @@ export default function Participate (props) {
       .catch(console.error);
 
     return () => unsubscribeAll && unsubscribeAll();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bestNumber]);
 
   const { keyring, keyringState } = useSubstrate();
@@ -97,7 +96,6 @@ export default function Participate (props) {
     keyringState === 'READY' &&
     keyring.getPair(accountAddress);
 
-  // disable contribution if crowdfunding has already ended: Enable this codeblock when going live
   useEffect(() => {
     if (crowdLoanData && blockNumber >= crowdLoanData.end && blockNumber > 0 && Object.keys(crowdLoanData).length !== 0) {
       setDisableButton(true);
@@ -121,13 +119,13 @@ export default function Participate (props) {
   const onChange = (_, data) => {
     setFormState((prev) => ({ ...prev, [data.state]: data.value }));
     if (!crowdLoanEnded) {
-      if (accountBalance < minimumParticipation ) {
+      if (accountBalance < minimumParticipation) {
         setDisableButton(true);
         setStatus('You do not have enough balance');
-      } else if (data.value === '' || data.value < minimumParticipation/divide) {
+      } else if (data.value === '' || data.value < minimumParticipation / divide) {
         setDisableButton(true);
-        setStatus('Please enter amount equal or greater than ' + minimumParticipation/divide );
-      } else if (data.value > (accountBalance/divide)) {
+        setStatus('Please enter amount equal or greater than ' + minimumParticipation / divide);
+      } else if (data.value > (accountBalance / divide)) {
         setDisableButton(true);
         setStatus('Please enter amount equal or less than ' + formatBalance(accountBalance));
       } else {
@@ -143,8 +141,8 @@ export default function Participate (props) {
 
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
-  let slider1 = [];
-  let slider2 = [];
+  let slider1 = useMemo(() => [], []);
+  let slider2 = useMemo(() => [], []);
 
   useEffect(() => {
     setNav1(slider1);
@@ -156,25 +154,11 @@ export default function Participate (props) {
     infinite: false,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToScroll: 1
   };
 
   return (
     <div className='participatesection'>
-      {/*
-      <div className="NewsLetter">
-
-      <p>
-
-        Crowdlending will start soon – sign up to hear when it’s time to join in.
-        </p>
-        <div className="child">
-        <a href="https://mailchi.mp/integritee/get-notified">
-        <button id="participatebutton"  className="outline-btn with-icon">Get Notified</button>
-          </a>
-        </div>
-
-      </div> */}
 
       {loading && (
         <Dimmer active>
@@ -231,20 +215,7 @@ export default function Participate (props) {
                       </div>
                     </div>
                   </div>
-                  {/* <div>
-                <div className="main">
-                  <span>THROUGH AN EXCHANGE</span>
-                  <div className="image-holder">
-                    <img src={icon1} />
-                  </div>
-                  <div className="image-holder">
-                    <img src={icon2} />
-                  </div>
-                  <div className="image-holder">
-                    <img src={icon3} />
-                  </div>
-                </div>
-              </div> */}
+
                   <div>
                     <div className='main'>
                       <div>
@@ -257,7 +228,7 @@ export default function Participate (props) {
                     </div>
                   </div>
                   <div>
-                  
+
                   <br/>
                     <div className='main'>
                       <div>
@@ -271,7 +242,7 @@ export default function Participate (props) {
                     </div>
                     <div>
                     <br/>
-                    <br/>    
+                    <br/>
                     <div className='main'>
                       <div>
                         <span>THROUGH NEWLAND FINANCE</span>
@@ -285,7 +256,7 @@ export default function Participate (props) {
                     <div>
                     <br/>
                     <br/>
-                      
+
                     <div className='main'>
                       <div>
                         <span>THROUGH GATE.IO</span>
@@ -523,20 +494,19 @@ export default function Participate (props) {
                       <li>
                       Download the Polkadot browser extension&nbsp;
                       <a href='https://polkadot.js.org/extension/'>here</a>&nbsp;
-                        and ensure that you have enough unbonded KSM in your account. 
-                     
-                      
+                        and ensure that you have enough unbonded KSM in your account.
+
                       </li>
                       <br/>
                       <li>
                       Find Integritee on the list of KSM projects&nbsp;
                       <a href='https://ksm.newland.finance/'>here</a>.&nbsp;
-                       The system will automatically connect to your Polkadot wallet. 
+                       The system will automatically connect to your Polkadot wallet.
 
                       </li>
                       <br/>
                       <li>
-                      Click “Ongoing” in the Integritee listing, enter your contribution and confirm with your wallet password. It will take a little time to complete the transaction.  
+                      Click “Ongoing” in the Integritee listing, enter your contribution and confirm with your wallet password. It will take a little time to complete the transaction.
                       </li>
                       <br/>
                      <p>On mobile, you can use Math Wallet or TokenPocket Wallet to participate. The process is similar to that described above.</p>
@@ -558,7 +528,7 @@ export default function Participate (props) {
                       </li>
                       <br/>
                       <li>
-                      Navigate to&nbsp; 
+                      Navigate to&nbsp;
                       <a href='https://www.gate.io/hodl/759'>Integritee</a>&nbsp;
                       in the HODL and Earn list (under the Finance menu).
                       </li>

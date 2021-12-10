@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Grid } from 'semantic-ui-react';
-// import { TxButton } from './substrate-lib/components';
+import { Form, Grid, Input } from 'semantic-ui-react';
+import { TxButton } from './substrate-lib/components';
 import { useSubstrate } from './substrate-lib';
 // import { Element } from 'react-scroll';
 import './css/styles.module.css';
@@ -14,14 +14,17 @@ import config from './config';
 export default function Main (props) {
   const [status, setStatus] = useState(null);
   const [formState, setFormState] = useState({ addressTo: null, amount: 0 });
+  // eslint-disable-next-line no-unused-vars
   const { accountPair } = props;
+  // eslint-disable-next-line no-unused-vars
   const [disableButton, setDisableButton] = useState(true);
   const { api } = useSubstrate();
   const [blockNumber, setBlockNumber] = useState(0);
   const [crowdLoanData, setCrowdLoanData] = useState({});
+  // eslint-disable-next-line no-unused-vars
   const { amount } = formState;
   const paraId = config.PARACHAIN_ID;
-
+  // eslint-disable-next-line no-unused-vars
   const onChange = (_, data) => {
     setFormState(prev => ({ ...prev, [data.state]: data.value }));
     if (data.value === '' || data.value <= 0) {
@@ -95,7 +98,7 @@ export default function Main (props) {
           <p>2. Ensure that you have KSM in your Polkadot.js account.</p>
           <p>3. Unbond your KSM. See further details here.</p>
           <Form>
-        {/* <Form.Field>
+        <Form.Field>
           <Input
             fluid
             label='KSM To Lock Up'
@@ -107,8 +110,8 @@ export default function Main (props) {
             min={0.1}
             onChange={onChange}
           />
-        </Form.Field> */}
-        {/* <Form.Field style={{ textAlign: 'left' }}>
+        </Form.Field>
+        <Form.Field style={{ textAlign: 'left' }}>
           <TxButton
             accountPair={accountPair}
             label='Participate Now!'
@@ -122,7 +125,7 @@ export default function Main (props) {
               disableButton: disableButton
             }}
           />
-        </Form.Field> */}
+        </Form.Field>
         <div style={{ overflowWrap: 'break-word' }}>{status}</div>
           </Form>
         </Grid.Column>

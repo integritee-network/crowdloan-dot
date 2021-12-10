@@ -13,7 +13,7 @@ export default function Main (props) {
     cap: null,
     lastContribution: { preEnding: null },
     firstPeriod: null,
-    lastPeriod: null,
+    lastPeriod: null
   });
 
   const paraId = config.PARACHAIN_ID;
