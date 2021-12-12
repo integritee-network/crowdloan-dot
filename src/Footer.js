@@ -28,15 +28,17 @@ export default function Footer () {
                         name='Home Page'
                         href="https://www.integritee.network"
                     />
-                        <Menu.Item name='Supporter Reward' href='#TeerToken' />
+                    <Menu.Item
+                          name='Help Center'
+                          href="https://integritee.zendesk.com/hc/en-us"
+                    />
+                    <Menu.Item name='Supporter Reward' href='#TeerToken' />
 
-                        {/* <Menu.Item name='NFT' href='#nftsection' /> */}
+                    <Menu.Item name='Referral Program' href='#referral' />
 
-                        <Menu.Item name='Referral Program' href='#referral' />
+                    <Menu.Item name='TEER Token' href='#token' />
 
-                        <Menu.Item name='TEER Token' href='#token' />
-
-                        <Menu.Item name='FAQ' href='#FAQ' />
+                    <Menu.Item name='FAQ' href='#FAQ' />
                     </Menu.Menu>
                 </Container>
                 </Menu>
