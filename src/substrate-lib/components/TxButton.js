@@ -5,7 +5,6 @@ import { web3FromSource } from '@polkadot/extension-dapp';
 
 import { useSubstrate } from '../';
 import utils from '../utils';
-import CopyToClipboard from '../../CopyToClipboard';
 
 function TxButton ({
   setLoading = null,
@@ -116,17 +115,14 @@ function TxButton ({
 
   const viewTransactionInfo = (status, blockHash, txHash) => {
     return (
-      <div>
        <p>
          😉 {status.type}. Block hash: {blockHash} <Button icon='copy' onClick={() => { navigator.clipboard.writeText(blockHash); }}/> <br/>
-                You can get more details on your transaction: <a href={`https://kusama.subscan.io/extrinsic/${txHash}`}>{txHash}</a> <Button icon='copy' onClick={() => { navigator.clipboard.writeText(blockHash); }}/>
+                You can get more details on your transaction: <a href={`https://kusama.subscan.io/extrinsic/${txHash}`}>{txHash}</a> <Button icon='copy' onClick={() => { navigator.clipboard.writeText(txHash); }}/>
        </p>
-      </div>
     );
   };
 
   const txResHandler = ({ status }) => {
-    // console.log("TXHASH in TXRESHANDLER: " + txxHash);
     status.isInBlock
       ? txResHandlerSaveTransaction(status)
       : status.isFinalized
