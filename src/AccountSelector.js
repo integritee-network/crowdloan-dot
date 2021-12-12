@@ -134,7 +134,7 @@ function BalanceAnnotation (props) {
     accountSelected &&
       api.query.system
         .account(accountSelected, (balance) => {
-          setAccountBalance(balance.data.free.toJSON());
+          setAccountBalance(balance.data.free - balance.data.miscFrozen);
         })
         .then((unsub) => {
           unsubscribe = unsub;
