@@ -5,7 +5,7 @@ import { web3FromSource } from '@polkadot/extension-dapp';
 
 import { useSubstrate } from '../';
 import utils from '../utils';
-import CopyToClipboard from "../../CopyToClipboard";
+import CopyToClipboard from '../../CopyToClipboard';
 
 function TxButton ({
   setLoading = null,
@@ -78,20 +78,13 @@ function TxButton ({
   const txResHandlerSaveTransaction = async (status) => {
     const blockHash = status.asInBlock.toString();
     const signedBlock = await api.rpc.chain.getBlock(blockHash);
-    // setBlckHash( blockHash);
     blckHash = blockHash;
-    // console.log("BLCKHASH: " + blckHash);
-    // console.log("BLOCKHASH: " + blockHash);
-    // console.log("let blockhash: " + blockkkHash);
-    let extrinsics = [];
+    const extrinsics = [];
     signedBlock.block.extrinsics.forEach((ex, index) => {
-      extrinsics.push(ex.hash.toHex())
+      extrinsics.push(ex.hash.toHex());
     });
-    const transactionHash = extrinsics[extrinsics.length-1];
+    const transactionHash = extrinsics[extrinsics.length - 1];
     txxHash = transactionHash;
-    // setTxxkHash(() => transactionHash);
-    // console.log("correct txHASH: " + transactionHash);
-    // console.log("TXHASH: " + txxHash);
     if (isSigned()) {
       if (document.getElementById('grc') && document.getElementById('erc')) {
         saveParticipateInfo(
@@ -101,7 +94,7 @@ function TxButton ({
           document.getElementById('erc')
             ? document.getElementById('erc').value
             : new URL(window.location.href).searchParams.get('ref'),
-            blockHash
+          blockHash
         );
       } else if (document.getElementById('erc')) {
         saveParticipateInfo(
@@ -111,7 +104,7 @@ function TxButton ({
           document.getElementById('erc')
             ? document.getElementById('erc').value
             : new URL(window.location.href).searchParams.get('ref'),
-            blockHash
+          blockHash
         );
       } else if (document.getElementById('grc')) {
         saveParticipateInfo(accountAddress, formState, document.getElementById('grc').value, '', blockHash);
@@ -119,34 +112,26 @@ function TxButton ({
       setLoading(false);
     }
     setStatus(viewTransactionInfo(status, blockHash, transactionHash));
-    // CopyToClipboard()
   };
 
   const viewTransactionInfo = (status, blockHash, txHash) => {
-    return(
-        // <CopyToClipboard text={txHash}>
-        //   <Button
-        //       basic
-        //       circular
-        //       size='large'
-        //       icon='user'
-        //       // color={accountSelected ? 'green' : 'red'}
-        //   /><CopyToClipboard/>
+    return (
+      <div>
        <p>
-         😉 {status.type} . Block hash: {blockHash} <br/>
-                You can get more details on your transaction: <a href={`https://kusama.subscan.io/extrinsic/${txHash}`}>{txHash}</a>
+         😉 {status.type}. Block hash: {blockHash} <Button icon='copy' onClick={() => { navigator.clipboard.writeText(blockHash); }}/> <br/>
+                You can get more details on your transaction: <a href={`https://kusama.subscan.io/extrinsic/${txHash}`}>{txHash}</a> <Button icon='copy' onClick={() => { navigator.clipboard.writeText(blockHash); }}/>
        </p>
-     );
- }
+      </div>
+    );
+  };
 
   const txResHandler = ({ status }) => {
-      // console.log("TXHASH in TXRESHANDLER: " + txxHash);
-      status.isInBlock
+    // console.log("TXHASH in TXRESHANDLER: " + txxHash);
+    status.isInBlock
       ? txResHandlerSaveTransaction(status)
-      :
-          status.isFinalized
-            ? setStatus(viewTransactionInfo(status, blckHash, txxHash))
-              : setStatus(`Current transaction status: ${status.type}`);
+      : status.isFinalized
+        ? setStatus(viewTransactionInfo(status, blckHash, txxHash))
+        : setStatus(`Current transaction status: ${status.type}`);
   };
 
   const txErrHandler = (err) => {
