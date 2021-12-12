@@ -1628,7 +1628,8 @@ div[disabled]
 }
 .polkadot_status{
   margin-top: 5px;
-  margin-left: 40px;
+  /*margin-left: 40px;*/
+  font-size: 14px;
 }
 @media screen and (max-width: 992px) {
   .why .text {
