@@ -29,10 +29,6 @@ function TxButton ({
   const { palletRpc, callable, inputParams, paramFields, disableButton } =
     attrs;
 
-  // const [blckHash, setBlckHash] = useState(null);
-  // const [txxHash, setTxxkHash] = useState(null);
-
-  let blckHash = null;
   let txxHash = null;
 
   const isQuery = () => type === 'QUERY';
@@ -76,14 +72,6 @@ function TxButton ({
 
   const txResHandlerSaveTransaction = async (status) => {
     const blockHash = status.asInBlock.toString();
-    const signedBlock = await api.rpc.chain.getBlock(blockHash);
-    blckHash = blockHash;
-    const extrinsics = [];
-    signedBlock.block.extrinsics.forEach((ex, index) => {
-      extrinsics.push(ex.hash.toHex());
-    });
-    const transactionHash = extrinsics[extrinsics.length - 1];
-    txxHash = transactionHash;
     if (isSigned()) {
       if (document.getElementById('grc') && document.getElementById('erc')) {
         saveParticipateInfo(
@@ -110,14 +98,15 @@ function TxButton ({
       }
       setLoading(false);
     }
-    setStatus(viewTransactionInfo(status, blockHash, transactionHash));
+    setStatus(viewTransactionInfo(status));
   };
 
-  const viewTransactionInfo = (status, blockHash, txHash) => {
+  const viewTransactionInfo = (status) => {
+    const _blockhash = (status.type === 'InBlock') ? status.asInBlock.toString() : status.asFinalized.toString();
     return (
        <p>
-         😉 {status.type}. Block hash: {blockHash} <Button icon='copy' onClick={() => { navigator.clipboard.writeText(blockHash); }}/> <br/>
-                You can get more details on your transaction: <a href={`https://kusama.subscan.io/extrinsic/${txHash}`}>{txHash}</a> <Button icon='copy' onClick={() => { navigator.clipboard.writeText(txHash); }}/>
+         😉 {status.type}. Block hash: {_blockhash} <Button icon='copy' onClick={() => { navigator.clipboard.writeText(_blockhash); }}/> <br/>
+                You can get more details on your transaction: <a href={`https://kusama.subscan.io/extrinsic/${txxHash}`}>{txxHash}</a> <Button icon='copy' onClick={() => { navigator.clipboard.writeText(txxHash); }}/>
        </p>
     );
   };
@@ -126,7 +115,7 @@ function TxButton ({
     status.isInBlock
       ? txResHandlerSaveTransaction(status)
       : status.isFinalized
-        ? setStatus(viewTransactionInfo(status, blckHash, txxHash))
+        ? setStatus(viewTransactionInfo(status))
         : setStatus(`Current transaction status: ${status.type}`);
   };
 
@@ -225,6 +214,7 @@ function TxButton ({
     const unsub = await txExecute
       .signAndSend(fromAcct, txResHandler)
       .catch(txErrHandler);
+    txxHash = txExecute.hash.toHex();
     setUnsub(() => unsub);
   };
 
