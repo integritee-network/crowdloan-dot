@@ -573,7 +573,7 @@ div[disabled]
   font-size: 16px;
   font-weight: 300;
   color: #000065;    
-  padding: 100px 0 200px 0;
+  padding: 100px 0 220px 0;
 }
 .green-bg span {
   font-family: "Gotham Rounded", sans-serif;
@@ -1982,7 +1982,11 @@ div[disabled]
   #SupportMobile {
     display: none !important;
   }
-  .visibledesktop {left: -17rem !important;}
+  .visibledesktop {
+    left: -17rem !important;
+    width: 100% !important;
+    bottom: -15rem !important;
+  }
 }
 
 .nav-social ul {
