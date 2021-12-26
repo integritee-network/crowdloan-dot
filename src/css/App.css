@@ -1978,7 +1978,7 @@ div[disabled]
   }
 
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1201px) {
   #SupportMobile {
     display: none !important;
   }
