@@ -490,7 +490,7 @@ div[disabled]
   width: 25% ;
 }
 .green-bg .text #column3 {
-  width: 60% ;
+  width: 50% ;
 }
 
 .grey-bg span {
@@ -573,7 +573,7 @@ div[disabled]
   font-size: 16px;
   font-weight: 300;
   color: #000065;    
-  padding: 100px 0;
+  padding: 100px 0 200px 0;
 }
 .green-bg span {
   font-family: "Gotham Rounded", sans-serif;
@@ -1976,14 +1976,13 @@ div[disabled]
     position: relative !important;
     bottom: 0 !important;
   }
-  
+
 }
 @media screen and (min-width: 1200px) {
   #SupportMobile {
     display: none !important;
-   
   }
-  
+  .visibledesktop {left: -17rem !important;}
 }
 
 .nav-social ul {
