@@ -1,21 +1,20 @@
 import React from 'react';
 import './css/App.css';
 import { Container, Grid } from 'semantic-ui-react';
-import backgroundimage1 from './Images/Guaranteed1.png';
+import backgroundimage1 from './Images/Guaranteed4_rotated.png';
 export default function SupporterReward (props) {
   return (
         <div className="green-bg" id="Support" style={{
           backgroundImage: `url(${backgroundimage1})`,
           backgroundColor: '#eff3f6',
           backgroundSize: 'cover',
-          backgroundPosition: '0px -105px',
+          backgroundPosition: '0px 35px',
           backgroundRepeat: 'no-repeat'
         }}>
             <Container id="Supportsection">
                 <div className="text" >
                     <Grid>
                         <Grid.Row columns={3}>
-
                             <Grid.Column id="column1">
                                 <Grid.Row columns={1} >
                                     <span style={{ color: '#70e6da', fontSize: '15px' }} >GUARANTEED REWARDS</span>
@@ -38,7 +37,7 @@ export default function SupporterReward (props) {
                             <Grid.Column id="column2" >
                                 <Grid.Row columns={1} >
 
-                                    <Grid.Column id="mobilesupport" className="visibledesktop" style={{ bottom: '-12.188rem', position: 'absolute' }}>
+                                    <Grid.Column id="mobilesupport" className="visibledesktopScenario1" style={{ bottom: '-12.188rem', position: 'absolute' }}>
 
                                         <div className="">
                                             <span style={{ color: '#000065' }} > Scenario 1: ≥ 20,000 KSM bonded</span>
@@ -59,7 +58,7 @@ export default function SupporterReward (props) {
                             <Grid.Column id="column2" >
                                     <Grid.Row columns={1} >
 
-                                        <Grid.Column id="mobilesupport" style={{ bottom: '2rem', position: 'absolute' }}>
+                                        <Grid.Column id="mobilesupport" className="visibledesktopScenario2" style={{ bottom: '2rem', position: 'absolute' }}>
 
                                             <div className="">
                                                 <span style={{ color: '#000065' }} >Scenario 2: ≥ 40,000 KSM bonded</span>

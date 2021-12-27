@@ -1985,10 +1985,15 @@ div[disabled]
   #SupportMobile {
     display: none !important;
   }
-  .visibledesktop {
-    left: -17rem !important;
+  .visibledesktopScenario1 {
+    left: -24rem !important;
     width: 100% !important;
-    bottom: -15rem !important;
+    bottom: -18rem !important;
+  }
+  .visibledesktopScenario2 {
+    left: 5rem !important;
+    width: 100% !important;
+    bottom: -8rem !important;
   }
 }
 
