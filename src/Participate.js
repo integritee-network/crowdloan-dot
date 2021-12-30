@@ -166,6 +166,8 @@ export default function Participate (props) {
             Transaction in process
             <br />
             Please wait while the transaction is completed
+            <br />
+            If you accidentally closed the polkadot{'{'}.js{'}'} extension, you can reopen it and continue your ongoing transaction
           </Loader>
         </Dimmer>
       )}
