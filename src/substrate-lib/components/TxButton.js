@@ -30,6 +30,7 @@ function TxButton ({
     attrs;
 
   let txxHash = null;
+  let contributionError = null;
 
   const isQuery = () => type === 'QUERY';
   const isSudo = () => type === 'SUDO-TX';
@@ -105,13 +106,30 @@ function TxButton ({
     const _blockhash = (status.type === 'InBlock') ? status.asInBlock.toString() : status.asFinalized.toString();
     return (
        <p>
+         {contributionError ? `Transaction failed: ${contributionError}` : ''}
+         <br/>
          😉 {status.type}. Block hash: {_blockhash} <Button icon='copy' onClick={() => { navigator.clipboard.writeText(_blockhash); }}/> <br/>
                 You can get more details on your transaction: <a href={`https://kusama.subscan.io/extrinsic/${txxHash}`}>{txxHash}</a> <Button icon='copy' onClick={() => { navigator.clipboard.writeText(txxHash); }}/>
        </p>
     );
   };
 
-  const txResHandler = ({ status }) => {
+  const txResHandler = ({ status, dispatchError }) => {
+    // status would still be set, but in the case of error we can shortcut
+    // to just check it (so an error would indicate InBlock or Finalized)
+    if (dispatchError) {
+      if (dispatchError.isModule) {
+        // for module errors, we have the section indexed, lookup
+        const decoded = api.registry.findMetaError(dispatchError.asModule);
+        const { docs, name, section } = decoded;
+        console.log(`${section}.${name}: ${docs.join(' ')}`);
+        contributionError = `${section}.${name}: ${docs.join(' ')}`;
+      } else {
+        // Other, CannotLookup, BadOrigin, no extra info
+        console.log(dispatchError.toString());
+        contributionError = dispatchError.toString();
+      }
+    }
     status.isInBlock
       ? txResHandlerSaveTransaction(status)
       : status.isFinalized
