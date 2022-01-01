@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react';
-
 import './css/App.css';
 import {
   Container,
@@ -53,6 +52,7 @@ export default function Participate (props) {
 
   const [accountAddress, setAccountAddress] = useState(null);
   const [accountBalance, setAccountBalance] = useState(0);
+  const [estimatedFee, setEstimatedFee] = useState(0);
   const minimumParticipation = 100000000000; // 0.1
   const divide = 1000000000000;
 
@@ -116,7 +116,7 @@ export default function Participate (props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onChange = (_, data) => {
+  const onChange = async (_, data) => {
     setFormState((prev) => ({ ...prev, [data.state]: data.value }));
     if (!crowdLoanEnded) {
       if (accountBalance < minimumParticipation) {
@@ -131,6 +131,11 @@ export default function Participate (props) {
       } else {
         setDisableButton(false);
         setStatus('');
+      }
+      if (data.value >= 0.1) {
+        const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, data.value * Math.pow(10, 12), null);
+        const info = await txExcecuteDummy.paymentInfo(accountAddress);
+        setEstimatedFee(() => info.partialFee.toHuman());
       }
     }
   };
@@ -387,7 +392,11 @@ export default function Participate (props) {
                           </Grid.Column>
                         </Grid.Row>
                       </Grid>
-
+                      <Grid.Column>
+                        <div>
+                          Estimated fees: {estimatedFee} <br /> Please make sure when contributing, that your balance can cover the fees
+                        </div>
+                      </Grid.Column>
                       <TxButton
                         setLoading={setLoading}
                         accountAddress={accountAddress}
