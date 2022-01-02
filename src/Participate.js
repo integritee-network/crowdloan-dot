@@ -52,7 +52,7 @@ export default function Participate (props) {
 
   const [accountAddress, setAccountAddress] = useState(null);
   const [accountBalance, setAccountBalance] = useState(0);
-  const [estimatedFee, setEstimatedFee] = useState(0);
+  const [estimatedFee, setEstimatedFee] = useState('42.3329 µKSM');
   const minimumParticipation = 100000000000; // 0.1
   const divide = 1000000000000;
 
@@ -118,24 +118,29 @@ export default function Participate (props) {
 
   const onChange = async (_, data) => {
     setFormState((prev) => ({ ...prev, [data.state]: data.value }));
+    let estimate = 0;
+    if (data.value >= 0.1) {
+      const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, data.value * Math.pow(10, 12), null);
+      const info = await txExcecuteDummy.paymentInfo(accountAddress);
+      setEstimatedFee(() => info.partialFee.toHuman());
+      estimate = parseInt(info.partialFee);
+      // console.log("PARTIAL FEE WHILE SETTING: " + info.partialFee.toHuman());
+      // console.log("partialFee in big: " + info.partialFee);
+      // console.log("Estimated Fee state: " + estimatedFee);
+    }
     if (!crowdLoanEnded) {
-      if (accountBalance < minimumParticipation) {
+      if (accountBalance < (minimumParticipation + estimate)) {
         setDisableButton(true);
         setStatus('You do not have enough balance');
       } else if (data.value === '' || data.value < minimumParticipation / divide) {
         setDisableButton(true);
         setStatus('Please enter amount equal or greater than ' + minimumParticipation / divide);
-      } else if (data.value > (accountBalance / divide)) {
+      } else if (data.value > (accountBalance - estimate) / divide) {
         setDisableButton(true);
-        setStatus('Please enter amount equal or less than ' + formatBalance(accountBalance));
+        setStatus('Please enter amount equal or less than ' + formatBalance(accountBalance - estimate));
       } else {
         setDisableButton(false);
         setStatus('');
-      }
-      if (data.value >= 0.1) {
-        const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, data.value * Math.pow(10, 12), null);
-        const info = await txExcecuteDummy.paymentInfo(accountAddress);
-        setEstimatedFee(() => info.partialFee.toHuman());
       }
     }
   };
