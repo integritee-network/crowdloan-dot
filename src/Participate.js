@@ -124,9 +124,6 @@ export default function Participate (props) {
       const info = await txExcecuteDummy.paymentInfo(accountAddress);
       setEstimatedFee(() => info.partialFee.toHuman());
       estimate = parseInt(info.partialFee);
-      // console.log("PARTIAL FEE WHILE SETTING: " + info.partialFee.toHuman());
-      // console.log("partialFee in big: " + info.partialFee);
-      // console.log("Estimated Fee state: " + estimatedFee);
     }
     if (!crowdLoanEnded) {
       if (accountBalance < (minimumParticipation + estimate)) {
