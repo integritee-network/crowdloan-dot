@@ -118,23 +118,23 @@ export default function Participate (props) {
 
   const onChange = async (_, data) => {
     setFormState((prev) => ({ ...prev, [data.state]: data.value }));
-    let estimate = 0;
-    if (data.value >= 0.1) {
-      const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, data.value * Math.pow(10, 12), null);
-      const info = await txExcecuteDummy.paymentInfo(accountAddress);
-      setEstimatedFee(() => info.partialFee.toHuman());
-      estimate = parseInt(info.partialFee);
-    }
+    // let estimate = 0;
     if (!crowdLoanEnded) {
-      if (accountBalance < (minimumParticipation + estimate)) {
+      if (data.value >= 0.1) {
+        const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, data.value * Math.pow(10, 12), null);
+        const info = await txExcecuteDummy.paymentInfo(accountAddress);
+        setEstimatedFee(() => info.partialFee.toHuman());
+        // estimate = parseInt(info.partialFee);
+      }
+      if (accountBalance < minimumParticipation) {
         setDisableButton(true);
         setStatus('You do not have enough balance');
       } else if (data.value === '' || data.value < minimumParticipation / divide) {
         setDisableButton(true);
         setStatus('Please enter amount equal or greater than ' + minimumParticipation / divide);
-      } else if (data.value > (accountBalance - estimate) / divide) {
+      } else if (data.value > accountBalance / divide) {
         setDisableButton(true);
-        setStatus('Please enter amount equal or less than ' + formatBalance(accountBalance - estimate));
+        setStatus('Please enter amount equal or less than ' + formatBalance(accountBalance));
       } else {
         setDisableButton(false);
         setStatus('');
