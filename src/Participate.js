@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react';
-
 import './css/App.css';
 import {
   Container,
@@ -53,6 +52,7 @@ export default function Participate (props) {
 
   const [accountAddress, setAccountAddress] = useState(null);
   const [accountBalance, setAccountBalance] = useState(0);
+  const [estimatedFee, setEstimatedFee] = useState('42.3329 µKSM');
   const minimumParticipation = 100000000000; // 0.1
   const divide = 1000000000000;
 
@@ -116,16 +116,27 @@ export default function Participate (props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onChange = (_, data) => {
+  const onChange = async (_, data) => {
     setFormState((prev) => ({ ...prev, [data.state]: data.value }));
+    // let estimate = 0;
     if (!crowdLoanEnded) {
+      if (data.value >= 0.1) {
+        try {
+          const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, data.value * Math.pow(10, 12), null);
+          const info = await txExcecuteDummy.paymentInfo(accountAddress);
+          setEstimatedFee(() => info.partialFee.toHuman());
+        } catch (error) {
+          console.log(error);
+        }
+        // estimate = parseInt(info.partialFee);
+      }
       if (accountBalance < minimumParticipation) {
         setDisableButton(true);
         setStatus('You do not have enough balance');
       } else if (data.value === '' || data.value < minimumParticipation / divide) {
         setDisableButton(true);
         setStatus('Please enter amount equal or greater than ' + minimumParticipation / divide);
-      } else if (data.value > (accountBalance / divide)) {
+      } else if (data.value > accountBalance / divide) {
         setDisableButton(true);
         setStatus('Please enter amount equal or less than ' + formatBalance(accountBalance));
       } else {
@@ -389,7 +400,11 @@ export default function Participate (props) {
                           </Grid.Column>
                         </Grid.Row>
                       </Grid>
-
+                      <Grid.Column>
+                        <div>
+                          Estimated fees: {estimatedFee} <br /> Please make sure when contributing, that your balance can cover the fees
+                        </div>
+                      </Grid.Column>
                       <TxButton
                         setLoading={setLoading}
                         accountAddress={accountAddress}

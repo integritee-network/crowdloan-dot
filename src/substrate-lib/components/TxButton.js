@@ -29,6 +29,9 @@ function TxButton ({
   const { palletRpc, callable, inputParams, paramFields, disableButton } =
     attrs;
 
+  let txxHash = null;
+  let contributionError = null;
+
   const isQuery = () => type === 'QUERY';
   const isSudo = () => type === 'SUDO-TX';
   const isUncheckedSudo = () => type === 'UNCHECKED-SUDO-TX';
@@ -68,8 +71,8 @@ function TxButton ({
     return fromAcct;
   };
 
-  const txResHandlerSaveTransaction = (status) => {
-    const hash = status.asFinalized.toString();
+  const txResHandlerSaveTransaction = async (status) => {
+    const blockHash = status.asInBlock.toString();
     if (isSigned()) {
       if (document.getElementById('grc') && document.getElementById('erc')) {
         saveParticipateInfo(
@@ -79,7 +82,7 @@ function TxButton ({
           document.getElementById('erc')
             ? document.getElementById('erc').value
             : new URL(window.location.href).searchParams.get('ref'),
-          hash
+          blockHash
         );
       } else if (document.getElementById('erc')) {
         saveParticipateInfo(
@@ -89,21 +92,51 @@ function TxButton ({
           document.getElementById('erc')
             ? document.getElementById('erc').value
             : new URL(window.location.href).searchParams.get('ref'),
-          hash
+          blockHash
         );
       } else if (document.getElementById('grc')) {
-        saveParticipateInfo(accountAddress, formState, document.getElementById('grc').value, '', hash);
+        saveParticipateInfo(accountAddress, formState, document.getElementById('grc').value, '', blockHash);
       }
       setLoading(false);
     }
-    setStatus(`😉 Finalized. Block hash: ${hash}`);
+    setStatus(viewTransactionInfo(status));
   };
 
-  const txResHandler = ({ status }) => {
-    status.isFinalized
-      ? txResHandlerSaveTransaction(status)
-      : setStatus(`Current transaction status: ${status.type}`);
+  const viewTransactionInfo = (status) => {
+    const _blockhash = (status.type === 'InBlock') ? status.asInBlock.toString() : status.asFinalized.toString();
+    return (
+       <p>
+         {contributionError ? `Transaction failed: ${contributionError}` : ''}
+         <br/>
+         😉 {status.type}. Block hash: {_blockhash} <Button icon='copy' onClick={() => { navigator.clipboard.writeText(_blockhash); }}/> <br/>
+                You can get more details on your transaction: <a href={`https://kusama.subscan.io/extrinsic/${txxHash}`}>{txxHash}</a> <Button icon='copy' onClick={() => { navigator.clipboard.writeText(txxHash); }}/>
+       </p>
+    );
   };
+
+  const txResHandler = ({ status, dispatchError }) => {
+    // status would still be set, but in the case of error we can shortcut
+    // to just check it (so an error would indicate InBlock or Finalized)
+    if (dispatchError) {
+      if (dispatchError.isModule) {
+        // for module errors, we have the section indexed, lookup
+        const decoded = api.registry.findMetaError(dispatchError.asModule);
+        const { docs, name, section } = decoded;
+        console.log(`${section}.${name}: ${docs.join(' ')}`);
+        contributionError = `${section}.${name}: ${docs.join(' ')}`;
+      } else {
+        // Other, CannotLookup, BadOrigin, no extra info
+        console.log(dispatchError.toString());
+        contributionError = dispatchError.toString();
+      }
+    }
+    status.isInBlock
+      ? txResHandlerSaveTransaction(status)
+      : status.isFinalized
+        ? setStatus(viewTransactionInfo(status))
+        : setStatus(`Current transaction status: ${status.type}`);
+  };
+
   const txErrHandler = (err) => {
     setStatus(`😞 Transaction Failed: ${err.toString()}`);
     if (isSigned()) {
@@ -148,11 +181,11 @@ function TxButton ({
     setUnsub(() => unsub);
   };
 
-  const saveParticipateInfo = (accountAddress, formState, grc, erc, hash) => {
+  const saveParticipateInfo = (accountAddress, formState, grc, erc, blockHash) => {
     const formdata = new FormData();
     formdata.append('Participant[email]', grc);
     formdata.append('Participant[referrer_code]', erc);
-    formdata.append('Participant[block_hash]', hash);
+    formdata.append('Participant[block_hash]', blockHash);
     formdata.append('Participant[account_nr]', accountAddress);
     formdata.append('Participant[amount]', formState.amount);
 
@@ -166,48 +199,32 @@ function TxButton ({
     };
 
     fetch('https://api.crowdloan.integritee.network/storeuser', requestOptions)
-      .then((response) => { response.text(); })
-      .then((result) => console.log(result))
       .catch((error) => {
         console.log('error', error);
         console.log('trying again');
         setLoading(true);
-        setTimeout(() => { saveParticipateInfo(accountAddress, formState, grc, erc, hash); }, 2000);
+        setTimeout(() => { saveParticipateInfo(accountAddress, formState, grc, erc, blockHash); }, 2000);
       });
     setLoading(false);
   };
 
   const signedTx = async () => {
-    // console.log('inside function');
-    // console.log(grc);
-    // console.log(document.getElementById('erc') ? document.getElementById('erc').value : new URL(window.location.href).searchParams.get('ref'));
-    // console.log('inside function');
-
-    // console.log('--------------------------');
-    // console.log(document.getElementById('grc') ? document.getElementById('grc').checkValidity() : 'no grc');
-    // console.log(document.getElementById('erc') ? document.getElementById('erc').checkValidity() : 'no erc');
-    // console.log('--------------------------');
-
     if (document.getElementById('grc')) {
       if (!document.getElementById('grc').checkValidity()) {
-        // console.log('return');
         return;
       }
     }
     if (document.getElementById('erc')) {
       if (!document.getElementById('erc').checkValidity()) {
-        // console.log('return');
         return;
       }
     }
-    // console.log('no return');
     setStatus('Sending...');
     setLoading(true);
 
     const fromAcct = await getFromAcct();
     const transformed = transformParams(paramFields, inputParams);
     // transformed can be empty parameters
-
     const txExecute = transformed
       ? api.tx[palletRpc][callable](...transformed)
       : api.tx[palletRpc][callable]();
@@ -215,6 +232,7 @@ function TxButton ({
     const unsub = await txExecute
       .signAndSend(fromAcct, txResHandler)
       .catch(txErrHandler);
+    txxHash = txExecute.hash.toHex();
     setUnsub(() => unsub);
   };
 
