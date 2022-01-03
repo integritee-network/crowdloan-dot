@@ -484,13 +484,13 @@ div[disabled]
 }
 
 .green-bg .text #column1 {
-  width: 70% !important;
+  width: 50% ;
 }
 .green-bg .text #column2 {
-  width: 30% !important;
+  width: 25% ;
 }
 .green-bg .text #column3 {
-  width: 60% !important;
+  width: 50% ;
 }
 
 .grey-bg span {
@@ -574,6 +574,9 @@ div[disabled]
   font-weight: 300;
   color: #000065;    
   padding: 100px 0;
+}
+#Support {
+  padding: 100px 0 300px 0;
 }
 .green-bg span {
   font-family: "Gotham Rounded", sans-serif;
@@ -1949,18 +1952,50 @@ div[disabled]
 
 }
 
+#column1 {
+  width: 50% !important;
+}
+
+#column2 {
+  width: 25% !important;
+}
+
 @media screen and (max-width: 1200px) {
   #Support {
-    display: none;
+    /* display: none; */
+    background-image: none !important;
   }
-  
+
+  #column1 {
+    width: 100% !important;
+  }
+  #column2 {
+    width: 50% !important;
+  }
+  #column3 {
+    width: 80% !important;
+  }
+
+  #mobilesupport {
+    position: relative !important;
+    bottom: 0 !important;
+  }
+
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1201px) {
   #SupportMobile {
     display: none !important;
-   
   }
-  
+  .visibledesktopScenario1 {
+    left: -24rem !important;
+    width: 100% !important;
+    bottom: -18rem !important;
+  }
+  .visibledesktopScenario2 {
+    left: 5rem !important;
+    width: 100% !important;
+    bottom: -8rem !important;
+  }
 }
 
 .nav-social ul {
