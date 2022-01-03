@@ -121,9 +121,13 @@ export default function Participate (props) {
     // let estimate = 0;
     if (!crowdLoanEnded) {
       if (data.value >= 0.1) {
-        const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, data.value * Math.pow(10, 12), null);
-        const info = await txExcecuteDummy.paymentInfo(accountAddress);
-        setEstimatedFee(() => info.partialFee.toHuman());
+        try {
+          const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, data.value * Math.pow(10, 12), null);
+          const info = await txExcecuteDummy.paymentInfo(accountAddress);
+          setEstimatedFee(() => info.partialFee.toHuman());
+        } catch (error) {
+          console.log(error);
+        }
         // estimate = parseInt(info.partialFee);
       }
       if (accountBalance < minimumParticipation) {
