@@ -73,7 +73,7 @@ export default function Referral (props) {
                                         John Doe
                                     </div>
                                     <div className="text-holder">
-                                    John Doe contributes 1,000 KSM to the crowdloan.
+                                    John Doe contributes 250 KSM to the crowdloan.
                                     </div>
                                 </li>
                                 <li>
