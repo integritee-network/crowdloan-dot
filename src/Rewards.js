@@ -15,8 +15,7 @@ export default function Rewards () {
                             <p>
                               Integritee tokens will be distributed to KSM holders who support us in the Kusama parachain auctions.
                               The quantity of TEER you receive as a supporter is proportional to the amount of KSM you lock until
-                              late December 2022. Each KSM will be rewarded with 20 TEER tokens until we until we hit 20,000 KSM.
-                              Thereafter each KSM will be rewarded with 10 TEER.
+                              late January 2023. Each KSM will be rewarded with 40 TEER tokens. No more than 20,000 KSM can be contributed.
                             </p>
                             <div className="main">
                             <div className="text">
@@ -32,18 +31,12 @@ export default function Rewards () {
                               large number of tokens will be distributed.</p>
                             </div>
                             <div className="text">
-                            <strong>As a fast mover supporter, you receive:</strong>
+                            <strong>As a supporter you receive:</strong>
                             <div className="cal-box other">
-                                1 KSM locked = 20 TEER + bonuses
+                                1 KSM locked = 40 TEER + bonuses
                             </div>
+                            <p>subject to linear vesting over 48 weeks</p>
                             </div>
-                              <div className="text">
-                                <strong>After reaching the threshold of 20,000 KSM raised:</strong>
-                                <div className="cal-box other">
-                                  1 KSM locked = 10 TEER + bonuses
-                                </div>
-                                <p>subject to linear vesting over 48 weeks</p>
-                              </div>
                             </div>
                         </Grid.Column>
                         </Grid.Row>
