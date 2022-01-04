@@ -122,7 +122,7 @@ export default function Participate (props) {
     if (!crowdLoanEnded) {
       if (data.value >= 0.1) {
         try {
-          const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, data.value * Math.pow(10, 12), null);
+          const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, Math.pow(10, 12), null);
           const info = await txExcecuteDummy.paymentInfo(accountAddress);
           setEstimatedFee(() => info.partialFee.toHuman());
         } catch (error) {
