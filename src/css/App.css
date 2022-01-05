@@ -342,7 +342,18 @@ NewsLetter1 button:focus{
 .why .outline-btn.with-icon {
   position: relative;
 }
-
+.participate .copyButton {
+  background-color: Transparent;
+  width: 35px;
+  height: 35px;
+  /*border: none;*/
+  border-radius: 4px;
+}
+.participate .copyIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .participate .outline-btn.outline-btn.with-icon:after {
   content: "";
   position: absolute;

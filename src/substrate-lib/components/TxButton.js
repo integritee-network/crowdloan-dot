@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 import { web3FromSource } from '@polkadot/extension-dapp';
-
+import { ReactComponent as SVGIcon } from '../../Images/copy_symbole_V1.svg';
 import { useSubstrate } from '../';
 import utils from '../utils';
 
@@ -108,8 +108,22 @@ function TxButton ({
        <p>
          {contributionError ? `Transaction failed: ${contributionError}` : ''}
          <br/>
-         😉 {status.type}. Block hash: {_blockhash} <Button icon='copy' onClick={() => { navigator.clipboard.writeText(_blockhash); }}/> <br/>
-                You can get more details on your transaction: <a href={`https://kusama.subscan.io/extrinsic/${txxHash}`}>{txxHash}</a> <Button icon='copy' onClick={() => { navigator.clipboard.writeText(txxHash); }}/>
+         😉 {status.type}. Block hash: <br/>
+         {_blockhash + ' '}
+         <button className="copyButton" onClick={() => { navigator.clipboard.writeText(_blockhash); }}>
+           <div className="copyIcon">
+           <SVGIcon/>
+           <span></span>
+         </div>
+         </button>
+         <br/>
+         You can get more details on your transaction: <a href={`https://kusama.subscan.io/extrinsic/${txxHash}`}>{txxHash + ' '}</a>
+         <button className="copyButton" onClick={() => { navigator.clipboard.writeText(txxHash); }}>
+         <div className="copyIcon">
+           <SVGIcon/>
+           <span></span>
+         </div>
+       </button>
        </p>
     );
   };
