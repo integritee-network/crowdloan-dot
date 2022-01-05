@@ -47,19 +47,17 @@ export default function Participate (props) {
   const [crowdLoanData, setCrowdLoanData] = useState({});
   const { amount } = formState;
   const paraId = config.PARACHAIN_ID;
-
+  const chainDecimals = api.registry.chainDecimals;
   const bestNumber = api.derive.chain.bestNumber;
 
   const [accountAddress, setAccountAddress] = useState(null);
   const [accountBalance, setAccountBalance] = useState(0);
-  const [estimatedFee, setEstimatedFee] = useState('42.3329 µKSM');
+  const [estimatedFee, setEstimatedFee] = useState('');
+  const [estimate, setEstimate] = useState(0);
   const minimumParticipation = 100000000000; // 0.1
   const divide = 1000000000000;
 
   useEffect(() => {
-    // console.log('1****************');
-    // console.log(accountBalance);
-    // console.log('1****************');
     if (accountBalance < minimumParticipation) {
       setDisableButton(true);
       setStatus('You do not have enough balance');
@@ -78,7 +76,6 @@ export default function Participate (props) {
         unsubscribeAll = unsub;
       })
       .catch(console.error);
-
     return () => unsubscribeAll && unsubscribeAll();
   }, [bestNumber]);
 
@@ -115,30 +112,35 @@ export default function Participate (props) {
     crowdLoan();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    if (accountAddress) {
+      try {
+        const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, Math.pow(10, chainDecimals), null);
+        const getEstimate = async () => {
+          const estimation = await txExcecuteDummy.paymentInfo(accountAddress);
+          setEstimatedFee(() => estimation.partialFee.toHuman());
+          setEstimate(() => parseInt(estimation.partialFee));
+        };
+        getEstimate();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accountAddress]);
 
   const onChange = async (_, data) => {
     setFormState((prev) => ({ ...prev, [data.state]: data.value }));
-    // let estimate = 0;
     if (!crowdLoanEnded) {
-      if (data.value >= 0.1) {
-        try {
-          const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, Math.pow(10, 12), null);
-          const info = await txExcecuteDummy.paymentInfo(accountAddress);
-          setEstimatedFee(() => info.partialFee.toHuman());
-        } catch (error) {
-          console.log(error);
-        }
-        // estimate = parseInt(info.partialFee);
-      }
-      if (accountBalance < minimumParticipation) {
+      if (accountBalance < (minimumParticipation + estimate)) {
         setDisableButton(true);
         setStatus('You do not have enough balance');
       } else if (data.value === '' || data.value < minimumParticipation / divide) {
         setDisableButton(true);
         setStatus('Please enter amount equal or greater than ' + minimumParticipation / divide);
-      } else if (data.value > accountBalance / divide) {
+      } else if (data.value > (accountBalance - estimate) / divide) {
         setDisableButton(true);
-        setStatus('Please enter amount equal or less than ' + formatBalance(accountBalance));
+        setStatus('Please enter amount equal or less than ' + formatBalance(accountBalance - estimate));
       } else {
         setDisableButton(false);
         setStatus('');
@@ -428,7 +430,7 @@ export default function Participate (props) {
                           callable: 'contribute',
                           inputParams: [
                             paraId,
-                            amount * Math.pow(10, 12),
+                            amount * Math.pow(10, chainDecimals),
                             null
                           ],
                           paramFields: [true, true, false],
