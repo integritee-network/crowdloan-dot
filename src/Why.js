@@ -1,7 +1,7 @@
 import './css/App.css';
 import { Container, Dimmer, Loader } from 'semantic-ui-react';
 import { useSubstrate } from './substrate-lib';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useGlobalState, setCrowdLoanRunning } from './state';
 import { BN, bnToBn } from '@polkadot/util/bn/index.js';
 import config from './config';
@@ -19,7 +19,6 @@ export default function Main (props) {
   const paraId = config.PARACHAIN_ID;
   let [crowdLoan, setCrowdLoan] = useState(true);
   const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
-
   const queryResHandler = result => {
     const toHumanData = result.toJSON();
     setCrowdLoan(crowdLoan = (toHumanData));
@@ -30,6 +29,7 @@ export default function Main (props) {
     setLoading(false);
   };
 
+  const [chainDecimals, setChainDecimals] = useState(0);
   const transformed = [paraId];
   const palletRpc = 'crowdloan';
   const callable = 'funds';
@@ -45,11 +45,16 @@ export default function Main (props) {
     }
   };
 
+  if (api && api.registry && chainDecimals === 0) {
+    setChainDecimals(() => api.registry.chainDecimals);
+  }
+  
   if (crowdLoan && Object.keys(crowdLoan).length === 0) {
     getCrowdLoanData().then(() =>
       console.log('**data---------------------------')
     );
   }
+
   return (
     <div className="why">
       <Container>
@@ -92,7 +97,7 @@ export default function Main (props) {
         <ul className="counter">
           <li>
             <span>KSM CONTRIBUTED</span>
-            {toUnit(crowdLoan.raised, 12)}<br/>
+            {toUnit(crowdLoan.raised, chainDecimals)}<br/>
             {loading && (
               <Dimmer active>
                 <Loader size='mini' inline='centered'>
