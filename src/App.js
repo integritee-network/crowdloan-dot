@@ -24,13 +24,24 @@ import { useGlobalState } from './state';
 function Main () {
   const [, setAccountAddress] = useState(null);
   const { apiState } = useSubstrate();
-
+  const { api } = useSubstrate();
   const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
+  let decimals = 0;
+  let chainTokens = '';
 
-  formatBalance.setDefaults({
-    decimals: 12,
-    unit: 'KSM'
-  });
+  if (api && api.registry && (decimals === 0 || chainTokens === '')) {
+    decimals = api.registry.chainDecimals;
+    console.log("decimal set to: " + decimals);
+    chainTokens = api.registry.chainTokens[0];
+    console.log("chainTokens set to: " + chainTokens);
+    formatBalance.setDefaults({
+      decimals: decimals,
+      unit: chainTokens
+    });
+  }
+
+  // const decimals = api.registry.chainDecimals;
+
 
   const contextRef = createRef();
   console.log(apiState);
