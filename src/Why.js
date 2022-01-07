@@ -1,7 +1,7 @@
 import './css/App.css';
 import { Container, Dimmer, Loader } from 'semantic-ui-react';
 import { useSubstrate } from './substrate-lib';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useGlobalState, setCrowdLoanRunning } from './state';
 import { BN, bnToBn } from '@polkadot/util/bn/index.js';
 import config from './config';
@@ -48,7 +48,6 @@ export default function Main (props) {
   if (api && api.registry && chainDecimals === 0) {
     setChainDecimals(() => api.registry.chainDecimals);
   }
-  
   if (crowdLoan && Object.keys(crowdLoan).length === 0) {
     getCrowdLoanData().then(() =>
       console.log('**data---------------------------')

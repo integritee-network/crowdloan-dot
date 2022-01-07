@@ -31,17 +31,14 @@ function Main () {
 
   if (api && api.registry && (decimals === 0 || chainTokens === '')) {
     decimals = api.registry.chainDecimals;
-    console.log("decimal set to: " + decimals);
+    console.log('decimal set to: ' + decimals);
     chainTokens = api.registry.chainTokens[0];
-    console.log("chainTokens set to: " + chainTokens);
+    console.log('chainTokens set to: ' + chainTokens);
     formatBalance.setDefaults({
       decimals: decimals,
       unit: chainTokens
     });
   }
-
-  // const decimals = api.registry.chainDecimals;
-
 
   const contextRef = createRef();
   console.log(apiState);
