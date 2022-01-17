@@ -13,6 +13,12 @@ if fund_id == '24':
 elif fund_id == '38':
     blocknumber_crowdloan_end = 10_281_600
     total_rewards = 20_000  # TEER
+elif fund_id == '56':
+    blocknumber_crowdloan_end = 10_786_200
+    total_rewards = 0  # TEER (didn't reach threshold)
+elif fund_id == '59':
+    blocknumber_crowdloan_end = 11_391_600
+    total_rewards = 20_000  # TEER
 elif fund_id == '0':
     blocknumber_crowdloan_end = 200
     total_rewards = 20_000  # TEER
