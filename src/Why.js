@@ -24,7 +24,8 @@ export default function Main (props) {
     const toHumanData = result.toJSON();
     setCrowdLoan(crowdLoan = (toHumanData));
     if (toHumanData != null) {
-      setCrowdLoanRunning(true);
+      // FIXME: Deactivate if crowdloan finished. had to hard-disable after winning
+      // setCrowdLoanRunning(true);
     }
     console.log('**set-----------------------');
     setLoading(false);
