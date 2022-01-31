@@ -2,7 +2,7 @@
 import csv
 import sys
 from datetime import datetime
-from functools import reduce
+import pytz
 
 if len(sys.argv) < 2:
     print("Usage: ./reward_calculation.py <fund index>")
@@ -25,11 +25,15 @@ elif fund_id == '59':
     blocknumber_crowdloan_end = 11_391_600
     pot_guaranteed_rewards = 20_000  # TEER
     base_reward_per_ksm = 40  # TEER
+    early_reward_factor = 0.2
+    early_reward_endtime = datetime.fromisoformat("2022-01-07 08:00+00:00")  # GMT
     winning = True
 elif fund_id == '0':
     blocknumber_crowdloan_end = 200
     pot_guaranteed_rewards = 20_000  # TEER
     base_reward_per_ksm = 40  # TEER
+    early_reward_factor = 0.2
+    early_reward_endtime = datetime.fromisoformat("2022-01-07 08:00+00:00")  # GMT
     winning = True
 else:
     raise(BaseException(f'unknown fund-id: {fund_id}'))
@@ -47,6 +51,10 @@ waived_accounts = ["EZwaNLfEwAMYcEdbp7uKYFCjnsn43S85pm6BumT5UwvZQvB",
 existential_deposit = 0.001  # 1mTEER
 
 contributors = {}
+
+
+def to_ksm(picoksm: int) -> float:
+    return picoksm * pow(10, -12)
 
 
 class Contribution:
@@ -70,7 +78,7 @@ def read_contributions_from_file():
         reader = csv.reader(csvfile)
         for row in reader:
             a = row[0]
-            c = Contribution(float(row[1]), int(row[2]), datetime.fromtimestamp(float(row[3])))
+            c = Contribution(float(row[1]), int(row[2]), datetime.fromtimestamp(float(row[3]), pytz.utc))
             if a not in contributors.keys():
                 contributors[a] = [c]
             else:
@@ -105,6 +113,18 @@ def get_total_cointime(address: str = None) -> int:
     return tot
 
 
+def get_early_contributions(address: str) -> int:
+    global contributors
+    tot = 0
+    if address in waived_accounts:
+        return 0
+    contributions = contributors[address]
+    for c in contributions:
+        if c.timestamp < early_reward_endtime:
+            tot += c.amount
+    return tot
+
+
 def calculate_all_rewards():
     """
     writes all rewards into the output file set by global variable
@@ -115,6 +135,7 @@ def calculate_all_rewards():
 
     total_rewards = {
         'base': 0,
+        'early': 0,
         'guaranteed': 0
     }
     with open(output_file, "w", newline='') as output:
@@ -125,15 +146,19 @@ def calculate_all_rewards():
 
             contributions = contributors[a]
             # base reward
-            reward_base = base_reward_per_ksm * pow(10,-12) * sum(c.amount for c in contributions)
+            reward_base = base_reward_per_ksm * to_ksm(sum(c.amount for c in contributions))
             total_rewards['base'] += reward_base
+
+            # early bonus
+            reward_early = base_reward_per_ksm * early_reward_factor * to_ksm(get_early_contributions(a))
+            total_rewards['early'] += reward_early
 
             # guaranteed reward
             reward_guaranteed = pot_guaranteed_rewards * get_total_cointime(a) / overall_total_cointime
             reward_guaranteed = max(existential_deposit, reward_guaranteed)
             total_rewards['guaranteed'] += reward_guaranteed
 
-            writer.writerow([a, reward_base, reward_guaranteed])
+            writer.writerow([a, reward_base, reward_early, reward_guaranteed])
     print(f"total rewards: {total_rewards}")
 
 
