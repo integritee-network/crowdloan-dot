@@ -2,6 +2,7 @@
 import csv
 import sys
 from datetime import datetime
+from functools import reduce
 
 if len(sys.argv) < 2:
     print("Usage: ./reward_calculation.py <fund index>")
@@ -11,18 +12,25 @@ fund_id = sys.argv[1]
 if fund_id == '24':
     blocknumber_crowdloan_end = 9_676_800
     pot_guaranteed_rewards = 21460.2955281453 # TEER (correction after missing some contributions)
+    winning = False
 elif fund_id == '38':
     blocknumber_crowdloan_end = 10_281_600
     pot_guaranteed_rewards = 20_000  # TEER
+    winning = False
 elif fund_id == '56':
     blocknumber_crowdloan_end = 10_786_200
     pot_guaranteed_rewards = 0  # TEER (didn't reach threshold)
+    winning = False
 elif fund_id == '59':
     blocknumber_crowdloan_end = 11_391_600
     pot_guaranteed_rewards = 20_000  # TEER
+    base_reward_per_ksm = 40  # TEER
+    winning = True
 elif fund_id == '0':
     blocknumber_crowdloan_end = 200
     pot_guaranteed_rewards = 20_000  # TEER
+    base_reward_per_ksm = 40  # TEER
+    winning = True
 else:
     raise(BaseException(f'unknown fund-id: {fund_id}'))
 
@@ -97,10 +105,6 @@ def get_total_cointime(address: str = None) -> int:
     return tot
 
 
-def get_guaranteed_reward(personal_cointime: int, overall_total: int) -> float:
-    return pot_guaranteed_rewards * personal_cointime / overall_total
-
-
 def calculate_all_rewards():
     """
     writes all rewards into the output file set by global variable
@@ -109,17 +113,28 @@ def calculate_all_rewards():
     global contributors, output_file
     overall_total_cointime = get_total_cointime()
 
-    total_rewards = 0
+    total_rewards = {
+        'base': 0,
+        'guaranteed': 0
+    }
     with open(output_file, "w", newline='') as output:
         writer = csv.writer(output)
         for a in contributors.keys():
             if a in waived_accounts:
                 continue
-            reward = pot_guaranteed_rewards * get_total_cointime(a) / overall_total_cointime
-            reward = max(existential_deposit, reward)
-            total_rewards += reward
-            writer.writerow([a, reward])
-    print(f"total rewards: guaranteed: {total_rewards}")
+
+            contributions = contributors[a]
+            # base reward
+            reward_base = base_reward_per_ksm * pow(10,-12) * sum(c.amount for c in contributions)
+            total_rewards['base'] += reward_base
+
+            # guaranteed reward
+            reward_guaranteed = pot_guaranteed_rewards * get_total_cointime(a) / overall_total_cointime
+            reward_guaranteed = max(existential_deposit, reward_guaranteed)
+            total_rewards['guaranteed'] += reward_guaranteed
+
+            writer.writerow([a, reward_base, reward_guaranteed])
+    print(f"total rewards: {total_rewards}")
 
 
 if __name__ == "__main__":
