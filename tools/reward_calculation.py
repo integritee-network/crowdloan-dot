@@ -28,6 +28,8 @@ elif fund_id == '59':
     early_reward_factor = 0.2
     early_reward_endtime = datetime.fromisoformat("2022-01-07 08:00+00:00")  # GMT
     referral_reward_factor = 0.05
+    loyalty_ids = [24, 38, 56]
+    loyalty_reward_factor = 0.10
     winning = True
 elif fund_id == '0':
     blocknumber_crowdloan_end = 200
@@ -36,6 +38,8 @@ elif fund_id == '0':
     early_reward_factor = 0.2
     early_reward_endtime = datetime.fromisoformat("2022-01-07 08:00+00:00")  # GMT
     referral_reward_factor = 0.05
+    loyalty_ids = ['0-previous', '0-previous2']
+    loyalty_reward_factor = 0.10
     winning = True
 else:
     raise(BaseException(f'unknown fund-id: {fund_id}'))
@@ -53,9 +57,10 @@ waived_accounts = ["EZwaNLfEwAMYcEdbp7uKYFCjnsn43S85pm6BumT5UwvZQvB",
 
 existential_deposit = 0.001  # 1mTEER
 
-global contributors
+global contributors, previous_contributions_max
 
 referrals = {}
+
 
 
 def to_ksm(picoksm: int) -> float:
@@ -172,7 +177,6 @@ def calculate_referral_rewards() -> {str: float}:
     global contributors, referrals, referral_reward_factor
     referral_rewards = {}
 
-    print(contributors)
     # invert referral lookup
     referreds = {}
 
@@ -190,25 +194,39 @@ def calculate_referral_rewards() -> {str: float}:
                     continue
                 if not referrer in referral_rewards:
                     referral_rewards[referrer] = 0.0
-                referral_rewards[referrer] += to_ksm(c.amount) * referral_reward_factor
+                referral_rewards[referrer] += c.amount * referral_reward_factor
                 if not referred in referral_rewards:
                     referral_rewards[referred] = 0.0
-                referral_rewards[referred] += to_ksm(c.amount) * referral_reward_factor
+                referral_rewards[referred] += c.amount * referral_reward_factor
     return referral_rewards
 
+
+def gather_previous_campaign_contributions() -> {str: float}:
+    contributions =  {}
+    for fund_id in loyalty_ids:
+        contribs = read_contributions_from_file(f'contributions-2015-{fund_id}.csv')
+        for a, cs in contribs.items():
+            total = sum(c.amount for c in cs)
+            if a in contributions.keys():
+                if contributions[a] < total:
+                    contributions[a] = total
+            else:
+                contributions[a] = total
+    return contributions
 
 def calculate_all_rewards():
     """
     writes all rewards into the output file set by global variable
 
     """
-    global contributors, output_file
+    global contributors, output_file, previous_contributions_max, winning
     overall_total_cointime = get_total_cointime()
 
     total_rewards = {
         'base': 0.0,
         'early': 0.0,
         'referral': 0.0,
+        'loyalty': 0.0,
         'guaranteed': 0.0
     }
 
@@ -223,37 +241,57 @@ def calculate_all_rewards():
 
             contributions = contributors[a]
             # base reward
-            reward_base = base_reward_per_ksm * to_ksm(sum(c.amount for c in contributions))
-            total_rewards['base'] += reward_base
-
-            # early bonus
-            reward_early = base_reward_per_ksm * early_reward_factor * to_ksm(get_early_contributions(a))
-            total_rewards['early'] += reward_early
-
-            # referral bonus
-            reward_referral = referral_rewards[a]
-            total_rewards['referral'] += reward_referral
+            total_ksm = sum(c.amount for c in contributions)
+            #print(f'{a} has contributed {total_ksm} in total')
 
             # guaranteed reward
             reward_guaranteed = pot_guaranteed_rewards * get_total_cointime(a) / overall_total_cointime
             reward_guaranteed = max(existential_deposit, reward_guaranteed)
             total_rewards['guaranteed'] += reward_guaranteed
 
-            total = reward_base + reward_early + reward_referral + reward_guaranteed
-            writer.writerow([a, total, reward_base, reward_early, reward_referral, reward_guaranteed])
+            if winning:
+                reward_base = base_reward_per_ksm * total_ksm
+                total_rewards['base'] += reward_base
+
+                # early bonus
+                reward_early = base_reward_per_ksm * early_reward_factor * get_early_contributions(a)
+                total_rewards['early'] += reward_early
+
+                # referral bonus
+                reward_referral = referral_rewards[a]
+                total_rewards['referral'] += reward_referral
+
+                # loyalty reward
+                if a in previous_contributions_max.keys():
+                    #print(f'{a} has previously contributed {previous_contributions_max[a]}')
+                    reward_loyalty = min(total_ksm, previous_contributions_max[a]) * loyalty_reward_factor
+                else:
+                    reward_loyalty = 0
+                total_rewards['loyalty'] += reward_loyalty
+
+
+                total = reward_base + reward_early + reward_referral + reward_loyalty + reward_guaranteed
+                writer.writerow([a, total, reward_base, reward_early, reward_referral, reward_loyalty, reward_guaranteed])
+            else:
+                # non-winning campaign
+                writer.writerow([a, reward_guaranteed, 0, 0, 0, 0, reward_guaranteed])
+
     print(f"total rewards: {total_rewards}")
 
 
 if __name__ == "__main__":
-    global contributors
+    global contributors, previous_contributions_max
     # calculate reward for all addresses
     print("read in all contributors ... ")
     contributors = read_contributions_from_file(input_file)
     print(f"read contributions from {len(contributors.keys())} contributors")
 
-    print("read in all referrals ... ")
-    read_referrals_from_file()
-    print(f"read {len(referrals)} legit and unique referrals")
+    if winning:
+        print("read in all referrals ... ")
+        read_referrals_from_file()
+        print(f"read {len(referrals)} legit and unique referrals")
+
+        previous_contributions_max = gather_previous_campaign_contributions()
 
     print("calculating rewards ... ")
     calculate_all_rewards()
