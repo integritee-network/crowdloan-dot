@@ -34,6 +34,7 @@ elif fund_id == '0':
     base_reward_per_ksm = 40  # TEER
     early_reward_factor = 0.2
     early_reward_endtime = datetime.fromisoformat("2022-01-07 08:00+00:00")  # GMT
+    referral_reward_factor = 0.05
     winning = True
 else:
     raise(BaseException(f'unknown fund-id: {fund_id}'))
@@ -41,6 +42,7 @@ else:
 # Settings:
 
 input_file = f'contributions-2015-{fund_id}.csv'
+referral_file = f'referrals-2015-{fund_id}.csv'
 output_file = f'rewards-2015-{fund_id}.csv'
 
 waived_accounts = ["EZwaNLfEwAMYcEdbp7uKYFCjnsn43S85pm6BumT5UwvZQvB",
@@ -51,7 +53,7 @@ waived_accounts = ["EZwaNLfEwAMYcEdbp7uKYFCjnsn43S85pm6BumT5UwvZQvB",
 existential_deposit = 0.001  # 1mTEER
 
 contributors = {}
-
+referrals = {}
 
 def to_ksm(picoksm: int) -> float:
     return picoksm * pow(10, -12)
@@ -84,6 +86,41 @@ def read_contributions_from_file():
             else:
                 contributors[a].append(c)
 
+
+def read_referrals_from_file():
+    """
+    reads referrals and validates referrals topographically
+    can't prevent referring someone who has previously contributed without having referred someone before.
+    But that's fine as only contributions after the referral are counted
+    """
+    global referrals
+
+    unreferrable = set()
+
+    with open(referral_file, newline='') as csvfile:
+        reader = csv.reader(csvfile)
+
+        # first line is column title
+        _ = next(reader)
+
+        for row in reader:
+            referrer = row[0]
+            referred = row[1]
+            timestamp = datetime.fromisoformat(row[3]+"+00:00")
+
+            if referred in unreferrable:
+                print(f"SKIPPING: {referrer} referred {referred} at {timestamp} but {referred} has referred or been referred already")
+                continue
+            if referred in referrals and referrer in referrals[referred]:
+                print(f"SKIPPING: {referrer} referred {referred} at {timestamp} but can't refer your referrer")
+                continue
+
+            if referrer not in referrals.keys():
+                referrals[referrer] = {referred: timestamp}
+            else:
+                referrals[referrer][referred] = timestamp
+            unreferrable.add(referred)
+            unreferrable.add(referrer)
 
 def get_total_cointime(address: str = None) -> int:
     """
@@ -125,6 +162,34 @@ def get_early_contributions(address: str) -> int:
     return tot
 
 
+def calculate_referral_rewards() -> {str: float}:
+    global contributors, referrals, referral_reward_factor
+    referral_rewards = {}
+
+    # invert referral lookup
+    referreds = {}
+
+    for referrer, rfrls  in referrals.items():
+        for referred, timestamp in rfrls.items():
+            referreds[referred] = (referrer, timestamp)
+
+    for a in contributors.keys():
+        if a in referreds.keys():
+            (referrer, timestamp) = referreds[a]
+            referred = a
+            for c in contributors[a]:
+                if c.timestamp < timestamp:
+                    print(f"SKIP referral to {referred} at {timestamp} happened after contributuion at {c.timestamp}")
+                    continue
+                if not referrer in referral_rewards:
+                    referral_rewards[referrer] = 0.0
+                referral_rewards[referrer] += to_ksm(c.amount) * referral_reward_factor
+                if not referred in referral_rewards:
+                    referral_rewards[referred] = 0.0
+                referral_rewards[referred] += to_ksm(c.amount) * referral_reward_factor
+    return referral_rewards
+
+
 def calculate_all_rewards():
     """
     writes all rewards into the output file set by global variable
@@ -134,12 +199,17 @@ def calculate_all_rewards():
     overall_total_cointime = get_total_cointime()
 
     total_rewards = {
-        'base': 0,
-        'early': 0,
-        'guaranteed': 0
+        'base': 0.0,
+        'early': 0.0,
+        'referral': 0.0,
+        'guaranteed': 0.0
     }
+
+    referral_rewards = calculate_referral_rewards()
+
     with open(output_file, "w", newline='') as output:
         writer = csv.writer(output)
+        writer.writerow(['# account','total', 'base', 'early', 'referral', 'guaranteed'])
         for a in contributors.keys():
             if a in waived_accounts:
                 continue
@@ -153,12 +223,17 @@ def calculate_all_rewards():
             reward_early = base_reward_per_ksm * early_reward_factor * to_ksm(get_early_contributions(a))
             total_rewards['early'] += reward_early
 
+            # referral bonus
+            reward_referral = referral_rewards[a]
+            total_rewards['referral'] += reward_referral
+
             # guaranteed reward
             reward_guaranteed = pot_guaranteed_rewards * get_total_cointime(a) / overall_total_cointime
             reward_guaranteed = max(existential_deposit, reward_guaranteed)
             total_rewards['guaranteed'] += reward_guaranteed
 
-            writer.writerow([a, reward_base, reward_early, reward_guaranteed])
+            total = reward_base + reward_early + reward_referral + reward_guaranteed
+            writer.writerow([a, total, reward_base, reward_early, reward_referral, reward_guaranteed])
     print(f"total rewards: {total_rewards}")
 
 
@@ -167,6 +242,11 @@ if __name__ == "__main__":
     print("read in all addresses ... ")
     read_contributions_from_file()
     print(f"read contributions from {len(contributors.keys())} contributors")
+
+    print("read in all referrals ... ")
+    read_referrals_from_file()
+    print(f"read {len(referrals)} legit and unique referrals")
+
     print("calculating rewards ... ")
     calculate_all_rewards()
 
