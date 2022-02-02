@@ -173,7 +173,7 @@ def get_early_contributions(address: str) -> int:
     return tot
 
 
-def calculate_referral_rewards() -> {str: float}:
+def calculate_referral_ksm() -> {str: float}:
     global contributors, referrals, referral_reward_factor
     referral_rewards = {}
 
@@ -194,15 +194,15 @@ def calculate_referral_rewards() -> {str: float}:
                     continue
                 if not referrer in referral_rewards:
                     referral_rewards[referrer] = 0.0
-                referral_rewards[referrer] += c.amount * referral_reward_factor
+                referral_rewards[referrer] += c.amount
                 if not referred in referral_rewards:
                     referral_rewards[referred] = 0.0
-                referral_rewards[referred] += c.amount * referral_reward_factor
+                referral_rewards[referred] += c.amount
     return referral_rewards
 
 
 def gather_previous_campaign_contributions() -> {str: float}:
-    contributions =  {}
+    contributions = {}
     for fund_id in loyalty_ids:
         contribs = read_contributions_from_file(f'contributions-2015-{fund_id}.csv')
         for a, cs in contribs.items():
@@ -231,7 +231,10 @@ def calculate_all_rewards():
         'guaranteed': 0.0
     }
 
-    referral_rewards = calculate_referral_rewards()
+    referral_rewards = calculate_referral_ksm()
+
+    count_loyal_accounts = 0
+    total_loyalty_base = 0
 
     with open(output_file, "w", newline='') as output:
         writer = csv.writer(output)
@@ -260,15 +263,17 @@ def calculate_all_rewards():
 
                 # referral bonus
                 if a in referral_rewards.keys():
-                    reward_referral = referral_rewards[a]
+                    reward_referral = base_reward_per_ksm * referral_reward_factor * referral_rewards[a]
                     total_rewards['referral'] += reward_referral
                 else:
                     reward_referral = 0
 
                 # loyalty reward
                 if a in previous_contributions_max.keys():
-                    #print(f'{a} has previously contributed {previous_contributions_max[a]}')
-                    reward_loyalty = min(total_ksm, previous_contributions_max[a]) * loyalty_reward_factor
+                    print(f'{a} has previously contributed {previous_contributions_max[a]} \t this time: {total_ksm}')
+                    reward_loyalty = min(total_ksm, previous_contributions_max[a]) * loyalty_reward_factor * base_reward_per_ksm
+                    count_loyal_accounts += 1
+                    total_loyalty_base += min(total_ksm, previous_contributions_max[a])
                 else:
                     reward_loyalty = 0
                 total_rewards['loyalty'] += reward_loyalty
@@ -281,6 +286,7 @@ def calculate_all_rewards():
                 writer.writerow([a, reward_guaranteed, 0, 0, 0, 0, reward_guaranteed])
 
     print(f"total rewards: {total_rewards}")
+    print(f'number of loyal accounts {count_loyal_accounts}/{len(contributors)}. Repeating contribution total: {total_loyalty_base}')
 
 
 if __name__ == "__main__":
