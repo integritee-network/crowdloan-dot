@@ -47,7 +47,7 @@ else:
 # Settings:
 
 input_file = f'contributions-2015-{fund_id}.csv'
-referral_file = f'referrals-2015-{fund_id}.csv'
+referral_file = f'referrals-2015-{fund_id}-bn.csv'
 output_file = f'rewards-2015-{fund_id}.csv'
 
 waived_accounts = ["EZwaNLfEwAMYcEdbp7uKYFCjnsn43S85pm6BumT5UwvZQvB",
@@ -214,6 +214,7 @@ def gather_previous_campaign_contributions() -> {str: float}:
                 contributions[a] = total
     return contributions
 
+
 def calculate_all_rewards():
     """
     writes all rewards into the output file set by global variable
@@ -258,8 +259,11 @@ def calculate_all_rewards():
                 total_rewards['early'] += reward_early
 
                 # referral bonus
-                reward_referral = referral_rewards[a]
-                total_rewards['referral'] += reward_referral
+                if a in referral_rewards.keys():
+                    reward_referral = referral_rewards[a]
+                    total_rewards['referral'] += reward_referral
+                else:
+                    reward_referral = 0
 
                 # loyalty reward
                 if a in previous_contributions_max.keys():
