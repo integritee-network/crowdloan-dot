@@ -27,6 +27,7 @@ elif fund_id == '59':
     base_reward_per_ksm = 40  # TEER
     early_reward_factor = 0.2
     early_reward_endtime = datetime.fromisoformat("2022-01-07 08:00+00:00")  # GMT
+    referral_reward_factor = 0.05
     winning = True
 elif fund_id == '0':
     blocknumber_crowdloan_end = 200
@@ -52,8 +53,10 @@ waived_accounts = ["EZwaNLfEwAMYcEdbp7uKYFCjnsn43S85pm6BumT5UwvZQvB",
 
 existential_deposit = 0.001  # 1mTEER
 
-contributors = {}
+global contributors
+
 referrals = {}
+
 
 def to_ksm(picoksm: int) -> float:
     return picoksm * pow(10, -12)
@@ -74,17 +77,18 @@ class Contribution:
         return self.amount * (blocknumber_crowdloan_end - self.blocknumber)
 
 
-def read_contributions_from_file():
-    global contributors
-    with open(input_file, newline='') as csvfile:
+def read_contributions_from_file(file: str) -> {}:
+    contributors = {}
+    with open(file, newline='') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             a = row[0]
-            c = Contribution(float(row[1]), int(row[2]), datetime.fromtimestamp(float(row[3]), pytz.utc))
+            c = Contribution(to_ksm(float(row[1])), int(row[2]), datetime.fromtimestamp(float(row[3]), pytz.utc))
             if a not in contributors.keys():
                 contributors[a] = [c]
             else:
                 contributors[a].append(c)
+    return contributors
 
 
 def read_referrals_from_file():
@@ -106,21 +110,23 @@ def read_referrals_from_file():
         for row in reader:
             referrer = row[0]
             referred = row[1]
+            blocknumber = int(row[2])
             timestamp = datetime.fromisoformat(row[3]+"+00:00")
 
             if referred in unreferrable:
-                print(f"SKIPPING: {referrer} referred {referred} at {timestamp} but {referred} has referred or been referred already")
+                print(f"SKIPPING: {referrer} referred {referred} at {blocknumber} but {referred} has referred or been referred already")
                 continue
             if referred in referrals and referrer in referrals[referred]:
-                print(f"SKIPPING: {referrer} referred {referred} at {timestamp} but can't refer your referrer")
+                print(f"SKIPPING: {referrer} referred {referred} at {blocknumber} but can't refer your referrer")
                 continue
 
             if referrer not in referrals.keys():
-                referrals[referrer] = {referred: timestamp}
+                referrals[referrer] = {referred: blocknumber}
             else:
-                referrals[referrer][referred] = timestamp
+                referrals[referrer][referred] = blocknumber
             unreferrable.add(referred)
             unreferrable.add(referrer)
+
 
 def get_total_cointime(address: str = None) -> int:
     """
@@ -166,20 +172,21 @@ def calculate_referral_rewards() -> {str: float}:
     global contributors, referrals, referral_reward_factor
     referral_rewards = {}
 
+    print(contributors)
     # invert referral lookup
     referreds = {}
 
     for referrer, rfrls  in referrals.items():
-        for referred, timestamp in rfrls.items():
-            referreds[referred] = (referrer, timestamp)
+        for referred, blocknumber in rfrls.items():
+            referreds[referred] = (referrer, blocknumber)
 
     for a in contributors.keys():
         if a in referreds.keys():
-            (referrer, timestamp) = referreds[a]
+            (referrer, blocknumber) = referreds[a]
             referred = a
             for c in contributors[a]:
-                if c.timestamp < timestamp:
-                    print(f"SKIP referral to {referred} at {timestamp} happened after contributuion at {c.timestamp}")
+                if c.blocknumber < blocknumber:
+                    print(f"SKIP referral to {referred} at {blocknumber} happened after contributuion at {c.blocknumber}")
                     continue
                 if not referrer in referral_rewards:
                     referral_rewards[referrer] = 0.0
@@ -238,9 +245,10 @@ def calculate_all_rewards():
 
 
 if __name__ == "__main__":
+    global contributors
     # calculate reward for all addresses
-    print("read in all addresses ... ")
-    read_contributions_from_file()
+    print("read in all contributors ... ")
+    contributors = read_contributions_from_file(input_file)
     print(f"read contributions from {len(contributors.keys())} contributors")
 
     print("read in all referrals ... ")
