@@ -83,17 +83,22 @@ class Contribution:
 
 
 def read_contributions_from_file(file: str) -> {}:
-    contributors = {}
+    lcontributors = {}
+    total_ksm = 0
+    count_contributions = 0
     with open(file, newline='') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
             a = row[0]
             c = Contribution(to_ksm(float(row[1])), int(row[2]), datetime.fromtimestamp(float(row[3]), pytz.utc))
-            if a not in contributors.keys():
-                contributors[a] = [c]
+            if a not in lcontributors.keys():
+                lcontributors[a] = [c]
             else:
-                contributors[a].append(c)
-    return contributors
+                lcontributors[a].append(c)
+            total_ksm += c.amount
+            count_contributions += 1
+    print(f'read {count_contributions} contributions from {len(lcontributors)} contributors, totalling {total_ksm} KSM from {file}')
+    return lcontributors
 
 
 def read_referrals_from_file():
@@ -119,10 +124,10 @@ def read_referrals_from_file():
             timestamp = datetime.fromisoformat(row[3]+"+00:00")
 
             if referred in unreferrable:
-                print(f"SKIPPING: {referrer} referred {referred} at {blocknumber} but {referred} has referred or been referred already")
+                #print(f"SKIPPING: {referrer} referred {referred} at {blocknumber} but {referred} has referred or been referred already")
                 continue
             if referred in referrals and referrer in referrals[referred]:
-                print(f"SKIPPING: {referrer} referred {referred} at {blocknumber} but can't refer your referrer")
+                #print(f"SKIPPING: {referrer} referred {referred} at {blocknumber} but can't refer your referrer")
                 continue
 
             if referrer not in referrals.keys():
@@ -190,7 +195,7 @@ def calculate_referral_ksm() -> {str: float}:
             referred = a
             for c in contributors[a]:
                 if c.blocknumber < blocknumber:
-                    print(f"SKIP referral to {referred} at {blocknumber} happened after contributuion at {c.blocknumber}")
+                    #print(f"SKIP referral to {referred} at {blocknumber} happened after contributuion at {c.blocknumber}")
                     continue
                 if not referrer in referral_rewards:
                     referral_rewards[referrer] = 0.0
@@ -198,6 +203,7 @@ def calculate_referral_ksm() -> {str: float}:
                 if not referred in referral_rewards:
                     referral_rewards[referred] = 0.0
                 referral_rewards[referred] += c.amount
+    print(f"read {len(referrals)} legit and unique referrals")
     return referral_rewards
 
 
@@ -233,20 +239,27 @@ def calculate_all_rewards():
 
     referral_rewards = calculate_referral_ksm()
 
+    count_contributions = 0
     count_loyal_accounts = 0
-    total_loyalty_base = 0
+    total_loyalty_ksm = 0
+    total_waived_ksm = 0
+    total_base_ksm = 0
 
     with open(output_file, "w", newline='') as output:
         writer = csv.writer(output)
-        writer.writerow(['# account','total', 'base', 'early', 'referral', 'guaranteed'])
+        writer.writerow(['# account', 'total', 'base', 'early', 'referral', 'guaranteed'])
         for a in contributors.keys():
+            contributions = contributors[a]
+            count_contributions += len(contributions)
+            sum_ksm = sum(c.amount for c in contributions)
             if a in waived_accounts:
+                print(f'ignoring waived account {a} amounting {sum_ksm}')
+                total_waived_ksm += sum_ksm
                 continue
 
-            contributions = contributors[a]
             # base reward
-            total_ksm = sum(c.amount for c in contributions)
-            #print(f'{a} has contributed {total_ksm} in total')
+            total_base_ksm += sum_ksm
+            #print(f'{a} has contributed {sum_ksm} in total')
 
             # guaranteed reward
             reward_guaranteed = pot_guaranteed_rewards * get_total_cointime(a) / overall_total_cointime
@@ -254,7 +267,7 @@ def calculate_all_rewards():
             total_rewards['guaranteed'] += reward_guaranteed
 
             if winning:
-                reward_base = base_reward_per_ksm * total_ksm
+                reward_base = base_reward_per_ksm * sum_ksm
                 total_rewards['base'] += reward_base
 
                 # early bonus
@@ -270,10 +283,10 @@ def calculate_all_rewards():
 
                 # loyalty reward
                 if a in previous_contributions_max.keys():
-                    print(f'{a} has previously contributed {previous_contributions_max[a]} \t this time: {total_ksm}')
-                    reward_loyalty = min(total_ksm, previous_contributions_max[a]) * loyalty_reward_factor * base_reward_per_ksm
+                    #print(f'{a} has previously contributed {previous_contributions_max[a]} \t this time: {sum_ksm}')
+                    reward_loyalty = min(sum_ksm, previous_contributions_max[a]) * loyalty_reward_factor * base_reward_per_ksm
                     count_loyal_accounts += 1
-                    total_loyalty_base += min(total_ksm, previous_contributions_max[a])
+                    total_loyalty_ksm += min(sum_ksm, previous_contributions_max[a])
                 else:
                     reward_loyalty = 0
                 total_rewards['loyalty'] += reward_loyalty
@@ -285,22 +298,24 @@ def calculate_all_rewards():
                 # non-winning campaign
                 writer.writerow([a, reward_guaranteed, 0, 0, 0, 0, reward_guaranteed])
 
-    print(f"total rewards: {total_rewards}")
-    print(f'number of loyal accounts {count_loyal_accounts}/{len(contributors)}. Repeating contribution total: {total_loyalty_base}')
 
+    print(f'considered {count_contributions} contributions, amounting {total_base_ksm} KSM')
+    print(f'total waived contributions: {total_waived_ksm} KSM')
+    print(f'number of loyal accounts {count_loyal_accounts}/{len(contributors)}. Repeating contribution total: {total_loyalty_ksm} KSM')
+    print(f"total rewards by type [TEER]: {total_rewards}")
+    print(f"total rewards payout: {sum(total_rewards.values())} TEER")
 
 if __name__ == "__main__":
     global contributors, previous_contributions_max
     # calculate reward for all addresses
     print("read in all contributors ... ")
     contributors = read_contributions_from_file(input_file)
-    print(f"read contributions from {len(contributors.keys())} contributors")
 
     if winning:
         print("read in all referrals ... ")
         read_referrals_from_file()
-        print(f"read {len(referrals)} legit and unique referrals")
 
+        print("gather loyalty behaviour")
         previous_contributions_max = gather_previous_campaign_contributions()
 
     print("calculating rewards ... ")
