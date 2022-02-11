@@ -62,7 +62,6 @@ global contributors, previous_contributions_max
 referrals = {}
 
 
-
 def to_ksm(picoksm: int) -> float:
     return picoksm * pow(10, -12)
 
@@ -286,7 +285,6 @@ def calculate_all_rewards():
                     reward_loyalty = 0
                 total_rewards['loyalty'] += reward_loyalty
 
-
                 total = reward_base + reward_early + reward_referral + reward_loyalty
                 writer.writerow([a, total, reward_base, reward_early, reward_referral, reward_loyalty, 0])
             else:
@@ -298,12 +296,12 @@ def calculate_all_rewards():
                 # non-winning campaign
                 writer.writerow([a, reward_guaranteed, 0, 0, 0, 0, reward_guaranteed])
 
-
     print(f'considered {count_contributions} contributions, amounting {total_base_ksm} KSM')
     print(f'total waived contributions: {total_waived_ksm} KSM')
     print(f'number of loyal accounts {count_loyal_accounts}/{len(contributors)}. Repeating contribution total: {total_loyalty_ksm} KSM')
     print(f"total rewards by type [TEER]: {total_rewards}")
     print(f"total rewards payout: {sum(total_rewards.values())} TEER")
+
 
 if __name__ == "__main__":
     global contributors, previous_contributions_max
