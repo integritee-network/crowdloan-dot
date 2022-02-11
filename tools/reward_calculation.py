@@ -107,11 +107,9 @@ def read_referrals_from_file():
     But that's fine as only contributions after the referral are counted
     """
     global referrals
-
-    unreferrable = set()
-
     with open(referral_file, newline='') as csvfile:
         reader = csv.reader(csvfile)
+        referrers = {}
 
         # first line is column title
         _ = next(reader)
@@ -122,19 +120,16 @@ def read_referrals_from_file():
             blocknumber = int(row[2])
             timestamp = datetime.fromisoformat(row[3]+"+00:00")
 
-            if referred in unreferrable:
-                #print(f"SKIPPING: {referrer} referred {referred} at {blocknumber} but {referred} has referred or been referred already")
-                continue
-            if referred in referrals and referrer in referrals[referred]:
-                #print(f"SKIPPING: {referrer} referred {referred} at {blocknumber} but can't refer your referrer")
-                continue
-
-            if referrer not in referrals.keys():
-                referrals[referrer] = {referred: blocknumber}
+            if referred not in referrals.keys():
+                referrals[referred] = [(referrer, blocknumber)]
             else:
-                referrals[referrer][referred] = blocknumber
-            unreferrable.add(referred)
-            unreferrable.add(referrer)
+                referrals[referred].append((referrer, blocknumber))
+
+            if referrer not in referrers.keys():
+                referrers[referrer] = 1
+            else:
+                referrers[referrer] += 1
+    print(f'read {sum(referrers.values())} referrals. No. referrers {len(referrers)}.  No. referred accounts: {len(referrals)}')
 
 
 def get_total_cointime(address: str = None) -> int:
@@ -179,31 +174,28 @@ def get_early_contributions(address: str) -> int:
 
 def calculate_referral_ksm() -> {str: float}:
     global contributors, referrals, referral_reward_factor
-    referral_rewards = {}
-
-    # invert referral lookup
-    referreds = {}
-
-    for referrer, rfrls  in referrals.items():
-        for referred, blocknumber in rfrls.items():
-            referreds[referred] = (referrer, blocknumber)
+    referred_ksm = {}
+    referrer_ksm = {}
 
     for a in contributors.keys():
-        if a in referreds.keys():
-            (referrer, blocknumber) = referreds[a]
+        if a in referrals.keys():
             referred = a
             for c in contributors[a]:
-                if c.blocknumber < blocknumber:
-                    #print(f"SKIP referral to {referred} at {blocknumber} happened after contributuion at {c.blocknumber}")
-                    continue
-                if not referrer in referral_rewards:
-                    referral_rewards[referrer] = 0.0
-                referral_rewards[referrer] += c.amount
-                if not referred in referral_rewards:
-                    referral_rewards[referred] = 0.0
-                referral_rewards[referred] += c.amount
-    print(f"read {len(referrals)} legit and unique referrals")
-    return referral_rewards
+                for (referrer, blocknumber) in referrals[a]:
+                    if c.blocknumber == blocknumber:
+                        if not referrer in referrer_ksm:
+                            referrer_ksm[referrer] = 0.0
+                        referrer_ksm[referrer] += c.amount
+                        if not referred in referred_ksm:
+                            referred_ksm[referred] = 0.0
+                        referred_ksm[referred] += c.amount
+
+    print(f"checked {len(referrals)} referred accounts using a referral code, total contributions {sum(referred_ksm.values())} KSM")
+    top_referrer = max(referrer_ksm, key= lambda x: referrer_ksm[x])
+    top_referred = max(referred_ksm, key= lambda x: referred_ksm[x])
+    print(f"top referrer {top_referrer} with {referrer_ksm[top_referrer]} KSM")
+    print(f"top referred {top_referred} with {referred_ksm[top_referred]} KSM")
+    return {k: referrer_ksm.get(k, 0) + referred_ksm.get(k, 0) for k in set(referred_ksm) | set(referrer_ksm)}
 
 
 def gather_previous_campaign_contributions() -> {str: float}:
@@ -236,7 +228,7 @@ def calculate_all_rewards():
         'guaranteed': 0.0
     }
 
-    referral_rewards = calculate_referral_ksm()
+    referral_ksm = calculate_referral_ksm()
 
     count_contributions = 0
     count_loyal_accounts = 0
@@ -269,8 +261,8 @@ def calculate_all_rewards():
                 total_rewards['early'] += reward_early
 
                 # referral bonus
-                if a in referral_rewards.keys():
-                    reward_referral = base_reward_per_ksm * referral_reward_factor * referral_rewards[a]
+                if a in referral_ksm.keys():
+                    reward_referral = base_reward_per_ksm * referral_reward_factor * referral_ksm[a]
                     total_rewards['referral'] += reward_referral
                 else:
                     reward_referral = 0
