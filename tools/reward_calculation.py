@@ -261,11 +261,6 @@ def calculate_all_rewards():
             total_base_ksm += sum_ksm
             #print(f'{a} has contributed {sum_ksm} in total')
 
-            # guaranteed reward
-            reward_guaranteed = pot_guaranteed_rewards * get_total_cointime(a) / overall_total_cointime
-            reward_guaranteed = max(existential_deposit, reward_guaranteed)
-            total_rewards['guaranteed'] += reward_guaranteed
-
             if winning:
                 reward_base = base_reward_per_ksm * sum_ksm
                 total_rewards['base'] += reward_base
@@ -292,9 +287,14 @@ def calculate_all_rewards():
                 total_rewards['loyalty'] += reward_loyalty
 
 
-                total = reward_base + reward_early + reward_referral + reward_loyalty + reward_guaranteed
-                writer.writerow([a, total, reward_base, reward_early, reward_referral, reward_loyalty, reward_guaranteed])
+                total = reward_base + reward_early + reward_referral + reward_loyalty
+                writer.writerow([a, total, reward_base, reward_early, reward_referral, reward_loyalty, 0])
             else:
+                # guaranteed reward
+                reward_guaranteed = pot_guaranteed_rewards * get_total_cointime(a) / overall_total_cointime
+                reward_guaranteed = max(existential_deposit, reward_guaranteed)
+                total_rewards['guaranteed'] += reward_guaranteed
+
                 # non-winning campaign
                 writer.writerow([a, reward_guaranteed, 0, 0, 0, 0, reward_guaranteed])
 
