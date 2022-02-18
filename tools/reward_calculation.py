@@ -117,8 +117,9 @@ def read_referrals_from_file():
         for row in reader:
             referrer = row[0]
             referred = row[1]
+            if referrer == referred:
+                continue
             blocknumber = int(row[2])
-            timestamp = datetime.fromisoformat(row[3]+"+00:00")
 
             if referred not in referrals.keys():
                 referrals[referred] = [(referrer, blocknumber)]
