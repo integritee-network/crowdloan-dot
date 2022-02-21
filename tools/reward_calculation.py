@@ -130,7 +130,7 @@ def read_referrals_from_file():
                 referrers[referrer] = 1
             else:
                 referrers[referrer] += 1
-    print(f'read {sum(referrers.values())} referrals. No. referrers {len(referrers)}.  No. referred accounts: {len(referrals)}')
+    print(f'read {sum(referrers.values())} unverified referrals. No. referrers {len(referrers)}.  No. referred accounts: {len(referrals)}')
 
 
 def get_total_cointime(address: str = None) -> int:
@@ -181,21 +181,25 @@ def calculate_referral_ksm() -> {str: float}:
     for a in contributors.keys():
         if a in referrals.keys():
             referred = a
-            for c in contributors[a]:
-                for (referrer, blocknumber) in referrals[a]:
-                    if c.blocknumber == blocknumber:
-                        if not referrer in referrer_ksm:
-                            referrer_ksm[referrer] = 0.0
-                        referrer_ksm[referrer] += c.amount
-                        if not referred in referred_ksm:
-                            referred_ksm[referred] = 0.0
-                        referred_ksm[referred] += c.amount
+            for c in contributors[referred]:
+                for (referrer, blocknumber) in referrals[referred]:
+                    if referrer in contributors.keys():
+                        if c.blocknumber == blocknumber:
+                            if not referrer in referrer_ksm:
+                                referrer_ksm[referrer] = 0.0
+                            referrer_ksm[referrer] += c.amount
+                            if not referred in referred_ksm:
+                                referred_ksm[referred] = 0.0
+                            referred_ksm[referred] += c.amount
+                    else:
+                        print(f"ignoring {referred} was referred by {referrer} which hasn't contributed this time")
+
 
     print(f"checked {len(referrals)} referred accounts using a referral code, total contributions {sum(referred_ksm.values())} KSM")
     top_referrer = max(referrer_ksm, key= lambda x: referrer_ksm[x])
     top_referred = max(referred_ksm, key= lambda x: referred_ksm[x])
-    print(f"top referrer {top_referrer} with {referrer_ksm[top_referrer]} KSM")
-    print(f"top referred {top_referred} with {referred_ksm[top_referred]} KSM")
+    print(f"referrer accounts: {len(referrer_ksm.keys())}. top referrer {top_referrer} with {referrer_ksm[top_referrer]} KSM")
+    print(f"referred accounts: {len(referred_ksm.keys())}. top referred {top_referred} with {referred_ksm[top_referred]} KSM")
     return {k: referrer_ksm.get(k, 0) + referred_ksm.get(k, 0) for k in set(referred_ksm) | set(referrer_ksm)}
 
 
