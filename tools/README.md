@@ -11,6 +11,20 @@ Integritee has been running the following fund id's: 24, 38
 ./fetch-contributions.py <fund index> <subscan api key>
 ```
 
+## Winning Crowdloan Rewards
+
+For our winning Kusama crowdloan with fund id 59, you can reproduce allocations with:
+
+```
+./reward_calculation.py 59
+```
+
+For privacy reasons, we do not disclose the referral data. So you'll have to supply an empty file with
+
+```
+touch referrals-2015-59-bn.csv
+```
+
 ## Guaranteed Rewards
 
 During the past 2 crowdloan campaigns, we have offered guaranteed rewards to Integritee backers, regardless of whether Integritee won an auction or not. Our backers reached some of the milestones necessary to access guaranteed rewards, which means we will pay out 20,000 TEER for each crowdloan campaign, a total of 40,000 TEER. 
