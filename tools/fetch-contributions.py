@@ -20,7 +20,7 @@ with open(f'contributions-2015-{fund_id}.csv', 'w', newline='') as csvfile:
     total_contributed = 0
 
     while True:
-        response = requests.post('https://kusama.api.subscan.io/api/scan/parachain/contributes',
+        response = requests.post('https://polkadot.api.subscan.io/api/scan/parachain/contributes',
                                  headers={
                                      'Content-Type': 'application/json',
                                      'X-API-Key': api_key,
@@ -52,7 +52,7 @@ with open(f'contributions-2015-{fund_id}.csv', 'w', newline='') as csvfile:
         page += 1
 
 print(f"total contributed: {total_contributed}")
-response = requests.post('https://kusama.api.subscan.io/api/scan/parachain/funds',
+response = requests.post('https://polkadot.api.subscan.io/api/scan/parachain/funds',
                                  headers={
                                      'Content-Type': 'application/json',
                                      'X-API-Key': api_key,

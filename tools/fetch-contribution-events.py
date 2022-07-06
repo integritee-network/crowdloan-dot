@@ -28,7 +28,7 @@ else:
     raise(BaseException(f'unknown fund-id: {fund_id}'))
 
 # fetch global fund data first
-response = requests.post('https://kusama.api.subscan.io/api/scan/parachain/funds',
+response = requests.post('https://polkadot.api.subscan.io/api/scan/parachain/funds',
                          headers={
                              'Content-Type': 'application/json',
                              'X-API-Key': api_key,
@@ -52,7 +52,7 @@ with open(f'contribution-events-2015-{fund_id}.csv', 'w', newline='') as csvfile
     for block in range(start_block, end_block):
         page = 0
         while True:
-            response = requests.post('https://kusama.api.subscan.io/api/scan/events',
+            response = requests.post('https://polkadot.api.subscan.io/api/scan/events',
                                      headers={
                                          'Content-Type': 'application/json',
                                          'X-API-Key': api_key,

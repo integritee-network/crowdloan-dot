@@ -23,8 +23,8 @@ export default function SupporterReward (props) {
                                         <p>
                                             In addition, we are now offering further guaranteed bonus rewards for Integritee contributors,
                                             regardless of the outcome of the slot auctions. They will be distributed to crowdloan contributors relative
-                                            to their opportunity cost in terms of the amount of KSM they contribute,
-                                            and the length of time this KSM is locked in. The locked-in time starts to be measured from the
+                                            to their opportunity cost in terms of the amount of DOT they contribute,
+                                            and the length of time this DOT is locked in. The locked-in time starts to be measured from the
                                             block that includes the contribution and finishes with the last block of the crowdloan campaign.
                                         </p>
                                         <span style={{ color: '#000065' }} >Here’s how it works:</span>
@@ -40,11 +40,11 @@ export default function SupporterReward (props) {
                                     <Grid.Column id="mobilesupport" className="visibledesktopScenario1" style={{ bottom: '-12.188rem', position: 'absolute' }}>
 
                                         <div className="">
-                                            <span style={{ color: '#000065' }} > Scenario 1: &lt; 10,000 KSM bonded</span>
+                                            <span style={{ color: '#000065' }} > Scenario 1: &lt; 100,000 DOT bonded</span>
                                             <span style={{ color: '#70e6da', fontSize: '15px' }} >10,000 TEER distributed to all contributors</span>
 
                                             If Integritee doesn’t win an auction and the crowdloan ends with
-                                            less than 10,000 KSM bonded, 10,000 TEER will be distributed to
+                                            less than 100,000 DOT bonded, 10,000 TEER will be distributed to
                                             all contributors.
 
                                         </div>
@@ -61,11 +61,11 @@ export default function SupporterReward (props) {
                                         <Grid.Column id="mobilesupport" className="visibledesktopScenario2" style={{ bottom: '2rem', position: 'absolute' }}>
 
                                             <div className="">
-                                                <span style={{ color: '#000065' }} >Scenario 2: ≥ 10,000 KSM bonded</span>
+                                                <span style={{ color: '#000065' }} >Scenario 2: ≥ 100,000 DOT bonded</span>
                                                 <span style={{ color: '#70e6da', fontSize: '15px' }} >20,000 TEER distributed to all contributors</span>
 
                                                 If Integritee doesn’t win an auction and the crowdloan ends
-                                                with 10,000 KSM bonded or more, 20,000 TEER will be
+                                                with 100,000 DOT bonded or more, 20,000 TEER will be
                                                 distributed to contributors.
 
                                             </div>

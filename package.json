@@ -90,9 +90,9 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://crowdloan.integritee.network",
+  "homepage": "https://dot.crowdloan.integritee.network",
   "bugs": {
-    "url": "https://github.com/integritee-network/crowdloan/issues"
+    "url": "https://github.com/integritee-network/crowdloan-dot/issues"
   },
   "keywords": [
     "substrate",

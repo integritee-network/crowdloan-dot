@@ -15,7 +15,7 @@ export default function Main (props) {
 
     formatBalance.setDefaults({
       decimals: 12,
-      unit: 'KSM'
+      unit: 'DOT'
     });
 
     api.query.system.account

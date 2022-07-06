@@ -11,16 +11,16 @@ export default function How (props) {
                         <Grid.Row columns={2}>
                         <Grid.Column>
                             <span>HOW PARACHAIN AUCTIONS WORK</span>
-                            <h2>The Integritee Kusama <br />Crowdloan Explained</h2>
+                            <h2>The Integritee Polkadot <br />Crowdloan Explained</h2>
                             <p>
-                            One of the biggest advantages of Kusama is that it enables many
+                            One of the biggest advantages of Polkadot is that it enables many
                             decentralized networks to achieve strength in numbers by pooling
                             security resources. Integritee plans to use the shared security and
-                            public auditability of Kusama to power our privacy-preserving data
+                            public auditability of Polkadot to power our privacy-preserving data
                             services.
                             </p>
                             <div className="childnew">
-                                <a href="https://kusama.network/parachains/#contribute">
+                                <a href="https://polkadot.network/parachains/#contribute">
 
                                 How to contribute
 
@@ -28,11 +28,10 @@ export default function How (props) {
                             </div>
 
                             <p>
-                            Kusama parachains are leased in slots (lasting 6 weeks each up to a
-                            maximum of 48 weeks) to the projects which provide the largest
-                            bond in the form of locked-in KSM. Backers can support their favourite projects by locking in KSM for the duration of the lease period.
+                            Polkadot parachains are leased in slots to the projects which provide the largest
+                            bond in the form of locked-in DOT. Backers can support their favourite projects by locking in DOT for the duration of the lease period.
                             The reason it is called a “crowdloan” is that backers retain full access
-                            to their KSM once the lease period ends.
+                            to their DOT once the lease period ends.
                             </p>
                             <div className="childnew">
                                 <a href="https://wiki.polkadot.network/docs/learn-crowdloans">
@@ -43,8 +42,8 @@ export default function How (props) {
                             </div>
 
                             <p>
-                            Integritee will begin bidding to secure its first Kusama parachain during the second batch of slot auctions.
-                            We will be rewarding KSM holders who support Integritee bids with TEER.
+                            Integritee will begin bidding to secure its first Polkadot parachain.
+                            We will be rewarding DOT holders who support Integritee bids with TEER.
                             </p>
                             <div className="childnew">
                                 <a href="https://wiki.polkadot.network/docs/learn-auction">

@@ -31,26 +31,26 @@ During the past 2 crowdloan campaigns, we have offered guaranteed rewards to Int
 
 Below, we would like to further clarify how these rewards will be allocated.
 
-In addition to encouraging participation, these rewards incentivized backers to support Integritee and back us early — the more KSM you have bonded and the earlier you bonded it, the more TEER you will be entitled to receive. We believe that this is the fairest way to compensate backers for the opportunity cost of staking their tokens. Thus, the guaranteed rewards you receive are based on two factors:
+In addition to encouraging participation, these rewards incentivized backers to support Integritee and back us early — the more DOT you have bonded and the earlier you bonded it, the more TEER you will be entitled to receive. We believe that this is the fairest way to compensate backers for the opportunity cost of staking their tokens. Thus, the guaranteed rewards you receive are based on two factors:
 
-* The amount of KSM you contribute.
-* The length of time your KSM is staked, measured in blocks.
+* The amount of DOT you contribute.
+* The length of time your DOT is staked, measured in blocks.
 
 ![Example](./guaranteed-rewards-plot.png)
 
-To understand how this works in practice, consider the simple example illustrated above. For simplicity, let’s assume that there are just two backers, Alice and Bob. Alice makes two contributions of 3,500 KSM at Block 100 and Block 150 respectively, whereas Bob contributes 13,000 KSM closer to the finish, at Block 180. The crowdloan ends at Block 200 with 20,000 KSM staked in total. Thus, 20,000 TEER in Guaranteed Rewards will be distributed to Alice and Bob. 
+To understand how this works in practice, consider the simple example illustrated above. For simplicity, let’s assume that there are just two backers, Alice and Bob. Alice makes two contributions of 3,500 DOT at Block 100 and Block 150 respectively, whereas Bob contributes 13,000 DOT closer to the finish, at Block 180. The crowdloan ends at Block 200 with 20,000 DOT staked in total. Thus, 20,000 TEER in Guaranteed Rewards will be distributed to Alice and Bob. 
 
-For each contribution by each backer, the total number of staked KSM blocks is calculated as follows:
+For each contribution by each backer, the total number of staked DOT blocks is calculated as follows:
 
 ![ksmblocks](./guaranteed-rewards-formula-ksmblocks.png)
 
-Thus, Alice’s KSM blocks for her two contributions will be:
-(3,500 KSM x 100 blocks) + (3,500 KSM x 50 blocks) = 525,000 KSM blocks
+Thus, Alice’s DOT blocks for her two contributions will be:
+(3,500 DOT x 100 blocks) + (3,500 DOT x 50 blocks) = 525,000 DOT blocks
 
-Whereas Bob’s KSM blocks for his contribution will be calculated like this:
-13,000 KSM x 20 blocks = 260,000 KSM blocks
+Whereas Bob’s DOT blocks for his contribution will be calculated like this:
+13,000 DOT x 20 blocks = 260,000 DOT blocks
 
-Finally, once we know the KSM blocks for each backer, their Guaranteed Reward is calculated using this formula:
+Finally, once we know the DOT blocks for each backer, their Guaranteed Reward is calculated using this formula:
 
 ![ksmblocks](./guaranteed-rewards-formula-teerrewards.png)
 
@@ -60,7 +60,7 @@ Thus, Alice’s total reward can be calculated as follows:
 While Bob’s total reward is calculated like this:
 20,000 x (260,000 / 785,000) = 6,624 TEER
 
-Note that although Bob staked 13,000 KSM and Alice only staked 7,000 KSM in total, Alice received a higher TEER reward because she backed Integritee earlier and for longer than Bob. In this way, Alice was compensated for her opportunity cost in supporting the campaign. 
+Note that although Bob staked 13,000 DOT and Alice only staked 7,000 DOT in total, Alice received a higher TEER reward because she backed Integritee earlier and for longer than Bob. In this way, Alice was compensated for her opportunity cost in supporting the campaign. 
 
 ### Compute All Rewards 
 

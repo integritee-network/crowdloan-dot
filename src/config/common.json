@@ -1,6 +1,6 @@
 {
-  "APP_NAME": "integritee crowdloan",
+  "APP_NAME": "integritee polkadot crowdloan",
   "DEVELOPMENT_KEYRING": false,
   "RPC": {},
-  "PARACHAIN_ID": "2015"
+  "PARACHAIN_ID": "2125"
 }

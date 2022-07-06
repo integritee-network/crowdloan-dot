@@ -17,8 +17,8 @@ export default function EarlySporter (props) {
                             It’s easy to follow the crowd, but some can see the future before everyone else.
                             </p>
                             <p>
-                                That’s why we are rewarding the early pioneers. Back us in the first 72h before Fri Jan 7th 2022 8:00 GMT and receive a 20% Early Supporter Bonus.
-                                This will be added to your standard Supporter Reward, which is proportional to your KSM contribution. The more you bond before the
+                                That’s why we are rewarding the early pioneers. Back us in the first 72h before Fr. July 8th 2022 8:00 GMT and receive a 20% Early Supporter Bonus.
+                                This will be added to your standard Supporter Reward, which is proportional to your DOT contribution. The more you bond before the
                                 deadline, the more TEER tokens you will be eligible to receive.
                             </p>
 

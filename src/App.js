@@ -29,7 +29,7 @@ function Main () {
 
   formatBalance.setDefaults({
     decimals: 12,
-    unit: 'KSM'
+    unit: 'DOT'
   });
 
   const contextRef = createRef();
@@ -49,13 +49,13 @@ function Main () {
         pauseOnHover={false}
       />
       <UpperMenu setAccountAddress={setAccountAddress} />
+      {apiState !== 'READY' || !crowdLoanRunning ? <></> : <Participate />}
       <Why />
       <Rewards />
       <EarlySporter />
       <Support />
       <LoyalityRewards />
       <Referral />
-      {apiState !== 'READY' || !crowdLoanRunning ? <></> : <Participate />}
       <Value />
       <How />
       <Roadmap />

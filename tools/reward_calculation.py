@@ -24,7 +24,7 @@ elif fund_id == '56':
 elif fund_id == '59':
     blocknumber_crowdloan_end = 11_391_600
     pot_guaranteed_rewards = 20_000  # TEER
-    base_reward_per_ksm = 40  # TEER
+    base_reward_per_ksm = 2.5  # TEER
     early_reward_factor = 0.2
     early_reward_endtime = datetime.fromisoformat("2022-01-07 08:00+00:00")  # GMT
     referral_reward_factor = 0.05
@@ -34,7 +34,7 @@ elif fund_id == '59':
 elif fund_id == '0':
     blocknumber_crowdloan_end = 200
     pot_guaranteed_rewards = 20_000  # TEER
-    base_reward_per_ksm = 40  # TEER
+    base_reward_per_ksm = 2.5  # TEER
     early_reward_factor = 0.2
     early_reward_endtime = datetime.fromisoformat("2022-01-07 08:00+00:00")  # GMT
     referral_reward_factor = 0.05

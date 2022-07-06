@@ -24,7 +24,7 @@ with open(f'{input_file}.csv', 'r') as infile:
             block_hash = row[2]
             print(f'block hash {block_hash}')
 
-            response = requests.post('https://kusama.api.subscan.io/api/scan/block',
+            response = requests.post('https://polkadot.api.subscan.io/api/scan/block',
                                  headers={
                                      'Content-Type': 'application/json',
                                      'X-API-Key': api_key,

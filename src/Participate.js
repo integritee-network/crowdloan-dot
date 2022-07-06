@@ -52,7 +52,7 @@ export default function Participate (props) {
 
   const [accountAddress, setAccountAddress] = useState(null);
   const [accountBalance, setAccountBalance] = useState(0);
-  const [estimatedFee, setEstimatedFee] = useState('42.3329 µKSM');
+  const [estimatedFee, setEstimatedFee] = useState('42.3329 µDOT');
   const minimumParticipation = 100000000000; // 0.1
   const divide = 1000000000000;
 
@@ -302,7 +302,7 @@ export default function Participate (props) {
                         <a href='https://guide.kusama.network/docs/maintain-guides-how-to-unbond/'>
                           unbonded
                         </a>{' '}
-                        KSM in your Polkadot.js account.
+                        DOT in your Polkadot.js account.
                       </li>
                     </ol>
 
@@ -316,7 +316,7 @@ export default function Participate (props) {
 
                     <div className='form mb-5'>
                       <div className='boxes'>
-                        <label>KSM to Lock Up:</label>
+                        <label>DOT to Lock Up:</label>
                         <Input
                           text='tel'
                           type='number'
@@ -324,7 +324,7 @@ export default function Participate (props) {
                           step='0.1'
                           value={amount}
                           state='amount'
-                          placeholder='Enter KSM Amount'
+                          placeholder='Enter DOT Amount'
                           onChange={onChange}
                           pattern='^([1-9](?:\.[1-9])?|0?\.[1-9])$'
                         />
@@ -442,8 +442,8 @@ export default function Participate (props) {
                   {/* <div>
                 <h2>Through an Exchange</h2>
                 <p>
-                  If you hold KSM on a crypto exchange, it may provide
-                  functionality to participate in Kusama crowdloans from your
+                  If you hold DOT on a crypto exchange, it may provide
+                  functionality to participate in Polkadot crowdloans from your
                   user account.{" "}
                 </p>
                 <div className="click">
@@ -486,7 +486,7 @@ export default function Participate (props) {
                       </li>
                       <br/>
                       <li>
-                      Choose the Kusama Network
+                      Choose the Polkadot Network
                       </li>
                       <br/>
                       <li>
@@ -511,13 +511,13 @@ export default function Participate (props) {
                       <li>
                       Download the Polkadot browser extension&nbsp;
                       <a href='https://polkadot.js.org/extension/'>here</a>&nbsp;
-                        and ensure that you have enough unbonded KSM in your account.
+                        and ensure that you have enough unbonded DOT in your account.
 
                       </li>
                       <br/>
                       <li>
-                      Find Integritee on the list of KSM projects&nbsp;
-                      <a href='https://ksm.newland.finance/'>here</a>.&nbsp;
+                      Find Integritee on the list of DOT projects&nbsp;
+                      <a href='https://dot.newland.finance/'>here</a>.&nbsp;
                        The system will automatically connect to your Polkadot wallet.
 
                       </li>
@@ -541,7 +541,7 @@ export default function Participate (props) {
                       <li>
                       Create a&nbsp;
                       <a href='https://www.gate.io/login'>Gate.io</a>&nbsp;
-                      account and ensure that you have enough unbonded KSM in your account.
+                      account and ensure that you have enough unbonded DOT in your account.
                       </li>
                       <br/>
                       <li>
@@ -551,7 +551,7 @@ export default function Participate (props) {
                       </li>
                       <br/>
                       <li>
-                      Enter the amount of KSM you want to contribute and click “Subscribe”.
+                      Enter the amount of DOT you want to contribute and click “Subscribe”.
                       </li>
                       <br/>
                     </ol>

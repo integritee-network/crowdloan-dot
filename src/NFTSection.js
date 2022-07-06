@@ -29,8 +29,8 @@ export default function NFTsection (props) {
 
                             <p>
                             All our early supporters are entitled to an exclusive Integritee non-fungible token (NFT).
-                            Getting in on the action is easy — simply contribute atleast 0.1 KSM to our
-                            Kusama crowdloan campaign and help spread the word on social media to claim your
+                            Getting in on the action is easy — simply contribute atleast 0.1 DOT to our
+                            Polkadot crowdloan campaign and help spread the word on social media to claim your
                             Integritee Early Supporter NFT. This will entitle you to benefit from future
                             programs and special bonuses, so don’t miss your chance.
                             </p>
@@ -41,7 +41,7 @@ export default function NFTsection (props) {
                             cess sensitive data confidentially. It achieves this by combining the
                             trust of Polkadot/Kusama blockchain with the speed and confidentiality
                             of trusted execution environment (TEE) hardware. Integritee is taking
-                            part in the Kusama auctions to secure a parachain, which will be used to
+                            part in the Polkadot auctions to secure a parachain, which will be used to
                             verify TEE hardware in a way that can be audited by anyone.
                             This will provide all users with assurance that their data is only being
                             processed in pre-agreed ways in an isolated and trustworthy hardware environment.
@@ -63,7 +63,7 @@ export default function NFTsection (props) {
                                         <img src={number1} alt='icon' width={25} />
                                         </td>
                                         <td style={{ width: '90%' }}>
-                                       <p style={{ fontWeight: '600' }}>Contribute 0.1 KSM or more to the Integritee Crowdloan Campaign. &nbsp;
+                                       <p style={{ fontWeight: '600' }}>Contribute 0.1 DOT or more to the Integritee Crowdloan Campaign. &nbsp;
                                        {/* <a href='#participate' style={{color:'#70e6da', textDecoration:'underline', fontWeight:'600'}}>
                                            Simply follow the instructions here.
                                        </a> */}
@@ -123,7 +123,7 @@ export default function NFTsection (props) {
                                         <img alt="icon" src={number4} width={25} />
                                         </td>
                                         <td style={{ width: '90%' }}>
-                                        <p style={{ fontWeight: '600' }}>Enter your KSM address and social media handles into the&nbsp;
+                                        <p style={{ fontWeight: '600' }}>Enter your DOT address and social media handles into the&nbsp;
                                             <a href='https://docs.google.com/forms/d/e/1FAIpQLScevKkV4kEG6e1SjSAqkWdanzOJuSvsYzEPCQ3JRWWRC5UNAQ/viewform'
                                             style={{ color: '#70e6da', textDecoration: 'underline', fontWeight: '600' }}
                                             >Google Form.</a>

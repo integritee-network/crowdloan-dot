@@ -23,7 +23,7 @@ export default function Referral (props) {
 
                             </p>
                             <p>
-                            How it works: Make a contribution of at least 0.1 KSM to our crowdloan and generate a referral code. Spread the word about the Integritee crowdloan to your personal network.
+                            How it works: Make a contribution of at least 0.1 DOT to our crowdloan and generate a referral code. Spread the word about the Integritee crowdloan to your personal network.
                             When somebody backs us using your referral code, they will receive a 5% bonus on
                             their Supporter Reward.
                             As a thank you for making the referral, you will also receive the same amount.
@@ -49,7 +49,7 @@ export default function Referral (props) {
                             <br/>
                             <p>
                             Let’s look at an example of
-                            someone you refer who contributes KSM to the crowdloan - let’s call them John Doe.
+                            someone you refer who contributes DOT to the crowdloan - let’s call them John Doe.
                             </p>
                             <br></br>
                             <ul className="process">
@@ -73,7 +73,7 @@ export default function Referral (props) {
                                         John Doe
                                     </div>
                                     <div className="text-holder">
-                                    John Doe contributes 250 KSM to the crowdloan.
+                                    John Doe contributes 100 DOT to the crowdloan.
                                     </div>
                                 </li>
                                 <li>
@@ -96,7 +96,7 @@ export default function Referral (props) {
                                     </div>
                                     <div className="text-holder">
                                         John Doe will then receive
-                                        10,000 TEER.
+                                        250 TEER.
                                     </div>
                                 </li>
                                 <li>
@@ -117,7 +117,7 @@ export default function Referral (props) {
                                     <div className="text-holder">
                                         For using your referral link, both John Doe
                                         and you each get a 5% bonus from this
-                                        amount, which is 5% of 10,000 TEER = 500
+                                        amount, which is 5% of 250 TEER = 12.5
                                         TEER each.
                                     </div>
                                 </li>

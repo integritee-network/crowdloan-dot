@@ -109,7 +109,7 @@ function TxButton ({
          {contributionError ? `Transaction failed: ${contributionError}` : ''}
          <br/>
          😉 {status.type}. Block hash: {_blockhash} <Button icon='copy' onClick={() => { navigator.clipboard.writeText(_blockhash); }}/> <br/>
-                You can get more details on your transaction: <a href={`https://kusama.subscan.io/extrinsic/${txxHash}`}>{txxHash}</a> <Button icon='copy' onClick={() => { navigator.clipboard.writeText(txxHash); }}/>
+                You can get more details on your transaction: <a href={`https://polkadot.subscan.io/extrinsic/${txxHash}`}>{txxHash}</a> <Button icon='copy' onClick={() => { navigator.clipboard.writeText(txxHash); }}/>
        </p>
     );
   };

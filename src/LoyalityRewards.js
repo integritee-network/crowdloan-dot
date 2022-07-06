@@ -14,7 +14,7 @@ export default function LoyalityRewards (props) {
                             <h2 style={{ fontSize: '38px' }}>Support Integritee Again & Receive a 10% Bonus Reward</h2>
                             <p>
                                 We are proud of the tremendous support we have received from
-                                backers globally in the previous batches of Kusama auctions.
+                                backers globally in the previous batches of Polkadot auctions.
                             </p>
 
                             <p>

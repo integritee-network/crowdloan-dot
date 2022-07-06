@@ -13,15 +13,16 @@ export default function Rewards () {
                             <span>HOW WE ALLOCATE TEER</span>
                             <h2>Supporter Rewards</h2>
                             <p>
-                              Integritee tokens will be distributed to KSM holders who support us in the Kusama parachain auctions.
-                              The quantity of TEER you receive as a supporter is proportional to the amount of KSM you lock until
-                              late January 2023. Each KSM will be rewarded with 40 TEER tokens. No more than 20,000 KSM can be contributed.
+                              Integritee tokens will be distributed to DOT holders who support us in the Polkadot parachain auctions.
+                              The quantity of TEER you receive as a supporter is proportional to the amount of DOT you lock until
+                              July 2024. Each DOT will be rewarded with 2.5 TEER tokens. No more than 20,000 DOT can be contributed.
                             </p>
                             <div className="main">
                             <div className="text">
                             <strong>TEER is listed now:</strong>
                             <p>
-                              As our Token is <a href="https://www.gate.io/trade/TEER_USDT"> traded on an exchange </a>
+                              As our Token is
+                              traded on several exchanges
                               you can now calculate the value of TEER rewards.
                             </p>
                             <strong>Decentralization:</strong>
@@ -33,9 +34,9 @@ export default function Rewards () {
                             <div className="text">
                             <strong>As a supporter you receive:</strong>
                             <div className="cal-box other">
-                                1 KSM locked = 40 TEER + bonuses
+                                1 DOT locked = 2.5 TEER + bonuses
                             </div>
-                            <p>subject to linear vesting over 48 weeks</p>
+                            <p>subject to linear vesting over 24 months</p>
                             </div>
                             </div>
                         </Grid.Column>

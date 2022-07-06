@@ -39,7 +39,7 @@ export default function Participate () {
                         <li>Q3 <br /> Released Token Paper.</li>
                         <li>Q4 <br />Launch main-net and TEER token.</li>
                         <li>List TEER on a major exchange.</li>
-                        <li>Secure Kusama slot(s).</li>
+                        <li>Secure Polkadot slot.</li>
 
                     </ul>
                     <span>2021</span>
@@ -49,7 +49,7 @@ export default function Participate () {
                         <li>Deploy first enterprise PoCs.</li>
                         <li>Decentralize and establish the Governance Council.</li>
                         <li>Implement fee burning and lockdrop mechanisms.</li>
-                        <li>Secure Polkadot slot(s) &amp; establish a multi-environment TEER token.</li>
+                        <li>Secure Polkadot slot &amp; establish a multi-environment TEER token.</li>
                         <li>Release Kusama-Polkadot bridge &amp; sidechains with smart contracts</li>
                         <li>Partner with international institutions/universities and issue Treasury grants to expand the Integritee ecosystem.</li>
                         <li className="active">Establish Integritee as the leading Polkadot privacy solution.</li>

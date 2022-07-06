@@ -6,7 +6,7 @@ import { useGlobalState, setCrowdLoanRunning } from './state';
 import { BN, bnToBn } from '@polkadot/util/bn/index.js';
 import config from './config';
 
-function toUnit (balance, decimals, unit = 'KSM') {
+function toUnit (balance, decimals, unit = 'DOT') {
   balance = bnToBn(balance).toString();
   const base = new BN(10).pow(new BN(decimals));
   const dm = new BN(balance).divmod(base); // decimals, don't use them atm
@@ -25,7 +25,7 @@ export default function Main (props) {
     setCrowdLoan(crowdLoan = (toHumanData));
     if (toHumanData != null) {
       // FIXME: Deactivate if crowdloan finished. had to hard-disable after winning
-      // setCrowdLoanRunning(true);
+      setCrowdLoanRunning(true);
     }
     console.log('**set-----------------------');
     setLoading(false);
@@ -58,17 +58,16 @@ export default function Main (props) {
           <span>WHY OUR PARACHAIN?</span>
           <h1>Support Integritee’s Parachain Bids</h1>
           <p>
-            Integritee enables developers and firms to process sensitive data,
-            without compromising on privacy. Our platform combines the trust of
-            blockchain with the confidentiality of off-chain, trusted execution
-            environments (TEEs). This enables developers and firms to create
-            decentralized data-driven apps and services that can securely
-            process sensitive data, without revealing it on chain.
+            Integritee enables developers and firms to process sensitive data, without
+            compromising on privacy. Our platform combines the trust of blockchain with
+            the confidentiality of off -chain, Trusted Execution Environments (TEEs).
+            We enable decentralized data-driven apps and services to can securely process
+            sensitive data, without revealing it on chain.
           </p>
           <p>
             The Integritee ecosystem, across all instances on Kusama, Polkadot
             and elsewhere, will be powered by our native token, TEER. Backers
-            who support our parachain bids by temporarily locking in KSM will be
+            who support our parachain bids by temporarily locking in DOT will be
             rewarded in TEER.
           </p>
           <p>
@@ -92,7 +91,7 @@ export default function Main (props) {
         {crowdLoan && (
         <ul className="counter">
           <li>
-            <span>KSM CONTRIBUTED</span>
+            <span>DOT CONTRIBUTED</span>
             {toUnit(crowdLoan.raised, 12)}<br/>
             {loading && (
               <Dimmer active>
