@@ -13,7 +13,7 @@ import {
 import icon0 from './Images/i0.svg';
 import icon4 from './Images/polkadot.png';
 import icon5 from './Images/fearless-wallet.png';
-import icon6 from './Images/Newland.png';
+// import icon6 from './Images/Newland.png';
 import icon7 from './Images/gate.png';
 import Slider from 'react-slick';
 import { TxButton } from './substrate-lib/components';
@@ -256,7 +256,7 @@ export default function Participate (props) {
                     <div>
                     <br/>
                     <br/>
-                    <div className='main'>
+                    {/* <div className='main'>
                       <div>
                         <span>THROUGH NEWLAND FINANCE</span>
                         <div className='image-holder'>
@@ -264,11 +264,11 @@ export default function Participate (props) {
                         </div>
                       </div>
 
-                    </div>
-                    </div>
+                    </div> */}
+                    {/* </div>
                     <div>
                     <br/>
-                    <br/>
+                    <br/> */}
 
                     <div className='main'>
                       <div>
@@ -503,7 +503,7 @@ export default function Participate (props) {
                     Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
                     </p>
                   </div>
-                  <div>
+                  {/* <div>
                   <h2>Through Newland Finance</h2>
                   <br/>
                   <br/>
@@ -532,7 +532,7 @@ export default function Participate (props) {
                     <p>
                     Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
                     </p>
-                  </div>
+                  </div> */}
                   <div>
                   <h2>Through Gate.io</h2>
                   <br/>
