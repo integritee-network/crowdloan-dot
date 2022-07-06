@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.96b402d5.chunk.css",
+    "main.js": "/static/js/main.50a62137.chunk.js",
+    "main.js.map": "/static/js/main.50a62137.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c241433b.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c241433b.js.map",
+    "static/css/2.d354baf8.chunk.css": "/static/css/2.d354baf8.chunk.css",
+    "static/js/2.80191ffb.chunk.js": "/static/js/2.80191ffb.chunk.js",
+    "static/js/2.80191ffb.chunk.js.map": "/static/js/2.80191ffb.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.d354baf8.chunk.css.map": "/static/css/2.d354baf8.chunk.css.map",
+    "static/css/main.96b402d5.chunk.css.map": "/static/css/main.96b402d5.chunk.css.map",
+    "static/js/2.80191ffb.chunk.js.LICENSE.txt": "/static/js/2.80191ffb.chunk.js.LICENSE.txt",
+    "static/media/1.32f02937.png": "/static/media/1.32f02937.png",
+    "static/media/3.291eb814.png": "/static/media/3.291eb814.png",
+    "static/media/4.2ae3f1c6.png": "/static/media/4.2ae3f1c6.png",
+    "static/media/5.27e2ca8b.png": "/static/media/5.27e2ca8b.png",
+    "static/media/6.71150633.png": "/static/media/6.71150633.png",
+    "static/media/App.css": "/static/media/up.fdc74fb4.svg",
+    "static/media/GothamRounded-Bold.a829ff15.otf": "/static/media/GothamRounded-Bold.a829ff15.otf",
+    "static/media/GothamRounded-Medium.10d88929.otf": "/static/media/GothamRounded-Medium.10d88929.otf",
+    "static/media/Guaranteed4_rotated.c0a952f8.png": "/static/media/Guaranteed4_rotated.c0a952f8.png",
+    "static/media/IntegriteeLogoAndSlogan.ac09f3d1.svg": "/static/media/IntegriteeLogoAndSlogan.ac09f3d1.svg",
+    "static/media/Loyalty Rewards.e8689851.png": "/static/media/Loyalty Rewards.e8689851.png",
+    "static/media/Medium-Logo.a2a2458b.png": "/static/media/Medium-Logo.a2a2458b.png",
+    "static/media/semantic.min.css": "/static/media/outline-icons.ddae9b1b.woff",
+    "static/media/graph2.cddf97ae.png": "/static/media/graph2.cddf97ae.png",
+    "static/media/i0.106e6919.svg": "/static/media/i0.106e6919.svg",
+    "static/media/other-image.0d7a6b5b.png": "/static/media/other-image.0d7a6b5b.png",
+    "static/media/polkadot.9550784c.png": "/static/media/polkadot.9550784c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c241433b.js",
+    "static/css/2.d354baf8.chunk.css",
+    "static/js/2.80191ffb.chunk.js",
+    "static/css/main.96b402d5.chunk.css",
+    "static/js/main.50a62137.chunk.js"
+  ]
+}
