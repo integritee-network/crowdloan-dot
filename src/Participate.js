@@ -635,10 +635,10 @@ export default function Participate (props) {
                       <br/>
                       <li>
                       Go to Crowdloans
+                      </li>
                       <br/>
                       <li>
                       Choose the Polkadot Network  and click on Integritee Network (TEER)
-                      </li>
                       </li>
                       <br/>
                       <li>
