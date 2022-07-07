@@ -14,14 +14,13 @@ export default function LoyalityRewards (props) {
                             <h2 style={{ fontSize: '38px' }}>Support Integritee Again & Receive a 10% Bonus Reward</h2>
                             <p>
                                 We are proud of the tremendous support we have received from
-                                backers globally in the previous batches of Polkadot auctions.
+                                backers globally in the previous batches of KUsama auctions.
                             </p>
 
                             <p>
-                                As a mark of our appreciation for your continued support, anyone
-                                who backed us in our previous crowdloan campaigns will receive a 10%
-                                bonus on their Supporter Reward for any new contribution up to the
-                                maximum amount they contributed previously.
+                                We are proud of the tremendous support we have received from backers globally in the previous 
+                                batches of Kusama auctions. As a mark of our appreciation for your continued support, anyone who
+                                backed us in our winning Kusama auction will receive a 10% bonus on their Supporter Reward for any new contribution.
                             </p>
 
                         </Grid.Column>
