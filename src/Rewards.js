@@ -15,7 +15,7 @@ export default function Rewards () {
                             <p>
                               Integritee tokens will be distributed to DOT holders who support us in the Polkadot parachain auctions.
                               The quantity of TEER you receive as a supporter is proportional to the amount of DOT you lock until
-                              July 2024. Each DOT will be rewarded with 2.5 TEER tokens. No more than 20,000 DOT can be contributed.
+                              July 2024. Each DOT will be rewarded with 2.5 TEER tokens. No more than 200,000 DOT can be contributed.
                             </p>
                             <div className="main">
                             <div className="text">

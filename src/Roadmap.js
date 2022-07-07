@@ -39,7 +39,7 @@ export default function Participate () {
                         <li>Q3 <br /> Released Token Paper.</li>
                         <li>Q4 <br />Launch main-net and TEER token.</li>
                         <li>List TEER on a major exchange.</li>
-                        <li>Secure Polkadot slot.</li>
+                        <li>Secure Kusama slot.</li>
 
                     </ul>
                     <span>2021</span>

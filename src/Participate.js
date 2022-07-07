@@ -15,6 +15,8 @@ import icon4 from './Images/polkadot.png';
 import icon5 from './Images/fearless-wallet.png';
 // import icon6 from './Images/Newland.png';
 import icon7 from './Images/gate.png';
+import icon8 from './Images/kraken.png';
+import icon9 from './Images/nova-wallet-logo.png';
 import Slider from 'react-slick';
 import { TxButton } from './substrate-lib/components';
 import { useSubstrate } from './substrate-lib';
@@ -213,7 +215,7 @@ export default function Participate (props) {
                   className='left-slider'
                   asNavFor={nav1}
                   ref={(slider) => (slider2 = slider)}
-                  slidesToShow={5}
+                  slidesToShow={6}
                   vertical='true'
                   swipeToSlide={true}
                   focusOnSelect={true}
@@ -243,6 +245,7 @@ export default function Participate (props) {
                   <div>
 
                   <br/>
+                  <br/>
                     <div className='main'>
                       <div>
                         <span>USING FEARLESS WALLET</span>
@@ -252,23 +255,10 @@ export default function Participate (props) {
                       </div>
 
                     </div>
-                    </div>
-                    <div>
+                  </div>
+                  {/* <div>
                     <br/>
                     <br/>
-                    {/* <div className='main'>
-                      <div>
-                        <span>THROUGH NEWLAND FINANCE</span>
-                        <div className='image-holder'>
-                          <img src={icon6} alt='icon' />
-                        </div>
-                      </div>
-
-                    </div> */}
-                    {/* </div>
-                    <div>
-                    <br/>
-                    <br/> */}
 
                     <div className='main'>
                       <div>
@@ -277,8 +267,38 @@ export default function Participate (props) {
                           <img src={icon7} alt='icon' />
                         </div>
                       </div>
-
                     </div>
+
+                  </div> */}
+                  <div>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <div className='main'>
+                      <div>
+                        <span>THROUGH KRAKEN</span>
+                        <div className='image-holder'>
+                          <img src={icon8} alt='icon' style={{ width: 60 }} />
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <div className='main'>
+                      <div>
+                        <span>THROUGH NOVA WALLET</span>
+                        <div className='image-holder'>
+                          <img src={icon9} alt='icon' style={{ width: 60 }} />
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
 
                 </Slider>
@@ -533,7 +553,7 @@ export default function Participate (props) {
                     Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
                     </p>
                   </div> */}
-                  <div>
+                  {/* <div>
                   <h2>Through Gate.io</h2>
                   <br/>
                   <br/>
@@ -559,7 +579,79 @@ export default function Participate (props) {
                     <p>
                     Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
                     </p>
+                  </div> */}
+
+                  <div>
+                  <h2>Through Kraken</h2>
+                  <br/>
+                  <br/>
+                    <ol>
+                      <li>
+                      Create or log in to your <a href="https://www.kraken.com/sign-up">Kraken</a> account
+                      account and ensure that you have enough unbonded DOT in your account.
+                      </li>
+                      <br/>
+                      <li>
+                      Deposit or buy Polkadot (DOT)
+                      </li>
+                      <br/>
+                      <li>
+                      Navigate to 'Earn', and then click on 'Parachains'
+                      </li>
+                      <br/>
+                      <li>
+                      Choose 'Integritee'
+                      </li>
+                      <br/>
+                      <li>
+                      Enter the amount of DOT you wish to contribute
+                      </li>
+                      <br/>
+                      <li>
+                      Select 'contribute' and confirm
+                      </li>
+                      <br/>
+                    </ol>
+                    <br/>
+                    <p>
+                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    </p>
                   </div>
+
+                  <div>
+                  <h2>Using Nova Wallet</h2>
+                  <br/>
+                  <br/>
+                    <ol>
+                      <li>
+                      Download the App on the&nbsp;
+                      <a href='https://apps.apple.com/app/nova-polkadot-kusama-wallet/id1597119355'>App Store</a> or on&nbsp;
+                      <a href='https://play.google.com/store/apps/details?id=io.novafoundation.nova.market'>Google Play</a>
+                      </li>
+                      <br/>
+                      <li>
+                      Import or create and fund an account
+                      </li>
+                      <br/>
+                      <li>
+                      Go to Crowdloans
+                      <br/>
+                      <li>
+                      Choose the Polkadot Network  and click on Integritee Network (TEER)
+                      </li>
+                      </li>
+                      <br/>
+                      <li>
+                      Contribute to the crowdloan
+                      </li>
+                      <br/>
+                    </ol>
+                    <br/>
+                    <p>
+                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    </p>
+                  </div>
+
                 </Slider>
               </Grid.Column>
             </Grid.Row>

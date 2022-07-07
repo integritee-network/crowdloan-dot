@@ -3,6 +3,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { SubstrateContextProvider, useSubstrate } from './substrate-lib';
 import UpperMenu from './UpperMenu';
 import Why from './Why';
+import Contribution from './Contribution';
 import Faq from './Faq';
 import './css/App.css';
 import How from './How';
@@ -11,7 +12,7 @@ import Value from './Value';
 import Rewards from './Rewards';
 import EarlySporter from './EarlySupporter';
 import Roadmap from './Roadmap';
-import Clients from './clients';
+// import Clients from './clients';
 import Referral from './Referral';
 import Support from './SupporterReward';
 import Footer from './Footer';
@@ -49,7 +50,9 @@ function Main () {
         pauseOnHover={false}
       />
       <UpperMenu setAccountAddress={setAccountAddress} />
+      <Contribution />
       {apiState !== 'READY' || !crowdLoanRunning ? <></> : <Participate />}
+      <How />
       <Why />
       <Rewards />
       <EarlySporter />
@@ -57,10 +60,9 @@ function Main () {
       <LoyalityRewards />
       <Referral />
       <Value />
-      <How />
       <Roadmap />
       <Faq />
-      <Clients />
+      {/* <Clients /> */}
       <Footer />
     </div>
   );

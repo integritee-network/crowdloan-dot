@@ -10,11 +10,11 @@ export default function Main (props) {
                       as well as a market value, which will increase with adoption. Each supporter will be allocated TEER according to the following
                       formula: Your DOT contribution * 2.5 TEER = Your minimum reward. Additionally you can get more, if you meet the conditions of the
                       other rewards.
-                      All Tokens will be vested linearly during the 48-week lease period, starting from Feb 20th 2022</p></div>);
+                      All Tokens will be vested linearly during the 24 months lease period starting from Aug 27<sup>th</sup> 2022</p></div>);
       case 3: return (<div className="text"><h3>How long will the tokens be locked?</h3>
                 <p>Bonded DOT tokens will be locked for a total of 48 weeks, the duration of the lease if Integritee wins a slot.
                   If Integritee does not win one of the auctions during the crowdloan campaign, the DOT will be released
-                  by the end of the crowdloan campaign, estimated to occur on Feb 13th 2022. </p></div>);
+                  by the end of the crowdloan campaign, estimated to occur on Aug 27<sup>th</sup> 2022. </p></div>);
       case 4: return (<div className="text"><h3>How will my DOT be returned to me?</h3>
                     <p>All DOT tokens are automatically released to their owners at the end of the lease period. They never leave your custody. This process works directly between contributors and the Polkadot Network.</p></div>);
       case 5: return (<div className="text"><h3>What is unbonding?</h3>
@@ -62,8 +62,8 @@ export default function Main (props) {
                 <button className={`${faqContent === 7 ? 'active' : ''}`} onClick={() => setFaqContent(7)}>WHAT HAPPENS IF INTEGRITEE DOES NOT WIN THE PARACHAIN AUCTION?</button>
                 <button className={`${faqContent === 8 ? 'active' : ''}`} onClick={() => setFaqContent(8)}>HOW CAN I GET A REFERRAL CODE IF I HAVE ALREADY CONTRIBUTED?</button>
                 <button className={`${faqContent === 9 ? 'active' : ''}`} onClick={() => setFaqContent(9)}>WHAT HAPPENS TO REFERRAL BONUSES IF INTEGRITEE DOES NOT WIN A SLOT DURING THIS CAMPAIGN?</button>
-                <button className={`${faqContent === 10 ? 'active' : ''}`} onClick={() => setFaqContent(10)}>I BACKED INTEGRITEE DURING THE SECOND BATCH OF POLKADOT AUCTIONS AND GENERATED A REFERRAL LINK. CAN I USE MY OWN REFERRAL LINK TO CONTRIBUTE NOW?</button>
-                <button className={`${faqContent === 11 ? 'active' : ''}`} onClick={() => setFaqContent(11)}>WHAT HAPPENS IF SOMEONE USES MY REFERRAL CODE FROM THE SECOND BATCH OF POLKADOT AUCTIONS TO CONTRIBUTE NOW? </button>
+                <button className={`${faqContent === 10 ? 'active' : ''}`} onClick={() => setFaqContent(10)}>I BACKED INTEGRITEE DURING EARLIER CROWDLOAN CAMPAIGNS AND GENERATED A REFERRAL LINK. CAN I USE MY OWN REFERRAL LINK TO CONTRIBUTE NOW?</button>
+                <button className={`${faqContent === 11 ? 'active' : ''}`} onClick={() => setFaqContent(11)}>WHAT HAPPENS IF SOMEONE USES MY REFERRAL CODE FROM PREVIOUS CROWDLOAN CAMPAIGNS TO CONTRIBUTE NOW?</button>
 
             </Grid.Column>
                     <Grid.Column width={10} className="right-section">

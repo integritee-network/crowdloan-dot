@@ -911,6 +911,77 @@ div[disabled]
   line-height: 1.6;
   margin-bottom: 20px;
 }
+
+
+.contribution {
+  font-family: 'Gotham Rounded', sans-serif;
+  background: #000065 !important;
+  font-size: 16px;
+  font-weight: 300;
+  color: #fff;    
+  padding: 1px 0; 
+  background-size: 1130px !important;
+  background-position: 120% -120px !important;
+  position: relative;
+}
+.contribution .ui.checkbox label {
+  color: #fff !important;
+}
+.contribution .ui.checkbox .box:before, 
+.contribution .ui.checkbox label:before {
+  background: #19197c !important;
+  border-color: #35918d !important;
+}
+.contribution .ui.checkbox .box:after, 
+.contribution .ui.checkbox label:after {
+  color: #6de0d7 !important;
+  font-size: 12px;
+  line-height: 16px;
+}
+.contribution span {
+  font-family: "Gotham Rounded", sans-serif;
+  color: #70e6da ;
+  font-size: 13px;
+  font-weight: 600 !important;
+  margin: 0 0 10px;
+  display: block;
+  
+  
+}
+
+.contribution .counter {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 120px auto 50px;
+  max-width: 600px;
+}
+
+.contribution .counter ul {
+  list-style-type:none;
+}
+.contribution .counter li {
+  flex: 1;
+  font-size: 44px;
+  line-height: 1.2;
+  position: relative;
+}
+.contribution .counter li + li:before {
+  content: "AAA";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: #70e6da;
+}
+
+.contribution ::marker {
+  font-size: 0;
+}
+
+
 .outline-btn {
   border: 2px solid #537ba1;
   border-radius: 10px;
