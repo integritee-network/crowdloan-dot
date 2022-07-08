@@ -29,7 +29,7 @@ function Main () {
   const [crowdLoanRunning] = useGlobalState('crowdLoanRunning');
 
   formatBalance.setDefaults({
-    decimals: 12,
+    decimals: 10,
     unit: 'DOT'
   });
 

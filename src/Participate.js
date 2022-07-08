@@ -14,7 +14,7 @@ import icon0 from './Images/i0.svg';
 import icon4 from './Images/polkadot.png';
 import icon5 from './Images/fearless-wallet.png';
 // import icon6 from './Images/Newland.png';
-import icon7 from './Images/gate.png';
+// import icon7 from './Images/gate.png';
 import icon8 from './Images/kraken.png';
 import icon9 from './Images/nova-wallet-logo.png';
 import Slider from 'react-slick';
@@ -215,7 +215,7 @@ export default function Participate (props) {
                   className='left-slider'
                   asNavFor={nav1}
                   ref={(slider) => (slider2 = slider)}
-                  slidesToShow={6}
+                  slidesToShow={5}
                   vertical='true'
                   swipeToSlide={true}
                   focusOnSelect={true}
@@ -270,7 +270,7 @@ export default function Participate (props) {
                     </div>
 
                   </div> */}
-                  <div>
+                  {/* <div>
                     <br/>
                     <br/>
                     <br/>
@@ -284,7 +284,7 @@ export default function Participate (props) {
                       </div>
                     </div>
 
-                  </div>
+                  </div> */}
                   <div>
                     <br/>
                     <br/>
@@ -581,7 +581,7 @@ export default function Participate (props) {
                     </p>
                   </div> */}
 
-                  <div>
+                  {/* <div>
                   <h2>Through Kraken</h2>
                   <br/>
                   <br/>
@@ -616,7 +616,7 @@ export default function Participate (props) {
                     <p>
                     Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
                     </p>
-                  </div>
+                  </div> */}
 
                   <div>
                   <h2>Using Nova Wallet</h2>
