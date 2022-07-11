@@ -29,7 +29,7 @@ export default function NFTsection (props) {
 
                             <p>
                             All our early supporters are entitled to an exclusive Integritee non-fungible token (NFT).
-                            Getting in on the action is easy — simply contribute atleast 0.1 DOT to our
+                            Getting in on the action is easy — simply contribute atleast 5 DOT to our
                             Polkadot crowdloan campaign and help spread the word on social media to claim your
                             Integritee Early Supporter NFT. This will entitle you to benefit from future
                             programs and special bonuses, so don’t miss your chance.
@@ -63,7 +63,7 @@ export default function NFTsection (props) {
                                         <img src={number1} alt='icon' width={25} />
                                         </td>
                                         <td style={{ width: '90%' }}>
-                                       <p style={{ fontWeight: '600' }}>Contribute 0.1 DOT or more to the Integritee Crowdloan Campaign. &nbsp;
+                                       <p style={{ fontWeight: '600' }}>Contribute 5 DOT or more to the Integritee Crowdloan Campaign. &nbsp;
                                        {/* <a href='#participate' style={{color:'#70e6da', textDecoration:'underline', fontWeight:'600'}}>
                                            Simply follow the instructions here.
                                        </a> */}

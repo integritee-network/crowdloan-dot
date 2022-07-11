@@ -35,7 +35,7 @@ export default function Participate (props) {
   const [status, setStatus] = useState(null);
   const [formState, setFormState] = useState({
     addressTo: null,
-    amount: 0.1
+    amount: 5.0
   });
   const [toggleOne, setToggleOne] = useState(false);
   const [toggleTwo, setToggleTwo] = useState(
@@ -55,8 +55,8 @@ export default function Participate (props) {
   const [accountAddress, setAccountAddress] = useState(null);
   const [accountBalance, setAccountBalance] = useState(0);
   const [estimatedFee, setEstimatedFee] = useState('42.3329 µDOT');
-  const minimumParticipation = 100000000000; // 0.1
-  const divide = 1000000000000;
+  const minimumParticipation = 5000000000000000; // 5 DOT
+  const divide = 10000000000;
 
   useEffect(() => {
     // console.log('1****************');
@@ -122,7 +122,7 @@ export default function Participate (props) {
     setFormState((prev) => ({ ...prev, [data.state]: data.value }));
     // let estimate = 0;
     if (!crowdLoanEnded) {
-      if (data.value >= 0.1) {
+      if (data.value >= 5) {
         try {
           const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, Math.pow(10, 12), null);
           const info = await txExcecuteDummy.paymentInfo(accountAddress);
@@ -340,7 +340,7 @@ export default function Participate (props) {
                         <Input
                           text='tel'
                           type='number'
-                          min={0.1}
+                          min={5}
                           step='0.1'
                           value={amount}
                           state='amount'

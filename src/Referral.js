@@ -23,7 +23,7 @@ export default function Referral (props) {
 
                             </p>
                             <p>
-                            How it works: Make a contribution of at least 0.1 DOT to our crowdloan and generate a referral code. Spread the word about the Integritee crowdloan to your personal network.
+                            How it works: Make a contribution of at least 5 DOT to our crowdloan and generate a referral code. Spread the word about the Integritee crowdloan to your personal network.
                             When somebody backs us using your referral code, they will receive a 5% bonus on
                             their Supporter Reward.
                             As a thank you for making the referral, you will also receive the same amount.

@@ -107,7 +107,7 @@ export default function Main (props) {
             value={amount}
             state='amount'
             step='0.1'
-            min={0.1}
+            min={5.0}
             onChange={onChange}
           />
         </Form.Field>
