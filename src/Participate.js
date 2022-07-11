@@ -54,8 +54,8 @@ export default function Participate (props) {
 
   const [accountAddress, setAccountAddress] = useState(null);
   const [accountBalance, setAccountBalance] = useState(0);
-  const [estimatedFee, setEstimatedFee] = useState('42.3329 µDOT');
-  const minimumParticipation = 5000000000000000; // 5 DOT
+  const [estimatedFee, setEstimatedFee] = useState('0.0126 DOT');
+  const minimumParticipation = 50000000000; // 5 DOT
   const divide = 10000000000;
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function Participate (props) {
   // const { apiState, keyring, keyringState, apiError } = useSubstrate();
 
   try {
-    keyring.setSS58Format(2);
+    keyring.setSS58Format(0); // 0 - Polkadot, 2 - Kusama https://polkadot.js.org/docs/keyring/start/ss58/
   } catch (error) {
     console.log(error);
   }
