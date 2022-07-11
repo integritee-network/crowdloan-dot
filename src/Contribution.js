@@ -58,7 +58,7 @@ export default function Main (props) {
         <ul className="counter">
           <li>
             <span>DOT CONTRIBUTED</span>
-            {toUnit(crowdLoan.raised, 12)}<br/>
+            {toUnit(crowdLoan.raised, 10)}<br/>
             {loading && (
               <Dimmer active>
                 <Loader size='mini' inline='centered'>

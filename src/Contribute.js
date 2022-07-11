@@ -120,7 +120,7 @@ export default function Main (props) {
             attrs={{
               palletRpc: 'crowdloan',
               callable: 'contribute',
-              inputParams: [paraId, amount * Math.pow(10, 12), null],
+              inputParams: [paraId, amount * Math.pow(10, 10), null],
               paramFields: [true, true, false],
               disableButton: disableButton
             }}

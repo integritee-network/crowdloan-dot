@@ -124,7 +124,7 @@ export default function Participate (props) {
     if (!crowdLoanEnded) {
       if (data.value >= 5) {
         try {
-          const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, Math.pow(10, 12), null);
+          const txExcecuteDummy = api.tx.crowdloan.contribute(paraId, Math.pow(10, 10), null);
           const info = await txExcecuteDummy.paymentInfo(accountAddress);
           setEstimatedFee(() => info.partialFee.toHuman());
         } catch (error) {
@@ -448,7 +448,7 @@ export default function Participate (props) {
                           callable: 'contribute',
                           inputParams: [
                             paraId,
-                            amount * Math.pow(10, 12),
+                            amount * Math.pow(10, 10),
                             null
                           ],
                           paramFields: [true, true, false],

@@ -51,7 +51,7 @@
 //               if (!contributorsProperty.has(i.who)) {
 //                 contributorsProperty.set(
 //                   i.who,
-//                   i.contributed * Math.pow(10, -12)
+//                   i.contributed * Math.pow(10, -10)
 //                 );
 //               }
 //             });

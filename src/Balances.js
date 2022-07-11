@@ -14,7 +14,7 @@ export default function Main (props) {
     let unsubscribeAll = null;
 
     formatBalance.setDefaults({
-      decimals: 12,
+      decimals: 10,
       unit: 'DOT'
     });
 
