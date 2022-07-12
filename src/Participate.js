@@ -15,8 +15,9 @@ import icon4 from './Images/polkadot.png';
 import icon5 from './Images/fearless-wallet.png';
 // import icon6 from './Images/Newland.png';
 // import icon7 from './Images/gate.png';
-import icon8 from './Images/kraken.png';
+// import icon8 from './Images/kraken.png';
 import icon9 from './Images/nova-wallet-logo.png';
+import icon10 from './Images/bifrost.png';
 import Slider from 'react-slick';
 import { TxButton } from './substrate-lib/components';
 import { useSubstrate } from './substrate-lib';
@@ -295,6 +296,22 @@ export default function Participate (props) {
                         <span>THROUGH NOVA WALLET</span>
                         <div className='image-holder'>
                           <img src={icon9} alt='icon' style={{ width: 60 }} />
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <div className='main'>
+                      <div>
+                        <span>Bifrost SALP Contribution</span>
+                        <div className='image-holder'>
+                          <img src={icon10} alt='icon' style={{ width: 140 }} />
                         </div>
                       </div>
                     </div>
@@ -652,6 +669,38 @@ export default function Participate (props) {
                     </p>
                   </div>
 
+                  <div>
+                  <h2>Bifrost SALP Contribution</h2>
+                  <br/>
+                  <br/>
+                    <ol>
+                      <li>
+                      Go to <a href='https://bifrost.app/vcrowdloan'>https://bifrost.app/vcrowdloan</a>
+                      </li>
+                      <br/>
+                      <li>
+                      Connect your polkadot.js Wallet
+                      </li>
+                      <br/>
+                      <li>
+                      Select Integritee Shell for contribution
+                      </li>
+                      <br/>
+                      <li>
+                      Enter Amount and click add
+                      </li>
+                      <br/>
+                    </ol>
+                    <br/>
+                    <p>
+                    * contribution rewards mentioned on the Bifrost App are valid for Bifrost users <br/>
+                    For more information what SALP is, <a href='https://medium.com/bifrost-finance/bifrost-salp-release-crowdloan-liquidity-for-participants-c7566fe6cf83' style={{ color: '#fff', 'font-weight': 'bold', 'text-decoration': 'underline' }} target='_blank' rel='noreferrer'>check this article</a>
+                    </p>
+                    <p>
+                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    </p>
+
+                  </div>
                 </Slider>
               </Grid.Column>
             </Grid.Row>
