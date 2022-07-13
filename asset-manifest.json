@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.785f7aaf.chunk.css",
-    "main.js": "/static/js/main.a446549a.chunk.js",
-    "main.js.map": "/static/js/main.a446549a.chunk.js.map",
+    "main.js": "/static/js/main.d6a8e2b2.chunk.js",
+    "main.js.map": "/static/js/main.d6a8e2b2.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.c241433b.js",
     "runtime-main.js.map": "/static/js/runtime-main.c241433b.js.map",
     "static/css/2.d354baf8.chunk.css": "/static/css/2.d354baf8.chunk.css",
@@ -22,7 +22,6 @@
     "static/media/semantic.min.css": "/static/media/outline-icons.ddae9b1b.woff",
     "static/media/graph2.cddf97ae.png": "/static/media/graph2.cddf97ae.png",
     "static/media/i0.106e6919.svg": "/static/media/i0.106e6919.svg",
-    "static/media/nova-wallet-logo.eca2837f.png": "/static/media/nova-wallet-logo.eca2837f.png",
     "static/media/other-image.0d7a6b5b.png": "/static/media/other-image.0d7a6b5b.png",
     "static/media/polkadot.9550784c.png": "/static/media/polkadot.9550784c.png"
   },
@@ -31,6 +30,6 @@
     "static/css/2.d354baf8.chunk.css",
     "static/js/2.61a6781c.chunk.js",
     "static/css/main.785f7aaf.chunk.css",
-    "static/js/main.a446549a.chunk.js"
+    "static/js/main.d6a8e2b2.chunk.js"
   ]
 }
