@@ -280,13 +280,14 @@ export default function Participate (props) {
                       <div>
                         <span>THROUGH KRAKEN</span>
                         <div className='image-holder'>
-                          <img src={icon8} alt='icon' style={{ width: 60 }} />
+                          <img src={icon8} alt='icon' />
                         </div>
                       </div>
                     </div>
 
                   </div> */}
                   <div>
+                  <br/>
                     <br/>
                     <br/>
                     <br/>
@@ -295,7 +296,7 @@ export default function Participate (props) {
                       <div>
                         <span>THROUGH NOVA WALLET</span>
                         <div className='image-holder'>
-                          <img src={icon9} alt='icon' style={{ width: 60 }} />
+                          <img src={icon9} alt='icon' />
                         </div>
                       </div>
                     </div>
@@ -306,12 +307,13 @@ export default function Participate (props) {
                     <br/>
                     <br/>
                     <br/>
+                    <br/>
 
                     <div className='main'>
                       <div>
                         <span>Bifrost SALP Contribution</span>
                         <div className='image-holder'>
-                          <img src={icon10} alt='icon' style={{ width: 140 }} />
+                          <img src={icon10} alt='icon' />
                         </div>
                       </div>
                     </div>
