@@ -25,7 +25,7 @@ export default function Main (props) {
     setCrowdLoan(crowdLoan = (toHumanData));
     if (toHumanData != null) {
       // FIXME: Deactivate if crowdloan finished. had to hard-disable after winning
-      setCrowdLoanRunning(true);
+      setCrowdLoanRunning(config.CROWDLOAN_RUNNING);
     }
     console.log('**set-----------------------');
     setLoading(false);
