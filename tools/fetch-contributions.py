@@ -13,7 +13,7 @@ if len(sys.argv) < 3:
 fund_id = sys.argv[1]
 api_key = sys.argv[2]
 
-with open(f'contributions-2015-{fund_id}.csv', 'w', newline='') as csvfile:
+with open(f'contributions-2039-{fund_id}.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile, delimiter=',')
 
     page = 0
@@ -30,7 +30,7 @@ with open(f'contributions-2015-{fund_id}.csv', 'w', newline='') as csvfile:
                                      'row': 100,
                                      'page': page,
                                      'from_history': True,
-                                     'fund_id': f'2015-{fund_id}'
+                                     'fund_id': f'2039-{fund_id}'
                                  }
                                  )
         contributions = response.json()['data']['contributes']
@@ -61,7 +61,7 @@ response = requests.post('https://polkadot.api.subscan.io/api/scan/parachain/fun
                                  json={
                                      'row': 100,
                                      'page': 0,
-                                     'fund_id': f'2015-{fund_id}'
+                                     'fund_id': f'2039-{fund_id}'
                                  }
 )
 

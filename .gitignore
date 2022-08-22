@@ -14,3 +14,4 @@ build
 .history/*
 .history
 tools/lottery-filtered-contributions*
+tools/referrals-2039-40-bn.csv

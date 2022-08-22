@@ -34,6 +34,7 @@ with open(f'{input_file}.csv', 'r') as infile:
                                      'block_hash': block_hash,
                                  }
                                  )
+            #print(f'response {response}')
             block_num = response.json()['data']['block_num']
             print(f'block hash {block_hash} is block number {block_num}')
 
