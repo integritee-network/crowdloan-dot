@@ -13,7 +13,7 @@ import Rewards from './Rewards';
 import EarlySporter from './EarlySupporter';
 import Roadmap from './Roadmap';
 // import Clients from './clients';
-import Referral from './Referral';
+// import Referral from './Referral';
 import Support from './SupporterReward';
 import Footer from './Footer';
 import LoyalityRewards from './LoyalityRewards';
@@ -58,7 +58,7 @@ function Main () {
       <EarlySporter />
       <Support />
       <LoyalityRewards />
-      <Referral />
+      {/* <Referral /> */}
       <Value />
       <Roadmap />
       <Faq />

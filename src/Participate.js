@@ -372,7 +372,7 @@ export default function Participate (props) {
                     <br />
                     <br />
                     <form onSubmit={onSubmit}>
-                      <Grid>
+                      {/* <Grid>
                         <Grid.Row columns={2}>
                           <Grid.Column>
                             <Checkbox
@@ -438,7 +438,7 @@ export default function Participate (props) {
                             <br />
                           </Grid.Column>
                         </Grid.Row>
-                      </Grid>
+                      </Grid> */}
                       <Grid.Column>
                         <div>
                           Estimated fees: {estimatedFee} <br /> Please make sure when contributing, that your balance can cover the fees
@@ -506,7 +506,7 @@ export default function Participate (props) {
 
                     <EmbedVideo style={{ width: '100%' }} />
                     <p>
-                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    {/* Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site. */}
                     </p>
                   </div>
                   <div>
@@ -539,7 +539,7 @@ export default function Participate (props) {
                     </ol>
                     <br/>
                     <p>
-                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    {/* Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site. */}
                     </p>
                   </div>
                   {/* <div>
@@ -667,7 +667,7 @@ export default function Participate (props) {
                     </ol>
                     <br/>
                     <p>
-                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    {/* Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site. */}
                     </p>
                   </div>
 
@@ -699,7 +699,7 @@ export default function Participate (props) {
                     For more information what SALP is, <a href='https://medium.com/bifrost-finance/bifrost-salp-release-crowdloan-liquidity-for-participants-c7566fe6cf83' style={{ color: '#fff', 'font-weight': 'bold', 'text-decoration': 'underline' }} target='_blank' rel='noreferrer'>check this article</a>
                     </p>
                     <p>
-                    Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site.
+                    {/* Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site. */}
                     </p>
 
                   </div>

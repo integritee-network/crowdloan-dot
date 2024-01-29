@@ -34,7 +34,7 @@ export default function Footer () {
                     />
                     <Menu.Item name='Supporter Reward' href='#TeerToken' />
 
-                    <Menu.Item name='Referral Program' href='#referral' />
+                    {/* <Menu.Item name='Referral Program' href='#referral' /> */}
 
                     <Menu.Item name='TEER Token' href='#token' />
 

@@ -74,29 +74,29 @@ function TxButton ({
   const txResHandlerSaveTransaction = async (status) => {
     const blockHash = status.asInBlock.toString();
     if (isSigned()) {
-      if (document.getElementById('grc') && document.getElementById('erc')) {
-        saveParticipateInfo(
-          accountAddress,
-          formState,
-          document.getElementById('grc').value,
-          document.getElementById('erc')
-            ? document.getElementById('erc').value
-            : new URL(window.location.href).searchParams.get('ref'),
-          blockHash
-        );
-      } else if (document.getElementById('erc')) {
-        saveParticipateInfo(
-          accountAddress,
-          formState,
-          '',
-          document.getElementById('erc')
-            ? document.getElementById('erc').value
-            : new URL(window.location.href).searchParams.get('ref'),
-          blockHash
-        );
-      } else if (document.getElementById('grc')) {
-        saveParticipateInfo(accountAddress, formState, document.getElementById('grc').value, '', blockHash);
-      }
+      // if (document.getElementById('grc') && document.getElementById('erc')) {
+      //   saveParticipateInfo(
+      //     accountAddress,
+      //     formState,
+      //     document.getElementById('grc').value,
+      //     document.getElementById('erc')
+      //       ? document.getElementById('erc').value
+      //       : new URL(window.location.href).searchParams.get('ref'),
+      //     blockHash
+      //   );
+      // } else if (document.getElementById('erc')) {
+      //   saveParticipateInfo(
+      //     accountAddress,
+      //     formState,
+      //     '',
+      //     document.getElementById('erc')
+      //       ? document.getElementById('erc').value
+      //       : new URL(window.location.href).searchParams.get('ref'),
+      //     blockHash
+      //   );
+      // } else if (document.getElementById('grc')) {
+      //   saveParticipateInfo(accountAddress, formState, document.getElementById('grc').value, '', blockHash);
+      // }
       setLoading(false);
     }
     setStatus(viewTransactionInfo(status));
@@ -181,32 +181,32 @@ function TxButton ({
     setUnsub(() => unsub);
   };
 
-  const saveParticipateInfo = (accountAddress, formState, grc, erc, blockHash) => {
-    const formdata = new FormData();
-    formdata.append('Participant[email]', grc);
-    formdata.append('Participant[referrer_code]', erc);
-    formdata.append('Participant[block_hash]', blockHash);
-    formdata.append('Participant[account_nr]', accountAddress);
-    formdata.append('Participant[amount]', formState.amount);
+  // const saveParticipateInfo = (accountAddress, formState, grc, erc, blockHash) => {
+  //   const formdata = new FormData();
+  //   formdata.append('Participant[email]', grc);
+  //   formdata.append('Participant[referrer_code]', erc);
+  //   formdata.append('Participant[block_hash]', blockHash);
+  //   formdata.append('Participant[account_nr]', accountAddress);
+  //   formdata.append('Participant[amount]', formState.amount);
 
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'x-requested-with': 'XMLHttpRequest'
-      },
-      body: formdata,
-      redirect: 'follow'
-    };
+  //   const requestOptions = {
+  //     method: 'POST',
+  //     headers: {
+  //       'x-requested-with': 'XMLHttpRequest'
+  //     },
+  //     body: formdata,
+  //     redirect: 'follow'
+  //   };
 
-    fetch('https://api.crowdloan.integritee.network/storeuser', requestOptions)
-      .catch((error) => {
-        console.log('error', error);
-        console.log('trying again');
-        setLoading(true);
-        setTimeout(() => { saveParticipateInfo(accountAddress, formState, grc, erc, blockHash); }, 2000);
-      });
-    setLoading(false);
-  };
+  //   fetch('https://api.crowdloan.integritee.network/storeuser', requestOptions)
+  //     .catch((error) => {
+  //       console.log('error', error);
+  //       console.log('trying again');
+  //       setLoading(true);
+  //       setTimeout(() => { saveParticipateInfo(accountAddress, formState, grc, erc, blockHash); }, 2000);
+  //     });
+  //   setLoading(false);
+  // };
 
   const signedTx = async () => {
     if (document.getElementById('grc')) {
