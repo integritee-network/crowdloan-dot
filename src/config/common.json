@@ -3,5 +3,5 @@
   "DEVELOPMENT_KEYRING": false,
   "RPC": {},
   "PARACHAIN_ID": "2039",
-  "CROWDLOAN_RUNNING": false
+  "CROWDLOAN_RUNNING": true
 }
