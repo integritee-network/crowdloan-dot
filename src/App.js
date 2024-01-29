@@ -14,7 +14,7 @@ import EarlySporter from './EarlySupporter';
 import Roadmap from './Roadmap';
 // import Clients from './clients';
 // import Referral from './Referral';
-import Support from './SupporterReward';
+// import Support from './SupporterReward';
 import Footer from './Footer';
 import LoyalityRewards from './LoyalityRewards';
 import { ToastContainer } from 'react-toastify';
@@ -56,7 +56,7 @@ function Main () {
       <Why />
       <Rewards />
       <EarlySporter />
-      <Support />
+      {/* <Support /> */}
       <LoyalityRewards />
       {/* <Referral /> */}
       <Value />
