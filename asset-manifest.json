@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.785f7aaf.chunk.css",
-    "main.js": "/static/js/main.ba149e41.chunk.js",
-    "main.js.map": "/static/js/main.ba149e41.chunk.js.map",
+    "main.js": "/static/js/main.07a2ad3d.chunk.js",
+    "main.js.map": "/static/js/main.07a2ad3d.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.c241433b.js",
     "runtime-main.js.map": "/static/js/runtime-main.c241433b.js.map",
     "static/css/2.d354baf8.chunk.css": "/static/css/2.d354baf8.chunk.css",
@@ -15,7 +15,7 @@
     "static/media/App.css": "/static/media/up.fdc74fb4.svg",
     "static/media/GothamRounded-Bold.a829ff15.otf": "/static/media/GothamRounded-Bold.a829ff15.otf",
     "static/media/GothamRounded-Medium.10d88929.otf": "/static/media/GothamRounded-Medium.10d88929.otf",
-    "static/media/IntegriteeLogoAndSlogan.ac09f3d1.svg": "/static/media/IntegriteeLogoAndSlogan.ac09f3d1.svg",
+    "static/media/IntegriteeLogoAndSlogan.ec73457e.svg": "/static/media/IntegriteeLogoAndSlogan.ec73457e.svg",
     "static/media/Loyalty Rewards.e8689851.png": "/static/media/Loyalty Rewards.e8689851.png",
     "static/media/Medium-Logo.a2a2458b.png": "/static/media/Medium-Logo.a2a2458b.png",
     "static/media/semantic.min.css": "/static/media/outline-icons.ddae9b1b.woff",
@@ -29,6 +29,6 @@
     "static/css/2.d354baf8.chunk.css",
     "static/js/2.d3792217.chunk.js",
     "static/css/main.785f7aaf.chunk.css",
-    "static/js/main.ba149e41.chunk.js"
+    "static/js/main.07a2ad3d.chunk.js"
   ]
 }
