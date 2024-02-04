@@ -913,6 +913,7 @@ div[disabled]
   /* background-color: #9E20FE !important; */
   background: #11111A !important;
   color: #ffffff !important;
+  border-color: #559CFF !important;
 }
 .participate .right-section {
   font-size: 18px;
@@ -1185,7 +1186,7 @@ div[disabled]
 .participate .ui.menu .ui.dropdown .menu>.selected.item,
 .participate .ui.menu .ui.dropdown .menu>.active.item {
   background: #11111A !important;
-  border-top: 1px solid #000065 !important;
+  border-top: 1px solid #559CFF !important;
   border-radius: 0 !important;
 }
 .participate .ui.search.dropdown .icon {
