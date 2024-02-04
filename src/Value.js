@@ -13,7 +13,8 @@ export default function How (props) {
                             <span>TOKENOMICS</span>
                             <h2>The Value of the <br />TEER Token</h2>
                             <p>
-                                  The TEER token will be the fuel that drives the Integritee platform — a common means for platform access across all our Kusama and Polkadot parachains.
+                            The TEER token is the fuel that drives the Integritee platform — a common means for
+platform access across all our Kusama and Polkadot parachains.
                             </p>
                             <p>
                                   Integritee adopters will require TEER to pay for our privacy-preserving data services. Given the growing consumer and regulatory pressure to protect user

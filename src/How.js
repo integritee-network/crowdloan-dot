@@ -1,6 +1,6 @@
 import './css/App.css';
 import { Container, Grid } from 'semantic-ui-react';
-import Otherimage from './Images/other-image.png';
+import Otherimage from './Images/integritee-parachain.png';
 
 export default function How (props) {
   return (
@@ -13,11 +13,8 @@ export default function How (props) {
                             <span>HOW PARACHAIN AUCTIONS WORK</span>
                             <h2>The Integritee Polkadot <br />Crowdloan Explained</h2>
                             <p>
-                            One of the biggest advantages of Polkadot is that it enables many
-                            decentralized networks to achieve strength in numbers by pooling
-                            security resources. Integritee plans to use the shared security and
-                            public auditability of Polkadot to power our privacy-preserving data
-                            services.
+                            One of the biggest advantages of Polkadot is that it enables many decentralized networks to achieve strength in numbers by pooling security resources. Integritee uses the shared security and public auditability of
+Polkadot to power our privacy-preserving data services.
                             </p>
                             <div className="childnew">
                                 <a href="https://polkadot.network/parachains/#contribute">
@@ -25,7 +22,7 @@ export default function How (props) {
                                 How to contribute
 
                                     </a>
-                            </div>
+                            </div><br/>
 
                             <p>
                             Polkadot parachains are leased in slots to the projects which provide the largest
@@ -39,11 +36,10 @@ export default function How (props) {
                                 Learn more about crowdloans
 
                                     </a>
-                            </div>
+                            </div><br/>
 
                             <p>
-                            Integritee will begin bidding to secure its first Polkadot parachain.
-                            We will be rewarding DOT holders who support Integritee bids with TEER.
+                            Integritee wants to renew its Polkadot parachain slot and will be rewarding DOT holders who support Integritee bids with TEER.
                             </p>
                             <div className="childnew">
                                 <a href="https://wiki.polkadot.network/docs/learn-auction">

@@ -60,9 +60,9 @@ function Main (props) {
   };
 
   return (
-    <Menu tabular className='main-menu' id='main-nav'>
+    <Menu tabular className='participate-add-account' id='participate-add-account'>
       <Container>
-        <Menu.Menu position='right' style={{ alignItems: 'center' }}>
+        <Menu.Menu position='right' style={{ alignItems: 'center', gap: '20px' }}>
           {!accountSelected
             ? (
             <span>

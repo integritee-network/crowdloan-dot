@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import logo from './css/IntegriteeLogoAndSlogan.svg';
+import logo from './css/integritee-logo.png';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import elementlogo from './Images/social-blue-logo/Element-logo.png';
-import linkedinlogo from './Images/social-blue-logo/LinkedIn-logo.png';
-import mediumlogo from './Images/social-blue-logo/Medium-Logo.png';
-import subsociallogo from './Images/social-blue-logo/Subsocial-logo.png';
-import telegramlogo from './Images/social-blue-logo/Telegram-logo.png';
-import twitterlogo from './Images/social-blue-logo/Twitter-logo.png';
-import discordlogo from './Images/social-blue-logo/Discord-logo.png';
 import subscanlogo from './Images/social-blue-logo/Subscan-logo.png';
+import mediumlogo from './Images/Medium-Logo.png';
+import subsociallogo from './Images/subsocial-20x20px white.png';
+import elementlogo from './Images/element_20x20px white.png';
+import { AiOutlineTwitter } from 'react-icons/ai';
+import { GrLinkedinOption } from 'react-icons/gr';
+import { FaTelegramPlane } from 'react-icons/fa';
+import discordl from './Images/Discord-20x20px WHITE-01.png';
 
 import { Container, Menu } from 'semantic-ui-react';
 
@@ -93,7 +93,7 @@ function Main (props) {
                   rel='noreferrer'
                   href='https://www.linkedin.com/company/integritee/'
                 >
-                  <img src={linkedinlogo} alt='linkedin logo' width={20} />{' '}
+                 <GrLinkedinOption />
                 </a>{' '}
               </li>
               <li>
@@ -102,7 +102,7 @@ function Main (props) {
                   rel='noreferrer'
                   href='https://t.me/Integritee_Official'
                 >
-                  <img src={telegramlogo} alt='telegram logo' width={20} />{' '}
+                 <FaTelegramPlane/>
                 </a>{' '}
               </li>
               <li>
@@ -111,7 +111,7 @@ function Main (props) {
                   rel='noreferrer'
                   href='https://twitter.com/integri_t_e_e'
                 >
-                  <img src={twitterlogo} alt='twitter logo' width={20} />{' '}
+                 <AiOutlineTwitter />
                 </a>{' '}
               </li>
               <li>
@@ -151,7 +151,7 @@ function Main (props) {
                   rel='noreferrer'
                   href='https://discord.com/invite/anhtxwr4eS'
                 >
-                  <img src={discordlogo} alt='discord logo' width={20} />{' '}
+                  <img src={discordl} alt='discord logo' width={20} />{' '}
                 </a>{' '}
               </li>
               <li>
@@ -164,6 +164,7 @@ function Main (props) {
                   <img src={subscanlogo} alt='subscan logo' width={20} />{' '}
                 </a>{' '}
               </li>
+
 
             </ul>
           </div>

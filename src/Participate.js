@@ -206,7 +206,7 @@ export default function Participate (props) {
         <Container>
           <div className='text'>
             <span>5 WAYS TO TAKE PART</span>
-            <h1>Participate in the Integritee Crowdloan!</h1>
+            <h1><span className='gradient_one'>Participate</span> in the Integritee <span className='gradient_two'>Crowdloan!</span></h1>
           </div>
           <Grid>
             <Grid.Row>
@@ -694,10 +694,7 @@ export default function Participate (props) {
                       <br/>
                     </ol>
                     <br/>
-                    <p>
-                    * contribution rewards mentioned on the Bifrost App are valid for Bifrost users <br/>
-                    For more information what SALP is, <a href='https://medium.com/bifrost-finance/bifrost-salp-release-crowdloan-liquidity-for-participants-c7566fe6cf83' style={{ color: '#fff', 'font-weight': 'bold', 'text-decoration': 'underline' }} target='_blank' rel='noreferrer'>check this article</a>
-                    </p>
+                    
                     <p>
                     {/* Note: The only way to benefit from the Integritee Crowdloan Referral Program is by contributing on this site. */}
                     </p>

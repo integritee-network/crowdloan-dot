@@ -65,24 +65,32 @@ export default function Main (props) {
             sensitive data, without revealing it on chain.
           </p>
           <p>
-            The Integritee ecosystem, across all instances on Kusama, Polkadot
-            and elsewhere, will be powered by our native token, TEER. Backers
-            who support our parachain bids by temporarily locking in DOT will be
-            rewarded in TEER.
+          The Integritee ecosystem, across all instances
+on Kusama, Polkadot and elsewhere, is
+powered by our native token, TEER. Backers
+who support our parachain bids by temporarily
+locking in DOT will be rewarded in TEER.
           </p>
-          <p>
-            We all know the problems with centralized data services. Integritee
-            is the solution. Help us build a new internet where privacy comes as
-            standard and earn TEER in the process.
-          </p>
+      
           {!crowdLoanRunning &&
           <a className="ui primary gradient-btn button" href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
           }
 
           {crowdLoanRunning &&
-          <a className='ui primary gradient-btn button' href='#participate' >
-            Participate Now!
-          </a>
+         <a className='ui primary gradient-btn button' 
+         href='#participate'
+         style={{
+           borderRadius: '12px',
+           background: 'linear-gradient(85deg, #559CFF 0%, #9E20FE 100%)',
+           backdropFilter: 'blur(30px)',
+           display: 'inline-flex',
+           padding: '14px 24px',
+           alignItems: 'flex-start',
+           fontSize: '18px',
+           gap: '10px'
+         }}>
+        Participate Now!
+      </a>
           }
         </div>
 <br></br>

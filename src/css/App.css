@@ -1,25 +1,25 @@
 @font-face {
-  font-family: 'Gotham Rounded';
-  src: url('../Fonts/GothamRounded-Bold.woff2') format('woff2'),
-      url('../Fonts/GothamRounded-Bold.woff') format('woff');
+  font-family: 'WhyteInktrap Medium';
+  src: url('../Fonts/WhyteInktrap-Medium.woff2') format('woff2'),
+      url('../Fonts/WhyteInktrap-Medium.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Gotham Rounded Book';
-  src: url('../Fonts/GothamRounded-Book.woff2') format('woff2'),
-      url('../Fonts/GothamRounded-Book.woff') format('woff');
+  font-family: 'Inter Regular';
+  src: url('../Fonts/Inter-Regular.woff2') format('woff2'),
+      url('../Fonts/Inter-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Gotham Rounded';
-  src: url('../Fonts/GothamRounded-Light.woff2') format('woff2'),
-      url('../Fonts/GothamRounded-Light.woff') format('woff');
+  font-family: 'Inter Medium';
+  src: url('../Fonts/Inter-Medium.woff2') format('woff2'),
+      url('../Fonts/Inter-Medium.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -29,11 +29,56 @@
  @import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
  @import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
 body {
-  font-family: "Gotham Rounded";
+  font-family: "Inter Regular";
+  background: #11111A;
 }
 /* Main Menu */
+
+
+.gradient_one
+{
+  -webkit-text-fill-color: transparent !important; 
+  background: linear-gradient(90deg,#30daff -12.5%,#b000fd 41%) !important;
+    background-clip: border-box !important;
+  -webkit-background-clip: text !important;
+  font-family: "WhyteInktrap Medium", sans-serif !important;
+  font-size: 50px !important;
+  font-weight: 500 !important;
+  color: #fff !important;
+  
+}
+
+.gradient_two
+{
+  -webkit-text-fill-color: transparent !important; 
+  background: linear-gradient(90deg,#b000fd,#30daff) !important;
+  background-clip: border-box !important;
+  -webkit-background-clip: text !important;
+  font-family: "WhyteInktrap Medium", sans-serif !important;
+  font-size: 50px !important;
+  font-weight: 500 !important;
+  color: #fff !important;
+ 
+}
+
+.participate-add-account {
+  font-family: "Inter Regular" !important;
+  padding: 10px !important;
+  margin-top: 30px !important;
+  margin-bottom: 15px !important;
+  border: none !important;
+gap: 10px;
+  border-radius: 10px;
+}
+#participate-add-account {
+  background: rgba(81, 81, 81, 0.2);
+  z-index: 1000;
+  align-items: center;
+  border-radius: 10px !important;
+}
+
 .main-menu {
-  font-family: "Gotham Rounded" !important;
+  font-family: "Inter Regular" !important;
   padding: 18px 0;
   margin: 0 !important;
   border: none !important;
@@ -41,16 +86,22 @@ body {
   top: 0; 
 }
 #main-nav {
-  background-color: #fff;
-  z-index: 1000;
-  align-items: center;
-  border-bottom: 1px solid #000065 !important;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  background: linear-gradient(180deg,#0a0a0f,rgba(10,10,15,0));
+  left: 0;
+  padding: 25px 0;
+  position: fixed;
+  top: 0;
+  transition: .3s ease;
+  width: 100%;
+  z-index: 10;
 }
 .main-menu .item {
-  font-family: "Nunito Sans", sans-serif !important;
-  font-size: 13px;
-  font-weight: 600 !important;
-  color: #000065 !important;
+  font-family: "Inter", sans-serif !important;
+  font-size: 14px;
+  font-weight: 400 !important;
+  color: #ffffff !important;
   
 }
 .ui.menu.main-menu .right.menu {
@@ -70,23 +121,29 @@ body {
   display: block;
 }
 .ui.menu.main-menu .primary.button {
-  background: #70e6da;
-  color: #000065;
-  line-height: 1.3;
+  border-radius: 12px;
+  background: linear-gradient(85deg, #559CFF 0%, #9E20FE 100%);
+  backdrop-filter: blur(30px);
+color: var(--text-icons-text, #FFF);
+font-family: "Inter", sans-serif !important;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 135%; /* 24.3px */
 }
 .why {
-  font-family: 'Gotham Rounded', sans-serif;
-  background: #000065 url(../Images/main-image.png) no-repeat !important;
+  font-family: 'Inter Regular', sans-serif;
+  background: #11111A url(../Images/integritee-polkadot-network.png) no-repeat !important;
   font-size: 16px;
   font-weight: 300;
   color: #fff;    
   padding: 150px 0 100px;
-  background-size: 1130px !important;
-  background-position: 120% -120px !important;
+  
+  background-position: 80% 163px !important;
 }
 .why span {
-  font-family: "Gotham Rounded", sans-serif;
-  color: #70e6da;
+  font-family: "Inter Regular", sans-serif;
+  color: #559CFF;
   font-size: 13px;
   font-weight: 600;
   margin: 0 0 10px;
@@ -94,7 +151,7 @@ body {
   
 }
 .why h1 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 50px;
   font-weight: 500;
   color: #fff;
@@ -150,7 +207,7 @@ body {
   visibility: hidden; */
 }
 .NewsLetter p {
-  font-family: "Gotham Rounded", sans-serif !important;
+  font-family: "Inter Regular", sans-serif !important;
     font-size: 1.7rem;
     font-weight: 600;
     color: #000563;
@@ -158,7 +215,7 @@ body {
     padding-top: 15px;
 }
 .NewsLetter1 p {
-  font-family: "Gotham Rounded", sans-serif !important;
+  font-family: "Inter Regular", sans-serif !important;
     font-size: 1.7rem;
     font-weight: 600 !important;
     color: #000563;
@@ -311,7 +368,7 @@ NewsLetter1 button:focus{
   justify-content: center;
 }
 .why .NewsLetter1 p {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "Inter Regular", sans-serif;
     font-size: 1.7rem;
     font-weight: 500;
     color: #000563;
@@ -378,7 +435,7 @@ NewsLetter1 button:focus{
 .participate .child button:hover,
 .participate .child button:focus {
   background: linear-gradient(90deg, rgb(84 191 188) 0%, rgba(105,217,211,1) 100%) !important;
-  color: #35918d !important;
+  color: #559CFF !important;
 }
 .notify-modal .ui.green.button {
   background: rgb(100,154,177) !important;
@@ -402,19 +459,19 @@ NewsLetter1 button:focus{
   max-width: 220px !important;
 }
 .gradient-btn {
-  background: rgb(100,154,177) !important;
-  background: linear-gradient(90deg, rgb(84 191 188) 0%, rgba(105,217,211,1) 100%) !important;
-  border-radius: 8px !important;
-  padding: 15px 25px;
-  min-width: 160px;
-  display: block;
-  margin-bottom: 20px;
-  text-align: center;
-  background: transparent;
-  font-size: 16px;
-  font-family: "Gotham Rounded", sans-serif;
-  font-weight: 600;
-  color: #000065 !important;
+  border-radius: 12px;
+  background: linear-gradient(85deg, #559CFF 0%, #9E20FE 100%);
+  backdrop-filter: blur(30px);
+  display: flex;
+padding: 14px 24px;
+align-items: flex-start;
+gap: 10px;
+color: var(--text-icons-text, #FFF);
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: 135%; /* 24.3px */
 }
 .why .counter {
   text-align: center;
@@ -442,12 +499,12 @@ div[disabled]
 
 .childnew a {
   text-decoration: underline !important;
-  color: #000065 !important;
+  color: #559CFF !important;
   font-weight: 600 !important;
 }
 .childnew a:hover {
   text-decoration: underline !important;
-  color: #70e6da !important;
+  color: #559CFF !important;
   font-weight: 600 !important;
 }
 
@@ -464,7 +521,7 @@ div[disabled]
   bottom: 0;
   left: 0;
   width: 1px;
-  background: #70e6da;
+  background: #9E20FE;
 }
 .why .graph {
   width: 100%;
@@ -476,7 +533,7 @@ div[disabled]
 }
 .grey-bg {
   background: #eff3f6;
-  font-family: 'Gotham Rounded', sans-serif;
+  font-family: 'Inter Regular', sans-serif;
   font-size: 16px;
   font-weight: 300;
   color: #000065;    
@@ -494,22 +551,22 @@ div[disabled]
 }
 
 .grey-bg span {
-  font-family: "Gotham Rounded", sans-serif;
-  color: #70e6da;
+  font-family: "Inter Regular", sans-serif;
+  color: #9E20FE;
   font-size: 13px;
   font-weight: 600;
   margin: 0 0 10px;
   display: block;
 }
 .grey-bg h2 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 50px;
   font-weight: 500;
   color: #000065;
   margin: 0 0 20px;
 }
 .grey-bg h3 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 22px;
   text-align: center;
   font-weight: 500;
@@ -536,26 +593,26 @@ div[disabled]
   display: block;
 }
 .white-bg {
-  background: #fff;
-  font-family: 'Gotham Rounded', sans-serif;
+  background: #11111A;
+  font-family: 'Inter Regular', sans-serif;
   font-size: 16px;
   font-weight: 300;
-  color: #000065;    
+  color: #ffffff;    
   padding: 100px 0;
 }
 .white-bg span {
-  font-family: "Gotham Rounded", sans-serif;
-  color: #70e6da;
+  font-family: "Inter Regular", sans-serif;
+  color: #559CFF;
   font-size: 13px;
   font-weight: 600;
   margin: 0 0 10px;
   display: block;
 }
 .white-bg h2 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 40px;
   font-weight: 500;
-  color: #000065;
+  color: #ffffff;
   margin: 0 0 20px;
 }
 .white-bg .image {
@@ -563,23 +620,25 @@ div[disabled]
   margin: 50px 0 0;
 }
 .white-bg .image img {
-  width: 100%;
+  width: 160%;
   height: auto;
   display: block;
+  position: absolute;
+  top: -218px;
 }
 .green-bg {
-  background: #70e6da;
-  font-family: 'Gotham Rounded', sans-serif;
+  background: #9E20FE;
+  font-family: 'Inter Regular', sans-serif;
   font-size: 16px;
   font-weight: 300;
-  color: #000065;    
+  color: #11111A;    
   padding: 100px 0;
 }
 #Support {
   padding: 100px 0 300px 0;
 }
 .green-bg span {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "Inter Regular", sans-serif;
   color: #fff;
   font-size: 13px;
   font-weight: 600;
@@ -587,7 +646,7 @@ div[disabled]
   display: block;
 }
 .green-bg h2 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 40px;
   font-weight: 500;
   color: #000065;
@@ -730,15 +789,15 @@ div[disabled]
   display: block;
 } */
 .why.leaderboard {
-  font-family: 'Gotham Rounded', sans-serif;
-  background: #000065 !important;
+  font-family: 'Inter Regular', sans-serif;
+  background: #11111A !important;
   font-size: 16px;
   font-weight: 300;
   color: #fff;    
   padding: 0 0 100px;
 }
 .leaderboard h2 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 44px;
   font-weight: 500;
   color: #fff;
@@ -815,8 +874,8 @@ div[disabled]
 }
 
 .participate {
-  font-family: 'Gotham Rounded', sans-serif;
-  background: #000065 !important;
+  font-family: 'Inter Regular', sans-serif;
+  background: #11111A !important;
   font-size: 16px;
   font-weight: 300;
   color: #fff;    
@@ -831,7 +890,7 @@ div[disabled]
 .participate .ui.checkbox .box:before, 
 .participate .ui.checkbox label:before {
   background: #19197c !important;
-  border-color: #35918d !important;
+  border-color: #559CFF !important;
 }
 .participate .ui.checkbox .box:after, 
 .participate .ui.checkbox label:after {
@@ -840,18 +899,18 @@ div[disabled]
   line-height: 16px;
 }
 .participate span {
-  font-family: "Gotham Rounded", sans-serif;
-  color: #70e6da ;
+  font-family: "Inter Regular", sans-serif;
+  color: #559CFF  ;
   font-size: 13px;
   font-weight: 600 !important;
   margin: 0 0 10px;
-  display: block;
+  margin-top: 20px;
   
   
 }
 
 .participate .visible.menu.transition {
-  /* background-color: #70e6da !important; */
+  /* background-color: #9E20FE !important; */
   background: linear-gradient(90deg, rgb(84 191 188) 0%, rgba(105,217,211,1) 100%) !important;
   color: #000065 !important;
 }
@@ -860,8 +919,8 @@ div[disabled]
   line-height: 22px;
 }
 .participate .right-section .click {
-  font-family: "Gotham Rounded", sans-serif;
-  color: #70e6da;
+  font-family: "Inter Regular", sans-serif;
+  color: #9E20FE;
   font-size: 18px;
   font-weight: 600;
   margin: 0 0 30px;
@@ -883,21 +942,21 @@ div[disabled]
   display: block;
 }
 .participate h1 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 50px;
   font-weight: 500;
   color: #fff;
   margin: 0 0 50px;
 }
 .participate h2 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 40px;
   font-weight: 500;
   color: #fff;
   margin: 0 0 20px;
 }
 .participate h3 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 48px;
   font-weight: 500;
   color: #97c0db;
@@ -914,8 +973,8 @@ div[disabled]
 
 
 .contribution {
-  font-family: 'Gotham Rounded', sans-serif;
-  background: #000065 !important;
+  font-family: 'Inter Regular', sans-serif;
+  background: #11111A !important;
   font-size: 16px;
   font-weight: 300;
   color: #fff;    
@@ -929,8 +988,8 @@ div[disabled]
 }
 .contribution .ui.checkbox .box:before, 
 .contribution .ui.checkbox label:before {
-  background: #19197c !important;
-  border-color: #35918d !important;
+  background: rgba(81, 81, 81, 0.2) !important;
+  border-color: #559CFF !important;
 }
 .contribution .ui.checkbox .box:after, 
 .contribution .ui.checkbox label:after {
@@ -939,8 +998,8 @@ div[disabled]
   line-height: 16px;
 }
 .contribution span {
-  font-family: "Gotham Rounded", sans-serif;
-  color: #70e6da ;
+  font-family: "Inter Regular", sans-serif;
+  color: #559CFF ;
   font-size: 13px;
   font-weight: 600 !important;
   margin: 0 0 10px;
@@ -974,7 +1033,7 @@ div[disabled]
   bottom: 0;
   left: 0;
   width: 1px;
-  background: #70e6da;
+  background: #9E20FE;
 }
 
 .contribution ::marker {
@@ -992,7 +1051,7 @@ div[disabled]
   font-size: 16px;
   min-width: 220px;
   text-align: center;
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "Inter Regular", sans-serif;
   font-weight: 600;
   color: #fff;
   /* margin-top: 60px; */
@@ -1012,15 +1071,20 @@ div[disabled]
   text-align: center;
   background: transparent;
   font-size: 16px;
-  font-family: "Gotham Rounded", sans-serif;
-  font-weight: 600;
-  color: #000065;
+  font-family: "Inter Regular", sans-serif;
+  font-weight: 400;
+  color: white;
+  ;
 }
 .participate .gradient-btn.disabled {
   opacity: 0.8 !important;
-  background: rgb(100,154,177) !important;
-  background: linear-gradient(90deg, rgba(100,154,177,1) 0%, rgba(105,217,211,1) 100%) !important;
+  border-radius: 12px !important;
+  background: linear-gradient(85deg, #559CFF 0%, #9E20FE 100%) !important;
+  backdrop-filter: blur(30px) !important;
   cursor: pointer;
+  color: white;
+  font-family: "Inter Regular", sans-serif;
+  font-weight: 400;
 }
 .participate .five.wide.column span {
   margin-bottom: 15px;
@@ -1094,12 +1158,13 @@ div[disabled]
   color: #fff !important;
   border: none !important;
   background: transparent !important;
-  box-shadow: 0 0 0 1px #69d7d2 inset!important;;
+
 }
 .participate .right.menu span {
-  margin-bottom: 0;
+
   color: #fff;
   font-weight: normal;
+
 }
 .participate .right.menu .text {
   width: 100%;
@@ -1107,17 +1172,17 @@ div[disabled]
 .participate .right.menu a {
   display: block;
   font-weight: bold;
-  color: #69d7d2;
+  color: #559CFF;
 }
 .participate .ui.search.dropdown {
   width: 400px;
-  background: #19197c;
+  background: #11111A;
   color: #fff;
-  border: 1px solid #35918d !important;
+  border: 1px solid #559CFF   !important;
 }
 .participate .ui.menu .ui.dropdown .menu>.selected.item,
 .participate .ui.menu .ui.dropdown .menu>.active.item {
-  background: #000065 !important;
+  background: #11111A !important;
   border-top: 1px solid #000065 !important;
   border-radius: 0 !important;
 }
@@ -1130,7 +1195,7 @@ div[disabled]
   font-weight: 600;
 }
 .participate .ui.search .menu > div {
-  background: #000065 !important;
+  background: #11111A !important;
   display: flex;
 }
 .participate .ui.left.pointing.label {
@@ -1139,7 +1204,7 @@ div[disabled]
   font-size: 15px;
 }
 .participate i.green.icon {
-  color: #69d7d2 !important;
+  color: #559CFF !important;
 }
 .participate .right-section .slick-prev:hover,
 .participate .right-section .slick-prev:focus {
@@ -1174,7 +1239,7 @@ div[disabled]
   bottom: 0;
   right: 40px;
   width: 10px;
-  background: #69d7d2;
+  background: #559CFF;
   z-index: 2;
 }
 .participate .right-section:before {
@@ -1185,7 +1250,7 @@ div[disabled]
   bottom: 0;
   left: -60px;
   width: 1px;
-  background: #69d7d2;
+  background: #559CFF;
 }
 .participate ol {
   font-size: 18px;
@@ -1218,11 +1283,11 @@ div[disabled]
   width: 60%;
   margin-left: 40px;
   background: transparent;
-  border: 1px solid #35918d;
+  border: 1px solid #559CFF  ;
   padding: 18px;
   border-radius: 14px;
   text-align: center;
-  font-family: "Gotham Rounded";
+  font-family: "Inter Regular";
   font-weight: 600 !important;
   color: #fff;
   letter-spacing: 1.9px;
@@ -1245,7 +1310,7 @@ div[disabled]
 }
 .participate .form input:focus {
   box-shadow: none;
-  border-color: #35918d;
+  border-color: #559CFF  ;
   outline: none;
 }
 .participate .form .boxes strong {
@@ -1258,16 +1323,16 @@ div[disabled]
   max-width: 600px;
 }
 .grey-bg-2 {
-  background: #eff3f6;
-  font-family: 'Gotham Rounded', sans-serif;
+  background: #11111A;
+  font-family: 'Inter Regular', sans-serif;
   font-size: 16px;
   font-weight: 300;
-  color: #000065;    
+  color: #ffffff;    
   padding: 100px 0;
 }
 .grey-bg-2 span {
-  font-family: "Gotham Rounded", sans-serif;
-  color: #70e6da;
+  font-family: "Inter Regular", sans-serif;
+  color: #559CFF;
   font-size: 13px;
   font-weight: 600;
   margin: 0 0 10px;
@@ -1275,10 +1340,10 @@ div[disabled]
   
 }
 .grey-bg-2 h2 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 50px;
   font-weight: 500;
-  color: #000065;
+  color: #ffffff;
   margin: 0 0 20px;
 }
 .grey-bg-2 div .main {
@@ -1299,10 +1364,10 @@ div[disabled]
   display: block;
 }
 .grey-bg-2 strong {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "Inter Regular", sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: #000065;
+  color: #ffffff;
   margin: 0 0 10px;
   display: block;
 }
@@ -1311,26 +1376,26 @@ div[disabled]
   margin-bottom: 20px;
 }
 .white-bg-2 {
-  background: #fff;
-  font-family: 'Gotham Rounded', sans-serif;
+  background: #11111A;
+  font-family: 'Inter Regular', sans-serif;
   font-size: 16px;
   font-weight: 300;
-  color: #000065;    
+  color: #ffffff;    
   padding: 100px 0;
 }
 .white-bg-2 span {
-  font-family: "Gotham Rounded", sans-serif;
-  color: #70e6da;
+  font-family: "Inter Regular", sans-serif;
+  color: #559CFF;
   font-size: 13px;
   font-weight: 600;
   margin: 0 0 10px;
   display: block;
 }
 .white-bg-2 h2 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 50px;
   font-weight: 500;
-  color: #000065;
+  color: #ffffff;
   margin: 0 0 20px;
 }
 .white-bg-2 div .main {
@@ -1350,10 +1415,10 @@ div[disabled]
 .white-bg-2 .main .cal-box {
   display: flex;
   align-items: center;
-  background: #70e6da;
+  background: #559CFF;
   font-size: 26px;
   font-weight: normal;
-  color: #000065;
+  color: #ffffff;
   line-height: 1.3;
   padding: 25px;
   border-radius: 15px;
@@ -1385,10 +1450,10 @@ div[disabled]
   display: block;
 }
 .white-bg-2 strong {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "Inter Regular", sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: #000065;
+  color: #ffffff;
   margin: 0 0 10px;
   display: block;
 }
@@ -1398,7 +1463,7 @@ div[disabled]
 }
 .contribute {
     background: #000065;
-    font-family: 'Gotham Rounded', sans-serif;
+    font-family: 'Inter Regular', sans-serif;
     font-size: 16px;
     font-weight: 300;
     color: #eff3f6;    
@@ -1407,34 +1472,34 @@ div[disabled]
     background-position: 120% -120px !important;
 }
 .contribute span {
-    font-family: "Gotham Rounded", sans-serif;
-    color: #70e6da;
+    font-family: "Inter Regular", sans-serif;
+    color: #559CFF;
     font-size: 13px;
     font-weight: 600;
     margin: 0 0 10px;
     display: block;
   }
   .contribute h1 {
-    font-family: "Gotham Rounded", sans-serif;
+    font-family: "Inter Regular", sans-serif;
     font-size: 50px;
     font-weight: 500;
-    color: #fff;
+    color: #ffffff;
     margin: 0 0 20px;
   }
 
 .faq {
-    font-family: 'Gotham Rounded', sans-serif;
-    background: #eff3f6;
+    font-family: 'Inter Regular', sans-serif;
+    background: #11111A;
     font-size: 16px;
     font-weight: 300;
-    color: #000065;    
+    color: #ffffff;    
     padding: 100px 0;
 }
 .faq h2 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 50px;
   font-weight: 500;
-  color: #000065;
+  color: #ffffff;
   margin: 0 0 30px;
 }
 .faq .right-section {
@@ -1449,21 +1514,21 @@ div[disabled]
   bottom: 0;
   left: -10px;
   width: 1px;
-  background: #69d7d2;
+  background: #559CFF;
 }
 .faq h1 {
-    font-family: "Gotham Rounded", sans-serif;
+    font-family: "Inter Regular", sans-serif;
     font-size: 30px;
     font-weight: 500;
-    color: #000065;  
+    color: #ffffff;  
     margin: 0 0 20px;
   }
 .faq button {
   background: none;
   border: none;
   text-align: left;
-  color: #000065;
-  font-family: 'Gotham Rounded';
+  color: #ffffff;
+  font-family: 'Inter Regular';
   font-weight: 600;
   font-size: 18px;
   line-height: 1.4;
@@ -1479,28 +1544,28 @@ div[disabled]
   bottom: 0;
   right: -9px;
   width: 10px;
-  background: #70e6da;
+  background: #559CFF;
   z-index: 2;
 }
 
 .faq .text {
-  font-family: "Gotham Rounded";
+  font-family: "Inter Regular";
 }
 
 .faq h3 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 36px;
   font-weight: 500;
-  color: #000065;
+  color: #ffffff;
   margin: 0 0 20px;
 }
 .faq button:hover,
 .faq button.active {
-    color: #70e6da;
+    color: #559CFF;
 }
 .roadmap {
-  font-family: 'Gotham Rounded', sans-serif;
-  background: #000065 url(../Images/line.png) no-repeat !important;
+  font-family: 'Inter Regular', sans-serif;
+  background: #11111A url(../Images/line.png) no-repeat !important;
   font-size: 16px;
   font-weight: 300;
   color: #fff;    
@@ -1509,29 +1574,29 @@ div[disabled]
   background-position: 0px -130px !important;
 }
 .roadmap span {
-  font-family: "Gotham Rounded", sans-serif;
-  color: #70e6da;
+  font-family: "Inter Regular", sans-serif;
+  color: #559CFF;
   font-size: 13px;
   font-weight: 600;
   margin: 0 0 10px;
   display: block;
 }
 .roadmap h1 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 50px;
   font-weight: 500;
   color: #fff;
   margin: 0 0 50px;
 }
 .roadmap h2 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 40px;
   font-weight: 500;
   color: #fff;
   margin: 0 0 20px;
 }
 .roadmap h3 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 48px;
   font-weight: 500;
   color: #97c0db;
@@ -1544,7 +1609,7 @@ div[disabled]
 .roadmap .timeline {
   align-items: flex-end;
   display: flex;
-  margin-top: -200px;
+
 }
 .roadmap .timeline > div {
   flex: 1;
@@ -1581,7 +1646,7 @@ div[disabled]
   top: 5px;
 }
 .roadmap .timeline ul li.active {
-  color: #70e6da;
+  color: #559CFF;
   font-weight: 600; 
 }
 .clients .image-holder {
@@ -1607,8 +1672,8 @@ div[disabled]
 }
 .footer {
   padding: 20px 0;
-  background: #000065;
-  border-top: 3px solid #70e6da;
+  background: #11111A;
+  border-top: 3px solid #559CFF;
 }
 .footer .ui.menu>.container, .ui.menu>.grid {
   justify-content: space-between;
@@ -1624,8 +1689,10 @@ div[disabled]
   
 }
 .footer .primary.button {
-  background: #70e6da;
-  color: #000065;
+  border-radius: 12px;
+  background: linear-gradient(85deg, #559CFF 0%, #9E20FE 100%);
+  backdrop-filter: blur(30px);
+  color: #ffffff;
   line-height: 1.3;
   margin-right: 2% !important;
 }
@@ -1643,32 +1710,32 @@ div[disabled]
   display: flex;
 }
 .footer .footer-bottom .bottom-nav li {
-  font-family: "Gotham Rounded";
+  font-family: "Inter Regular";
   color: #fff;
 }
 .footer .footer-bottom .bottom-nav a {
-  font-family: "Gotham Rounded";
+  font-family: "Inter Regular";
   color: #fff;
 }
 .ui.tabular.menu .item:hover {
   /* text-decoration: underline; */
-  /* border-bottom: solid 2px #70e6da; */
+  /* border-bottom: solid 2px #9E20FE; */
   
 }
 .footer .footer-bottom .bottom-nav a:hover {
-  font-family: "Gotham Rounded";
-  color: #70e6da;
+  font-family: "Inter Regular";
+  color: #559CFF;
 }
 .footer .ui.tabular.menu a:hover{
-  color: #70e6da !important;
+  color: #559CFF !important;
 }
 .footer .footer-bottom .bottom-nav li + li {
-  border-left: 1px solid #70e6da;
+  border-left: 1px solid #559CFF;
   margin-left: 5px;
   padding-left: 5px;
 }
 .footer .footer-bottom .social {
-  border-top: 1px solid #70e6da;
+  border-top: 1px solid #559CFF;
 }
 .footer .footer-bottom .social ul {
   display: flex;
@@ -1747,7 +1814,7 @@ div[disabled]
   }
   .why,
   .roadmap {
-    background: #000065 !important;
+    background: #11111A !important;
     padding: 80px 0;
   }
   .faq button {
@@ -1794,7 +1861,7 @@ div[disabled]
     flex-direction: column;
   }
   .footer .footer-bottom .social {
-    border-bottom: 1px solid #70e6da;
+    border-bottom: 1px solid #9E20FE;
     padding: 10px;
   }
   .footer .footer-bottom .bottom-nav ul {
@@ -2087,8 +2154,8 @@ div[disabled]
 }
 
 .EarlySporter {
-  font-family: 'Gotham Rounded', sans-serif;
-  background: #000065;
+  font-family: 'Inter Regular', sans-serif;
+  background: #11111A;
   font-size: 16px;
   font-weight: 300;
   color: #fff;    
@@ -2097,8 +2164,8 @@ div[disabled]
   
 }
 .EarlySporter span {
-  font-family: "Gotham Rounded", sans-serif;
-  color: #70e6da;
+  font-family: "Inter Regular", sans-serif;
+  color: #559CFF;
   font-size: 13px;
   font-weight: 600;
   margin: 0 0 10px;
@@ -2106,7 +2173,7 @@ div[disabled]
   
 }
 .EarlySporter h1 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 50px;
   font-weight: 500;
   color: #fff;
@@ -2120,7 +2187,7 @@ div[disabled]
 
 
 .EarlySporter h2 {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "WhyteInktrap Medium", sans-serif;
   font-size: 40px;
   font-weight: 500;
   color: #fff;

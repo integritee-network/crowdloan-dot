@@ -13,9 +13,10 @@ export default function Rewards () {
                             <span>HOW WE ALLOCATE TEER</span>
                             <h2>Supporter Rewards</h2>
                             <p>
-                              Integritee tokens will be distributed to DOT holders who support us in the Polkadot parachain auctions.
-                              The quantity of TEER you receive as a supporter is proportional to the amount of DOT you lock until
-                              July 2024. Each DOT will be rewarded with 2.5 TEER tokens. No more than 200,000 DOT can be contributed.
+                            Integritee tokens will be distributed to DOT holders who support us in the Polkadot parachain
+auctions. The quantity of TEER you receive as a supporter is proportional to the amount of DOT
+you lock until Feb 13, 2026. Each DOT will be rewarded with 2.5 TEER tokens. No more than
+100,000 DOT can be contributed.
                             </p>
                             <div className="main">
                             <div className="text">
@@ -36,7 +37,7 @@ export default function Rewards () {
                             <div className="cal-box other">
                                 1 DOT locked = 2.5 TEER + bonuses
                             </div>
-                            <p>subject to linear vesting over 24 months</p>
+                            <p>subject to linear vesting over 96 weeks</p>
                             </div>
                             </div>
                         </Grid.Column>

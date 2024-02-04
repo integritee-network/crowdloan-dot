@@ -10,51 +10,66 @@ export default function Participate () {
         <div className="roadmap">
             <Container>
                 <div className="text">
-                    <h1>Integritee’s <br /> Roadmap</h1>
+                    <h1>Integritee’s Roadmap</h1>
                 </div>
                 <div className="timeline">
                     <div><ul>
                       <li>Encointer whitepaper release, sketching a privacy solution with TEEs.</li>
-                        <li>Beginning of the SubstraTEE journey.</li>
-                    </ul> <span>2018</span></div>
+                      <li>Beginning of the SubstraTEE journey.</li>
+                      <li>First public demonstration of private off-chain execution.</li>
+                        <li>Secured Web3 grants to develop SubstraTEE using Intel SGX, and Substrate Rust API client.</li>
+                    </ul> <span>2018-2019</span></div>
                     <div>
                     <ul>
-                          <li>First public demonstration of private off-chain execution.</li>
-                          <li>Secured Web3 grants to develop SubstraTEE using Intel SGX, and Substrate Rust API client.</li>
-                    </ul>
-                    <span>2019</span>
-                    </div>
-                    <div>
-                    <ul>
-                        <li>Q1 <br /> Web3 grant for SubstraTEE extension pack.</li>
-                        <li>Q2-Q4 <br /> Developed prototype platform &amp; deployed first use case: Encointer.</li>
-                        <li>Q4 <br /> Secured Polkadot Treasury grant for “SubstraTEE scalability”.</li>
-                    </ul>
-                    <span>2020</span>
-                    </div>
-                    <div>
-                    <ul>
-                        <li>Q1-Q2 <br /> Closed seed round &amp; deployed Rococo testnet parachain.</li>
-                        {/* <li>Q2 <br /> Closed seed round.</li> */}
-                        <li>Q3 <br /> Released Token Paper.</li>
-                        <li>Q4 <br />Launch main-net and TEER token.</li>
-                        <li>List TEER on a major exchange.</li>
-                        <li>Secure Kusama slot.</li>
+                    <li>Web3 grant for SubstraTEE extension pack & secured Polkadot Treasury grant for “SubstraTEE scalability”.</li>
+<li>Closed seed round & <br/>Series A</li>
+<li>Released Tokenomics Paper.</li>
+<li>Launch main-net and TEER token.</li>
+<li>TEER on a major exchange.</li>
+<li>Secured first Kusama slot.</li>
 
                     </ul>
-                    <span>2021</span>
+                    <span>2020-2021</span>
                     </div>
                     <div>
                     <ul>
-                        <li>Deploy first enterprise PoCs.</li>
-                        <li>Decentralize and establish the Governance Council.</li>
-                        <li>Implement fee burning and lockdrop mechanisms.</li>
-                        <li>Secure Polkadot slot &amp; establish a multi-environment TEER token.</li>
-                        <li>Release Kusama-Polkadot bridge &amp; sidechains with smart contracts</li>
-                        <li>Partner with international institutions/universities and issue Treasury grants to expand the Integritee ecosystem.</li>
-                        <li className="active">Establish Integritee as the leading Polkadot privacy solution.</li>
+                        <li>Secured Polkadot Parachain Slot</li>
+                        <li>Named 1 of 10 promising Swiss startups by EU Startups</li>
+                        <li>Finals of eurobits ESCO Startup Award 2022</li>
+                        <li>Finals of eurobits ESCO Startup Award 2022</li>
+                        <li>XCM (messaging) integrations with Moonriver, Karura, Bifrost</li>
+                        <li>First PoCs completed</li>
                     </ul>
-                    <span>2022 and beyond</span>
+                    <span>2022 </span>
+                    </div>
+                    <div>
+                    <ul>
+                        <li>Launch of Securitee Confidential Computing infrastructure product</li>
+                        {/* <li>Q2 <br /> Closed seed round.</li> */}
+                        <li>Release of Oracle framework</li>
+                        <li>SDK improvements & first enterprise developing on Integritee</li>
+                        <li>Release of Attesteer service</li>
+                        <li>Release of Whitepaper with OVH & Intel</li>
+                        <li>Tech4Trust Accelerator Acceptance</li>
+                        <li>Incognitee Testnet Launch</li>
+                        <li>Hackernoon Startup Award winner in Zurich</li>
+
+                    </ul>
+                    <span>2023</span>
+                    </div>
+                    <div>
+                    <ul>
+                        <li>Release of Whitepaper with OLI Systems</li>
+                        <li>First live project(s) on network</li>
+                        <li>Launch treasury grant program </li>
+                        <li>DEX Listing </li>
+                        <li>Incognitee Mainnet Launch</li>
+                        <li>Release of Sidechain as a Service on Securitee</li>
+                        <li>Bridge Integritee Kusama to Integritee Polkadot</li>
+                        <li>Bridge to other Ecosystems</li>
+                        <li>Release Sidechain SDK<br/> v 1.0.0</li>
+                    </ul>
+                    <span>2024 and beyond</span>
                     </div>
                 </div>
 
