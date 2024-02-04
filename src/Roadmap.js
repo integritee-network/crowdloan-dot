@@ -1,5 +1,6 @@
 import './css/App.css';
 import { Container } from 'semantic-ui-react';
+import Timeline from './Images/line.png';
 // import icon0 from './Images/i0.svg';
 // import icon1 from './Images/i1.svg';
 // import icon2 from './Images/i2.svg';
@@ -12,6 +13,7 @@ export default function Participate () {
                 <div className="text">
                     <h1>Integritee’s Roadmap</h1>
                 </div>
+           
                 <div className="timeline">
                     <div><ul>
                       <li>Encointer whitepaper release, sketching a privacy solution with TEEs.</li>

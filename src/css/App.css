@@ -911,8 +911,8 @@ div[disabled]
 
 .participate .visible.menu.transition {
   /* background-color: #9E20FE !important; */
-  background: linear-gradient(90deg, rgb(84 191 188) 0%, rgba(105,217,211,1) 100%) !important;
-  color: #000065 !important;
+  background: #11111A !important;
+  color: #ffffff !important;
 }
 .participate .right-section {
   font-size: 18px;
@@ -920,7 +920,7 @@ div[disabled]
 }
 .participate .right-section .click {
   font-family: "Inter Regular", sans-serif;
-  color: #9E20FE;
+  color: #559CFF;
   font-size: 18px;
   font-weight: 600;
   margin: 0 0 30px;
@@ -947,6 +947,8 @@ div[disabled]
   font-weight: 500;
   color: #fff;
   margin: 0 0 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 .participate h2 {
   font-family: "WhyteInktrap Medium", sans-serif;
@@ -1565,7 +1567,6 @@ div[disabled]
 }
 .roadmap {
   font-family: 'Inter Regular', sans-serif;
-  background: #11111A url(../Images/line.png) no-repeat !important;
   font-size: 16px;
   font-weight: 300;
   color: #fff;    
