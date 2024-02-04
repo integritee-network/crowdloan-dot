@@ -28,10 +28,7 @@ export default function Footer () {
                         name='Home Page'
                         href="https://www.integritee.network"
                     />
-                    <Menu.Item
-                          name='Help Center'
-                          href="https://integritee.zendesk.com/hc/en-us"
-                    />
+             
                     <Menu.Item name='Supporter Reward' href='#TeerToken' />
 
                     {/* <Menu.Item name='Referral Program' href='#referral' /> */}

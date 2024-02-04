@@ -68,13 +68,7 @@ function Main (props) {
           className={`toggle-menu ${toggleMenuFun ? 'open' : ''}`}
         >
 
-          <Menu.Item name='Supporter Reward' href='#TeerToken' />
-
-          {/* <Menu.Item name='Referral Program' href='#referral' /> */}
-
-          <Menu.Item name='TEER Token' href='#token' />
-
-          <Menu.Item name='FAQ' href='#FAQ' />
+         
 
           {crowdLoanRunning &&
           <a className='ui primary gradient-btn button' style={{ lineHeight: '1.5' }} href='#participate' >
