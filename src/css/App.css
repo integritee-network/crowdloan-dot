@@ -1037,6 +1037,25 @@ color: #ffffff;
 backdrop-filter: blur(4px);
 }
 
+/* Media Query für mobile Ansicht */
+@media (max-width: 768px) {
+  .menu-container {
+    justify-content: space-between; /* Behält die Ausrichtung bei: Logo links, Button rechts */
+  }
+
+  .nav-social {
+    display: none; /* Stellt sicher, dass die Social-Media-Icons auf mobilen Geräten ausgeblendet bleiben */
+  }
+
+  .logo, .button {
+    flex: 0 0 auto; /* Stellt sicher, dass Logo und Button ihre Größe beibehalten und nicht gestreckt werden */
+  }
+
+  .button {
+    /* Anpassungen für den Button in der mobilen Ansicht, falls nötig */
+  }
+}
+
 .menu-container {
   display: flex !important;
   justify-content: space-between !important;
