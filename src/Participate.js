@@ -440,7 +440,7 @@ export default function Participate (props) {
                         </Grid.Row>
                       </Grid> */}
                       <Grid.Column>
-                        <div>
+                        <div style={{ marginBottom: '30px' }}>
                           Estimated fees: {estimatedFee} <br /> Please make sure when contributing, that your balance can cover the fees
                         </div>
                       </Grid.Column>

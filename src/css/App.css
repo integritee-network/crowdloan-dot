@@ -1068,9 +1068,9 @@ div[disabled]
 
 
 
-.participate .gradient-btn {
+.gradient-btn {
   background: rgb(100,154,177) !important;
-  background: linear-gradient(90deg, rgba(100,154,177,1) 0%, rgba(105,217,211,1) 100%) !important;
+  background: linear-gradient(85deg, #559CFF 0%, #9E20FE 100%) !important;
   border-radius: 10px;
   padding: 15px 25px;
   min-width: 220px;
@@ -1083,8 +1083,15 @@ div[disabled]
   font-family: "Inter Regular", sans-serif;
   font-weight: 400;
   color: white;
-  ;
 }
+
+.gradient-btn:hover {
+  background: rgb(220, 20, 60) !important; /* Rot */
+  background: linear-gradient(90deg, rgba(220, 20, 60, 1) 0%, rgba(255, 0, 0, 1) 100%) !important; /* Roter Gradient */
+  color: white; /* Textfarbe */
+}
+
+
 .participate .gradient-btn.disabled {
   opacity: 0.8 !important;
   border-radius: 12px !important;
