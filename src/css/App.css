@@ -36,7 +36,7 @@ body {
 
 @media (max-width: 768px) {
   .image.howparachain img {
-    display: none;
+    display: none !important; 
   }
 }
 
