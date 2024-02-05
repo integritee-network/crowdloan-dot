@@ -56,30 +56,30 @@ function Main (props) {
 
   return (
     <Menu tabular className='main-menu' id='main-nav'>
-      <Container>
+      <Container className='menu-container'>
+        {/* Logo links */}
         <Menu.Menu className='logo'>
           <a href="/#">
-            {' '}
-            <img src={logo} alt='logo' width={200} />
+            <img src={logo} alt='logo'  />
           </a>
         </Menu.Menu>
-        <Menu.Menu
-          position='right'
-          className={`toggle-menu ${toggleMenuFun ? 'open' : ''}`}
-        >
 
-         
+        {/* Button zentral */}
+        {crowdLoanRunning &&
+        <a className='gradient-btn-menu ' href='#participate'>
+          Participate Now!
+        </a>
+        }
+        {!crowdLoanRunning &&
+        <a className="gradient-btn-menu "  href="https://mailchi.mp/integritee/get-notified">
+          Get Notified!
+        </a>
+        }
 
-          {crowdLoanRunning &&
-          <a className='ui primary gradient-btn button' style={{ lineHeight: '1.5' }} href='#participate' >
-            Participate Now!
-          </a>
-          }
-          {!crowdLoanRunning &&
-          <a className="ui primary gradient-btn button" style={{ lineHeight: '1.5' }} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
-          }
-          <div className='nav-social'>
-            <ul style={{ listStyleType: 'none' }}>
+        {/* Social Media Icons rechts */}
+        <div className='nav-social'>
+        <ul style={{ listStyleType: 'none', display: 'flex', gap: '10px', margin: 0, padding: 0 }}>
+           
               <li>
                 {' '}
                 <a
@@ -160,10 +160,12 @@ function Main (props) {
               </li>
 
 
-            </ul>
-          </div>
-        </Menu.Menu>
+              </ul>
+        </div>
       </Container>
+
+
+
       <div
         className='toggle-btn'
         onClick={() => setToggleMenuFun(!toggleMenuFun)}

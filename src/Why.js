@@ -72,26 +72,14 @@ who support our parachain bids by temporarily
 locking in DOT will be rewarded in TEER.
           </p>
       
-          {!crowdLoanRunning &&
-          <a className="ui primary gradient-btn button" href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
-          }
-
           {crowdLoanRunning &&
-         <a className='ui primary gradient-btn button' 
-         href='#participate'
-         style={{
-           borderRadius: '12px',
-           background: 'linear-gradient(85deg, #559CFF 0%, #9E20FE 100%)',
-           backdropFilter: 'blur(30px)',
-           display: 'inline-flex',
-           padding: '14px 24px',
-           alignItems: 'flex-start',
-           fontSize: '18px',
-           gap: '10px'
-         }}>
-        Participate Now!
-      </a>
-          }
+                            <a className="gradient-btn "  href='#participate'>
+                                Participate Now!
+                            </a>
+                            }
+                            {!crowdLoanRunning &&
+                            <a className="gradient-btn "  href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
+                            }
         </div>
 <br></br>
 <br></br>

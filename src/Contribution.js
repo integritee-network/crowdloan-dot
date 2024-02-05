@@ -52,13 +52,18 @@ export default function Main (props) {
     );
   }
   return (
-    <div className="contribution">
+
+
+
+
+
+    
+    <div className="sticky">
       <Container>
         {crowdLoan && (
-        <ul className="counter">
-          <li>
-            <span>DOT CONTRIBUTED</span>
-            {toUnit(crowdLoan.raised, 10)}<br/>
+        <span className="counter">
+         
+            DOT CONTRIBUTED {toUnit(crowdLoan.raised, 10)} 
             {loading && (
               <Dimmer active>
                 <Loader size='mini' inline='centered'>
@@ -66,10 +71,15 @@ export default function Main (props) {
                 </Loader>
               </Dimmer>
             )}
-          </li>
-        </ul>)}
+        
+        </span>)}
+
+
 
       </Container>
+
+
+     
     </div>
   );
 }

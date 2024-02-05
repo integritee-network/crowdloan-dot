@@ -26,23 +26,12 @@ deadline, the more TEER tokens you will be eligible to receive.
                             <br />
 
                             {crowdLoanRunning &&
-                            <a className='ui primary gradient-btn button' style={{ lineHeight: '1.5' }} href='#participate' 
-                            style={{
-                                borderRadius: '12px',
-                                background: 'linear-gradient(85deg, #559CFF 0%, #9E20FE 100%)',
-                                backdropFilter: 'blur(30px)',
-                                display: 'inline-flex',
-                                padding: '14px 24px',
-                                alignItems: 'flex-start',
-                                fontSize: '18px',
-                                gap: '10px'
-                              }}>
-                            
+                            <a className="gradient-btn "  href='#participate'>
                                 Participate Now!
                             </a>
                             }
                             {!crowdLoanRunning &&
-                            <a className="ui primary gradient-btn button" style={{ lineHeight: '1.5' }} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
+                            <a className="gradient-btn "  href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
                             }
 
                         </Grid.Column>
