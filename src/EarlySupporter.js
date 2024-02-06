@@ -23,7 +23,7 @@ Reward, which is proportional to your DOT contribution. The more you bond before
 deadline, the more TEER tokens you will be eligible to receive.
                             </p>
 
-                            <br />
+                           
 
                             {crowdLoanRunning &&
                             <a className="gradient-btn "  href='#participate'>
