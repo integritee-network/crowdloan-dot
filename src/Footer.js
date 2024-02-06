@@ -42,13 +42,13 @@ export default function Footer () {
 
                 <Container className="part-btn-holder">
                 {crowdLoanRunning &&
-                <a className='ui primary gradient-btn button' href='#participate' >
-                    Participate Now!
-                </a>
-                }
-                {!crowdLoanRunning &&
-                <a className="ui primary gradient-btn button" style={{ lineHeight: '1.5' }} href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
-                }
+                            <a className="gradient-btn "  href='#participate'>
+                                Participate Now!
+                            </a>
+                            }
+                            {!crowdLoanRunning &&
+                            <a className="gradient-btn "  href="https://mailchi.mp/integritee/get-notified">Get Notified!</a>
+                            }
                 </Container>
 
                 <Container className="footer-bottom">
