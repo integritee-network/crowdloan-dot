@@ -51,7 +51,8 @@ body {
   font-size: 50px !important;
   font-weight: 500 !important;
   color: #fff !important;
-  
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .gradient_two
@@ -64,7 +65,8 @@ body {
   font-size: 50px !important;
   font-weight: 500 !important;
   color: #fff !important;
- 
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .participate-add-account {
@@ -1037,7 +1039,7 @@ backdrop-filter: blur(4px);
 
 position: -webkit-sticky; /* Für Safari */
 position: sticky;
-top: 100px; /* Abstand zum oberen Rand */
+top: 98px; /* Abstand zum oberen Rand */
 padding: 10px; /* Innenabstand */
 z-index: 2;
 align-items: center;
