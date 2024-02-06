@@ -1018,10 +1018,7 @@ div[disabled]
 }
 
 .sticky {
-  position: -webkit-sticky; /* Für Safari */
-  position: sticky;
-  top: 100px; /* Abstand zum oberen Rand */
-  padding: 10px; /* Innenabstand */
+
   z-index: 2;
   align-items: center;
   text-align: center;
@@ -1035,6 +1032,20 @@ div[disabled]
   font-weight: 600;
 color: #ffffff;
 backdrop-filter: blur(4px);
+
+
+
+position: -webkit-sticky; /* Für Safari */
+position: sticky;
+top: 100px; /* Abstand zum oberen Rand */
+padding: 10px; /* Innenabstand */
+z-index: 2;
+align-items: center;
+text-align: center;
+background: #9E20FE;
+backdrop-filter: blur(4px);
+  background: linear-gradient(180deg,#0a0a0f,rgba(10,10,15,0));
+
 }
 
 /* Media Query für mobile Ansicht */
