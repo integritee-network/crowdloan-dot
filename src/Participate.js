@@ -63,7 +63,7 @@ export default function Participate (props) {
     // console.log('1****************');
     // console.log(accountBalance);
     // console.log('1****************');
-    if (accountBalance < minimumParticipation) {
+    if (accountBalance < (minimumParticipation + 11012600000 )) {
       setDisableButton(true);
       setStatus('You do not have enough balance');
     } else {
@@ -133,7 +133,7 @@ export default function Participate (props) {
         }
         // estimate = parseInt(info.partialFee);
       }
-      if (accountBalance < minimumParticipation) {
+      if (accountBalance < (minimumParticipation + 11012600000 )) {
         setDisableButton(true);
         setStatus('You do not have enough balance');
       } else if (data.value === '' || data.value < minimumParticipation / divide) {
@@ -441,7 +441,7 @@ export default function Participate (props) {
                       </Grid> */}
                       <Grid.Column>
                         <div style={{ marginBottom: '30px' }}>
-                          Estimated fees: {estimatedFee} <br /> Please make sure when contributing, that your balance can cover the fees
+                          Estimated fees: {estimatedFee} <br /> Please make sure when contributing that your balance has more than 1.1 DOT left on the wallet, otherwise it will cause an error and the contribution won't be successful.
                         </div>
                       </Grid.Column>
                       <TxButton
